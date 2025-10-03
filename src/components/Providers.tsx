@@ -55,7 +55,7 @@ export function Providers({children, locale}: {children: React.ReactNode; locale
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [theme, setTheme] = useState<Theme>('light');
   const [toasts, setToasts] = useState<AppToast[]>([]);
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient<Database>());
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
 
   useEffect(() => {
     const loadTheme = () => {

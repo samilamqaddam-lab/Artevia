@@ -1,4 +1,5 @@
 import {createRouteHandlerClient} from '@supabase/auth-helpers-nextjs';
+import {cookies} from 'next/headers';
 import type {NextRequest} from 'next/server';
 import {NextResponse} from 'next/server';
 import type {Database} from '@/lib/supabase/types';
@@ -9,7 +10,7 @@ export async function GET(request: NextRequest) {
   const locale = requestUrl.searchParams.get('locale') ?? 'fr';
 
   if (code) {
-    const supabase = createRouteHandlerClient<Database>({cookies: () => request.cookies});
+    const supabase = createRouteHandlerClient<Database>({cookies});
     await supabase.auth.exchangeCodeForSession(code);
   }
 

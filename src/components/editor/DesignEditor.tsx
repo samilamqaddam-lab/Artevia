@@ -347,7 +347,7 @@ export function DesignEditor({product, locale, mode = 'logo', activeZone, onCanv
       top: canvasConfig.height / 2,
       originX: 'center',
       originY: 'center'
-    });
+    } as fabric.Object);
     shapeObj.set('data', {id: generateId()});
     canvas.add(shapeObj);
     canvas.setActiveObject(shapeObj);

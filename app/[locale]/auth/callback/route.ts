@@ -10,7 +10,8 @@ export async function GET(request: NextRequest) {
   const locale = requestUrl.searchParams.get('locale') ?? 'fr';
 
   if (code) {
-    const supabase = createRouteHandlerClient<Database>({cookies});
+    const cookieStore = cookies();
+    const supabase = createRouteHandlerClient<Database>({cookies: () => cookieStore});
     await supabase.auth.exchangeCodeForSession(code);
   }
 

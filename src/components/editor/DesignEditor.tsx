@@ -409,7 +409,7 @@ export function DesignEditor({product, locale, mode = 'logo', activeZone, onCanv
     if (!canvas) return;
     const active = canvas.getActiveObject();
     if (!active) return;
-    active.clone((cloned) => {
+    active.clone((cloned: fabric.Object) => {
       cloned.set({left: (active.left ?? 0) + 40, top: (active.top ?? 0) + 40});
       cloned.set('data', {id: generateId()});
       canvas.add(cloned);

@@ -537,7 +537,7 @@ export function DesignEditor({product, locale, mode = 'logo', activeZone, onCanv
     const active = canvas.getActiveObjects();
     if (!active.length) return;
     active.forEach((obj) => {
-      obj.set(property as never, value);
+      obj.set(property as never, value as never);
       obj.setCoords();
     });
     canvas.renderAll();

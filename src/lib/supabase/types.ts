@@ -1,3 +1,11 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json }
+  | Json[];
+
 export type Database = {
   public: {
     Tables: {
@@ -12,11 +20,11 @@ export type Database = {
           quantity_total: number | null;
           total_amount: number | null;
           discount_amount: number | null;
-          checkout: Record<string, unknown> | null;
+          checkout: Json | null;
           notes: string | null;
-          items: unknown[];
-          discounts: unknown[] | null;
-          raw_payload: Record<string, unknown>;
+          items: Json[];
+          discounts: Json[] | null;
+          raw_payload: Json;
           created_at: string;
         };
         Insert: {
@@ -28,11 +36,11 @@ export type Database = {
           quantity_total?: number | null;
           total_amount?: number | null;
           discount_amount?: number | null;
-          checkout?: Record<string, unknown> | null;
+          checkout?: Json | null;
           notes?: string | null;
-          items: unknown[];
-          discounts?: unknown[] | null;
-          raw_payload: Record<string, unknown>;
+          items: Json[];
+          discounts?: Json[] | null;
+          raw_payload: Json;
         };
         Update: {
           status?: string;
@@ -41,13 +49,26 @@ export type Database = {
           quantity_total?: number | null;
           total_amount?: number | null;
           discount_amount?: number | null;
-          checkout?: Record<string, unknown> | null;
+          checkout?: Json | null;
           notes?: string | null;
-          items?: unknown[];
-          discounts?: unknown[] | null;
-          raw_payload?: Record<string, unknown>;
+          items?: Json[];
+          discounts?: Json[] | null;
+          raw_payload?: Json;
         };
+        Relationships: [];
       };
+    };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      [_ in never]: never;
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
     };
   };
 };

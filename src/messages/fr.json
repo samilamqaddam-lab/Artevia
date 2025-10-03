@@ -1,0 +1,664 @@
+{
+  "common": {
+    "brand": "Artevia",
+    "tagline": "Objets publicitaires sur-mesure, BAT sous 24h",
+    "nav": {
+      "home": "Accueil",
+      "catalog": "Catalogue",
+      "projects": "Projets",
+      "quotes": "Demandes de devis",
+      "language": "Langue",
+      "login": "Connexion",
+      "register": "Créer un compte",
+      "account": "Mon compte",
+      "logout": "Déconnexion"
+    },
+    "actions": {
+      "startConfigurator": "Configurer",
+      "viewCatalog": "Voir le catalogue",
+      "addToQuote": "Ajouter au devis",
+      "requestQuote": "Envoyer la demande",
+      "save": "Sauvegarder",
+      "export": "Exporter",
+      "add": "Ajouter",
+      "duplicate": "Dupliquer",
+      "delete": "Supprimer",
+      "back": "Retour",
+      "preview": "Prévisualiser",
+      "downloadBat": "Télécharger le BAT",
+      "generateBat": "Générer le BAT"
+    },
+    "status": {
+      "saved": "Projet enregistré",
+      "exported": "Export prêt",
+      "addedToQuote": "Ajouté au panier devis",
+      "batReady": "BAT généré",
+      "quoteSent": "Demande envoyée",
+      "signedOut": "Déconnexion effectuée."
+    },
+    "currency": "MAD",
+    "comingSoon": "Bientôt disponible"
+  },
+  "home": {
+    "hero": {
+      "tagline": "Made in Morocco & Europe",
+      "highlight": "Livraison express sur tout le Maroc",
+      "title": "Personnalisez vos cadeaux d’affaires et marquez les esprits",
+      "description": "Artevia accompagne les équipes marketing, RH et événementiel pour produire des goodies premium adaptés au marché marocain.",
+      "ctaPrimary": "Lancer le designer",
+      "ctaSecondary": "Demander un devis",
+      "badges": [
+        "Chef de projet dédié",
+        "BAT PDF sous 24h",
+        "Production locale & Europe"
+      ]
+    },
+    "trust": {
+      "title": "Ils nous font confiance",
+      "subtitle": "Grandes entreprises, scale-ups et institutions marocaines",
+      "logos": [
+        "OCP",
+        "Maroc Telecom",
+        "Inwi",
+        "Attijariwafa bank",
+        "Careem",
+        "UM6P"
+      ]
+    },
+    "categories": [
+      {
+        "title": "Mugs & Drinkware",
+        "description": "Tasses céramique, gobelets thermos et bouteilles isothermes prêts à personnaliser.",
+        "tag": "Best-seller"
+      },
+      {
+        "title": "Textiles corporate",
+        "description": "T-shirts, polos et sweats brodés aux couleurs de votre équipe.",
+        "tag": "Ateliers Casablanca"
+      },
+      {
+        "title": "Tech & USB",
+        "description": "Powerbanks, clés USB bambou et accessoires high-tech livrés en coffret.",
+        "tag": "Prêts en 7 jours"
+      },
+      {
+        "title": "Papeterie & bureau",
+        "description": "Carnets A5, planners et coffrets bureau pour vos onboarding packs.",
+        "tag": "Eco-friendly"
+      }
+    ],
+    "designer": {
+      "title": "Un designer pensé pour les équipes marketing",
+      "description": "Visualisez le rendu, ajustez les zones d’impression et partagez un BAT bilingue sans quitter la page.",
+      "bullets": [
+        "Gestion des déclinaisons FR/AR",
+        "Grilles tarifaires et MOQ intégrés",
+        "Historique de configurations exportable"
+      ],
+      "ctaPrimary": "Lancer le designer",
+      "ctaSecondary": "Consulter un exemple de BAT",
+      "stats": [
+        {
+          "value": "24h",
+          "label": "Délai moyen de BAT validé"
+        },
+        {
+          "value": "98%",
+          "label": "Clients satisfaits"
+        }
+      ]
+    },
+    "process": {
+      "title": "Votre parcours Artevia",
+      "steps": [
+        {
+          "title": "1. Brief express",
+          "description": "Parlez-nous du contexte, de la cible et du budget directement en ligne."
+        },
+        {
+          "title": "2. Sélection & personnalisation",
+          "description": "Choisissez la technique de marquage, les coloris et les quantités par tranche."
+        },
+        {
+          "title": "3. Validation BAT & devis",
+          "description": "Recevez le BAT PDF + devis détaillé sous 24h pour confirmation."
+        },
+        {
+          "title": "4. Production & livraison",
+          "description": "Fabrication locale ou Europe, livraison assurée partout au Maroc."
+        }
+      ]
+    },
+    "packs": {
+      "title": "Packs prêts à personnaliser",
+      "subtitle": "Des idées clés en main pour vos onboarding, salons et cadeaux clients.",
+      "items": [
+        {
+          "title": "Pack Onboarding Startup",
+          "description": "Tote GOTS + carnet A5 + mug double paroi + welcome card.",
+          "price": "À partir de 399 MAD / pack",
+          "leadTime": "Disponible en 10 jours",
+          "features": [
+            "Personnalisation quadri incluse",
+            "Livraison groupée sur site",
+            "Option note de bienvenue manuscrite"
+          ],
+          "id": "pack-onboarding-startup"
+        },
+        {
+          "title": "Pack Salon & Événement",
+          "description": "Badge nominatif, lanyard sublimé, carnet spirale, mini powerbank.",
+          "price": "À partir de 289 MAD / set",
+          "leadTime": "Prêt pour vos salons en 7 jours",
+          "features": [
+            "Fichiers variables (nom/prénom)",
+            "Impression quadri recto verso",
+            "Conditionnement par lot"
+          ],
+          "id": "pack-salon-event"
+        },
+        {
+          "title": "Pack Premium Direction",
+          "description": "Coffret bois, stylo métal gravé, carnet relié, thermos isotherme 500 ml.",
+          "price": "À partir de 649 MAD / coffret",
+          "leadTime": "Livraison express en 8 jours",
+          "features": [
+            "Gravure laser sur métal",
+            "Carte personnalisée signée",
+            "Option mise sous ruban"
+          ],
+          "id": "pack-premium-direction"
+        }
+      ],
+      "cta": "Demander ce pack"
+    },
+    "packsQuantityPrefix": "Quantités incluses : {items}",
+    "packLabels": {
+      "pack-onboarding-startup": "Pack Onboarding Startup",
+      "pack-salon-event": "Pack Salon & Événement",
+      "pack-premium-direction": "Pack Premium Direction"
+    },
+    "sustainability": {
+      "title": "Engagés pour une production responsable",
+      "description": "Nous priorisons les ateliers marocains et européens certifiés, sourçons des matières recyclées et suivons l’empreinte carbone de chaque commande.",
+      "badges": [
+        "Coton GOTS & OEKO-TEX",
+        "Bois & bambou certifiés FSC",
+        "Transport neutre en carbone"
+      ]
+    },
+    "testimonials": {
+      "title": "Ils parlent d’Artevia",
+      "subtitle": "Des équipes marketing, RH et événementiel satisfaites.",
+      "items": [
+        {
+          "quote": "Artevia nous a livré 1 500 tote bags éco-conçus pour notre campagne Ramadan en un temps record.",
+          "author": "Salma B.",
+          "role": "Responsable Communication",
+          "company": "Inwi"
+        },
+        {
+          "quote": "Le BAT bilingue a simplifié la validation interne, et la qualité de broderie est irréprochable.",
+          "author": "Youssef M.",
+          "role": "HR Business Partner",
+          "company": "OCP"
+        },
+        {
+          "quote": "Pour nos roadshows, les powerbanks personnalisés ont été un vrai différenciateur auprès de nos prospects.",
+          "author": "Nadia A.",
+          "role": "Head of Marketing",
+          "company": "Fintech scale-up"
+        }
+      ]
+    },
+    "resources": {
+      "title": "Ressources pour vos campagnes",
+      "subtitle": "Guides gratuits et checklists pour réussir vos activations.",
+      "items": [
+        {
+          "title": "Guide Ramadan 2025",
+          "description": "Sélection de 20 goodies à offrir à vos collaborateurs et clients.",
+          "label": "Télécharger le guide"
+        },
+        {
+          "title": "Checklist Salon B2B",
+          "description": "Préparez vos stands et dotations en 7 étapes.",
+          "label": "Obtenir la checklist"
+        },
+        {
+          "title": "Template e-mail annonce cadeau",
+          "description": "Modèle FR/AR pour communiquer votre opération cadeaux.",
+          "label": "Télécharger le template"
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Parlons de votre prochain projet",
+      "description": "Contactez notre équipe pour une proposition personnalisée et un BAT gratuit.",
+      "primaryCta": "Demander un devis",
+      "secondaryCta": "Appeler un conseiller",
+      "contact": "Service client Casablanca",
+      "phone": "+212 5 22 00 12 34",
+      "email": "bonjour@artevia.ma",
+      "note": "Réponse en moins de 2 heures ouvrées",
+      "phoneLabel": "Téléphone",
+      "emailLabel": "Email"
+    },
+    "categoriesTitle": "Nos univers produits",
+    "categoriesSubtitle": "Sélectionnez une catégorie et commencez votre personnalisation.",
+    "processDescription": "Chaque étape est accompagnée par un chef de projet dédié.",
+    "categoryCta": "Découvrir"
+  },
+  "catalog": {
+    "title": "Catalogue objets promotionnels",
+    "description": "Sélection premium sourcée localement avec marquage multi-techniques.",
+    "cta": "Configurer le devis",
+    "leadTimeTag": "Délais",
+    "moqTag": "Quantité minimale"
+  },
+  "leadTimes": {
+    "standard": "Standard",
+    "express": "Express"
+  },
+  "products": {
+    "notepad": {
+      "name": "Bloc-notes spirale premium",
+      "description": "Formats A4/A5/A6 avec intérieur offset 90 g et reliure double anneau.",
+      "colors": {
+        "kraft": "Kraft naturel",
+        "midnight": "Bleu nuit",
+        "coral": "Corail doux"
+      },
+      "zones": {
+        "cover": "Couverture avant",
+        "coverDescription": "Grande zone pleine page pour visuels quadri.",
+        "back": "Quatrième de couverture",
+        "backDescription": "Idéal pour coordonnées, QR codes et mentions légales."
+      },
+      "methods": {
+        "digitalA5_100": {
+          "name": "Impression quadri A5 · 100 pages",
+          "description": "Tirage numérique haute résolution sur papier 100 pages."
+        },
+        "digitalA4_100": {
+          "name": "Impression quadri A4 · 100 pages",
+          "description": "Couverture grand format avec pelliculage mat en option."
+        },
+        "digitalA6_100": {
+          "name": "Impression quadri A6 · 100 pages",
+          "description": "Mini format pratique pour vos équipes terrain."
+        },
+        "premiumA5_150": {
+          "name": "Edition premium A5 · 150 pages",
+          "description": "Papier 115 g et spirale renforcée pour un usage intensif."
+        }
+      }
+    },
+    "pen": {
+      "name": "Stylo métal S1",
+      "description": "Corps aluminium rechargeable avec grip soft-touch.",
+      "colors": {
+        "graphite": "Graphite mat",
+        "silver": "Argent satiné",
+        "royal": "Bleu royal"
+      },
+      "zones": {
+        "barrel": "Corps cylindrique",
+        "barrelDescription": "Marquage panoramique 360° jusqu'à 60 mm.",
+        "clip": "Clip métallique",
+        "clipDescription": "Espace signature discret pour slogan ou site web."
+      },
+      "methods": {
+        "laser": {
+          "name": "Gravure laser ton sur ton",
+          "description": "Marquage indélébile sur aluminium anodisé."
+        },
+        "tampo": {
+          "name": "Tampographie 4 couleurs",
+          "description": "Encres Pantone pour logos colorés jusqu'à 45 mm."
+        }
+      }
+    },
+    "folder": {
+      "name": "Chemise à rabat pro",
+      "description": "Carton 350 g avec patte en V, double rainage et encoches carte.",
+      "colors": {
+        "white": "Blanc mat",
+        "azure": "Bleu azur",
+        "graphite": "Anthracite"
+      },
+      "zones": {
+        "front": "Face avant",
+        "frontDescription": "Surface totale A4 pour visuels impactants.",
+        "pocket": "Pochette intérieure",
+        "pocketDescription": "Marquage optionnel sur patte de maintien."
+      },
+      "methods": {
+        "offset": {
+          "name": "Offset quadri",
+          "description": "Idéal pour séries importantes avec aplats précis."
+        },
+        "digital": {
+          "name": "Numérique petite série",
+          "description": "Lancement rapide pour 100 à 300 exemplaires."
+        }
+      }
+    },
+    "mug": {
+      "name": "Mug céramique 330 ml",
+      "description": "Compatible lave-vaisselle, intérieur blanc brillant, anse C.",
+      "colors": {
+        "white": "Blanc",
+        "black": "Noir mat",
+        "sunset": "Dégradé sunset"
+      },
+      "zones": {
+        "wrap": "Impression panoramique",
+        "wrapDescription": "Zone 210×90 mm couvrant 2 faces.",
+        "logo": "Zone logo",
+        "logoDescription": "Centré sous anse pour marquage premium."
+      },
+      "methods": {
+        "sublimation": {
+          "name": "Sublimation quadri",
+          "description": "Couleurs éclatantes et durabilité accrue."
+        },
+        "laser": {
+          "name": "Gravure laser",
+          "description": "Effet ton sur ton pour éditions corporate."
+        }
+      }
+    },
+    "usb": {
+      "name": "Clé USB bambou 16 Go",
+      "description": "Bois FSC, puce grade A et rotation 360° magnétique.",
+      "colors": {
+        "bamboo": "Bambou naturel",
+        "black": "Noir",
+        "silver": "Argent"
+      },
+      "zones": {
+        "recto": "Face recto",
+        "rectoDescription": "Zone rectangulaire 40×12 mm.",
+        "verso": "Face verso",
+        "versoDescription": "Deuxième face pour slogan ou URL."
+      },
+      "methods": {
+        "laser": {
+          "name": "Gravure laser",
+          "description": "Marquage net sur bois ou aluminium."
+        },
+        "uv": {
+          "name": "Impression UV quadri",
+          "description": "Idéal pour visuels détaillés et dégradés."
+        }
+      }
+    },
+    "mousepad": {
+      "name": "Tapis de souris soft touch",
+      "description": "Surface micro-texturée 3 mm avec base antidérapante.",
+      "colors": {
+        "slate": "Gris ardoise",
+        "sky": "Bleu ciel",
+        "sunset": "Dégradé sunset"
+      },
+      "zones": {
+        "surface": "Surface totale",
+        "surfaceDescription": "Impression pleine surface 230×190 mm."
+      },
+      "methods": {
+        "sublimation": {
+          "name": "Sublimation HD",
+          "description": "Couleurs profondes, toucher velours."
+        },
+        "uv": {
+          "name": "Impression UV",
+          "description": "Option vernis sélectif pour effets relief."
+        }
+      }
+    },
+    "tshirt": {
+      "name": "T-shirt coton peigné",
+      "description": "190 g/m² coupe mixte, col renforcé et couture double aiguille.",
+      "colors": {
+        "white": "Blanc",
+        "black": "Noir profond",
+        "deepblue": "Bleu océan"
+      },
+      "zones": {
+        "front": "Devant",
+        "frontDescription": "Zone A3 pour message principal.",
+        "back": "Dos",
+        "backDescription": "Surface maxi pour visuels événementiels.",
+        "sleeve": "Manche",
+        "sleeveDescription": "Signature de marque ou drapeau."
+      },
+      "methods": {
+        "silkscreen": {
+          "name": "Sérigraphie 5 couleurs",
+          "description": "Encres souples au toucher premium."
+        },
+        "embroidery": {
+          "name": "Broderie premium",
+          "description": "Fil Madeira 3D pour logos haute valeur."
+        }
+      }
+    },
+    "totebag": {
+      "name": "Tote bag coton épais",
+      "description": "Toile 310 g, anses longues renforcées, coutures croisées.",
+      "colors": {
+        "natural": "Naturel",
+        "black": "Noir",
+        "navy": "Bleu marine"
+      },
+      "zones": {
+        "front": "Face avant",
+        "frontDescription": "Zone carrée 32×34 cm.",
+        "back": "Face arrière",
+        "backDescription": "Idéal pour plan de campagne ou manifesto."
+      },
+      "methods": {
+        "screenprint": {
+          "name": "Sérigraphie 3 couleurs",
+          "description": "Encres à l'eau résistantes avec rendu opacifiant."
+        },
+        "digital": {
+          "name": "Impression numérique",
+          "description": "Reproduction photo sur coton prétraité."
+        }
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Accédez à votre espace pour suivre vos commandes.",
+      "email": "Email professionnel",
+      "password": "Mot de passe",
+      "cta": "Se connecter",
+      "success": "Connexion réussie.",
+      "error": "Impossible de se connecter.",
+      "emailNotConfirmed": "Votre email n'est pas encore confirmé. Vérifiez vos e-mails pour l'activer.",
+      "switch": "Pas encore de compte ?",
+      "switchCta": "Créer un compte"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Inscrivez-vous pour suivre vos commandes et enregistrer vos projets.",
+      "email": "Email professionnel",
+      "password": "Mot de passe",
+      "confirm": "Confirmer le mot de passe",
+      "cta": "S'inscrire",
+      "success": "Compte créé !",
+      "checkEmail": "Vérifiez votre boîte mail pour activer votre compte.",
+      "error": "Impossible de créer le compte. Veuillez réessayer.",
+      "passwordMismatch": "Les mots de passe ne correspondent pas.",
+      "switch": "Déjà un compte ?",
+      "switchCta": "Se connecter"
+    }
+  },
+  "product": {
+    "specs": "Fiche technique",
+    "moq": "Quantité minimale",
+    "quantity": "Quantité souhaitée",
+    "method": "Méthode de marquage",
+    "zone": "Zone de pose",
+    "colorCount": "Nombre de couleurs Pantone",
+    "colorway": "Couleur du support",
+    "leadTime": "Délais de production",
+    "leadTimeHint": "Standard 12j ouvrés / Express avec supplément",
+    "priceGrid": {
+      "title": "Tarifs dégressifs",
+      "unit": "Prix unitaire HT",
+      "total": "Total HT"
+    },
+    "summary": {
+      "title": "Récapitulatif devis",
+      "setupFee": "Frais de calage",
+      "surcharge": "Majoration express",
+      "perUnit": "Prix unitaire",
+      "total": "Total estimé HT"
+    },
+    "editor": {
+      "title": "Designer produit",
+      "description": "Positionnez votre logo, ajustez les zones d’impression et exportez un BAT PDF en un clic.",
+      "mode": {
+        "logo": "Mode logo",
+        "creative": "Mode création simple"
+      },
+      "logoGuidelines": "Logo vectoriel conseillé, fond transparent.",
+      "colorLimit": "Méthode limitée à {{count}} couleur(s)",
+      "actions": {
+        "addToQuote": "Ajouter cette configuration",
+        "generateBat": "Générer le BAT PDF",
+        "fullscreen": "Plein écran",
+        "close": "Revenir à la page"
+      },
+      "captures": {
+        "success": "Aperçu à jour",
+        "error": "Impossible de capturer le BAT"
+      }
+    },
+    "rfq": {
+      "added": "Configuration ajoutée au panier devis.",
+      "submitted": "Demande envoyée. Notre équipe vous recontacte sous 24h."
+    }
+  },
+  "editor": {
+    "title": "Éditeur de personnalisation",
+    "toolbox": {
+      "text": "Texte",
+      "shapes": "Formes",
+      "images": "Images",
+      "upload": "Importer",
+      "settings": "Paramètres"
+    },
+    "panels": {
+      "layers": "Calques",
+      "properties": "Propriétés",
+      "projects": "Projets"
+    },
+    "fields": {
+      "projectName": "Nom du projet",
+      "textPlaceholder": "Votre texte ici"
+    },
+    "guides": {
+      "bleed": "Fond perdu",
+      "safe": "Zone sûre",
+      "print": "Zone d'impression"
+    },
+    "export": {
+      "title": "Exports",
+      "png": "PNG haute résolution",
+      "svg": "SVG vectoriel",
+      "json": "JSON (données projet)"
+    },
+    "a11y": {
+      "canvas": "Zone de dessin",
+      "zoomIn": "Zoom avant",
+      "zoomOut": "Zoom arrière",
+      "reset": "Réinitialiser"
+    }
+  },
+  "projects": {
+    "title": "Projets sauvegardés",
+    "empty": "Aucun projet sauvegardé pour le moment.",
+    "load": "Charger",
+    "delete": "Supprimer"
+  },
+  "quotes": {
+    "title": "Panier devis",
+    "empty": "Aucune configuration enregistrée pour le moment.",
+    "notes": "Notes complémentaires (optionnel)",
+    "download": "Télécharger le BAT",
+    "exportQuote": "Exporter le devis en PDF",
+    "checkout": {
+      "title": "Finaliser la commande",
+      "subtitle": "Confirmez vos coordonnées : un conseiller vous recontacte pour validation manuelle.",
+      "company": "Entreprise",
+      "contact": "Nom & prénom",
+      "email": "Email professionnel",
+      "phone": "Téléphone",
+      "message": "Notes complémentaires (optionnel)",
+      "requiredHint": "* Champs obligatoires",
+      "emptyValue": "—",
+      "open": "Passer commande",
+      "submit": "Confirmer la commande",
+      "validation": {
+        "company": "Indiquez le nom de votre entreprise.",
+        "contact": "Indiquez votre nom complet.",
+        "email": "Renseignez un email valide.",
+        "phone": "Renseignez un numéro de téléphone valide."
+      }
+    },
+    "export": {
+      "title": "Devis Artevia",
+      "reference": "Référence : {ref}",
+      "generated": "Émis le {date}",
+      "customer": "Coordonnées client",
+      "items": "Détail des articles",
+      "discounts": "Remises appliquées",
+      "notes": "Notes du client",
+      "payment": "Mode de paiement : virement bancaire (confirmation manuelle).",
+      "thanks": "Merci pour votre confiance."
+    },
+    "success": {
+      "title": "Commande enregistrée",
+      "subtitle": "Référence {ref}. Notre équipe vous contacte sous 24h pour valider les visuels et la disponibilité.",
+      "details": {
+        "company": "Entreprise",
+        "contact": "Contact",
+        "email": "Email",
+        "quantity": "Quantité totale",
+        "total": "Montant estimé"
+      },
+      "newOrder": "Créer une nouvelle configuration"
+    },
+    "remove": "Retirer",
+    "reset": "Réinitialiser",
+    "send": "Envoyer la demande",
+    "summary": {
+      "items": "Configurations",
+      "quantity": "Quantités totales",
+      "unit": "pcs",
+      "gross": "Total avant remise",
+      "discount": "Remise pack {pack} ({code} -{percent}%)",
+      "total": "Total estimé HT"
+    },
+    "toast": {
+      "sent": "Demande de devis envoyée",
+      "missing": "Ajoutez au moins une configuration",
+      "packLoaded": "Pack ajouté au devis : {pack}",
+      "packDiscount": "Remise appliquée automatiquement : {code} (-{percent}%)",
+      "orderSent": "Commande envoyée ! Nous revenons vers vous sous 24h.",
+      "validation": "Merci de renseigner les informations obligatoires",
+      "error": "Une erreur est survenue, merci de réessayer.",
+      "exported": "Devis exporté"
+    }
+  },
+  "pwa": {
+    "offline": "Vous êtes hors connexion. Les projets restent disponibles hors ligne.",
+    "update": "Nouvelle version disponible. Rafraîchir ?"
+  }
+}

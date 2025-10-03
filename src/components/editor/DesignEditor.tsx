@@ -341,7 +341,7 @@ export function DesignEditor({product, locale, mode = 'logo', activeZone, onCanv
   const addShape = (shape: keyof typeof DEFAULT_SHAPES) => {
     if (!canvas || !allowShapes) return;
     const factory = DEFAULT_SHAPES[shape];
-    const shapeObj = factory();
+    const shapeObj = factory() as fabric.Object;
     shapeObj.set({
       left: canvasConfig.width / 2,
       top: canvasConfig.height / 2,

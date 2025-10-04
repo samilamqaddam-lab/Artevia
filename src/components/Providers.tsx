@@ -8,7 +8,6 @@ import {generateId, isRTL} from '@/lib/utils';
 import type {Locale} from '@/i18n/settings';
 import {SessionContextProvider} from '@supabase/auth-helpers-react';
 import {createBrowserSupabaseClient} from '@supabase/auth-helpers-nextjs';
-import type {Database} from '@/lib/supabase/types';
 
 type Theme = 'light' | 'dark';
 

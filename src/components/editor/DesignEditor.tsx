@@ -662,7 +662,7 @@ export function DesignEditor({product, locale, mode = 'logo', activeZone, onCanv
           </header>
           <ul className="mt-3 space-y-2">
             {layers.map((layer) => (
-              <li key={layer.data?.id ?? layer.id}>
+              <li key={(layer as any).data?.id ?? (layer as any).id}>
                 <button
                   type="button"
                   onClick={() => {

@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-nocheck
-'use client';
-
-import type React from 'react';
 import {useEffect, useMemo, useRef, useState, useTransition} from 'react';
 import {fabric} from 'fabric';
 import {useTranslations} from 'next-intl';

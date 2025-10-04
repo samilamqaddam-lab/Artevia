@@ -10,7 +10,7 @@ import type {Locale} from '@/i18n/settings';
 
 type CTA = {
   label: string;
-  href: string;
+  href: { pathname: string; query?: Record<string, string> } | string;
 };
 
 type HeroContent = {
@@ -35,7 +35,7 @@ type CategoryContent = {
   description: string;
   tag: string;
   image: string;
-  href: string;
+  href: { pathname: string; query?: Record<string, string> } | string;
 };
 
 type DesignerContent = {
@@ -64,7 +64,7 @@ type PacksContent = {
     price: string;
     leadTime: string;
     features: string[];
-    href: string;
+    href: { pathname: string; query?: Record<string, string> } | string;
     quantityLabel: string | null;
   }[];
 };
@@ -166,10 +166,10 @@ export function HomeView({locale, content}: HomeViewProps) {
             <p className="max-w-xl text-lg text-slate-600 sm:text-xl dark:text-slate-300">{hero.description}</p>
             <div className="flex flex-wrap items-center gap-3 text-sm">
               <Button asChild size="lg">
-                <Link href={hero.primaryCta.href}>{hero.primaryCta.label}</Link>
+                <Link href={hero.primaryCta.href as any}>{hero.primaryCta.label}</Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link href={hero.secondaryCta.href}>{hero.secondaryCta.label}</Link>
+                <Link href={hero.secondaryCta.href as any}>{hero.secondaryCta.label}</Link>
               </Button>
             </div>
             <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-600 dark:text-slate-300">
@@ -252,7 +252,7 @@ export function HomeView({locale, content}: HomeViewProps) {
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{category.title}</h3>
                 <p className="text-sm text-slate-600 dark:text-slate-300">{category.description}</p>
                 <Button asChild variant="ghost" size="sm" className="mt-auto self-start text-sm font-semibold text-brand">
-                  <Link href={category.href}>{categoryCta}</Link>
+                  <Link href={category.href as any}>{categoryCta}</Link>
                 </Button>
               </div>
             </motion.article>
@@ -379,7 +379,7 @@ export function HomeView({locale, content}: HomeViewProps) {
                   ))}
                 </ul>
                 <Button asChild variant="secondary" size="sm" className="mt-auto self-start">
-                  <Link href={item.href} data-pack-id={item.id}>
+                  <Link href={item.href as any} data-pack-id={item.id}>
                     {packs.cta}
                   </Link>
                 </Button>
@@ -464,7 +464,7 @@ export function HomeView({locale, content}: HomeViewProps) {
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{item.title}</h3>
               <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{item.description}</p>
               <Button asChild variant="ghost" size="sm" className="mt-auto self-start text-sm font-semibold text-brand">
-                <Link href={item.href}>{item.label}</Link>
+                <Link href={item.href as any}>{item.label}</Link>
               </Button>
             </motion.article>
           ))}

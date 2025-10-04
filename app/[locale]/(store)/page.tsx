@@ -77,11 +77,11 @@ export default async function HomePage({params}: {params: {locale: string}}) {
     ...heroTranslation,
     primaryCta: {
       label: heroTranslation.ctaPrimary,
-      href: `/${locale}/catalog`
+      href: { pathname: `/${locale}/catalog` }
     },
     secondaryCta: {
       label: heroTranslation.ctaSecondary,
-      href: `/${locale}/rfq`
+      href: { pathname: `/${locale}/rfq` }
     },
     image: HERO_IMAGE
   };
@@ -99,7 +99,7 @@ export default async function HomePage({params}: {params: {locale: string}}) {
     return {
       ...category,
       image: asset?.image ?? HERO_IMAGE.src,
-      href: asset?.getHref(locale) ?? `/${locale}/catalog`
+      href: { pathname: asset?.getHref(locale) ?? `/${locale}/catalog` }
     };
   });
 
@@ -150,7 +150,7 @@ export default async function HomePage({params}: {params: {locale: string}}) {
     cta: packsTranslation.cta,
     items: packsTranslation.items.map((item) => ({
       ...item,
-      href: `/${locale}/rfq?pack=${encodeURIComponent(item.id)}`,
+      href: { pathname: `/${locale}/rfq`, query: { pack: item.id } },
       quantityLabel: (() => {
         const packDefinition = getPackById(item.id);
         if (!packDefinition) return null;

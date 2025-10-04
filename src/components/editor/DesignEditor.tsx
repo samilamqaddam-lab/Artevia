@@ -728,7 +728,7 @@ export function DesignEditor({product, locale, mode = 'logo', activeZone, onCanv
                         type="range"
                         min={32}
                         max={320}
-                        value={(selectedFontSize ?? 120) as number}
+                        value={Number(selectedFontSize ?? 120)}
                         onChange={(event) => updateSelectedProperty('fontSize', Number(event.target.value))}
                       />
                     </label>

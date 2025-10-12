@@ -129,5 +129,5 @@ export function generateQuotePdf(options: QuotePdfOptions) {
     builder.pushText('endstream\n');
   });
 
-  return new Blob([builder.build()], {type: 'application/pdf'});
+  return new Blob([builder.build() as BlobPart], {type: 'application/pdf'});
 }

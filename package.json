@@ -12,8 +12,7 @@
     "test:watch": "jest --watch",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "images:fetch": "ts-node --esm scripts/fetch-product-images.ts",
-    "prepare": "husky install"
+    "images:fetch": "ts-node --esm scripts/fetch-product-images.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",

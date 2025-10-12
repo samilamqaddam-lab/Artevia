@@ -87,7 +87,9 @@ export default async function ProductPage({
       colorLimit: tProduct('editor.colorLimit'),
       actions: {
         addToQuote: tProduct('editor.actions.addToQuote'),
-        generateBat: tProduct('editor.actions.generateBat')
+        generateBat: tProduct('editor.actions.generateBat'),
+        close: tProduct('editor.actions.close'),
+        fullscreen: tProduct('editor.actions.fullscreen')
       },
       captures: {
         success: tProduct('editor.captures.success'),

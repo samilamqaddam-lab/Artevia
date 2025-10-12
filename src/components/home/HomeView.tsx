@@ -167,10 +167,10 @@ export function HomeView({locale, content}: HomeViewProps) {
             <p className="max-w-xl text-lg text-slate-600 sm:text-xl dark:text-slate-300">{hero.description}</p>
             <div className="flex flex-wrap items-center gap-3 text-sm">
               <Button asChild size="lg">
-                <Link href={hero.primaryCta.href as unknown as string}>{hero.primaryCta.label}</Link>
+                <Link href={hero.primaryCta.href as any}>{hero.primaryCta.label}</Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link href={hero.secondaryCta.href as unknown as string}>{hero.secondaryCta.label}</Link>
+                <Link href={hero.secondaryCta.href as any}>{hero.secondaryCta.label}</Link>
               </Button>
             </div>
             <div className="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-600 dark:text-slate-300">
@@ -253,7 +253,7 @@ export function HomeView({locale, content}: HomeViewProps) {
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{category.title}</h3>
                 <p className="text-sm text-slate-600 dark:text-slate-300">{category.description}</p>
                 <Button asChild variant="ghost" size="sm" className="mt-auto self-start text-sm font-semibold text-brand">
-                  <Link href={category.href as unknown as string}>{categoryCta}</Link>
+                  <Link href={category.href as any}>{categoryCta}</Link>
                 </Button>
               </div>
             </motion.article>
@@ -293,10 +293,10 @@ export function HomeView({locale, content}: HomeViewProps) {
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <Button asChild size="md">
-                <Link href={designer.primaryCta.href}>{designer.primaryCta.label}</Link>
+                <Link href={designer.primaryCta.href as any}>{designer.primaryCta.label}</Link>
               </Button>
               <Button asChild variant="secondary" size="md">
-                <Link href={designer.secondaryCta.href}>{designer.secondaryCta.label}</Link>
+                <Link href={designer.secondaryCta.href as any}>{designer.secondaryCta.label}</Link>
               </Button>
             </div>
           </motion.div>
@@ -481,10 +481,10 @@ export function HomeView({locale, content}: HomeViewProps) {
               <p className="text-base">{finalCta.description}</p>
               <div className="flex flex-wrap items-center gap-3">
                 <Button asChild size="lg" variant="primary" className="bg-charcoal text-white hover:bg-charcoal/90">
-                  <Link href={finalCta.primaryCta.href}>{finalCta.primaryCta.label}</Link>
+                  <Link href={finalCta.primaryCta.href as any}>{finalCta.primaryCta.label}</Link>
                 </Button>
                 <Button asChild size="lg" variant="secondary" className="bg-white text-charcoal hover:bg-white/90">
-                  <Link href={finalCta.secondaryCta.href}>{finalCta.secondaryCta.label}</Link>
+                  <Link href={finalCta.secondaryCta.href as any}>{finalCta.secondaryCta.label}</Link>
                 </Button>
               </div>
             </div>

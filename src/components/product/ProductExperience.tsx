@@ -71,6 +71,8 @@ interface ProductCopy {
     actions: {
       addToQuote: string;
       generateBat: string;
+      close: string;
+      fullscreen: string;
     };
     captures: {
       success: string;

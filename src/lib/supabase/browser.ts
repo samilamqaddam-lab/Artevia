@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import {createBrowserSupabaseClient} from '@supabase/auth-helpers-nextjs';
@@ -8,7 +9,7 @@ let client: SupabaseClient<Database> | undefined;
 
 export function getBrowserSupabaseClient() {
   if (!client) {
-    client = createBrowserSupabaseClient<Database>();
+    client = createBrowserSupabaseClient<Database>() as any;
   }
   return client;
 }

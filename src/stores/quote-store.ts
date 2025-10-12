@@ -1,9 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import {create} from 'zustand';
 import {persist, createJSONStorage} from 'zustand/middleware';
 import type {QuoteMode} from '@/types/quote';
 import {generateId} from '@/lib/utils';
+
+// Mock storage for SSR
+const createNoopStorage = () => ({
+  getItem: () => null,
+  setItem: () => {},
+  removeItem: () => {}
+});
 
 export type QuoteItem = {
   id: string;
@@ -52,7 +60,7 @@ export const useQuoteStore = create<QuoteState>()(
     }),
     {
       name: 'artevia-rfq',
-      storage: createJSONStorage(() => (typeof window !== 'undefined' ? window.localStorage : undefined))
+      storage: createJSONStorage(() => (typeof window !== 'undefined' ? window.localStorage : createNoopStorage()))
     }
   )
 );

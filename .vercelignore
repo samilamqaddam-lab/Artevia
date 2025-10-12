@@ -1,0 +1,35 @@
+# Tests
+tests/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+playwright.config.ts
+jest.config.ts
+jest.setup.ts
+
+# Documentation
+docs/
+README.md
+*.md
+!package.json
+
+# Scripts non-essentiels
+scripts/fetch-product-images.ts
+
+# Configurations de développement
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Husky (Git hooks non nécessaires sur Vercel)
+.husky/
+
+# Fichiers de test
+playwright-report/
+coverage/
+
+# Fichiers système
+.DS_Store
+Thumbs.db

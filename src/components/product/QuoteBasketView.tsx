@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import {useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent} from 'react';
@@ -85,7 +86,7 @@ export function QuoteBasketView({locale}: QuoteBasketViewProps) {
       const next = new URLSearchParams(searchParams.toString());
       next.delete('pack');
       const target = next.toString();
-      router.replace(target ? `${pathname}?${target}` : pathname, {scroll: false});
+      router.replace((target ? `${pathname}?${target}` : pathname) as any, {scroll: false});
     };
 
     if (!pack) {

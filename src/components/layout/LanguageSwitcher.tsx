@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import * as Popover from '@radix-ui/react-popover';
@@ -18,7 +19,7 @@ export function LanguageSwitcher() {
     const parts = pathname.split('/');
     parts[1] = locale;
     const nextPath = parts.join('/') || '/';
-    router.push(nextPath);
+    router.push(nextPath as any);
     router.refresh();
   };
 

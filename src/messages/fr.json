@@ -599,9 +599,25 @@
       "textPlaceholder": "Votre texte ici"
     },
     "guides": {
-      "bleed": "Fond perdu",
-      "safe": "Zone sûre",
-      "print": "Zone d'impression"
+      "bleed": "Zone de coupe",
+      "safe": "Zone protégée",
+      "print": "Zone visible",
+      "legend": {
+        "title": "Guide des zones",
+        "bleed": {
+          "name": "Zone de coupe",
+          "description": "Le papier sera coupé à cette ligne"
+        },
+        "safe": {
+          "name": "Zone protégée",
+          "description": "Gardez votre texte et logo dans cette zone"
+        },
+        "print": {
+          "name": "Zone visible",
+          "description": "Tout ce qui sera imprimé et visible"
+        },
+        "tip": "💡 Conseil : Placez les éléments importants dans la zone verte pour éviter qu'ils ne soient coupés"
+      }
     },
     "export": {
       "title": "Exports",

@@ -9,10 +9,12 @@ import {EditorSidebar} from './Sidebar/EditorSidebar';
 import {CanvasWorkspace} from './Canvas/CanvasWorkspace';
 import {PropertyPanel} from './Properties/PropertyPanel';
 import {EditorHeader} from './Header/EditorHeader';
+import {GuidesLegend} from './Canvas/GuidesLegend';
 import type {ImprintZone, Product} from '@/lib/products';
 import {generateId} from '@/lib/utils';
 import {useEditorStore} from '@/stores/editor-store';
 import type {Locale} from '@/i18n/settings';
+import {useTranslations} from 'next-intl';
 import type {ProjectStore} from '@/lib/storage/projects';
 import {deleteProject, listProjects, upsertProject} from '@/lib/storage/projects';
 import type {QuoteMode} from '@/types/quote';
@@ -67,6 +69,7 @@ export function CanvaEditor({
   onCanvasReady,
   onClose
 }: CanvaEditorProps) {
+  const t = useTranslations('editor');
   const canvasElementRef = useRef<HTMLCanvasElement | null>(null);
   const [canvas, setCanvas] = useState<fabric.Canvas>();
   const [selectedObject, setSelectedObject] = useState<fabric.Object | null>(null);
@@ -530,18 +533,40 @@ export function CanvaEditor({
         />
 
         {/* Canvas */}
-        <CanvasWorkspace
-          canvasRef={canvasElementRef}
-          canvasWidth={canvasConfig.width}
-          canvasHeight={canvasConfig.height}
-          displayWidth={displayWidth}
-          displayHeight={displayHeight}
-          zoom={zoom}
-          onZoomIn={() => setZoom(Math.min(3, zoom + 0.1))}
-          onZoomOut={() => setZoom(Math.max(0.2, zoom - 0.1))}
-          onResetZoom={() => setZoom(1)}
-          className="flex-1"
-        />
+        <div className="flex flex-1 flex-col gap-4 overflow-hidden p-4">
+          <CanvasWorkspace
+            canvasRef={canvasElementRef}
+            canvasWidth={canvasConfig.width}
+            canvasHeight={canvasConfig.height}
+            displayWidth={displayWidth}
+            displayHeight={displayHeight}
+            zoom={zoom}
+            onZoomIn={() => setZoom(Math.min(3, zoom + 0.1))}
+            onZoomOut={() => setZoom(Math.max(0.2, zoom - 0.1))}
+            onResetZoom={() => setZoom(1)}
+            className="flex-1"
+          />
+
+          {/* Guides Legend */}
+          <GuidesLegend
+            copy={{
+              title: t('guides.legend.title'),
+              bleed: {
+                name: t('guides.legend.bleed.name'),
+                description: t('guides.legend.bleed.description')
+              },
+              safe: {
+                name: t('guides.legend.safe.name'),
+                description: t('guides.legend.safe.description')
+              },
+              print: {
+                name: t('guides.legend.print.name'),
+                description: t('guides.legend.print.description')
+              },
+              tip: t('guides.legend.tip')
+            }}
+          />
+        </div>
 
         {/* Property Panel */}
         <PropertyPanel

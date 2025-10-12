@@ -1,0 +1,7 @@
+<svg width="300" height="240" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="800" fill="#ffffff"/>
+  <polygon points="50,50 190,50 50,190" fill="#f89d13" transform="rotate(-45 50 50)" transform-origin="50 50"/>
+  <polygon points="950,750 810,750 950,610" fill="#1f6f8b" transform="rotate(135 950 750)" transform-origin="950 750"/>
+  <text x="500" y="390" font-family="Arial, sans-serif" font-size="95" font-weight="bold" fill="#1f2937" text-anchor="middle">VOTRE LOGO</text>
+  <text x="500" y="490" font-family="Arial, sans-serif" font-size="38" font-style="italic" fill="#6b7280" text-anchor="middle">Votre signature</text>
+</svg>

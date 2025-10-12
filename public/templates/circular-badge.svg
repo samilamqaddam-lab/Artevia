@@ -1,0 +1,8 @@
+<svg width="300" height="240" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="800" fill="#f8fafc"/>
+  <circle cx="500" cy="400" r="250" fill="#1f6f8b"/>
+  <circle cx="500" cy="400" r="200" fill="#ffffff"/>
+  <text x="500" y="405" font-family="Arial, sans-serif" font-size="55" font-weight="bold" fill="#1f6f8b" text-anchor="middle">PREMIUM</text>
+  <circle cx="500" cy="470" r="30" fill="#f89d13"/>
+  <text x="500" y="560" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#1f6f8b" text-anchor="middle">2025</text>
+</svg>

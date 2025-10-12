@@ -1,0 +1,9 @@
+<svg width="300" height="240" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="800" fill="#ffffff"/>
+  <circle cx="180" cy="250" r="90" fill="#fbbf24"/>
+  <rect x="750" y="210" width="140" height="140" rx="20" fill="#f97316" transform="rotate(15 820 280)"/>
+  <polygon points="250,525 185,635 315,635" fill="#1f6f8b" transform="rotate(-25 250 580)"/>
+  <circle cx="780" cy="590" r="65" fill="#82d4bb"/>
+  <text x="500" y="415" font-family="Arial, sans-serif" font-size="92" font-weight="bold" fill="#1f2937" text-anchor="middle">FUN BRAND</text>
+  <text x="500" y="510" font-family="Arial, sans-serif" font-size="28" fill="#6b7280" text-anchor="middle">✨ Créativité sans limites ✨</text>
+</svg>

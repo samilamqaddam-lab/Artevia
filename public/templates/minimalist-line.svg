@@ -1,0 +1,7 @@
+<svg width="300" height="240" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="800" fill="#ffffff"/>
+  <rect x="100" y="348" width="150" height="4" fill="#1f6f8b"/>
+  <text x="500" y="375" font-family="Arial, sans-serif" font-size="88" font-weight="bold" fill="#1f2937" text-anchor="middle">EXCELLENCE</text>
+  <rect x="750" y="348" width="150" height="4" fill="#1f6f8b"/>
+  <text x="500" y="490" font-family="Arial, sans-serif" font-size="32" fill="#6b7280" text-anchor="middle" letter-spacing="4">QUALITÉ & INNOVATION</text>
+</svg>

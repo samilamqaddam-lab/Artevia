@@ -1,0 +1,7 @@
+<svg width="300" height="240" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="800" fill="#ffffff"/>
+  <rect x="0" y="0" width="1000" height="200" fill="#1f6f8b"/>
+  <rect x="0" y="600" width="1000" height="200" fill="#f89d13"/>
+  <text x="500" y="390" font-family="Arial, sans-serif" font-size="110" font-weight="bold" fill="#1f2937" text-anchor="middle">BOLD BRAND</text>
+  <text x="500" y="500" font-family="Arial, sans-serif" font-size="36" fill="#6b7280" text-anchor="middle">EXPRIMEZ-VOUS</text>
+</svg>

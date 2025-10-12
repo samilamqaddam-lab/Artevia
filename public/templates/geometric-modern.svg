@@ -1,0 +1,8 @@
+<svg width="300" height="240" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="800" fill="#ffffff"/>
+  <rect x="200" y="200" width="180" height="180" fill="#1f6f8b" transform="rotate(45 200 200)" transform-origin="200 200"/>
+  <rect x="800" y="200" width="180" height="180" fill="#f89d13" transform="rotate(45 800 200)" transform-origin="800 200"/>
+  <circle cx="500" cy="250" r="80" fill="#f97316"/>
+  <text x="500" y="480" font-family="Arial, sans-serif" font-size="90" font-weight="bold" fill="#1f2937" text-anchor="middle">VOTRE MARQUE</text>
+  <rect x="375" y="576" width="250" height="8" fill="#f89d13"/>
+</svg>

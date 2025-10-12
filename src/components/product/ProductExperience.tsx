@@ -635,15 +635,33 @@ export function ProductExperience({
               <p className="text-sm text-slate-600 dark:text-slate-300">{copy.editor.description}</p>
             </header>
             <p className="text-xs text-slate-500 dark:text-slate-400">{copy.editor.logoGuidelines}</p>
-            <Button
-              size="md"
-              variant="primary"
-              onClick={() => setShowFullScreenEditor(true)}
-              className="inline-flex items-center gap-2"
-            >
-              <Maximize2 size={16} aria-hidden />
-              {copy.editor.actions.fullscreen}
-            </Button>
+            <div className="flex flex-wrap gap-3">
+              <Button
+                size="md"
+                variant="primary"
+                onClick={handleAddToQuote}
+                className="flex-1 min-w-[180px]"
+              >
+                {copy.editor.actions.addToQuote}
+              </Button>
+              <Button
+                size="md"
+                variant="secondary"
+                onClick={handleGenerateBat}
+                className="flex-1 min-w-[180px]"
+              >
+                {copy.editor.actions.generateBat}
+              </Button>
+              <Button
+                size="md"
+                variant="ghost"
+                onClick={() => setShowFullScreenEditor(true)}
+                className="inline-flex items-center gap-2"
+              >
+                <Maximize2 size={16} aria-hidden />
+                {copy.editor.actions.fullscreen}
+              </Button>
+            </div>
           </div>
         </section>
       </div>

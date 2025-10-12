@@ -548,6 +548,13 @@
   },
   "editor": {
     "title": "محرر التخصيص",
+    "tabs": {
+      "templates": "القوالب",
+      "text": "نص",
+      "images": "صور",
+      "shapes": "أشكال",
+      "projects": "المشاريع"
+    },
     "toolbox": {
       "text": "نص",
       "shapes": "أشكال",
@@ -673,5 +680,12 @@
   "leadTimes": {
     "standard": "عادي",
     "express": "سريع"
+  },
+  "templates": {
+    "logoCenter": "شعار في المنتصف",
+    "textMinimal": "نص بسيط",
+    "vintage": "طراز كلاسيكي",
+    "modernBadge": "شارة حديثة",
+    "creativeColorful": "إبداعي ملون"
   }
 }

@@ -5,7 +5,7 @@ import {createPortal} from 'react-dom';
 import {ChevronLeft, ChevronRight, Maximize2, X} from 'lucide-react';
 import Image from 'next/image';
 import {Button} from '@/components/ui/Button';
-import {DesignEditor} from '@/components/editor/DesignEditor';
+import {CanvaEditor} from '@/components/editor/CanvaEditor';
 import type {
   Product,
   MarkingMethod,
@@ -311,7 +311,7 @@ export function ProductExperience({
 
   const renderEditor = () => (
     <>
-      <DesignEditor
+      <CanvaEditor
         product={product}
         locale={locale}
         mode={mode}
@@ -327,8 +327,9 @@ export function ProductExperience({
             previewRef.current = undefined;
           }
         }}
+        onClose={() => setShowFullScreenEditor(false)}
       />
-      <div className="flex flex-wrap gap-3 pt-2">
+      <div className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 gap-3 rounded-full border border-brand/40 bg-white px-6 py-3 shadow-2xl dark:border-white/10 dark:bg-[#171717]">
         <Button size="md" onClick={handleAddToQuote}>
           {copy.editor.actions.addToQuote}
         </Button>
@@ -342,46 +343,8 @@ export function ProductExperience({
   const fullscreenOverlay =
     showFullScreenEditor && typeof document !== 'undefined'
       ? createPortal(
-          <div className="fixed inset-0 z-50 flex flex-col bg-slate-900/70 backdrop-blur-sm" role="dialog" aria-modal="true">
-            <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-6 overflow-y-auto px-4 py-6 sm:px-6">
-              <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-2xl dark:border-white/10 dark:bg-[#121212] dark:text-slate-100">
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div className="space-y-1">
-                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{copy.editor.title}</h2>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">{copy.editor.description}</p>
-                  </div>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    onClick={() => setShowFullScreenEditor(false)}
-                    className="inline-flex items-center gap-2"
-                  >
-                    <X size={16} aria-hidden />
-                    {copy.editor.actions.close}
-                  </Button>
-                </div>
-                <div className="mt-6 space-y-4">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <Button
-                      size="sm"
-                      variant={mode === 'logo' ? 'primary' : 'secondary'}
-                      onClick={() => setMode('logo')}
-                    >
-                      {copy.editor.mode.logo}
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant={mode === 'creative' ? 'primary' : 'secondary'}
-                      onClick={() => setMode('creative')}
-                    >
-                      {copy.editor.mode.creative}
-                    </Button>
-                  </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">{copy.editor.logoGuidelines}</p>
-                  {renderEditor()}
-                </div>
-              </div>
-            </div>
+          <div className="fixed inset-0 z-50 flex flex-col bg-white dark:bg-[#0f0f0f]" role="dialog" aria-modal="true">
+            {renderEditor()}
           </div>,
           document.body
         )

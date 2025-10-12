@@ -548,6 +548,13 @@
   },
   "editor": {
     "title": "Éditeur de personnalisation",
+    "tabs": {
+      "templates": "Templates",
+      "text": "Texte",
+      "images": "Images",
+      "shapes": "Formes",
+      "projects": "Projets"
+    },
     "toolbox": {
       "text": "Texte",
       "shapes": "Formes",
@@ -673,5 +680,12 @@
   "leadTimes": {
     "standard": "Standard",
     "express": "Express"
+  },
+  "templates": {
+    "logoCenter": "Logo Centré",
+    "textMinimal": "Texte Minimaliste",
+    "vintage": "Style Vintage",
+    "modernBadge": "Badge Moderne",
+    "creativeColorful": "Créatif Coloré"
   }
 }

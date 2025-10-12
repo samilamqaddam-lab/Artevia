@@ -1,22 +1,14 @@
 /**
- * Design Templates System
- * Pre-made templates for quick start (Canva-style)
+ * Generate template thumbnails using fabric.js
+ * Run with: node scripts/generate-template-thumbnails.js
  */
 
-export interface DesignTemplate {
-  id: string;
-  name: string;
-  nameKey: string; // i18n key
-  thumbnail: string;
-  productTypes: string[]; // Compatible product IDs
-  canvas: {
-    version: string;
-    objects: Array<Record<string, unknown>>;
-    background?: string;
-  };
-}
+const fs = require('fs');
+const path = require('path');
+const {createCanvas} = require('canvas');
+const fabric = require('fabric').fabric;
 
-// Simple logo template
+// Import templates (using require for Node.js compatibility)
 const LOGO_CENTER_TEMPLATE = {
   version: '5.3.0',
   objects: [
@@ -38,7 +30,6 @@ const LOGO_CENTER_TEMPLATE = {
   background: '#ffffff'
 };
 
-// Minimalist text template
 const TEXT_MINIMAL_TEMPLATE = {
   version: '5.3.0',
   objects: [
@@ -75,7 +66,6 @@ const TEXT_MINIMAL_TEMPLATE = {
   background: '#ffffff'
 };
 
-// Vintage style template
 const VINTAGE_TEMPLATE = {
   version: '5.3.0',
   objects: [
@@ -123,7 +113,6 @@ const VINTAGE_TEMPLATE = {
   background: '#fef3c7'
 };
 
-// Modern badge template
 const MODERN_BADGE_TEMPLATE = {
   version: '5.3.0',
   objects: [
@@ -172,7 +161,6 @@ const MODERN_BADGE_TEMPLATE = {
   background: '#ffffff'
 };
 
-// Creative colorful template
 const CREATIVE_COLORFUL_TEMPLATE = {
   version: '5.3.0',
   objects: [
@@ -228,61 +216,73 @@ const CREATIVE_COLORFUL_TEMPLATE = {
   background: '#ffffff'
 };
 
-export const DESIGN_TEMPLATES: DesignTemplate[] = [
-  {
-    id: 'logo-center',
-    name: 'Logo Centré',
-    nameKey: 'templates.logoCenter',
-    thumbnail: '/templates/logo-center.svg',
-    productTypes: ['tshirt', 'notebook', 'pen', 'mousepad', 'folder', 'bottle', 'bag', 'cap'],
-    canvas: LOGO_CENTER_TEMPLATE
-  },
-  {
-    id: 'text-minimal',
-    name: 'Texte Minimaliste',
-    nameKey: 'templates.textMinimal',
-    thumbnail: '/templates/text-minimal.svg',
-    productTypes: ['tshirt', 'notebook', 'bag', 'folder'],
-    canvas: TEXT_MINIMAL_TEMPLATE
-  },
-  {
-    id: 'vintage',
-    name: 'Style Vintage',
-    nameKey: 'templates.vintage',
-    thumbnail: '/templates/vintage.svg',
-    productTypes: ['tshirt', 'bag', 'cap'],
-    canvas: VINTAGE_TEMPLATE
-  },
-  {
-    id: 'modern-badge',
-    name: 'Badge Moderne',
-    nameKey: 'templates.modernBadge',
-    thumbnail: '/templates/modern-badge.svg',
-    productTypes: ['tshirt', 'bag', 'bottle', 'cap'],
-    canvas: MODERN_BADGE_TEMPLATE
-  },
-  {
-    id: 'creative-colorful',
-    name: 'Créatif Coloré',
-    nameKey: 'templates.creativeColorful',
-    thumbnail: '/templates/creative-colorful.svg',
-    productTypes: ['tshirt', 'notebook', 'mousepad', 'bag'],
-    canvas: CREATIVE_COLORFUL_TEMPLATE
-  }
-];
+const TEMPLATES = {
+  'logo-center': LOGO_CENTER_TEMPLATE,
+  'text-minimal': TEXT_MINIMAL_TEMPLATE,
+  'vintage': VINTAGE_TEMPLATE,
+  'modern-badge': MODERN_BADGE_TEMPLATE,
+  'creative-colorful': CREATIVE_COLORFUL_TEMPLATE
+};
 
-/**
- * Get templates compatible with a specific product
- */
-export function getTemplatesForProduct(productId: string): DesignTemplate[] {
-  return DESIGN_TEMPLATES.filter(template =>
-    template.productTypes.includes(productId)
+// Canvas dimensions
+const CANVAS_WIDTH = 1000;
+const CANVAS_HEIGHT = 800;
+const THUMBNAIL_WIDTH = 300;
+const THUMBNAIL_HEIGHT = 240;
+
+async function generateThumbnail(templateId, templateData) {
+  console.log(`Generating thumbnail for ${templateId}...`);
+
+  // Create a canvas
+  const canvasElement = createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+  const canvas = new fabric.Canvas(canvasElement);
+
+  // Set background
+  canvas.backgroundColor = templateData.background || '#ffffff';
+
+  // Load JSON and render
+  await new Promise((resolve, reject) => {
+    canvas.loadFromJSON(templateData, () => {
+      canvas.renderAll();
+      resolve();
+    });
+  });
+
+  // Generate thumbnail by scaling down
+  const thumbnailCanvas = createCanvas(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
+  const ctx = thumbnailCanvas.getContext('2d');
+
+  ctx.drawImage(
+    canvasElement,
+    0, 0, CANVAS_WIDTH, CANVAS_HEIGHT,
+    0, 0, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT
   );
+
+  // Save to file
+  const outputDir = path.join(__dirname, '..', 'public', 'templates');
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, {recursive: true});
+  }
+
+  const outputPath = path.join(outputDir, `${templateId}.png`);
+  const buffer = thumbnailCanvas.toBuffer('image/png');
+  fs.writeFileSync(outputPath, buffer);
+
+  console.log(`✓ Saved thumbnail: ${outputPath}`);
 }
 
-/**
- * Get template by ID
- */
-export function getTemplateById(templateId: string): DesignTemplate | undefined {
-  return DESIGN_TEMPLATES.find(template => template.id === templateId);
+async function main() {
+  console.log('🎨 Generating template thumbnails...\n');
+
+  for (const [templateId, templateData] of Object.entries(TEMPLATES)) {
+    try {
+      await generateThumbnail(templateId, templateData);
+    } catch (error) {
+      console.error(`✗ Error generating ${templateId}:`, error);
+    }
+  }
+
+  console.log('\n✨ All thumbnails generated successfully!');
 }
+
+main().catch(console.error);

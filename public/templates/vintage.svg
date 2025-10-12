@@ -1,0 +1,6 @@
+<svg width="300" height="240" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="800" fill="#fef3c7"/>
+  <circle cx="500" cy="400" r="200" fill="transparent" stroke="#92400e" stroke-width="8"/>
+  <text x="500" y="410" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#92400e" text-anchor="middle">EST. 2025</text>
+  <text x="500" y="480" font-family="Arial, sans-serif" font-size="36" fill="#92400e" text-anchor="middle">VOTRE MARQUE</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg width="300" height="240" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1000" height="800" fill="#ffffff"/>
+  <rect x="300" y="200" width="400" height="400" rx="40" ry="40" fill="#1f6f8b"/>
+  <text x="500" y="410" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="#ffffff" text-anchor="middle">PREMIUM</text>
+  <text x="500" y="480" font-family="Arial, sans-serif" font-size="40" fill="#82d4bb" text-anchor="middle">QUALITY</text>
+</svg>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Template Thumbnails</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 {
+      color: #333;
+    }
+    .canvas-container {
+      margin: 20px 0;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .canvas-container h3 {
+      margin-top: 0;
+    }
+    button {
+      background: #1f6f8b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px;
+    }
+    button:hover {
+      background: #164d5f;
+    }
+    .status {
+      margin: 10px 0;
+      padding: 10px;
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Template Thumbnail Generator</h1>
+  <p>Click "Generate All" to create PNG thumbnails for all templates.</p>
+
+  <button onclick="generateAll()" style="background: #f89d13; font-weight: bold; padding: 12px 24px;">
+    Generate All Thumbnails
+  </button>
+
+  <div id="status"></div>
+
+  <div id="canvases"></div>
+
+  <script>
+    const CANVAS_WIDTH = 1000;
+    const CANVAS_HEIGHT = 800;
+
+    const TEMPLATES = {
+      'logo-center': {
+        version: '5.3.0',
+        objects: [
+          {
+            type: 'textbox',
+            left: 500,
+            top: 400,
+            width: 600,
+            height: 200,
+            text: 'Votre Logo',
+            fontSize: 120,
+            fontFamily: 'Arial, sans-serif',
+            fill: '#1f2937',
+            textAlign: 'center',
+            originX: 'center',
+            originY: 'center'
+          }
+        ],
+        background: '#ffffff'
+      },
+      'text-minimal': {
+        version: '5.3.0',
+        objects: [
+          {
+            type: 'textbox',
+            left: 500,
+            top: 300,
+            width: 700,
+            height: 150,
+            text: 'VOTRE MARQUE',
+            fontSize: 100,
+            fontFamily: 'Arial, sans-serif',
+            fontWeight: 'bold',
+            fill: '#000000',
+            textAlign: 'center',
+            originX: 'center',
+            originY: 'center'
+          },
+          {
+            type: 'textbox',
+            left: 500,
+            top: 500,
+            width: 500,
+            height: 80,
+            text: 'Votre slogan ici',
+            fontSize: 40,
+            fontFamily: 'Arial, sans-serif',
+            fill: '#6b7280',
+            textAlign: 'center',
+            originX: 'center',
+            originY: 'center'
+          }
+        ],
+        background: '#ffffff'
+      },
+      'vintage': {
+        version: '5.3.0',
+        objects: [
+          {
+            type: 'circle',
+            left: 500,
+            top: 400,
+            radius: 200,
+            fill: 'transparent',
+            stroke: '#92400e',
+            strokeWidth: 8,
+            originX: 'center',
+            originY: 'center'
+          },
+          {
+            type: 'textbox',
+            left: 500,
+            top: 380,
+            width: 300,
+            height: 100,
+            text: 'EST. 2025',
+            fontSize: 60,
+            fontFamily: 'Arial, sans-serif',
+            fontWeight: 'bold',
+            fill: '#92400e',
+            textAlign: 'center',
+            originX: 'center',
+            originY: 'center'
+          },
+          {
+            type: 'textbox',
+            left: 500,
+            top: 460,
+            width: 350,
+            height: 60,
+            text: 'VOTRE MARQUE',
+            fontSize: 36,
+            fontFamily: 'Arial, sans-serif',
+            fill: '#92400e',
+            textAlign: 'center',
+            originX: 'center',
+            originY: 'center'
+          }
+        ],
+        background: '#fef3c7'
+      },
+      'modern-badge': {
+        version: '5.3.0',
+        objects: [
+          {
+            type: 'rect',
+            left: 500,
+            top: 400,
+            width: 400,
+            height: 400,
+            fill: '#1f6f8b',
+            rx: 40,
+            ry: 40,
+            originX: 'center',
+            originY: 'center'
+          },
+          {
+            type: 'textbox',
+            left: 500,
+            top: 380,
+            width: 300,
+            height: 100,
+            text: 'PREMIUM',
+            fontSize: 50,
+            fontFamily: 'Arial, sans-serif',
+            fontWeight: 'bold',
+            fill: '#ffffff',
+            textAlign: 'center',
+            originX: 'center',
+            originY: 'center'
+          },
+          {
+            type: 'textbox',
+            left: 500,
+            top: 460,
+            width: 280,
+            height: 70,
+            text: 'QUALITY',
+            fontSize: 40,
+            fontFamily: 'Arial, sans-serif',
+            fill: '#82d4bb',
+            textAlign: 'center',
+            originX: 'center',
+            originY: 'center'
+          }
+        ],
+        background: '#ffffff'
+      },
+      'creative-colorful': {
+        version: '5.3.0',
+        objects: [
+          {
+            type: 'circle',
+            left: 350,
+            top: 300,
+            radius: 120,
+            fill: '#f89d13',
+            originX: 'center',
+            originY: 'center'
+          },
+          {
+            type: 'rect',
+            left: 600,
+            top: 350,
+            width: 200,
+            height: 200,
+            fill: '#1f6f8b',
+            rx: 30,
+            ry: 30,
+            originX: 'center',
+            originY: 'center'
+          },
+          {
+            type: 'triangle',
+            left: 500,
+            top: 550,
+            width: 180,
+            height: 150,
+            fill: '#f97316',
+            originX: 'center',
+            originY: 'center'
+          },
+          {
+            type: 'textbox',
+            left: 500,
+            top: 400,
+            width: 500,
+            height: 120,
+            text: 'BE CREATIVE',
+            fontSize: 80,
+            fontFamily: 'Arial, sans-serif',
+            fontWeight: 'bold',
+            fill: '#ffffff',
+            textAlign: 'center',
+            originX: 'center',
+            originY: 'center',
+            stroke: '#000000',
+            strokeWidth: 2
+          }
+        ],
+        background: '#ffffff'
+      }
+    };
+
+    function createCanvas(id, template) {
+      const container = document.createElement('div');
+      container.className = 'canvas-container';
+      container.innerHTML = `
+        <h3>${id}</h3>
+        <canvas id="${id}" width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}"></canvas>
+        <br>
+        <button onclick="downloadThumbnail('${id}')">Download PNG</button>
+      `;
+      document.getElementById('canvases').appendChild(container);
+
+      const canvas = new fabric.Canvas(id, {
+        width: CANVAS_WIDTH,
+        height: CANVAS_HEIGHT,
+        backgroundColor: template.background || '#ffffff'
+      });
+
+      canvas.loadFromJSON(template, () => {
+        canvas.renderAll();
+      });
+
+      return canvas;
+    }
+
+    function downloadThumbnail(canvasId) {
+      const canvas = document.getElementById(canvasId);
+      const dataURL = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.download = `${canvasId}.png`;
+      link.href = dataURL;
+      link.click();
+
+      showStatus(`✓ Downloaded ${canvasId}.png`);
+    }
+
+    function generateAll() {
+      const canvasesDiv = document.getElementById('canvases');
+      canvasesDiv.innerHTML = '';
+
+      showStatus('Generating canvases...');
+
+      setTimeout(() => {
+        Object.entries(TEMPLATES).forEach(([id, template]) => {
+          createCanvas(id, template);
+        });
+
+        showStatus('✨ All canvases generated! Click individual "Download PNG" buttons to save thumbnails.');
+      }, 100);
+    }
+
+    function showStatus(message) {
+      const statusDiv = document.getElementById('status');
+      statusDiv.className = 'status';
+      statusDiv.innerHTML = message;
+    }
+
+    // Auto-generate on page load
+    window.onload = () => {
+      showStatus('Ready to generate thumbnails');
+    };
+  </script>
+</body>
+</html>

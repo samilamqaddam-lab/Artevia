@@ -248,7 +248,7 @@ export function PersonalizationSelector({
             size="md"
             variant={hasDesign ? 'secondary' : 'primary'}
             onClick={onDesignClick}
-            className="w-full"
+            className="w-full inline-flex items-center justify-center gap-2"
           >
             <Paintbrush size={16} />
             {copy.actions.openEditor}

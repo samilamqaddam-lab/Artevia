@@ -723,7 +723,7 @@ export function ProductExperience({
               size="lg"
               variant="primary"
               onClick={handleAddToQuote}
-              className="w-full gap-2"
+              className="w-full inline-flex items-center justify-center gap-2"
             >
               <ShoppingCart size={20} />
               {copy.editor.actions.addToQuote}

@@ -310,34 +310,24 @@ export function ProductExperience({
   };
 
   const renderEditor = () => (
-    <>
-      <CanvaEditor
-        product={product}
-        locale={locale}
-        mode={mode}
-        activeZone={activeZone}
-        onCanvasReady={(api) => {
-          editorApiRef.current = api;
-          if (api) {
-            const initial = api.capture('png') ?? undefined;
-            if (initial) {
-              previewRef.current = initial;
-            }
-          } else {
-            previewRef.current = undefined;
+    <CanvaEditor
+      product={product}
+      locale={locale}
+      mode={mode}
+      activeZone={activeZone}
+      onCanvasReady={(api) => {
+        editorApiRef.current = api;
+        if (api) {
+          const initial = api.capture('png') ?? undefined;
+          if (initial) {
+            previewRef.current = initial;
           }
-        }}
-        onClose={() => setShowFullScreenEditor(false)}
-      />
-      <div className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 gap-3 rounded-full border border-brand/40 bg-white px-6 py-3 shadow-2xl dark:border-white/10 dark:bg-[#171717]">
-        <Button size="md" onClick={handleAddToQuote}>
-          {copy.editor.actions.addToQuote}
-        </Button>
-        <Button size="md" variant="secondary" onClick={handleGenerateBat}>
-          {copy.editor.actions.generateBat}
-        </Button>
-      </div>
-    </>
+        } else {
+          previewRef.current = undefined;
+        }
+      }}
+      onClose={() => setShowFullScreenEditor(false)}
+    />
   );
 
   const fullscreenOverlay =
@@ -629,37 +619,42 @@ export function ProductExperience({
             )}
           </div>
 
+          {/* Designer optionnel */}
           <div className="space-y-4 rounded-3xl border border-slate-200 bg-white p-6 text-slate-900 shadow-sm dark:border-white/10 dark:bg-[#161616] dark:text-slate-100">
             <header className="space-y-1">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{copy.editor.title}</h3>
               <p className="text-sm text-slate-600 dark:text-slate-300">{copy.editor.description}</p>
             </header>
             <p className="text-xs text-slate-500 dark:text-slate-400">{copy.editor.logoGuidelines}</p>
-            <div className="flex flex-wrap gap-3">
+            <Button
+              size="md"
+              variant="secondary"
+              onClick={() => setShowFullScreenEditor(true)}
+              className="inline-flex w-full items-center justify-center gap-2"
+            >
+              <Maximize2 size={16} aria-hidden />
+              {copy.editor.actions.fullscreen}
+            </Button>
+          </div>
+
+          {/* Boutons de commande - toujours visibles */}
+          <div className="space-y-3 rounded-3xl border border-brand/20 bg-gradient-to-br from-brand/5 to-transparent p-6 shadow-sm dark:border-brand/30 dark:from-brand/10">
+            <div className="flex flex-col gap-3">
               <Button
-                size="md"
+                size="lg"
                 variant="primary"
                 onClick={handleAddToQuote}
-                className="flex-1 min-w-[180px]"
+                className="w-full"
               >
                 {copy.editor.actions.addToQuote}
               </Button>
               <Button
-                size="md"
+                size="lg"
                 variant="secondary"
                 onClick={handleGenerateBat}
-                className="flex-1 min-w-[180px]"
+                className="w-full"
               >
                 {copy.editor.actions.generateBat}
-              </Button>
-              <Button
-                size="md"
-                variant="ghost"
-                onClick={() => setShowFullScreenEditor(true)}
-                className="inline-flex items-center gap-2"
-              >
-                <Maximize2 size={16} aria-hidden />
-                {copy.editor.actions.fullscreen}
               </Button>
             </div>
           </div>

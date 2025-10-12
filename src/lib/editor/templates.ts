@@ -234,7 +234,7 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     name: 'Logo Centré',
     nameKey: 'templates.logoCenter',
     thumbnail: '/templates/logo-center.svg',
-    productTypes: ['tshirt', 'notebook', 'pen', 'mousepad', 'folder', 'bottle', 'bag', 'cap'],
+    productTypes: ['tshirt-essential', 'notepad-spiral', 'pen-s1', 'mousepad-soft', 'folder-standard', 'mug-ceramique', 'totebag-canvas', 'usb-16go'],
     canvas: LOGO_CENTER_TEMPLATE
   },
   {
@@ -242,7 +242,7 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     name: 'Texte Minimaliste',
     nameKey: 'templates.textMinimal',
     thumbnail: '/templates/text-minimal.svg',
-    productTypes: ['tshirt', 'notebook', 'bag', 'folder'],
+    productTypes: ['tshirt-essential', 'notepad-spiral', 'totebag-canvas', 'folder-standard'],
     canvas: TEXT_MINIMAL_TEMPLATE
   },
   {
@@ -250,7 +250,7 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     name: 'Style Vintage',
     nameKey: 'templates.vintage',
     thumbnail: '/templates/vintage.svg',
-    productTypes: ['tshirt', 'bag', 'cap'],
+    productTypes: ['tshirt-essential', 'totebag-canvas', 'mug-ceramique'],
     canvas: VINTAGE_TEMPLATE
   },
   {
@@ -258,7 +258,7 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     name: 'Badge Moderne',
     nameKey: 'templates.modernBadge',
     thumbnail: '/templates/modern-badge.svg',
-    productTypes: ['tshirt', 'bag', 'bottle', 'cap'],
+    productTypes: ['tshirt-essential', 'totebag-canvas', 'mug-ceramique', 'mousepad-soft'],
     canvas: MODERN_BADGE_TEMPLATE
   },
   {
@@ -266,7 +266,7 @@ export const DESIGN_TEMPLATES: DesignTemplate[] = [
     name: 'Créatif Coloré',
     nameKey: 'templates.creativeColorful',
     thumbnail: '/templates/creative-colorful.svg',
-    productTypes: ['tshirt', 'notebook', 'mousepad', 'bag'],
+    productTypes: ['tshirt-essential', 'notepad-spiral', 'mousepad-soft', 'totebag-canvas'],
     canvas: CREATIVE_COLORFUL_TEMPLATE
   }
 ];

@@ -9,14 +9,14 @@ import {cn} from '@/lib/utils';
 
 interface ImagesTabProps {
   locale: Locale;
-  onUploadImage: () => void;
+  onUploadImage: (file?: File) => void;
 }
 
 export function ImagesTab({onUploadImage}: ImagesTabProps) {
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    // Handle file drop - will be connected to canvas later
-    console.log('Files dropped:', acceptedFiles);
-    onUploadImage();
+    if (acceptedFiles.length > 0) {
+      onUploadImage(acceptedFiles[0]);
+    }
   }, [onUploadImage]);
 
   const {getRootProps, getInputProps, isDragActive} = useDropzone({
@@ -81,7 +81,7 @@ export function ImagesTab({onUploadImage}: ImagesTabProps) {
       <Button
         size="md"
         variant="secondary"
-        onClick={onUploadImage}
+        onClick={() => onUploadImage()}
         className="w-full justify-start gap-2"
       >
         <Upload size={16} aria-hidden />

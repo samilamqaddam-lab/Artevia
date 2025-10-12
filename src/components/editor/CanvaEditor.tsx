@@ -279,12 +279,17 @@ export function CanvaEditor({
     fabricCanvas.renderAll();
   }
 
-  const addText = () => {
+  const addText = (options?: {
+    text?: string;
+    fontSize?: number;
+    fontWeight?: string | number;
+  }) => {
     if (!canvas) return;
-    const textbox = new fabric.Textbox('Votre texte ici', {
+    const textbox = new fabric.Textbox(options?.text || 'Votre texte ici', {
       left: canvasConfig.width / 2,
       top: canvasConfig.height / 2,
-      fontSize: 120,
+      fontSize: options?.fontSize || 120,
+      fontWeight: options?.fontWeight || 'normal',
       fill: '#1f2937',
       fontFamily: 'Cairo, Inter, sans-serif',
       textAlign: 'center',
@@ -295,6 +300,7 @@ export function CanvaEditor({
     canvas.add(textbox);
     canvas.setActiveObject(textbox);
     canvas.renderAll();
+    markDirty(true);
   };
 
   const addShape = (shape: keyof typeof DEFAULT_SHAPES) => {
@@ -313,13 +319,8 @@ export function CanvaEditor({
     canvas.renderAll();
   };
 
-  const handleUploadImage = () => {
-    fileInputRef.current?.click();
-  };
-
-  const onFileChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const file = event.target.files?.[0];
-    if (!file || !canvas) return;
+  const addImageToCanvas = (file: File) => {
+    if (!canvas) return;
     const reader = new FileReader();
     reader.onload = () => {
       if (!reader.result) return;
@@ -336,9 +337,25 @@ export function CanvaEditor({
         canvas.add(img);
         canvas.setActiveObject(img);
         canvas.renderAll();
+        markDirty(true);
       });
     };
     reader.readAsDataURL(file);
+  };
+
+  const handleUploadImage = (file?: File) => {
+    if (file) {
+      addImageToCanvas(file);
+    } else {
+      fileInputRef.current?.click();
+    }
+  };
+
+  const onFileChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      addImageToCanvas(file);
+    }
     event.target.value = '';
   };
 

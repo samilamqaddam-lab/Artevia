@@ -6,13 +6,17 @@ import type {Locale} from '@/i18n/settings';
 
 interface TextTabProps {
   locale: Locale;
-  onAddText: () => void;
+  onAddText: (options?: {
+    text?: string;
+    fontSize?: number;
+    fontWeight?: string | number;
+  }) => void;
 }
 
 const TEXT_PRESETS = [
-  {id: 'heading', label: 'Titre', fontSize: 120, text: 'Titre Principal'},
-  {id: 'subheading', label: 'Sous-titre', fontSize: 80, text: 'Sous-titre'},
-  {id: 'body', label: 'Corps', fontSize: 50, text: 'Texte de corps'}
+  {id: 'heading', label: 'Titre', fontSize: 120, text: 'Titre Principal', fontWeight: 'bold'},
+  {id: 'subheading', label: 'Sous-titre', fontSize: 80, text: 'Sous-titre', fontWeight: 600},
+  {id: 'body', label: 'Corps', fontSize: 50, text: 'Texte de corps', fontWeight: 'normal'}
 ];
 
 export function TextTab({locale, onAddText}: TextTabProps) {
@@ -33,7 +37,7 @@ export function TextTab({locale, onAddText}: TextTabProps) {
         <Button
           size="md"
           variant="primary"
-          onClick={onAddText}
+          onClick={() => onAddText()}
           className="w-full justify-start gap-2"
         >
           <Type size={16} aria-hidden />
@@ -47,15 +51,22 @@ export function TextTab({locale, onAddText}: TextTabProps) {
           {TEXT_PRESETS.map(preset => (
             <button
               key={preset.id}
-              onClick={onAddText}
+              onClick={() => onAddText({
+                text: preset.text,
+                fontSize: preset.fontSize,
+                fontWeight: preset.fontWeight
+              })}
               className="w-full rounded-xl border border-slate-200 bg-white p-3 text-left transition-all hover:border-brand hover:shadow-sm dark:border-white/10 dark:bg-[#1f1f1f] dark:hover:border-brand"
             >
               <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                {preset.label}
+                {preset.label} · {preset.fontSize}px
               </p>
               <p
-                className="mt-1 font-semibold text-slate-900 dark:text-white"
-                style={{fontSize: `${Math.min(preset.fontSize / 5, 20)}px`}}
+                className="mt-1 text-slate-900 dark:text-white"
+                style={{
+                  fontSize: `${Math.min(preset.fontSize / 5, 20)}px`,
+                  fontWeight: preset.fontWeight
+                }}
               >
                 {preset.text}
               </p>

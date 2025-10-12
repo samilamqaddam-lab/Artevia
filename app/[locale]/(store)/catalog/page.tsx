@@ -1,4 +1,4 @@
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {locales, type Locale} from '@/i18n/settings';
 import {products} from '@/lib/products';
 import {CatalogView} from '@/components/product/CatalogView';
@@ -9,7 +9,7 @@ export function generateStaticParams() {
 
 export default async function CatalogPage({params}: {params: {locale: string}}) {
   const locale = params.locale as Locale;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   const tCatalog = await getTranslations({locale, namespace: 'catalog'});
   const tCommon = await getTranslations({locale, namespace: 'common'});
   const tProducts = await getTranslations({locale, namespace: 'products'});

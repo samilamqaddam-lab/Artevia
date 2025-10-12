@@ -1,4 +1,4 @@
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 import type {Metadata} from 'next';
 import {locales, type Locale} from '@/i18n/settings';
 import {products} from '@/lib/products';
@@ -59,7 +59,7 @@ const SUSTAINABILITY_IMAGE = {
 
 export default async function HomePage({params}: {params: {locale: string}}) {
   const locale = params.locale as Locale;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   const tHome = await getTranslations({locale, namespace: 'home'});
   const tProducts = await getTranslations({locale, namespace: 'products'});
 

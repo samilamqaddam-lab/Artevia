@@ -1,4 +1,4 @@
-import {unstable_setRequestLocale} from 'next-intl/server';
+import {setRequestLocale} from 'next-intl/server';
 import {QuoteBasketView} from '@/components/product/QuoteBasketView';
 import {locales, type Locale} from '@/i18n/settings';
 
@@ -10,6 +10,6 @@ export function generateStaticParams() {
 
 export default function RfqPage({params}: {params: {locale: string}}) {
   const locale = params.locale as Locale;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   return <QuoteBasketView locale={locale} />;
 }

@@ -1,5 +1,5 @@
 import {notFound} from 'next/navigation';
-import {getTranslations, unstable_setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {ProductExperience} from '@/components/product/ProductExperience';
 import {locales, type Locale} from '@/i18n/settings';
 import {getProductBySlug, products} from '@/lib/products';
@@ -18,7 +18,7 @@ export default async function ProductPage({
   params: {locale: string; slug: string};
 }) {
   const locale = params.locale as Locale;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   const product = getProductBySlug(params.slug);
   if (!product) {

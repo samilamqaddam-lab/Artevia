@@ -76,6 +76,33 @@ export default async function ProductPage({
       perUnit: tProduct('summary.perUnit'),
       total: tProduct('summary.total')
     },
+    personalization: {
+      title: tProduct('personalization.title'),
+      description: tProduct('personalization.description'),
+      modes: {
+        none: tProduct('personalization.modes.none'),
+        upload: tProduct('personalization.modes.upload'),
+        design: tProduct('personalization.modes.design')
+      },
+      uploadZone: {
+        dragActive: tProduct('personalization.uploadZone.dragActive'),
+        dragInactive: tProduct('personalization.uploadZone.dragInactive'),
+        browse: tProduct('personalization.uploadZone.browse'),
+        formats: tProduct('personalization.uploadZone.formats')
+      },
+      preview: {
+        uploadedFile: tProduct('personalization.preview.uploadedFile'),
+        designCreated: tProduct('personalization.preview.designCreated'),
+        actions: {
+          edit: tProduct('personalization.preview.actions.edit'),
+          remove: tProduct('personalization.preview.actions.remove')
+        }
+      },
+      actions: {
+        openEditor: tProduct('personalization.actions.openEditor'),
+        change: tProduct('personalization.actions.change')
+      }
+    },
     editor: {
       title: tProduct('editor.title'),
       description: tProduct('editor.description'),

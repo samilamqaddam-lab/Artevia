@@ -521,6 +521,33 @@
       "perUnit": "سعر الوحدة",
       "total": "الإجمالي التقديري"
     },
+    "personalization": {
+      "title": "التخصيص",
+      "description": "أضف شعارك أو أنشئ تصميمًا مخصصًا (اختياري).",
+      "modes": {
+        "none": "بدون تخصيص",
+        "upload": "رفع شعاري/صورتي",
+        "design": "إنشاء تصميم مخصص"
+      },
+      "uploadZone": {
+        "dragActive": "أسقط الملف هنا",
+        "dragInactive": "اسحب شعارك هنا",
+        "browse": "أو انقر للتصفح",
+        "formats": "PNG, JPG, SVG, PDF حتى 10 ميجابايت"
+      },
+      "preview": {
+        "uploadedFile": "ملف مرفوع",
+        "designCreated": "تم إنشاء تصميم مخصص",
+        "actions": {
+          "edit": "تعديل",
+          "remove": "حذف"
+        }
+      },
+      "actions": {
+        "openEditor": "فتح المحرر",
+        "change": "تغيير"
+      }
+    },
     "editor": {
       "title": "مصمم المنتجات",
       "description": "ضعوا شعاركم، عدّلوا مناطق الطباعة وصدّروا ملف BAT PDF بضغطة واحدة.",
@@ -531,7 +558,7 @@
       "logoGuidelines": "يفضل شعار بصيغة متجهية وخلفية شفافة.",
       "colorLimit": "بعض الطرق تحد من عدد ألوان بانتون",
       "actions": {
-        "addToQuote": "أضف هذه الإعدادات",
+        "addToQuote": "أضف إلى العرض",
         "generateBat": "توليد BAT PDF",
         "fullscreen": "عرض ملء الشاشة",
         "close": "العودة إلى الصفحة"

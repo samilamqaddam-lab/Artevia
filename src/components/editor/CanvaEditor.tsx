@@ -41,6 +41,7 @@ const DEFAULT_SHAPES = {
 
 interface EditorApi {
   capture: (format?: 'jpeg' | 'png') => string | null;
+  export: (format: string) => unknown;
 }
 
 interface CanvaEditorProps {
@@ -186,6 +187,12 @@ export function CanvaEditor({
           fabricCanvas.renderAll();
         }
         return dataUrl;
+      },
+      export: (format: string) => {
+        if (format === 'json') {
+          return fabricCanvas.toJSON();
+        }
+        return null;
       }
     });
 

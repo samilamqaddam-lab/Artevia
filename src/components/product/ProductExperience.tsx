@@ -2,10 +2,12 @@
 
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
-import {ChevronLeft, ChevronRight, Maximize2, X} from 'lucide-react';
+import {ChevronLeft, ChevronRight, ShoppingCart} from 'lucide-react';
 import Image from 'next/image';
 import {Button} from '@/components/ui/Button';
 import {CanvaEditor} from '@/components/editor/CanvaEditor';
+import {PersonalizationSelector, type PersonalizationMode} from './PersonalizationSelector';
+import {DesignPreviewCard} from './DesignPreviewCard';
 import type {
   Product,
   MarkingMethod,
@@ -58,6 +60,33 @@ interface ProductCopy {
     surcharge: string;
     perUnit: string;
     total: string;
+  };
+  personalization: {
+    title: string;
+    description: string;
+    modes: {
+      none: string;
+      upload: string;
+      design: string;
+    };
+    uploadZone: {
+      dragActive: string;
+      dragInactive: string;
+      browse: string;
+      formats: string;
+    };
+    preview: {
+      uploadedFile: string;
+      designCreated: string;
+      actions: {
+        edit: string;
+        remove: string;
+      };
+    };
+    actions: {
+      openEditor: string;
+      change: string;
+    };
   };
   editor: {
     title: string;
@@ -135,10 +164,16 @@ export function ProductExperience({
     return ordered;
   }, [product.gallery, product.heroImage]);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [mode, setMode] = useState<QuoteMode>('logo');
+  const mode: QuoteMode = 'logo'; // Fixed mode for now
   const [showFullScreenEditor, setShowFullScreenEditor] = useState(false);
-  const editorApiRef = useRef<{capture: (format?: 'jpeg' | 'png') => string | null} | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const editorApiRef = useRef<any>(null);
   const previewRef = useRef<string | undefined>(undefined);
+
+  // Personalization states
+  const [personalizationMode, setPersonalizationMode] = useState<PersonalizationMode>('none');
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [uploadedFileUrl, setUploadedFileUrl] = useState<string | null>(null);
 
   const selectedMethod = useMemo(
     () => methods.find((method) => method.id === selectedMethodId) ?? methods[0],
@@ -228,18 +263,49 @@ export function ProductExperience({
   };
 
   const capturePreview = (format: 'jpeg' | 'png' = 'png') => {
-    const capture = editorApiRef.current?.capture;
-    if (!capture) return undefined;
-    const result = capture(format) ?? undefined;
-    if (format === 'png') {
-      previewRef.current = result;
+    // If upload mode, use uploaded file
+    if (personalizationMode === 'upload' && uploadedFileUrl) {
+      return uploadedFileUrl;
     }
-    return result;
+    // If design mode, capture from editor
+    if (personalizationMode === 'design') {
+      const capture = editorApiRef.current?.capture;
+      if (!capture) return undefined;
+      const result = capture(format) ?? undefined;
+      if (format === 'png') {
+        previewRef.current = result;
+      }
+      return result;
+    }
+    // No personalization
+    return undefined;
+  };
+
+  const handleFileUpload = (file: File | null) => {
+    if (!file) {
+      setUploadedFile(null);
+      setUploadedFileUrl(null);
+      return;
+    }
+    setUploadedFile(file);
+    // Create object URL for preview
+    const url = URL.createObjectURL(file);
+    setUploadedFileUrl(url);
+  };
+
+  const handleRemovePersonalization = () => {
+    setPersonalizationMode('none');
+    setUploadedFile(null);
+    setUploadedFileUrl(null);
+    editorApiRef.current = null;
+    previewRef.current = undefined;
   };
 
   const handleAddToQuote = () => {
     if (!selectedMethod || !activeZone || !selectedLeadTime || !totals) return;
     const preview = capturePreview('png');
+    const designData = personalizationMode === 'design' ? editorApiRef.current?.export('json') : undefined;
+
     addQuoteItem({
       productId: product.id,
       quantity,
@@ -249,13 +315,21 @@ export function ProductExperience({
       colorCount: maxColorCount === 0 ? 0 : Math.min(colorCount, maxColorCount),
       colorwayId: selectedColorwayId,
       mode,
-      previewDataUrl: preview
+      previewDataUrl: preview,
+      // @ts-expect-error - personalization data will be added to quote store type later
+      personalization: personalizationMode !== 'none' ? {
+        mode: personalizationMode,
+        fileName: uploadedFile?.name,
+        designData: designData
+      } : undefined
     });
     if (typeof window !== 'undefined') {
       window.alert(copy.rfq.added);
     }
   };
 
+  // BAT generation moved to quote submission page
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleGenerateBat = async () => {
     if (!selectedMethod || !activeZone || !selectedLeadTime || !totals) return;
     const preview = capturePreview('jpeg');
@@ -619,44 +693,44 @@ export function ProductExperience({
             )}
           </div>
 
-          {/* Designer optionnel */}
-          <div className="space-y-4 rounded-3xl border border-slate-200 bg-white p-6 text-slate-900 shadow-sm dark:border-white/10 dark:bg-[#161616] dark:text-slate-100">
-            <header className="space-y-1">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{copy.editor.title}</h3>
-              <p className="text-sm text-slate-600 dark:text-slate-300">{copy.editor.description}</p>
-            </header>
-            <p className="text-xs text-slate-500 dark:text-slate-400">{copy.editor.logoGuidelines}</p>
-            <Button
-              size="md"
-              variant="secondary"
-              onClick={() => setShowFullScreenEditor(true)}
-              className="inline-flex w-full items-center justify-center gap-2"
-            >
-              <Maximize2 size={16} aria-hidden />
-              {copy.editor.actions.fullscreen}
-            </Button>
-          </div>
+          {/* Personalization Section */}
+          <PersonalizationSelector
+            mode={personalizationMode}
+            onModeChange={setPersonalizationMode}
+            onFileUpload={handleFileUpload}
+            onDesignClick={() => setShowFullScreenEditor(true)}
+            uploadedFile={uploadedFile}
+            hasDesign={editorApiRef.current !== null && previewRef.current !== undefined}
+            copy={copy.personalization}
+          />
 
-          {/* Boutons de commande - toujours visibles */}
-          <div className="space-y-3 rounded-3xl border border-brand/20 bg-gradient-to-br from-brand/5 to-transparent p-6 shadow-sm dark:border-brand/30 dark:from-brand/10">
-            <div className="flex flex-col gap-3">
-              <Button
-                size="lg"
-                variant="primary"
-                onClick={handleAddToQuote}
-                className="w-full"
-              >
-                {copy.editor.actions.addToQuote}
-              </Button>
-              <Button
-                size="lg"
-                variant="secondary"
-                onClick={handleGenerateBat}
-                className="w-full"
-              >
-                {copy.editor.actions.generateBat}
-              </Button>
-            </div>
+          {/* Preview Card when personalization is active */}
+          {personalizationMode !== 'none' && (uploadedFile || (editorApiRef.current && previewRef.current)) && (
+            <DesignPreviewCard
+              type={personalizationMode}
+              fileName={uploadedFile?.name}
+              fileUrl={uploadedFileUrl ?? undefined}
+              designPreview={previewRef.current}
+              onEdit={personalizationMode === 'design' ? () => setShowFullScreenEditor(true) : undefined}
+              onRemove={handleRemovePersonalization}
+              copy={copy.personalization.preview}
+            />
+          )}
+
+          {/* Add to Quote Button - Always visible */}
+          <div className="space-y-3 rounded-3xl border-2 border-brand/20 bg-gradient-to-br from-brand/5 to-transparent p-6 shadow-sm dark:border-brand/30 dark:from-brand/10">
+            <Button
+              size="lg"
+              variant="primary"
+              onClick={handleAddToQuote}
+              className="w-full gap-2"
+            >
+              <ShoppingCart size={20} />
+              {copy.editor.actions.addToQuote}
+            </Button>
+            <p className="text-center text-xs text-slate-600 dark:text-slate-400">
+              {copy.rfq.added}
+            </p>
           </div>
         </section>
       </div>

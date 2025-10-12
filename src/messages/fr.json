@@ -521,9 +521,36 @@
       "perUnit": "Prix unitaire",
       "total": "Total estimé HT"
     },
+    "personalization": {
+      "title": "Personnalisation",
+      "description": "Ajoutez votre logo ou créez un design personnalisé (optionnel).",
+      "modes": {
+        "none": "Aucune personnalisation",
+        "upload": "Uploader mon logo/visuel",
+        "design": "Créer un design personnalisé"
+      },
+      "uploadZone": {
+        "dragActive": "Déposez votre fichier ici",
+        "dragInactive": "Glissez votre logo ici",
+        "browse": "ou cliquez pour parcourir",
+        "formats": "PNG, JPG, SVG, PDF jusqu'à 10MB"
+      },
+      "preview": {
+        "uploadedFile": "Fichier uploadé",
+        "designCreated": "Design personnalisé créé",
+        "actions": {
+          "edit": "Modifier",
+          "remove": "Supprimer"
+        }
+      },
+      "actions": {
+        "openEditor": "Ouvrir l'éditeur",
+        "change": "Changer"
+      }
+    },
     "editor": {
       "title": "Designer produit",
-      "description": "Positionnez votre logo, ajustez les zones d’impression et exportez un BAT PDF en un clic.",
+      "description": "Positionnez votre logo, ajustez les zones d'impression et exportez un BAT PDF en un clic.",
       "mode": {
         "logo": "Mode logo",
         "creative": "Mode création simple"
@@ -531,7 +558,7 @@
       "logoGuidelines": "Logo vectoriel conseillé, fond transparent.",
       "colorLimit": "Certaines méthodes limitent le nombre de couleurs Pantone",
       "actions": {
-        "addToQuote": "Ajouter cette configuration",
+        "addToQuote": "Ajouter au devis",
         "generateBat": "Générer le BAT PDF",
         "fullscreen": "Plein écran",
         "close": "Revenir à la page"

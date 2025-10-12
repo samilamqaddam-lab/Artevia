@@ -2,6 +2,8 @@ import {unstable_setRequestLocale} from 'next-intl/server';
 import {QuoteBasketView} from '@/components/product/QuoteBasketView';
 import {locales, type Locale} from '@/i18n/settings';
 
+export const dynamic = 'force-dynamic';
+
 export function generateStaticParams() {
   return locales.map((locale) => ({locale}));
 }

@@ -44,7 +44,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       />
     ) : null;
 
-    const content = asChild ? children : <span>{children}</span>;
+    const content = children;
 
     if (asChild) {
       return (

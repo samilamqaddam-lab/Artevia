@@ -11,7 +11,7 @@ export default async function CatalogPage({params}: {params: {locale: string}}) 
   const locale = params.locale as Locale;
   setRequestLocale(locale);
   const tCatalog = await getTranslations({locale, namespace: 'catalog'});
-  const tCommon = await getTranslations({locale, namespace: 'common'});
+  const tLeadTimes = await getTranslations({locale, namespace: 'leadTimes'});
   const tProducts = await getTranslations({locale, namespace: 'products'});
 
   const catalogProducts = products.map((product) => ({
@@ -21,7 +21,7 @@ export default async function CatalogPage({params}: {params: {locale: string}}) 
     methodLabels: product.methods.map((method) =>
       tProducts(method.nameKey.split('.').slice(1).join('.'))
     ),
-    leadTimeLabels: product.leadTimes.map((lead) => tCommon(lead.labelKey))
+    leadTimeLabels: product.leadTimes.map((lead) => tLeadTimes(lead.labelKey.split('.').slice(1).join('.')))
   }));
 
   return (

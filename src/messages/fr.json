@@ -7,6 +7,7 @@
       "catalog": "Catalogue",
       "projects": "Projets",
       "quotes": "Demandes de devis",
+      "saved": "Projets sauvegardés",
       "language": "Langue",
       "login": "Connexion",
       "register": "Créer un compte",
@@ -528,7 +529,7 @@
         "creative": "Mode création simple"
       },
       "logoGuidelines": "Logo vectoriel conseillé, fond transparent.",
-      "colorLimit": "Méthode limitée à {{count}} couleur(s)",
+      "colorLimit": "Certaines méthodes limitent le nombre de couleurs Pantone",
       "actions": {
         "addToQuote": "Ajouter cette configuration",
         "generateBat": "Générer le BAT PDF",
@@ -660,5 +661,17 @@
   "pwa": {
     "offline": "Vous êtes hors connexion. Les projets restent disponibles hors ligne.",
     "update": "Nouvelle version disponible. Rafraîchir ?"
+  },
+  "designs": {
+    "title": "Mes projets",
+    "description": "Retrouvez tous vos projets de personnalisation sauvegardés",
+    "empty": "Aucun projet sauvegardé",
+    "createNew": "Créer un nouveau projet",
+    "load": "Charger",
+    "delete": "Supprimer"
+  },
+  "leadTimes": {
+    "standard": "Standard",
+    "express": "Express"
   }
 }

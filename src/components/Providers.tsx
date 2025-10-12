@@ -6,8 +6,10 @@ import {Toast, ToastDescription, ToastProvider, ToastTitle, ToastViewport} from 
 import {registerServiceWorker} from '@/lib/pwa/register-sw';
 import {generateId, isRTL} from '@/lib/utils';
 import type {Locale} from '@/i18n/settings';
-import {SessionContextProvider} from '@supabase/auth-helpers-react';
-import {createBrowserSupabaseClient} from '@supabase/auth-helpers-nextjs';
+import {createContext as createSupabaseContext, useContext as useSupabaseContext} from 'react';
+import type {SupabaseClient} from '@supabase/supabase-js';
+import {createClient} from '@/lib/supabase/client';
+import type {Database} from '@/lib/supabase/types';
 
 type Theme = 'light' | 'dark';
 
@@ -32,6 +34,8 @@ interface ToastContextValue {
 
 const AppToastContext = createContext<ToastContextValue | undefined>(undefined);
 
+const SupabaseContext = createSupabaseContext<SupabaseClient<Database> | undefined>(undefined);
+
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (!context) {
@@ -48,13 +52,21 @@ export function useToast() {
   return context;
 }
 
+export function useSupabase() {
+  const context = useSupabaseContext(SupabaseContext);
+  if (!context) {
+    throw new Error('useSupabase must be used within Providers');
+  }
+  return context;
+}
+
 export function Providers({children, locale}: {children: React.ReactNode; locale: Locale}) {
   const tPwa = useTranslations('pwa');
   const [offline, setOffline] = useState(false);
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [theme, setTheme] = useState<Theme>('light');
   const [toasts, setToasts] = useState<AppToast[]>([]);
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
+  const [supabaseClient] = useState(() => createClient());
 
   useEffect(() => {
     const loadTheme = () => {
@@ -127,7 +139,7 @@ export function Providers({children, locale}: {children: React.ReactNode; locale
   return (
     <ThemeContext.Provider value={themeValue}>
       <AppToastContext.Provider value={{pushToast}}>
-        <SessionContextProvider supabaseClient={supabaseClient}>
+        <SupabaseContext.Provider value={supabaseClient}>
           <ToastProvider swipeDirection="right">
             {children}
             <ToastViewport />
@@ -171,7 +183,7 @@ export function Providers({children, locale}: {children: React.ReactNode; locale
               </Toast>
             ))}
           </ToastProvider>
-        </SessionContextProvider>
+        </SupabaseContext.Provider>
       </AppToastContext.Provider>
     </ThemeContext.Provider>
   );

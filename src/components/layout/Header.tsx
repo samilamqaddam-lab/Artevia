@@ -7,14 +7,12 @@ import Link from 'next/link';
 import {useLocale, useTranslations} from 'next-intl';
 import {usePathname, useRouter} from 'next/navigation';
 import {useEffect, useMemo, useState} from 'react';
-import {useSession, useSupabaseClient} from '@supabase/auth-helpers-react';
 import {Button} from '@/components/ui/Button';
 import {useQuoteStore} from '@/stores/quote-store';
 import {cn, isRTL} from '@/lib/utils';
 import {LanguageSwitcher} from './LanguageSwitcher';
 import {ThemeToggle} from './ThemeToggle';
-import type {Database} from '@/lib/supabase/types';
-import {useToast} from '@/components/Providers';
+import {useToast, useSupabase} from '@/components/Providers';
 
 export function Header() {
   const t = useTranslations('common');
@@ -32,14 +30,28 @@ export function Header() {
   );
   const cartCount = useQuoteStore((state) => state.totalQuantity());
   const dir = isRTL(locale as 'fr' | 'ar') ? 'rtl' : 'ltr';
-  const session = useSession();
-  const supabase = useSupabaseClient<Database>();
+  const supabase = useSupabase();
   const {pushToast} = useToast();
   const [mounted, setMounted] = useState(false);
+  const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+
+    // Get initial session
+    supabase.auth.getSession().then(({data: {session}}) => {
+      setSession(session);
+    });
+
+    // Listen for auth changes
+    const {
+      data: {subscription}
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase]);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -128,15 +140,29 @@ type NavItem = {
 
 function MobileNav({navItems, locale}: {navItems: NavItem[]; locale: string}) {
   const t = useTranslations('common');
-  const session = useSession();
-  const supabase = useSupabaseClient<Database>();
+  const supabase = useSupabase();
   const {pushToast} = useToast();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const [session, setSession] = useState<any>(null);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+
+    // Get initial session
+    supabase.auth.getSession().then(({data: {session}}) => {
+      setSession(session);
+    });
+
+    // Listen for auth changes
+    const {
+      data: {subscription}
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, [supabase]);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();

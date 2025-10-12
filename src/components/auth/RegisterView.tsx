@@ -4,11 +4,9 @@ import {useState, type ChangeEvent, type FormEvent} from 'react';
 import Link from 'next/link';
 import {useRouter} from 'next/navigation';
 import {useTranslations} from 'next-intl';
-import {useSupabaseClient} from '@supabase/auth-helpers-react';
 import {Button} from '@/components/ui/Button';
-import {useToast} from '@/components/Providers';
+import {useToast, useSupabase} from '@/components/Providers';
 import type {Locale} from '@/i18n/settings';
-import type {Database} from '@/lib/supabase/types';
 
 interface RegisterViewProps {
   locale: Locale;
@@ -16,7 +14,7 @@ interface RegisterViewProps {
 
 export function RegisterView({locale}: RegisterViewProps) {
   const t = useTranslations('auth.register');
-  const supabase = useSupabaseClient<Database>();
+  const supabase = useSupabase();
   const router = useRouter();
   const {pushToast} = useToast();
 

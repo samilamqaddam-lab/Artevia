@@ -30,6 +30,17 @@
       },
       "disabled": false,
       "alwaysAllow": []
+    },
+    "serpapi-seo": {
+      "command": "python3",
+      "args": [
+        "mcp-servers/serpapi-server.py"
+      ],
+      "env": {
+        "SERPAPI_API_KEY": "YOUR_SERPAPI_API_KEY"
+      },
+      "disabled": false,
+      "alwaysAllow": []
     }
   }
 }

@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "supabase-postgrest": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-postgrest@latest",
+        "--apiUrl",
+        "https://YOUR_PROJECT_REF.supabase.co/rest/v1",
+        "--apiKey",
+        "YOUR_SUPABASE_SERVICE_ROLE_KEY",
+        "--schema",
+        "public"
+      ]
+    },
+    "supabase-management": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--project-ref",
+        "YOUR_PROJECT_REF"
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_ACCESS_TOKEN"
+      }
+    }
+  }
+}

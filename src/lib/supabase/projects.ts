@@ -1,26 +1,9 @@
 import {createClient} from './client';
+import type {Database} from './types';
 
-// Types will be generated after running: npm run types:generate
-// For now, we use generic types
-type Project = {
-  id: string;
-  user_id: string;
-  name: string;
-  product_id: string;
-  canvas: Record<string, unknown>;
-  preview_url: string | null;
-  is_public: boolean;
-  tags: string[];
-  created_at: string;
-  updated_at: string;
-};
-
-type ProjectInsert = Omit<Project, 'created_at' | 'updated_at'> & {
-  id?: string;
-  user_id?: string;
-};
-
-type ProjectUpdate = Partial<Omit<Project, 'id' | 'user_id' | 'created_at'>>;
+type Project = Database['public']['Tables']['projects']['Row'];
+type ProjectInsert = Database['public']['Tables']['projects']['Insert'];
+type ProjectUpdate = Database['public']['Tables']['projects']['Update'];
 
 /**
  * Get all projects for the current user
@@ -28,8 +11,7 @@ type ProjectUpdate = Partial<Omit<Project, 'id' | 'user_id' | 'created_at'>>;
 export async function getProjects(): Promise<Project[]> {
   const supabase = createClient();
 
-  const {data, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
+  const {data, error} = await supabase
     .from('projects')
     .select('*')
     .order('updated_at', {ascending: false});
@@ -48,12 +30,7 @@ export async function getProjects(): Promise<Project[]> {
 export async function getProject(id: string): Promise<Project | null> {
   const supabase = createClient();
 
-  const {data, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
-    .from('projects')
-    .select('*')
-    .eq('id', id)
-    .single();
+  const {data, error} = await supabase.from('projects').select('*').eq('id', id).single();
 
   if (error) {
     console.error('Error fetching project:', error);
@@ -66,7 +43,9 @@ export async function getProject(id: string): Promise<Project | null> {
 /**
  * Create a new project
  */
-export async function createProject(project: Omit<ProjectInsert, 'user_id'>): Promise<Project> {
+export async function createProject(
+  project: Omit<ProjectInsert, 'user_id'>
+): Promise<Project> {
   const supabase = createClient();
 
   const {
@@ -74,8 +53,7 @@ export async function createProject(project: Omit<ProjectInsert, 'user_id'>): Pr
   } = await supabase.auth.getUser();
   if (!user) throw new Error('Not authenticated');
 
-  const {data, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
+  const {data, error} = await supabase
     .from('projects')
     .insert({
       ...project,
@@ -98,8 +76,7 @@ export async function createProject(project: Omit<ProjectInsert, 'user_id'>): Pr
 export async function updateProject(id: string, updates: ProjectUpdate): Promise<Project> {
   const supabase = createClient();
 
-  const {data, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
+  const {data, error} = await supabase
     .from('projects')
     .update(updates)
     .eq('id', id)
@@ -120,8 +97,7 @@ export async function updateProject(id: string, updates: ProjectUpdate): Promise
 export async function deleteProject(id: string): Promise<void> {
   const supabase = createClient();
 
-  const {error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any).from('projects').delete().eq('id', id);
+  const {error} = await supabase.from('projects').delete().eq('id', id);
 
   if (error) {
     console.error('Error deleting project:', error);
@@ -135,8 +111,7 @@ export async function deleteProject(id: string): Promise<void> {
 export async function getProjectsByProduct(productId: string): Promise<Project[]> {
   const supabase = createClient();
 
-  const {data, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
+  const {data, error} = await supabase
     .from('projects')
     .select('*')
     .eq('product_id', productId)
@@ -156,8 +131,7 @@ export async function getProjectsByProduct(productId: string): Promise<Project[]
 export async function getPublicProjects(limit = 50): Promise<Project[]> {
   const supabase = createClient();
 
-  const {data, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
+  const {data, error} = await supabase
     .from('projects')
     .select('*')
     .eq('is_public', true)

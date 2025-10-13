@@ -1,21 +1,8 @@
 import {createClient} from './client';
+import type {Database} from './types';
 
-// Types will be generated after running: npm run types:generate
-// For now, we use generic types
-type Profile = {
-  id: string;
-  email: string | null;
-  full_name: string | null;
-  company_name: string | null;
-  phone: string | null;
-  locale: string | null;
-  avatar_url: string | null;
-  preferences: Record<string, unknown> | null;
-  created_at: string;
-  updated_at: string;
-};
-
-type ProfileUpdate = Partial<Omit<Profile, 'id' | 'created_at'>>;
+type Profile = Database['public']['Tables']['profiles']['Row'];
+type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
 
 /**
  * Get the profile of the current user or a specific user
@@ -32,12 +19,7 @@ export async function getProfile(userId?: string): Promise<Profile | null> {
     userId = user.id;
   }
 
-  const {data, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
-    .from('profiles')
-    .select('*')
-    .eq('id', userId)
-    .single();
+  const {data, error} = await supabase.from('profiles').select('*').eq('id', userId).single();
 
   if (error) {
     console.error('Error fetching profile:', error);
@@ -58,8 +40,7 @@ export async function updateProfile(updates: ProfileUpdate): Promise<Profile | n
   } = await supabase.auth.getUser();
   if (!user) throw new Error('Not authenticated');
 
-  const {data, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
+  const {data, error} = await supabase
     .from('profiles')
     .update(updates)
     .eq('id', user.id)
@@ -80,8 +61,7 @@ export async function updateProfile(updates: ProfileUpdate): Promise<Profile | n
 export async function profileExists(userId: string): Promise<boolean> {
   const supabase = createClient();
 
-  const {count, error} = await // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (supabase as any)
+  const {count, error} = await supabase
     .from('profiles')
     .select('id', {count: 'exact', head: true})
     .eq('id', userId);

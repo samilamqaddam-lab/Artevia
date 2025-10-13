@@ -83,7 +83,7 @@ export async function migrateProjectsToSupabase(
           id: localProject.id,
           name: localProject.name,
           product_id: localProject.productId,
-          canvas: localProject.canvas,
+          canvas: localProject.canvas as never,
           preview_url: localProject.previewDataUrl || null,
           is_public: false,
           tags: []

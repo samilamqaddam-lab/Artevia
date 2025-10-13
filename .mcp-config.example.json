@@ -1,6 +1,7 @@
 {
+  "$schema": "https://schema.modelcontextprotocol.io/config.json",
   "mcpServers": {
-    "supabase-postgrest": {
+    "artevia-database": {
       "command": "npx",
       "args": [
         "-y",
@@ -11,9 +12,11 @@
         "YOUR_SUPABASE_SERVICE_ROLE_KEY",
         "--schema",
         "public"
-      ]
+      ],
+      "disabled": false,
+      "alwaysAllow": []
     },
-    "supabase-management": {
+    "artevia-management": {
       "command": "npx",
       "args": [
         "-y",
@@ -22,8 +25,11 @@
         "YOUR_PROJECT_REF"
       ],
       "env": {
-        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_ACCESS_TOKEN"
-      }
+        "SUPABASE_ACCESS_TOKEN": "YOUR_SUPABASE_ACCESS_TOKEN",
+        "SUPABASE_PROJECT_REF": "YOUR_PROJECT_REF"
+      },
+      "disabled": false,
+      "alwaysAllow": []
     }
   }
 }

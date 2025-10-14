@@ -1,0 +1,237 @@
+{
+  "date": "2025-10-13",
+  "keywords_analyzed": 19,
+  "top_competitors": [
+    {
+      "rank": 1,
+      "domain": "www.vistaprint.fr",
+      "appearances": 9,
+      "avg_position": 1.6,
+      "keywords": [
+        "cadeaux d'entreprise personnalisés",
+        "stylos personnalisés entreprise",
+        "bloc notes personnalisé entreprise",
+        "carnets personnalisés logo",
+        "chemises personnalisées entreprise",
+        "fournitures bureau personnalisées",
+        "goodies événement entreprise",
+        "personnalisation produits entreprise",
+        "impression logo entreprise"
+      ]
+    },
+    {
+      "rank": 2,
+      "domain": "cadoetik.com",
+      "appearances": 7,
+      "avg_position": 5.0,
+      "keywords": [
+        "cadeaux d'entreprise personnalisés",
+        "carnets personnalisés logo",
+        "fournitures bureau personnalisées",
+        "cadeaux clients fidélité",
+        "goodies événement entreprise",
+        "cadeaux séminaire entreprise",
+        "personnalisation produits entreprise"
+      ]
+    },
+    {
+      "rank": 3,
+      "domain": "www.objetrama.fr",
+      "appearances": 7,
+      "avg_position": 6.6,
+      "keywords": [
+        "cadeaux d'entreprise personnalisés",
+        "stylos personnalisés entreprise",
+        "carnets personnalisés logo",
+        "chemises personnalisées entreprise",
+        "fournitures bureau personnalisées",
+        "goodies événement entreprise",
+        "personnalisation produits entreprise"
+      ]
+    },
+    {
+      "rank": 4,
+      "domain": "imagia.ma",
+      "appearances": 6,
+      "avg_position": 2.9,
+      "keywords": [
+        "objets publicitaires personnalisés maroc",
+        "goodies entreprise maroc",
+        "articles promotionnels maroc",
+        "communication par l'objet maroc",
+        "cadeaux fin d'année entreprise maroc",
+        "fournisseur objets publicitaires maroc"
+      ]
+    },
+    {
+      "rank": 5,
+      "domain": "www.lepublicitaire.com",
+      "appearances": 6,
+      "avg_position": 3.3,
+      "keywords": [
+        "objets publicitaires personnalisés maroc",
+        "goodies entreprise maroc",
+        "articles promotionnels maroc",
+        "communication par l'objet maroc",
+        "cadeaux fin d'année entreprise maroc",
+        "fournisseur objets publicitaires maroc"
+      ]
+    },
+    {
+      "rank": 6,
+      "domain": "myprogift.com",
+      "appearances": 6,
+      "avg_position": 6.0,
+      "keywords": [
+        "objets publicitaires personnalisés maroc",
+        "goodies entreprise maroc",
+        "articles promotionnels maroc",
+        "communication par l'objet maroc",
+        "cadeaux fin d'année entreprise maroc",
+        "fournisseur objets publicitaires maroc"
+      ]
+    },
+    {
+      "rank": 7,
+      "domain": "www.publiimport.ma",
+      "appearances": 5,
+      "avg_position": 2.8,
+      "keywords": [
+        "objets publicitaires personnalisés maroc",
+        "goodies entreprise maroc",
+        "articles promotionnels maroc",
+        "communication par l'objet maroc",
+        "fournisseur objets publicitaires maroc"
+      ]
+    },
+    {
+      "rank": 8,
+      "domain": "www.goodiespub.fr",
+      "appearances": 5,
+      "avg_position": 3.6,
+      "keywords": [
+        "cadeaux d'entreprise personnalisés",
+        "stylos personnalisés entreprise",
+        "bloc notes personnalisé entreprise",
+        "goodies événement entreprise",
+        "personnalisation produits entreprise"
+      ]
+    },
+    {
+      "rank": 9,
+      "domain": "objetpublicitaire.ma",
+      "appearances": 5,
+      "avg_position": 3.8,
+      "keywords": [
+        "objets publicitaires personnalisés maroc",
+        "goodies entreprise maroc",
+        "articles promotionnels maroc",
+        "communication par l'objet maroc",
+        "fournisseur objets publicitaires maroc"
+      ]
+    },
+    {
+      "rank": 10,
+      "domain": "clic-kado.com",
+      "appearances": 5,
+      "avg_position": 6.0,
+      "keywords": [
+        "objets publicitaires personnalisés maroc",
+        "goodies entreprise maroc",
+        "communication par l'objet maroc",
+        "cadeaux fin d'année entreprise maroc",
+        "fournisseur objets publicitaires maroc"
+      ]
+    }
+  ],
+  "category_insights": {
+    "Génériques B2B": [
+      {
+        "domain": "www.lepublicitaire.com",
+        "appearances": 4
+      },
+      {
+        "domain": "objetpublicitaire.ma",
+        "appearances": 4
+      },
+      {
+        "domain": "www.publiimport.ma",
+        "appearances": 4
+      },
+      {
+        "domain": "imagia.ma",
+        "appearances": 4
+      },
+      {
+        "domain": "myprogift.com",
+        "appearances": 4
+      }
+    ],
+    "Catégories Produits": [
+      {
+        "domain": "www.vistaprint.fr",
+        "appearances": 5
+      },
+      {
+        "domain": "www.objetrama.fr",
+        "appearances": 4
+      },
+      {
+        "domain": "www.pens.com",
+        "appearances": 3
+      },
+      {
+        "domain": "www.goodiespub.fr",
+        "appearances": 2
+      },
+      {
+        "domain": "www.pixartprinting.fr",
+        "appearances": 2
+      }
+    ],
+    "Occasions B2B": [
+      {
+        "domain": "cadoetik.com",
+        "appearances": 3
+      },
+      {
+        "domain": "greenkit.fr",
+        "appearances": 2
+      },
+      {
+        "domain": "www.vertlapub.fr",
+        "appearances": 2
+      },
+      {
+        "domain": "imagia.ma",
+        "appearances": 1
+      },
+      {
+        "domain": "clic-kado.com",
+        "appearances": 1
+      }
+    ],
+    "Secteur & Services": [
+      {
+        "domain": "www.vistaprint.fr",
+        "appearances": 2
+      },
+      {
+        "domain": "www.24hprint.ma",
+        "appearances": 1
+      },
+      {
+        "domain": "industricomgroup.com",
+        "appearances": 1
+      },
+      {
+        "domain": "imprimeriedumaroc.com",
+        "appearances": 1
+      },
+      {
+        "domain": "weprint.ma",
+        "appearances": 1
+      }
+    ]
+  }
+}

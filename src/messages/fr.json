@@ -736,5 +736,183 @@
     "cornerAccent": "Accents d'angle",
     "minimalistLine": "Ligne Minimaliste",
     "playfulShapes": "Formes Ludiques"
+  },
+  "entreprises": {
+    "hero": {
+      "highlight": "Solutions B2B",
+      "title": "Objets Publicitaires et Goodies pour Entreprises",
+      "description": "Équipez vos équipes marketing, RH et événementiel avec des objets publicitaires personnalisés de qualité. Designer en ligne, petites quantités acceptées, livraison express partout au Maroc.",
+      "cta": {
+        "primary": "Demander un devis gratuit",
+        "secondary": "Découvrir nos produits"
+      }
+    },
+    "usps": {
+      "title": "Pourquoi Choisir Artevia pour Votre Entreprise",
+      "items": [
+        {
+          "title": "Designer en Ligne Intuitif",
+          "description": "Créez vos visuels directement en ligne avec notre éditeur professionnel. Ajoutez votre logo en quelques clics."
+        },
+        {
+          "title": "Petites Quantités Acceptées",
+          "description": "Dès 10 unités pour certains produits. Parfait pour startups et PME qui veulent tester sans gros volumes."
+        },
+        {
+          "title": "Livraison Express 48h",
+          "description": "Commandes urgentes? Livraison rapide partout au Maroc en 48h pour vos événements et lancements."
+        },
+        {
+          "title": "Service Client Dédié B2B",
+          "description": "Conseiller dédié, devis personnalisés, BAT sous 24h, factures entreprise et paiement à terme."
+        }
+      ]
+    },
+    "useCases": {
+      "title": "Nos Solutions par Occasion",
+      "subtitle": "Que ce soit pour fidéliser vos clients, accueillir de nouveaux employés ou marquer les esprits lors d'événements, Artevia vous accompagne.",
+      "items": [
+        {
+          "title": "Kit Bienvenue Employé",
+          "description": "Pack onboarding complet pour intégrer vos nouveaux collaborateurs avec style.",
+          "badge": "Innovation"
+        },
+        {
+          "title": "Cadeaux Clients Fidélité",
+          "description": "Goodies premium pour remercier et fidéliser vos clients stratégiques."
+        },
+        {
+          "title": "Événements Entreprise",
+          "description": "Goodies pour salons, séminaires, team building et conférences."
+        },
+        {
+          "title": "Cadeaux Fin d'Année",
+          "description": "Coffrets cadeaux personnalisés pour vos partenaires et collaborateurs."
+        }
+      ]
+    },
+    "trust": {
+      "title": "Ils Nous Font Confiance",
+      "subtitle": "Startups, PME et grandes entreprises marocaines utilisent Artevia"
+    },
+    "cta": {
+      "title": "Prêt à Lancer Votre Projet?",
+      "description": "Obtenez un devis personnalisé sous 2h. Conseiller B2B disponible pour vous accompagner.",
+      "button": "Demander mon devis gratuit"
+    }
+  },
+  "kitBienvenue": {
+    "hero": {
+      "badge": "Innovation RH",
+      "title": "Kit Bienvenue Employé Personnalisé - Onboarding Premium",
+      "description": "Marquez les premiers jours de vos nouveaux collaborateurs avec un kit onboarding personnalisé. Bloc-notes, stylos, goodies avec votre logo pour une intégration réussie.",
+      "cta": {
+        "primary": "Demander un devis kit",
+        "secondary": "Voir nos produits"
+      }
+    },
+    "benefits": {
+      "title": "Pourquoi un Kit Bienvenue Employé?",
+      "items": [
+        {
+          "title": "Première Impression Forte",
+          "description": "Accueillez vos talents avec un geste qui montre que vous les attendiez. Boost de motivation dès le jour 1."
+        },
+        {
+          "title": "Sentiment d'Appartenance",
+          "description": "Créez un lien immédiat avec votre culture d'entreprise grâce à des objets à votre image."
+        },
+        {
+          "title": "Productivité Immédiate",
+          "description": "Équipement professionnel complet: ils ont tout pour bien démarrer sans attendre."
+        },
+        {
+          "title": "Image Employeur Premium",
+          "description": "Différenciez-vous sur le marché du recrutement. Vos employés parleront de cette attention."
+        }
+      ]
+    },
+    "included": {
+      "title": "Nos Packs Kit Bienvenue",
+      "subtitle": "Choisissez le pack adapté à votre budget et culture d'entreprise. Tous personnalisables avec votre logo.",
+      "packs": [
+        {
+          "name": "Pack Starter",
+          "description": "L'essentiel pour bien démarrer",
+          "items": [
+            "Bloc-notes A5 personnalisé avec logo",
+            "Stylo métal gravé nom employé",
+            "Tote bag coton avec slogan entreprise",
+            "Stickers logo (pack de 10)"
+          ]
+        },
+        {
+          "name": "Pack Premium",
+          "description": "Le plus populaire auprès de nos clients",
+          "items": [
+            "Tout du Pack Starter",
+            "Carnet A5 premium couverture cuir",
+            "Gourde inox gravée",
+            "Tapis de souris personnalisé",
+            "Carte de bienvenue imprimée"
+          ]
+        },
+        {
+          "name": "Pack Executive",
+          "description": "Pour vos talents clés et postes stratégiques",
+          "items": [
+            "Tout du Pack Premium",
+            "Coffret stylo + porte-cartes cuir",
+            "Sac à dos tech premium",
+            "Powerbank gravé logo",
+            "Mug céramique personnalisé",
+            "Packaging premium avec ruban"
+          ]
+        }
+      ]
+    },
+    "process": {
+      "title": "Comment Ça Marche?",
+      "steps": [
+        {
+          "title": "Choisissez Votre Pack",
+          "description": "Sélectionnez le pack qui correspond à votre budget et votre culture. Vous pouvez aussi créer un pack sur-mesure."
+        },
+        {
+          "title": "Personnalisez en Ligne",
+          "description": "Uploadez votre logo, choisissez les couleurs, ajoutez du texte. Notre designer en ligne vous guide étape par étape."
+        },
+        {
+          "title": "Validez le BAT",
+          "description": "Nous vous envoyons un Bon à Tirer (BAT) sous 24h pour validation avant impression. Vous contrôlez tout."
+        },
+        {
+          "title": "Recevez Vos Kits",
+          "description": "Livraison express 48h partout au Maroc. Kits emballés individuellement, prêts à offrir."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Ce Que Disent Nos Clients RH",
+      "items": [
+        {
+          "quote": "Nos nouveaux employés adorent leur kit de bienvenue! Ça donne vraiment le ton sur notre culture d'entreprise dès le premier jour. Artevia a été très réactif sur nos délais serrés.",
+          "author": "Salma Bennani",
+          "role": "DRH",
+          "company": "TechCorp Maroc"
+        },
+        {
+          "quote": "En tant que startup, on cherchait des petites quantités avec une vraie qualité. Artevia nous a permis de créer des kits onboarding premium sans minimum de 500 unités. Parfait pour nous!",
+          "author": "Mehdi Alaoui",
+          "role": "Co-fondateur",
+          "company": "StartupLab Casablanca"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Prêt à Accueillir Vos Talents avec Style?",
+      "description": "Demandez un devis personnalisé pour votre kit bienvenue employé. Réponse sous 2h.",
+      "button": "Obtenir mon devis gratuit"
+    }
   }
 }

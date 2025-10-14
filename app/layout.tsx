@@ -2,9 +2,9 @@ import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Artevia | Création Print-On-Demand Maroc',
+  title: 'Artevia | Objets Publicitaires Personnalisés Entreprise Maroc',
   description:
-    'Artevia permet de concevoir facilement des produits print-on-demand pour le marché marocain, avec un éditeur fluide et des exports prêts pour l’impression.'
+    'Fournitures bureau et objets publicitaires personnalisés pour entreprises au Maroc. Designer en ligne, petites quantités, livraison 48h. BAT sous 24h. Devis gratuit.'
 };
 
 export default function RootLayout({

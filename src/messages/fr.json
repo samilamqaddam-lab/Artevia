@@ -1,7 +1,7 @@
 {
   "common": {
     "brand": "Artevia",
-    "tagline": "Objets publicitaires sur-mesure, BAT sous 24h",
+    "tagline": "Objets Publicitaires Personnalisés Entreprise | BAT 24h",
     "nav": {
       "home": "Accueil",
       "catalog": "Catalogue",
@@ -43,9 +43,9 @@
   "home": {
     "hero": {
       "tagline": "Made in Morocco & Europe",
-      "highlight": "Livraison express sur tout le Maroc",
-      "title": "Personnalisez vos cadeaux d’affaires et marquez les esprits",
-      "description": "Artevia accompagne les équipes marketing, RH et événementiel pour produire des goodies premium adaptés au marché marocain.",
+      "highlight": "Livraison Express 48h Partout au Maroc",
+      "title": "Cadeaux Entreprise et Goodies Personnalisés qui Marquent les Esprits",
+      "description": "Artevia accompagne les équipes marketing, RH et événementiel pour créer des objets publicitaires personnalisés et fournitures bureau premium adaptés au marché marocain. Designer en ligne, petites quantités acceptées.",
       "ctaPrimary": "Lancer le designer",
       "ctaSecondary": "Demander un devis",
       "badges": [
@@ -56,7 +56,7 @@
     },
     "trust": {
       "title": "Ils nous font confiance",
-      "subtitle": "Grandes entreprises, scale-ups et institutions marocaines",
+      "subtitle": "Entreprises Marocaines, Startups et Institutions Nous Font Confiance",
       "logos": [
         "OCP",
         "Maroc Telecom",
@@ -83,8 +83,8 @@
         "tag": "Prêts en 7 jours"
       },
       {
-        "title": "Papeterie & bureau",
-        "description": "Carnets A5, planners et coffrets bureau pour vos onboarding packs.",
+        "title": "Fournitures Bureau Personnalisées",
+        "description": "Bloc-notes, carnets, stylos et coffrets bureau personnalisés avec logo. Parfait pour onboarding kits entreprise.",
         "tag": "Eco-friendly"
       }
     ],
@@ -110,7 +110,7 @@
       ]
     },
     "process": {
-      "title": "Votre parcours Artevia",
+      "title": "Comment Commander Vos Objets Publicitaires Personnalisés",
       "steps": [
         {
           "title": "1. Brief express",
@@ -131,11 +131,11 @@
       ]
     },
     "packs": {
-      "title": "Packs prêts à personnaliser",
+      "title": "Kits Entreprise Prêts à Personnaliser",
       "subtitle": "Des idées clés en main pour vos onboarding, salons et cadeaux clients.",
       "items": [
         {
-          "title": "Pack Onboarding Startup",
+          "title": "Kit Bienvenue Employé - Pack Onboarding Startup",
           "description": "Tote GOTS + carnet A5 + mug double paroi + welcome card.",
           "price": "À partir de 399 MAD / pack",
           "leadTime": "Disponible en 10 jours",
@@ -234,7 +234,7 @@
       ]
     },
     "finalCta": {
-      "title": "Parlons de votre prochain projet",
+      "title": "Demandez Votre Devis Objets Publicitaires Gratuit",
       "description": "Contactez notre équipe pour une proposition personnalisée et un BAT gratuit.",
       "primaryCta": "Demander un devis",
       "secondaryCta": "Appeler un conseiller",
@@ -245,7 +245,7 @@
       "phoneLabel": "Téléphone",
       "emailLabel": "Email"
     },
-    "categoriesTitle": "Nos univers produits",
+    "categoriesTitle": "Nos Catégories de Produits Promotionnels",
     "categoriesSubtitle": "Sélectionnez une catégorie et commencez votre personnalisation.",
     "processDescription": "Chaque étape est accompagnée par un chef de projet dédié.",
     "categoryCta": "Découvrir"

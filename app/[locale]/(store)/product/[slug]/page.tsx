@@ -3,9 +3,74 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {ProductExperience} from '@/components/product/ProductExperience';
 import {locales, type Locale} from '@/i18n/settings';
 import {getProductBySlug, products} from '@/lib/products';
+import type {Metadata} from 'next';
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => products.map((product) => ({locale, slug: product.slug})));
+}
+
+// Helper function pour métadonnées SEO par produit
+function getProductSEOMeta(
+  slug: string,
+  name: string,
+  description: string
+): {title: string; description: string} {
+  const seoMap: Record<string, {title: string; description: string}> = {
+    'bloc-notes-personnalises': {
+      title: 'Bloc-notes Personnalisé Entreprise avec Logo Maroc | Artevia',
+      description:
+        'Bloc-notes personnalisés A4/A5 avec logo entreprise. Impression quadri, reliure spirale premium. Petites quantités dès 50 ex. Livraison 48h Maroc. Devis gratuit.'
+    },
+    'stylos-metal-s1': {
+      title: 'Stylos Personnalisés Entreprise Gravure Laser Maroc | Artevia',
+      description:
+        'Stylos métal personnalisés avec gravure laser ou tampographie. Corps aluminium rechargeable. Petites quantités dès 30 ex. BAT 24h. Livraison express Maroc.'
+    },
+    'chemise-a-rabat-classique': {
+      title: 'Chemise à Rabat Personnalisée Entreprise Maroc | Artevia',
+      description:
+        'Chemise rabat A4 personnalisée avec logo. Carton 350g, impression offset ou numérique. Petites séries dès 100 ex. Livraison rapide partout au Maroc. Devis gratuit.'
+    }
+  };
+
+  return (
+    seoMap[slug] || {
+      title: `${name} Personnalisé | Artevia`,
+      description: description
+    }
+  );
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{locale: string; slug: string}>;
+}): Promise<Metadata> {
+  const {locale, slug} = await params;
+  const product = getProductBySlug(slug);
+
+  if (!product) {
+    return {
+      title: 'Produit non trouvé | Artevia',
+      description: 'Ce produit n\'existe pas.'
+    };
+  }
+
+  const t = await getTranslations({locale, namespace: 'products'});
+  const productName = t(product.nameKey.split('.').slice(1).join('.'));
+  const productDescription = t(product.descriptionKey.split('.').slice(1).join('.'));
+
+  const seoMeta = getProductSEOMeta(slug, productName, productDescription);
+
+  return {
+    title: seoMeta.title,
+    description: seoMeta.description,
+    openGraph: {
+      title: seoMeta.title,
+      description: seoMeta.description,
+      images: [product.heroImage]
+    }
+  };
 }
 
 function stripNamespace(key: string) {

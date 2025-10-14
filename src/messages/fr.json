@@ -263,8 +263,8 @@
   },
   "products": {
     "notepad": {
-      "name": "Bloc-notes spirale premium",
-      "description": "Formats A4/A5/A6 avec intérieur offset 90 g et reliure double anneau.",
+      "name": "Bloc-notes Personnalisé Entreprise Premium",
+      "description": "Bloc-notes spirale A4/A5/A6 personnalisé avec votre logo. Intérieur offset 90g, reliure double anneau premium. Parfait pour fournitures bureau entreprise.",
       "colors": {
         "kraft": "Kraft naturel",
         "midnight": "Bleu nuit",
@@ -296,8 +296,8 @@
       }
     },
     "pen": {
-      "name": "Stylo métal S1",
-      "description": "Corps aluminium rechargeable avec grip soft-touch.",
+      "name": "Stylo Métal Personnalisé S1",
+      "description": "Stylo métal personnalisé avec gravure laser ou tampographie. Corps aluminium rechargeable, grip soft-touch. Idéal cadeau entreprise et objets publicitaires.",
       "colors": {
         "graphite": "Graphite mat",
         "silver": "Argent satiné",
@@ -321,8 +321,8 @@
       }
     },
     "folder": {
-      "name": "Chemise à rabat pro",
-      "description": "Carton 350 g avec patte en V, double rainage et encoches carte.",
+      "name": "Chemise à Rabat Personnalisée Entreprise",
+      "description": "Chemise rabat A4 personnalisée avec logo entreprise. Carton 350g premium, patte en V, double rainage et encoches carte. Impression offset ou numérique.",
       "colors": {
         "white": "Blanc mat",
         "azure": "Bleu azur",

@@ -372,11 +372,11 @@ export function HomeView({locale, content}: HomeViewProps) {
                   <div>{item.leadTime}</div>
                 </div>
                 {item.quantityLabel && (
-                  <div className="mt-2 rounded-2xl bg-brand/10 px-3 py-2 text-xs font-semibold text-brand">
+                  <div className="mt-4 rounded-2xl bg-brand/10 px-3 py-3 text-xs leading-relaxed font-semibold text-brand">
                     {item.quantityLabel}
                   </div>
                 )}
-                <ul className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <ul className="mt-5 space-y-2 text-sm text-slate-600 dark:text-slate-300">
                   {item.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2">
                       <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent/30 text-charcoal">

@@ -1,7 +1,7 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import type {Metadata} from 'next';
 import {locales, type Locale} from '@/i18n/settings';
-import {EntreprisesView} from '@/components/entreprises/EntreprisesView';
+import {OccasionsView} from '@/components/occasions/OccasionsView';
 
 export async function generateMetadata({
   params
@@ -12,14 +12,14 @@ export async function generateMetadata({
 
   const metadata = {
     fr: {
-      title: 'Objets Publicitaires et Goodies Entreprise Maroc | Artevia',
+      title: 'Objets Publicitaires par Occasion - Onboarding, Événements, Cadeaux Clients | Artevia',
       description:
-        'Solutions B2B objets publicitaires personnalisés pour entreprises au Maroc. Designer en ligne, petites quantités dès 10 unités, livraison express 48h. Devis gratuit sous 2h.'
+        'Trouvez les objets publicitaires parfaits pour chaque occasion: kit bienvenue employé, événements entreprise, cadeaux clients. Designer en ligne, livraison 48h Maroc.'
     },
     ar: {
-      title: 'هدايا الشركات والمنتجات الترويجية المغرب | Artevia',
+      title: 'منتجات ترويجية حسب المناسبة - استقبال، فعاليات، هدايا | Artevia',
       description:
-        'حلول B2B للمنتجات الترويجية المخصصة للشركات في المغرب. التصميم عبر الإنترنت، كميات صغيرة من 10 وحدات، توصيل سريع 48 ساعة.'
+        'منتجات ترويجية مخصصة لكل مناسبة: طقم ترحيب موظفين، فعاليات، هدايا عملاء. تصميم عبر الإنترنت، توصيل 48 ساعة.'
     }
   };
 
@@ -35,7 +35,7 @@ export async function generateMetadata({
       locale: locale === 'ar' ? 'ar_MA' : 'fr_FR'
     },
     alternates: {
-      canonical: `/${locale}/entreprises`
+      canonical: `/${locale}/occasions`
     }
   };
 }
@@ -44,7 +44,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({locale}));
 }
 
-export default async function EntreprisesPage({
+export default async function OccasionsPage({
   params
 }: {
   params: Promise<{locale: string}>;
@@ -52,7 +52,7 @@ export default async function EntreprisesPage({
   const {locale} = await params;
   setRequestLocale(locale);
 
-  const t = await getTranslations({locale, namespace: 'entreprises'});
+  const t = await getTranslations({locale, namespace: 'occasions'});
 
   const content = {
     hero: {
@@ -135,5 +135,5 @@ export default async function EntreprisesPage({
     }
   };
 
-  return <EntreprisesView locale={locale as Locale} content={content} />;
+  return <OccasionsView locale={locale as Locale} content={content} />;
 }

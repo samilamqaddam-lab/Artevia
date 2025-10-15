@@ -13,7 +13,7 @@ const iconMap = {
   shield: Shield
 };
 
-interface EntreprisesContent {
+interface OccasionsContent {
   hero: {
     highlight: string;
     title: string;
@@ -53,12 +53,12 @@ interface EntreprisesContent {
   };
 }
 
-interface EntreprisesViewProps {
+interface OccasionsViewProps {
   locale: Locale;
-  content: EntreprisesContent;
+  content: OccasionsContent;
 }
 
-export function EntreprisesView({locale, content}: EntreprisesViewProps) {
+export function OccasionsView({locale, content}: OccasionsViewProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 dark:from-[#0a0a0a] dark:to-[#121212]">
       {/* Hero Section */}
@@ -140,7 +140,7 @@ export function EntreprisesView({locale, content}: EntreprisesViewProps) {
             {content.useCases.items.map((useCase, index) => {
               const href =
                 useCase.slug === 'kit-bienvenue-employe'
-                  ? (`/${locale}/entreprises/kit-bienvenue-employe` as const)
+                  ? (`/${locale}/occasions/kit-bienvenue-employe` as const)
                   : (`/${locale}/rfq` as const);
 
               return (

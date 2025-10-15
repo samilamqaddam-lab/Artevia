@@ -44,8 +44,8 @@
     "hero": {
       "tagline": "Made in Morocco & Europe",
       "highlight": "Livraison Express 48h Partout au Maroc",
-      "title": "Cadeaux Entreprise et Goodies Personnalisés qui Marquent les Esprits",
-      "description": "Artevia accompagne les équipes marketing, RH et événementiel pour créer des objets publicitaires personnalisés et fournitures bureau premium adaptés au marché marocain. Designer en ligne, petites quantités acceptées.",
+      "title": "Objets Publicitaires Personnalisés pour Entreprises au Maroc",
+      "description": "Designer en ligne, petites quantités dès 10 unités, livraison express. Accompagnement des équipes marketing, RH et événementiel.",
       "ctaPrimary": "Lancer le designer",
       "ctaSecondary": "Demander un devis",
       "badges": [
@@ -135,7 +135,8 @@
       "subtitle": "Des idées clés en main pour vos onboarding, salons et cadeaux clients.",
       "items": [
         {
-          "title": "Kit Bienvenue Employé - Pack Onboarding Startup",
+          "title": "Kit Bienvenue Employé",
+          "badge": "Onboarding RH",
           "description": "Tote GOTS + carnet A5 + mug double paroi + welcome card.",
           "price": "À partir de 399 MAD / pack",
           "leadTime": "Disponible en 10 jours",
@@ -737,11 +738,11 @@
     "minimalistLine": "Ligne Minimaliste",
     "playfulShapes": "Formes Ludiques"
   },
-  "entreprises": {
+  "occasions": {
     "hero": {
-      "highlight": "Solutions B2B",
-      "title": "Objets Publicitaires et Goodies pour Entreprises",
-      "description": "Équipez vos équipes marketing, RH et événementiel avec des objets publicitaires personnalisés de qualité. Designer en ligne, petites quantités acceptées, livraison express partout au Maroc.",
+      "highlight": "Pour Chaque Moment Clé",
+      "title": "Objets Publicitaires par Occasion",
+      "description": "Trouvez les produits personnalisés parfaits pour chaque occasion: onboarding, événements, cadeaux clients. Designer en ligne, livraison express partout au Maroc.",
       "cta": {
         "primary": "Demander un devis gratuit",
         "secondary": "Découvrir nos produits"
@@ -769,8 +770,8 @@
       ]
     },
     "useCases": {
-      "title": "Nos Solutions par Occasion",
-      "subtitle": "Que ce soit pour fidéliser vos clients, accueillir de nouveaux employés ou marquer les esprits lors d'événements, Artevia vous accompagne.",
+      "title": "Toutes les Occasions",
+      "subtitle": "Que ce soit pour accueillir de nouveaux employés, marquer les esprits en événement ou fidéliser vos clients, trouvez les objets parfaits.",
       "items": [
         {
           "title": "Kit Bienvenue Employé",

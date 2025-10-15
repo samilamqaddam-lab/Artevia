@@ -1,7 +1,7 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import type {Metadata} from 'next';
 import {locales, type Locale} from '@/i18n/settings';
-import {KitBienvenueView} from '@/components/entreprises/KitBienvenueView';
+import {KitBienvenueView} from '@/components/occasions/KitBienvenueView';
 
 export async function generateMetadata({
   params
@@ -43,7 +43,7 @@ export async function generateMetadata({
       ]
     },
     alternates: {
-      canonical: `/${locale}/entreprises/kit-bienvenue-employe`
+      canonical: `/${locale}/occasions/kit-bienvenue-employe`
     }
   };
 }

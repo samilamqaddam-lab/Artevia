@@ -4,7 +4,7 @@
 import {motion} from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import {ArrowUpRight, Check} from 'lucide-react';
+import {ArrowUpRight, Check, Sparkles} from 'lucide-react';
 import {Button} from '@/components/ui/Button';
 import {isRTL} from '@/lib/utils';
 import type {Locale} from '@/i18n/settings';
@@ -61,6 +61,7 @@ type PacksContent = {
   items: {
     id: string;
     title: string;
+    badge?: string;
     description: string;
     price: string;
     leadTime: string;
@@ -358,6 +359,12 @@ export function HomeView({locale, content}: HomeViewProps) {
                 viewport={{once: true, amount: 0.3}}
                 transition={{duration: 0.4, delay: index * 0.08}}
               >
+                {item.badge && (
+                  <div className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand dark:bg-brand/20">
+                    <Sparkles size={12} />
+                    {item.badge}
+                  </div>
+                )}
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{item.title}</h3>
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{item.description}</p>
                 <div className="mt-4 space-y-1 text-sm text-slate-500 dark:text-slate-400">

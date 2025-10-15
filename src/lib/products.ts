@@ -128,9 +128,9 @@ const baseProducts: Product[] = [
         maxPantoneColors: 6,
         compatibleZones: ['cover', 'back'],
         priceTiers: [
-          {minQuantity: 50, unitPrice: 26},
-          {minQuantity: 200, unitPrice: 21},
-          {minQuantity: 500, unitPrice: 16.6}
+          {minQuantity: 50, unitPrice: 49},
+          {minQuantity: 100, unitPrice: 46},
+          {minQuantity: 300, unitPrice: 43}
         ]
       },
       {
@@ -141,9 +141,9 @@ const baseProducts: Product[] = [
         maxPantoneColors: 6,
         compatibleZones: ['cover', 'back'],
         priceTiers: [
-          {minQuantity: 50, unitPrice: 36},
-          {minQuantity: 200, unitPrice: 28.5},
-          {minQuantity: 500, unitPrice: 23.4}
+          {minQuantity: 50, unitPrice: 62},
+          {minQuantity: 100, unitPrice: 55},
+          {minQuantity: 300, unitPrice: 48.33}
         ]
       },
       {
@@ -189,6 +189,69 @@ const baseProducts: Product[] = [
     }
   },
   {
+    id: 'notepad-skin-a5',
+    slug: 'bloc-note-skin-a5',
+    nameKey: 'products.notepadSkin.name',
+    descriptionKey: 'products.notepadSkin.description',
+    category: 'office',
+    heroImage:
+      'https://www.asteris.ma/wp-content/uploads/2023/10/5300-003-P.jpg',
+    gallery: [
+      'https://www.asteris.ma/wp-content/uploads/2023/10/5300-003-P.jpg',
+      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80'
+    ],
+    moq: 30,
+    colorways: [
+      {id: 'black', labelKey: 'products.notepadSkin.colors.black', hex: '#111827'},
+      {id: 'white', labelKey: 'products.notepadSkin.colors.white', hex: '#f8fafc'},
+      {id: 'red', labelKey: 'products.notepadSkin.colors.red', hex: '#dc2626'},
+      {id: 'blue', labelKey: 'products.notepadSkin.colors.blue', hex: '#2563eb'},
+      {id: 'yellow', labelKey: 'products.notepadSkin.colors.yellow', hex: '#facc15'}
+    ],
+    brandPalette: ['#111827', '#f8fafc', '#dc2626', '#2563eb', '#facc15'],
+    imprintZones: [
+      {
+        id: 'cover',
+        nameKey: 'products.notepadSkin.zones.cover',
+        descriptionKey: 'products.notepadSkin.zones.coverDescription',
+        width: 1748,
+        height: 2480,
+        safeMargin: 120,
+        bleedMargin: 150,
+        dpi: 300
+      }
+    ],
+    methods: [
+      {
+        id: 'skin-a5-premium',
+        nameKey: 'products.notepadSkin.methods.skinA5.name',
+        descriptionKey: 'products.notepadSkin.methods.skinA5.description',
+        setupFee: 250,
+        maxPantoneColors: 6,
+        compatibleZones: ['cover'],
+        priceTiers: [
+          {minQuantity: 30, unitPrice: 90},
+          {minQuantity: 100, unitPrice: 79},
+          {minQuantity: 300, unitPrice: 70}
+        ]
+      }
+    ],
+    leadTimes: [
+      {id: 'standard', labelKey: 'leadTimes.standard', days: 14},
+      {id: 'express', labelKey: 'leadTimes.express', days: 7, surchargePercent: 18}
+    ],
+    defaultMethodId: 'skin-a5-premium',
+    defaultZoneId: 'cover',
+    defaultLeadTimeId: 'standard',
+    creationCanvas: {
+      width: 1748,
+      height: 2480,
+      safeMargin: 120,
+      bleedMargin: 150,
+      dpi: 300
+    }
+  },
+  {
     id: 'pen-s1',
     slug: 'stylos-metal-s1',
     nameKey: 'products.pen.name',
@@ -202,11 +265,12 @@ const baseProducts: Product[] = [
     ],
     moq: 30,
     colorways: [
-      {id: 'graphite', labelKey: 'products.pen.colors.graphite', hex: '#2f3944'},
-      {id: 'silver', labelKey: 'products.pen.colors.silver', hex: '#d4d7dc'},
-      {id: 'royal', labelKey: 'products.pen.colors.royal', hex: '#274c77'}
+      {id: 'black', labelKey: 'products.pen.colors.black', hex: '#1f2937'},
+      {id: 'white', labelKey: 'products.pen.colors.white', hex: '#f8fafc'},
+      {id: 'red', labelKey: 'products.pen.colors.red', hex: '#dc2626'},
+      {id: 'blue', labelKey: 'products.pen.colors.blue', hex: '#2563eb'}
     ],
-    brandPalette: ['#2f3944', '#d4d7dc', '#274c77', '#f8fafc'],
+    brandPalette: ['#1f2937', '#f8fafc', '#dc2626', '#2563eb'],
     imprintZones: [
       {
         id: 'barrel',
@@ -324,9 +388,9 @@ const baseProducts: Product[] = [
         maxPantoneColors: 6,
         compatibleZones: ['front'],
         priceTiers: [
-          {minQuantity: 100, unitPrice: 9.5},
-          {minQuantity: 500, unitPrice: 6.3},
-          {minQuantity: 1000, unitPrice: 5.25}
+          {minQuantity: 100, unitPrice: 10.5},
+          {minQuantity: 500, unitPrice: 9.5},
+          {minQuantity: 1000, unitPrice: 8.7}
         ]
       },
       {
@@ -456,11 +520,12 @@ const baseProducts: Product[] = [
     ],
     moq: 10,
     colorways: [
-      {id: 'bamboo', labelKey: 'products.usb.colors.bamboo', hex: '#d9b68a'},
       {id: 'black', labelKey: 'products.usb.colors.black', hex: '#111827'},
-      {id: 'silver', labelKey: 'products.usb.colors.silver', hex: '#cbd5f5'}
+      {id: 'white', labelKey: 'products.usb.colors.white', hex: '#f8fafc'},
+      {id: 'red', labelKey: 'products.usb.colors.red', hex: '#dc2626'},
+      {id: 'blue', labelKey: 'products.usb.colors.blue', hex: '#2563eb'}
     ],
-    brandPalette: ['#d9b68a', '#111827', '#cbd5f5', '#efb366'],
+    brandPalette: ['#111827', '#f8fafc', '#dc2626', '#2563eb'],
     imprintZones: [
       {
         id: 'recto',
@@ -614,9 +679,10 @@ const baseProducts: Product[] = [
     ],
     moq: 20,
     colorways: [
-      {id: 'white', labelKey: 'products.tshirt.colors.white', hex: '#ffffff'},
       {id: 'black', labelKey: 'products.tshirt.colors.black', hex: '#111827'},
-      {id: 'deepblue', labelKey: 'products.tshirt.colors.deepblue', hex: '#1d4ed8'}
+      {id: 'white', labelKey: 'products.tshirt.colors.white', hex: '#ffffff'},
+      {id: 'red', labelKey: 'products.tshirt.colors.red', hex: '#dc2626'},
+      {id: 'blue', labelKey: 'products.tshirt.colors.blue', hex: '#2563eb'}
     ],
     brandPalette: ['#ffffff', '#1d4ed8', '#facc15', '#111827'],
     imprintZones: [

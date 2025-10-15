@@ -300,13 +300,35 @@
         }
       }
     },
+    "notepadSkin": {
+      "name": "Bloc-note Skin A5",
+      "description": "Bloc-note Skin — un carnet élégant et pratique avec une couverture souple au toucher peau, idéal pour la prise de notes, les listes ou les idées du quotidien. Disponible en plusieurs couleurs et formats pour un style professionnel et moderne.",
+      "colors": {
+        "black": "Noir",
+        "white": "Blanc",
+        "red": "Rouge",
+        "blue": "Bleu",
+        "yellow": "Jaune"
+      },
+      "zones": {
+        "cover": "Couverture souple",
+        "coverDescription": "Couverture soft-touch texturée effet peau pour un rendu premium."
+      },
+      "methods": {
+        "skinA5": {
+          "name": "Bloc Skin A5 Premium",
+          "description": "Couverture soft-touch avec pelliculage spécial toucher peau et reliure cousue."
+        }
+      }
+    },
     "pen": {
       "name": "Stylo Métal Personnalisé S1",
       "description": "Stylo métal personnalisé avec gravure laser ou tampographie. Corps aluminium rechargeable, grip soft-touch. Idéal cadeau entreprise et objets publicitaires.",
       "colors": {
-        "graphite": "Graphite mat",
-        "silver": "Argent satiné",
-        "royal": "Bleu royal"
+        "black": "Noir",
+        "white": "Blanc",
+        "red": "Rouge",
+        "blue": "Bleu"
       },
       "zones": {
         "barrel": "Corps cylindrique",
@@ -376,12 +398,13 @@
       }
     },
     "usb": {
-      "name": "Clé USB bambou 16 Go",
-      "description": "Bois FSC, puce grade A et rotation 360° magnétique.",
+      "name": "Clé USB 16 Go Personnalisée",
+      "description": "Clé USB 16 Go personnalisable avec votre logo. Puce grade A, rotation 360° magnétique. Disponible en plusieurs couleurs.",
       "colors": {
-        "bamboo": "Bambou naturel",
         "black": "Noir",
-        "silver": "Argent"
+        "white": "Blanc",
+        "red": "Rouge",
+        "blue": "Bleu"
       },
       "zones": {
         "recto": "Face recto",
@@ -427,9 +450,10 @@
       "name": "T-shirt coton peigné",
       "description": "190 g/m² coupe mixte, col renforcé et couture double aiguille.",
       "colors": {
+        "black": "Noir",
         "white": "Blanc",
-        "black": "Noir profond",
-        "deepblue": "Bleu océan"
+        "red": "Rouge",
+        "blue": "Bleu"
       },
       "zones": {
         "front": "Devant",

@@ -23,7 +23,7 @@ export function Header() {
     () => [
       {href: `/${locale}`, label: t('nav.home')},
       {href: `/${locale}/catalog`, label: t('nav.catalog')},
-      {href: `/${locale}/occasions`, label: t('nav.occasions')},
+      {href: `/${locale}/solutions`, label: t('nav.occasions')},
       {href: `/${locale}/designs`, label: t('nav.projects')},
       {href: `/${locale}/rfq`, label: t('nav.quotes')}
     ],

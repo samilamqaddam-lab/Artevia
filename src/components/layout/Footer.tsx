@@ -13,7 +13,7 @@ export function Footer() {
           <Link href={`/${locale}/catalog`} className="transition-colors hover:text-brand">
             {t('nav.catalog')}
           </Link>
-          <Link href={`/${locale}/occasions`} className="transition-colors hover:text-brand">
+          <Link href={`/${locale}/solutions`} className="transition-colors hover:text-brand">
             {t('nav.occasions')}
           </Link>
           <Link href={`/${locale}/designs`} className="transition-colors hover:text-brand">

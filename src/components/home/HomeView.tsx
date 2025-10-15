@@ -62,6 +62,7 @@ type PacksContent = {
     id: string;
     title: string;
     badge?: string;
+    discount?: string;
     description: string;
     price: string;
     leadTime: string;
@@ -359,12 +360,19 @@ export function HomeView({locale, content}: HomeViewProps) {
                 viewport={{once: true, amount: 0.3}}
                 transition={{duration: 0.4, delay: index * 0.08}}
               >
-                {item.badge && (
-                  <div className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand dark:bg-brand/20">
-                    <Sparkles size={12} />
-                    {item.badge}
-                  </div>
-                )}
+                <div className="mb-3 flex flex-wrap items-center gap-2">
+                  {item.badge && (
+                    <div className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand dark:bg-brand/20">
+                      <Sparkles size={12} />
+                      {item.badge}
+                    </div>
+                  )}
+                  {item.discount && (
+                    <div className="inline-flex w-fit items-center rounded-full bg-accent/20 px-3 py-1 text-xs font-bold text-accent">
+                      {item.discount}
+                    </div>
+                  )}
+                </div>
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{item.title}</h3>
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{item.description}</p>
                 <div className="mt-4 space-y-1 text-sm text-slate-500 dark:text-slate-400">

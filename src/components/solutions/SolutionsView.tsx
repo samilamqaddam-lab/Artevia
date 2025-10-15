@@ -13,7 +13,7 @@ const iconMap = {
   shield: Shield
 };
 
-interface OccasionsContent {
+interface SolutionsContent {
   hero: {
     highlight: string;
     title: string;
@@ -53,12 +53,12 @@ interface OccasionsContent {
   };
 }
 
-interface OccasionsViewProps {
+interface SolutionsViewProps {
   locale: Locale;
-  content: OccasionsContent;
+  content: SolutionsContent;
 }
 
-export function OccasionsView({locale, content}: OccasionsViewProps) {
+export function SolutionsView({locale, content}: SolutionsViewProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50 dark:from-[#0a0a0a] dark:to-[#121212]">
       {/* Hero Section */}
@@ -140,7 +140,7 @@ export function OccasionsView({locale, content}: OccasionsViewProps) {
             {content.useCases.items.map((useCase, index) => {
               const href =
                 useCase.slug === 'kit-bienvenue-employe'
-                  ? (`/${locale}/occasions/kit-bienvenue-employe` as const)
+                  ? (`/${locale}/solutions/kit-bienvenue-employe` as const)
                   : (`/${locale}/rfq` as const);
 
               return (

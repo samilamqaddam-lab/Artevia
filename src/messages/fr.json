@@ -5,7 +5,7 @@
     "nav": {
       "home": "Accueil",
       "catalog": "Catalogue",
-      "occasions": "Occasions",
+      "occasions": "Solutions",
       "projects": "Projets",
       "quotes": "Demandes de devis",
       "saved": "Projets sauvegardés",
@@ -138,6 +138,7 @@
         {
           "title": "Kit Bienvenue Employé",
           "badge": "Onboarding RH",
+          "discount": "-7% inclus",
           "description": "Tote GOTS + carnet A5 + mug double paroi + welcome card.",
           "price": "À partir de 399 MAD / pack",
           "leadTime": "Disponible en 10 jours",
@@ -150,6 +151,7 @@
         },
         {
           "title": "Pack Salon & Événement",
+          "discount": "-6% inclus",
           "description": "Badge nominatif, lanyard sublimé, carnet spirale, mini powerbank.",
           "price": "À partir de 289 MAD / set",
           "leadTime": "Prêt pour vos salons en 7 jours",
@@ -162,6 +164,7 @@
         },
         {
           "title": "Pack Premium Direction",
+          "discount": "-8% inclus",
           "description": "Coffret bois, stylo métal gravé, carnet relié, thermos isotherme 500 ml.",
           "price": "À partir de 649 MAD / coffret",
           "leadTime": "Livraison express en 8 jours",
@@ -739,11 +742,11 @@
     "minimalistLine": "Ligne Minimaliste",
     "playfulShapes": "Formes Ludiques"
   },
-  "occasions": {
+  "solutions": {
     "hero": {
-      "highlight": "Pour Chaque Moment Clé",
-      "title": "Objets Publicitaires par Occasion",
-      "description": "Trouvez les produits personnalisés parfaits pour chaque occasion: onboarding, événements, cadeaux clients. Designer en ligne, livraison express partout au Maroc.",
+      "highlight": "Solutions Clés en Main",
+      "title": "Solutions Objets Publicitaires pour Entreprises",
+      "description": "Découvrez nos packs prêts à l'emploi pour chaque occasion: onboarding, événements, cadeaux clients. Prix transparents, BAT sous 24h, livraison partout au Maroc.",
       "cta": {
         "primary": "Demander un devis gratuit",
         "secondary": "Découvrir nos produits"

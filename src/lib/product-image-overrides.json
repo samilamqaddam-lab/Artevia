@@ -257,5 +257,26 @@
     ],
     "fetchedAt": "2025-09-29T19:05:09.653Z",
     "query": "plain cotton t shirt front view unsplash"
+  },
+  "bloc-note-skin-a5": {
+    "heroImage": "/images/products/blocnote-skin-a5-1.jpg",
+    "gallery": [
+      "/images/products/blocnote-skin-a5-1.jpg",
+      "/images/products/blocnote-skin-a5-2.jpg"
+    ],
+    "attributions": [
+      {
+        "title": "Beechmore Books Ruled Softcover Notebook",
+        "source": "Beechmore Books",
+        "link": "https://beechmorebooks.com/products/a5-softcover-ruled-notebook-beige"
+      },
+      {
+        "title": "A5 Budget Soft Touch Notebooks",
+        "source": "Total Merchandise",
+        "link": "https://www.totalmerchandise.co.uk/branded-products/promotional-paper-products/promotional-a5-spectrum-soft-touch-notebooks"
+      }
+    ],
+    "fetchedAt": "2025-10-17T00:00:00.000Z",
+    "query": "premium soft touch notebook A5 beige texture"
   }
 }

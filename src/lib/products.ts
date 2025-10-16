@@ -145,32 +145,6 @@ const baseProducts: Product[] = [
           {minQuantity: 100, unitPrice: 55},
           {minQuantity: 300, unitPrice: 48.33}
         ]
-      },
-      {
-        id: 'digital-a6-100',
-        nameKey: 'products.notepad.methods.digitalA6_100.name',
-        descriptionKey: 'products.notepad.methods.digitalA6_100.description',
-        setupFee: 210,
-        maxPantoneColors: 6,
-        compatibleZones: ['cover', 'back'],
-        priceTiers: [
-          {minQuantity: 50, unitPrice: 26},
-          {minQuantity: 200, unitPrice: 18},
-          {minQuantity: 500, unitPrice: 12.8}
-        ]
-      },
-      {
-        id: 'premium-a5-150',
-        nameKey: 'products.notepad.methods.premiumA5_150.name',
-        descriptionKey: 'products.notepad.methods.premiumA5_150.description',
-        setupFee: 280,
-        maxPantoneColors: 4,
-        compatibleZones: ['cover'],
-        priceTiers: [
-          {minQuantity: 50, unitPrice: 28},
-          {minQuantity: 200, unitPrice: 25.5},
-          {minQuantity: 500, unitPrice: 21.4}
-        ]
       }
     ],
     leadTimes: [

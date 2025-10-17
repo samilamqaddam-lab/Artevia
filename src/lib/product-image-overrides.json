@@ -259,16 +259,40 @@
     "query": "plain cotton t shirt front view unsplash"
   },
   "bloc-note-skin-a5": {
-    "heroImage": "/images/products/blocnote-skin-a5-1.jpg",
+    "heroImage": "/images/products/blocnote-skin-a5-6.jpg",
     "gallery": [
+      "/images/products/blocnote-skin-a5-6.jpg",
       "/images/products/blocnote-skin-a5-1.jpg",
+      "/images/products/blocnote-skin-a5-4.jpg",
+      "/images/products/blocnote-skin-a5-3.jpg",
+      "/images/products/blocnote-skin-a5-5.jpg",
       "/images/products/blocnote-skin-a5-2.jpg"
     ],
     "attributions": [
       {
+        "title": "A5 Soft Touch Notebooks - Full Colour Print",
+        "source": "Promo Punks",
+        "link": "https://promopunks.com.au/products/a5-soft-touch-notebooks"
+      },
+      {
         "title": "Beechmore Books Ruled Softcover Notebook",
         "source": "Beechmore Books",
         "link": "https://beechmorebooks.com/products/a5-softcover-ruled-notebook-beige"
+      },
+      {
+        "title": "Customizable Soft Cover A5 Notebook",
+        "source": "Creations That Sell",
+        "link": "https://www.creationsthatsell.com/p/product/8d857c49-6a30-48c2-a8f7-13d2feb59155/customizable-soft-cover-a5-notebook"
+      },
+      {
+        "title": "Soft Touch A5 Notebooks",
+        "source": "GetPersonalised",
+        "link": "https://getpersonalised.ie/products/personalised-soft-touch-a5-notebooks"
+      },
+      {
+        "title": "A5 Soft Touch Notebook & Pen Set",
+        "source": "Total Merchandise",
+        "link": "https://www.totalmerchandise.co.uk/branded-products/promotional-paper-products/a5-soft-touch-notebook-and-pen"
       },
       {
         "title": "A5 Budget Soft Touch Notebooks",
@@ -276,7 +300,7 @@
         "link": "https://www.totalmerchandise.co.uk/branded-products/promotional-paper-products/promotional-a5-spectrum-soft-touch-notebooks"
       }
     ],
-    "fetchedAt": "2025-10-17T00:00:00.000Z",
-    "query": "premium soft touch notebook A5 beige texture"
+    "fetchedAt": "2025-10-17T00:30:00.000Z",
+    "query": "premium soft touch notebook A5 promotional customizable"
   }
 }

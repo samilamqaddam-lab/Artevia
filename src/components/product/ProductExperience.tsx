@@ -452,6 +452,23 @@ export function ProductExperience({
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6" dir={dir}>
       <div className="flex flex-col gap-12 rounded-[36px] border border-slate-200 bg-white px-4 py-10 text-slate-900 shadow-[0_45px_90px_-70px_rgba(0,0,0,0.1)] transition-colors sm:px-10 lg:flex-row dark:border-white/10 dark:bg-[#121212] dark:text-slate-100 dark:shadow-[0_45px_90px_-70px_rgba(0,0,0,0.85)]">
         <section className="flex-1 space-y-6">
+          <div className="space-y-4">
+            <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl dark:text-white">{name}</h1>
+            <p className="text-base text-slate-600 dark:text-slate-300">{description}</p>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 dark:border-white/10 dark:bg-[#111111]">
+                <span className="font-medium text-slate-500 dark:text-slate-400">{copy.moq}:</span>
+                <span className="font-semibold text-slate-900 dark:text-white">{product.moq}</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 dark:border-white/10 dark:bg-[#111111]">
+                <span className="font-medium text-slate-500 dark:text-slate-400">{copy.leadTime}:</span>
+                <span className="font-semibold text-slate-900 dark:text-white">
+                  {formatLeadTime(selectedLeadTime, locale)}
+                </span>
+              </div>
+            </div>
+          </div>
+
           <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_25px_60px_-45px_rgba(130,212,187,0.18)] dark:border-white/10 dark:bg-[#171717] dark:shadow-[0_25px_60px_-45px_rgba(130,212,187,0.45)]">
             <div className="relative aspect-square">
               <Image
@@ -509,27 +526,6 @@ export function ProductExperience({
                 ))}
               </div>
             )}
-
-            <div className="space-y-4 p-6">
-              <div>
-                <h1 className="text-2xl font-semibold text-slate-900 dark:text-white">{name}</h1>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{description}</p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600 dark:border-white/10 dark:bg-[#111111] dark:text-slate-200">
-                <dl className="grid gap-3">
-                  <div className="flex items-center justify-between">
-                    <dt className="font-medium text-slate-500 dark:text-slate-400">{copy.moq}</dt>
-                    <dd className="font-semibold text-slate-900 dark:text-white">{product.moq}</dd>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <dt className="font-medium text-slate-500 dark:text-slate-400">{copy.leadTime}</dt>
-                    <dd className="font-semibold text-slate-900 dark:text-white">
-                      {formatLeadTime(selectedLeadTime, locale)} ({selectedLeadTime.label})
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
           </div>
         </section>
         <section className="flex-[1.4] space-y-10">

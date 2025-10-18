@@ -749,6 +749,26 @@
     "load": "Charger",
     "delete": "Supprimer"
   },
+  "account": {
+    "title": "Mon Compte",
+    "nav": {
+      "designs": "Mes Designs",
+      "orders": "Mes Commandes"
+    },
+    "designs": {
+      "title": "Mes Designs",
+      "empty": "Aucun design sauvegardé. Créez votre premier design en personnalisant un produit du catalogue.",
+      "load": "Charger",
+      "delete": "Supprimer",
+      "duplicate": "Dupliquer",
+      "migrationPrompt": "Vous avez des projets stockés localement. Migrez-les vers le cloud pour y accéder depuis n'importe quel appareil.",
+      "migrateButton": "Migrer mes projets"
+    },
+    "orders": {
+      "title": "Mes Commandes",
+      "empty": "Aucune commande pour le moment."
+    }
+  },
   "leadTimes": {
     "standard": "Standard",
     "express": "Express"

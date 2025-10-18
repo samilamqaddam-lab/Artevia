@@ -24,7 +24,6 @@ export function Header() {
       {href: `/${locale}`, label: t('nav.home')},
       {href: `/${locale}/catalog`, label: t('nav.catalog')},
       {href: `/${locale}/solutions`, label: t('nav.occasions')},
-      {href: `/${locale}/designs`, label: t('nav.projects')},
       {href: `/${locale}/rfq`, label: t('nav.quotes')}
     ],
     [locale, t]
@@ -100,7 +99,7 @@ export function Header() {
             session ? (
               <div className="hidden items-center gap-2 md:flex">
                 <Link
-                  href={`/${locale}/account/orders` as any}
+                  href={`/${locale}/account/designs` as any}
                   className="text-sm font-semibold text-slate-700 transition-colors hover:text-brand dark:text-slate-200"
                 >
                   {t('nav.account')}
@@ -208,7 +207,7 @@ function MobileNav({navItems, locale}: {navItems: NavItem[]; locale: string}) {
             session ? (
               <div className="mt-6 flex flex-col gap-3">
                 <Link
-                  href={`/${locale}/account/orders` as any}
+                  href={`/${locale}/account/designs` as any}
                   className="text-sm font-semibold text-slate-700 dark:text-slate-200"
                 >
                   {t('nav.account')}

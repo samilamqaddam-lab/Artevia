@@ -63,7 +63,7 @@ export function CatalogView({
                 transition={{duration: 0.4, delay: index * MIN_DISPLAY_DELAY}}
                 className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all hover:-translate-y-1 hover:shadow-[0_30px_60px_-40px_rgba(130,212,187,0.35)] dark:border-white/10 dark:bg-[#161616] dark:text-slate-100 dark:hover:shadow-[0_30px_60px_-40px_rgba(130,212,187,0.65)]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <Link href={`/${locale}/product/${product.slug}`} className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={product.heroImage}
                     alt={product.name}
@@ -71,12 +71,12 @@ export function CatalogView({
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 30vw"
                   />
-                </div>
+                </Link>
                 <div className="flex flex-1 flex-col gap-4 p-6">
-                  <div>
-                    <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{product.name}</h2>
+                  <Link href={`/${locale}/product/${product.slug}`}>
+                    <h2 className="text-lg font-semibold text-slate-900 transition-colors hover:text-brand dark:text-white dark:hover:text-brand">{product.name}</h2>
                     <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{product.description}</p>
-                  </div>
+                  </Link>
                   <div className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
                     <div className="flex items-center justify-between rounded-2xl bg-slate-100 px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-600 dark:bg-white/5 dark:text-slate-300">
                       <span>{moqLabel}</span>

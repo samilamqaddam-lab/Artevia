@@ -175,12 +175,13 @@ export function KitBienvenueView({locale, content}: KitBienvenueViewProps) {
 
           <div className="grid gap-8 lg:grid-cols-3">
             {content.included.packs.map((pack, index) => (
-              <div
+              <Link
                 key={index}
-                className={`relative rounded-3xl border-2 bg-white p-8 dark:bg-[#171717] ${
+                href={`/${locale}/rfq`}
+                className={`group relative rounded-3xl border-2 bg-white p-8 transition-all hover:-translate-y-1 hover:shadow-xl dark:bg-[#171717] ${
                   pack.popular
                     ? 'border-brand shadow-xl scale-105'
-                    : 'border-slate-200 dark:border-white/10'
+                    : 'border-slate-200 hover:border-brand/50 dark:border-white/10 dark:hover:border-brand/50'
                 }`}
               >
                 {pack.popular && (
@@ -204,7 +205,7 @@ export function KitBienvenueView({locale, content}: KitBienvenueViewProps) {
                   ))}
                 </div>
 
-                <Link href={`/${locale}/rfq`}>
+                <div className="pointer-events-none">
                   <Button
                     variant={pack.popular ? 'primary' : 'secondary'}
                     className="w-full"
@@ -212,8 +213,8 @@ export function KitBienvenueView({locale, content}: KitBienvenueViewProps) {
                   >
                     Demander un devis
                   </Button>
-                </Link>
-              </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>

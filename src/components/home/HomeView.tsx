@@ -239,7 +239,7 @@ export function HomeView({locale, content}: HomeViewProps) {
               viewport={{once: true, amount: 0.3}}
               transition={{duration: 0.4, delay: index * 0.08}}
             >
-              <div className="relative aspect-[4/3]">
+              <Link href={category.href as any} className="relative aspect-[4/3]">
                 <Image
                   src={category.image}
                   alt={category.title}
@@ -250,10 +250,12 @@ export function HomeView({locale, content}: HomeViewProps) {
                 <span className="absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm backdrop-blur dark:bg-white/10 dark:text-slate-200">
                   {category.tag}
                 </span>
-              </div>
+              </Link>
               <div className="flex flex-1 flex-col gap-3 p-5">
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{category.title}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-300">{category.description}</p>
+                <Link href={category.href as any}>
+                  <h3 className="text-lg font-semibold text-slate-900 transition-colors hover:text-brand dark:text-white dark:hover:text-brand">{category.title}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">{category.description}</p>
+                </Link>
                 <Button asChild variant="ghost" size="sm" className="mt-auto self-start text-sm font-semibold text-brand">
                   <Link href={category.href as any}>{categoryCta}</Link>
                 </Button>
@@ -352,54 +354,59 @@ export function HomeView({locale, content}: HomeViewProps) {
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
             {packs.items.map((item, index) => (
-              <motion.article
+              <Link
                 key={item.id}
-                className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:shadow-[0_30px_60px_-45px_rgba(130,212,187,0.45)] dark:border-white/10 dark:bg-[#161616]"
-                initial={{opacity: 0, y: 20}}
-                whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true, amount: 0.3}}
-                transition={{duration: 0.4, delay: index * 0.08}}
+                href={item.href as any}
+                data-pack-id={item.id}
               >
-                <div className="mb-3 flex flex-wrap items-center gap-2">
-                  {item.badge && (
-                    <div className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand dark:bg-brand/20">
-                      <Sparkles size={12} />
-                      {item.badge}
-                    </div>
-                  )}
-                  {item.discount && (
-                    <div className="inline-flex w-fit items-center rounded-full bg-accent/20 px-3 py-1 text-xs font-bold text-accent">
-                      {item.discount}
-                    </div>
-                  )}
-                </div>
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{item.description}</p>
-                <div className="mt-4 space-y-1 text-sm text-slate-500 dark:text-slate-400">
-                  <div>{item.price}</div>
-                  <div>{item.leadTime}</div>
-                </div>
-                {item.quantityLabel && (
-                  <div className="mt-4 rounded-2xl bg-brand/10 px-3 py-3 text-xs leading-relaxed font-semibold text-brand">
-                    {item.quantityLabel}
+                <motion.article
+                  className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm transition hover:-translate-y-1 hover:border-brand/50 hover:shadow-[0_30px_60px_-45px_rgba(130,212,187,0.45)] dark:border-white/10 dark:bg-[#161616] dark:hover:border-brand/50"
+                  initial={{opacity: 0, y: 20}}
+                  whileInView={{opacity: 1, y: 0}}
+                  viewport={{once: true, amount: 0.3}}
+                  transition={{duration: 0.4, delay: index * 0.08}}
+                >
+                  <div className="mb-3 flex flex-wrap items-center gap-2">
+                    {item.badge && (
+                      <div className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand dark:bg-brand/20">
+                        <Sparkles size={12} />
+                        {item.badge}
+                      </div>
+                    )}
+                    {item.discount && (
+                      <div className="inline-flex w-fit items-center rounded-full bg-accent/20 px-3 py-1 text-xs font-bold text-accent">
+                        {item.discount}
+                      </div>
+                    )}
                   </div>
-                )}
-                <ul className="mt-5 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                  {item.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent/30 text-charcoal">
-                        <Check size={12} />
-                      </span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button asChild variant="secondary" size="sm" className="mt-auto self-start">
-                  <Link href={item.href as any} data-pack-id={item.id}>
-                    {packs.cta}
-                  </Link>
-                </Button>
-              </motion.article>
+                  <h3 className="text-lg font-semibold text-slate-900 transition-colors group-hover:text-brand dark:text-white dark:group-hover:text-brand">{item.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{item.description}</p>
+                  <div className="mt-4 space-y-1 text-sm text-slate-500 dark:text-slate-400">
+                    <div>{item.price}</div>
+                    <div>{item.leadTime}</div>
+                  </div>
+                  {item.quantityLabel && (
+                    <div className="mt-4 rounded-2xl bg-brand/10 px-3 py-3 text-xs leading-relaxed font-semibold text-brand">
+                      {item.quantityLabel}
+                    </div>
+                  )}
+                  <ul className="mt-5 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                    {item.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2">
+                        <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent/30 text-charcoal">
+                          <Check size={12} />
+                        </span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto self-start pt-5 pointer-events-none">
+                    <Button variant="secondary" size="sm">
+                      {packs.cta}
+                    </Button>
+                  </div>
+                </motion.article>
+              </Link>
             ))}
           </div>
         </div>

@@ -167,7 +167,7 @@
           "discount": "-8% inclus",
           "description": "Coffret bois, stylo métal gravé, carnet relié, thermos isotherme 500 ml.",
           "price": "À partir de 649 MAD / coffret",
-          "leadTime": "Livraison express en 8 jours",
+          "leadTime": "Livraison en 7-14 jours",
           "features": [
             "Gravure laser sur métal",
             "Carte personnalisée signée",
@@ -537,7 +537,7 @@
     "colorCount": "Nombre de couleurs Pantone",
     "colorway": "Couleur du support",
     "leadTime": "Délais de production",
-    "leadTimeHint": "Standard 12j ouvrés / Express avec supplément",
+    "leadTimeHint": "Standard 14j ouvrés / Express 7j avec supplément",
     "priceGrid": {
       "title": "Tarifs dégressifs",
       "unit": "Prix unitaire HT",
@@ -788,8 +788,8 @@
           "description": "Dès 10 unités pour certains produits. Parfait pour startups et PME qui veulent tester sans gros volumes."
         },
         {
-          "title": "Livraison Express 48h",
-          "description": "Commandes urgentes? Livraison rapide partout au Maroc en 48h pour vos événements et lancements."
+          "title": "Livraison Rapide 7 Jours",
+          "description": "Option express disponible. Livraison rapide partout au Maroc en 7 jours pour vos événements et lancements."
         },
         {
           "title": "Service Client Dédié B2B",
@@ -917,7 +917,7 @@
         },
         {
           "title": "Recevez Vos Kits",
-          "description": "Livraison express 48h partout au Maroc. Kits emballés individuellement, prêts à offrir."
+          "description": "Livraison en 7-14 jours partout au Maroc. Kits emballés individuellement, prêts à offrir."
         }
       ]
     },

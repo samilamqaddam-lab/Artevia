@@ -148,8 +148,8 @@ const baseProducts: Product[] = [
       }
     ],
     leadTimes: [
-      {id: 'standard', labelKey: 'leadTimes.standard', days: 12},
-      {id: 'express', labelKey: 'leadTimes.express', days: 6, surchargePercent: 18}
+      {id: 'standard', labelKey: 'leadTimes.standard', days: 14},
+      {id: 'express', labelKey: 'leadTimes.express', days: 7, surchargePercent: 18}
     ],
     defaultMethodId: 'digital-a5-100',
     defaultZoneId: 'cover',
@@ -298,8 +298,8 @@ const baseProducts: Product[] = [
       }
     ],
     leadTimes: [
-      {id: 'standard', labelKey: 'leadTimes.standard', days: 10},
-      {id: 'express', labelKey: 'leadTimes.express', days: 4, surchargePercent: 15}
+      {id: 'standard', labelKey: 'leadTimes.standard', days: 14},
+      {id: 'express', labelKey: 'leadTimes.express', days: 7, surchargePercent: 15}
     ],
     defaultMethodId: 'laser-s1',
     defaultZoneId: 'barrel',
@@ -466,8 +466,8 @@ const baseProducts: Product[] = [
       }
     ],
     leadTimes: [
-      {id: 'standard', labelKey: 'leadTimes.standard', days: 8},
-      {id: 'express', labelKey: 'leadTimes.express', days: 3, surchargePercent: 12}
+      {id: 'standard', labelKey: 'leadTimes.standard', days: 14},
+      {id: 'express', labelKey: 'leadTimes.express', days: 7, surchargePercent: 12}
     ],
     defaultMethodId: 'sublimation',
     defaultZoneId: 'wrap',
@@ -551,8 +551,8 @@ const baseProducts: Product[] = [
       }
     ],
     leadTimes: [
-      {id: 'standard', labelKey: 'leadTimes.standard', days: 9},
-      {id: 'express', labelKey: 'leadTimes.express', days: 4, surchargePercent: 14}
+      {id: 'standard', labelKey: 'leadTimes.standard', days: 14},
+      {id: 'express', labelKey: 'leadTimes.express', days: 7, surchargePercent: 14}
     ],
     defaultMethodId: 'laser-usb',
     defaultZoneId: 'recto',
@@ -625,8 +625,8 @@ const baseProducts: Product[] = [
       }
     ],
     leadTimes: [
-      {id: 'standard', labelKey: 'leadTimes.standard', days: 7},
-      {id: 'express', labelKey: 'leadTimes.express', days: 3, surchargePercent: 12}
+      {id: 'standard', labelKey: 'leadTimes.standard', days: 14},
+      {id: 'express', labelKey: 'leadTimes.express', days: 7, surchargePercent: 12}
     ],
     defaultMethodId: 'sublimation-pad',
     defaultZoneId: 'surface',
@@ -720,7 +720,7 @@ const baseProducts: Product[] = [
       }
     ],
     leadTimes: [
-      {id: 'standard', labelKey: 'leadTimes.standard', days: 15},
+      {id: 'standard', labelKey: 'leadTimes.standard', days: 14},
       {id: 'express', labelKey: 'leadTimes.express', days: 7, surchargePercent: 18}
     ],
     defaultMethodId: 'silkscreen-tee',
@@ -804,8 +804,8 @@ const baseProducts: Product[] = [
       }
     ],
     leadTimes: [
-      {id: 'standard', labelKey: 'leadTimes.standard', days: 12},
-      {id: 'express', labelKey: 'leadTimes.express', days: 6, surchargePercent: 15}
+      {id: 'standard', labelKey: 'leadTimes.standard', days: 14},
+      {id: 'express', labelKey: 'leadTimes.express', days: 7, surchargePercent: 15}
     ],
     defaultMethodId: 'screenprint-tote',
     defaultZoneId: 'front',

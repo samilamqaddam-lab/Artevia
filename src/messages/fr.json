@@ -525,7 +525,11 @@
       "error": "Impossible de créer le compte. Veuillez réessayer.",
       "passwordMismatch": "Les mots de passe ne correspondent pas.",
       "switch": "Déjà un compte ?",
-      "switchCta": "Se connecter"
+      "switchCta": "Se connecter",
+      "confirmationTitle": "Vérifiez votre email",
+      "confirmationMessage": "Nous avons envoyé un lien de confirmation à :",
+      "confirmationHint": "Cliquez sur le lien dans l'email pour activer votre compte. Si vous ne voyez pas l'email, vérifiez vos spams.",
+      "backToLogin": "Retour à la connexion"
     }
   },
   "product": {

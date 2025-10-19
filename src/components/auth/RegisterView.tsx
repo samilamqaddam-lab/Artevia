@@ -22,6 +22,7 @@ export function RegisterView({locale}: RegisterViewProps) {
   const [form, setForm] = useState({email: '', password: '', confirm: ''});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleChange = (field: 'email' | 'password' | 'confirm') => (event: ChangeEvent<HTMLInputElement>) => {
     setForm((prev) => ({...prev, [field]: event.target.value}));
@@ -61,9 +62,51 @@ export function RegisterView({locale}: RegisterViewProps) {
       return;
     }
 
-    pushToast({title: t('success'), description: t('checkEmail')});
-    router.push(`/${locale}/auth/login`);
+    // Show confirmation screen instead of redirecting
+    setShowConfirmation(true);
+    setLoading(false);
   };
+
+  // Show confirmation screen after successful signup
+  if (showConfirmation) {
+    return (
+      <section className="mx-auto flex min-h-[70vh] w-full max-w-md flex-col justify-center gap-8 px-4 py-12 sm:px-6">
+        <div className="rounded-3xl border border-green-200 bg-green-50 p-8 text-center dark:border-green-900/30 dark:bg-green-900/10">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+            <svg
+              className="h-8 w-8 text-green-600 dark:text-green-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+          <h1 className="mb-3 text-2xl font-semibold text-slate-900 dark:text-white">
+            {t('confirmationTitle')}
+          </h1>
+          <p className="mb-2 text-sm text-slate-700 dark:text-slate-300">
+            {t('confirmationMessage')}
+          </p>
+          <p className="mb-6 font-medium text-brand">{form.email}</p>
+          <p className="mb-6 text-xs text-slate-600 dark:text-slate-400">
+            {t('confirmationHint')}
+          </p>
+          <Link
+            href={`/${locale}/auth/login`}
+            className="inline-flex items-center justify-center rounded-full bg-brand px-5 py-3 text-sm font-medium text-charcoal transition-colors hover:bg-brand-light"
+          >
+            {t('backToLogin')}
+          </Link>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="mx-auto flex min-h-[70vh] w-full max-w-md flex-col justify-center gap-8 px-4 py-12 sm:px-6">

@@ -38,6 +38,7 @@ export default function AccountLayout({
   if (!user) return null;
 
   const navItems = [
+    {href: `/${params.locale}/account/profile`, label: t('nav.profile')},
     {href: `/${params.locale}/account/designs`, label: t('nav.designs')},
     {href: `/${params.locale}/account/orders`, label: t('nav.orders')}
   ];

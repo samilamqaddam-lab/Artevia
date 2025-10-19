@@ -752,8 +752,29 @@
   "account": {
     "title": "Mon Compte",
     "nav": {
+      "profile": "Mon Profil",
       "designs": "Mes Designs",
       "orders": "Mes Commandes"
+    },
+    "profile": {
+      "title": "Mon Profil",
+      "fullName": "Nom complet",
+      "companyName": "Nom de l'entreprise",
+      "phone": "Téléphone",
+      "email": "Email",
+      "preferredLanguage": "Langue préférée",
+      "uploadAvatar": "Changer l'avatar",
+      "removeAvatar": "Supprimer l'avatar",
+      "avatarHint": "JPG, PNG ou GIF. Max 2 Mo.",
+      "emailHint": "L'email ne peut pas être modifié",
+      "save": "Enregistrer",
+      "saved": "Profil mis à jour avec succès",
+      "avatarUploaded": "Avatar mis à jour avec succès",
+      "avatarRemoved": "Avatar supprimé avec succès",
+      "confirmRemoveAvatar": "Êtes-vous sûr de vouloir supprimer votre avatar ?",
+      "error": "Erreur",
+      "invalidFileType": "Le fichier doit être une image (JPG, PNG, GIF)",
+      "fileTooLarge": "Le fichier ne doit pas dépasser 2 Mo"
     },
     "designs": {
       "title": "Mes Designs",
@@ -766,7 +787,21 @@
     },
     "orders": {
       "title": "Mes Commandes",
-      "empty": "Aucune commande pour le moment."
+      "empty": "Aucune commande pour le moment.",
+      "date": "Date",
+      "quantity": "Quantité",
+      "items": "articles",
+      "notes": "Notes",
+      "discount": "remise",
+      "itemsTitle": "Articles commandés",
+      "product": "Produit",
+      "moreItems": "autres articles",
+      "status": {
+        "pending": "En attente",
+        "processing": "En cours",
+        "completed": "Terminée",
+        "cancelled": "Annulée"
+      }
     }
   },
   "leadTimes": {

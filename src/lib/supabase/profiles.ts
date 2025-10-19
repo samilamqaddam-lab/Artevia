@@ -1,9 +1,10 @@
 import {createClient} from './client';
 import type {Database} from './types';
 import {logger} from '@/lib/logger';
+import {uploadAvatar, deleteAvatar} from './storage';
 
-type Profile = Database['public']['Tables']['profiles']['Row'];
-type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
+export type Profile = Database['public']['Tables']['profiles']['Row'];
+export type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
 
 /**
  * Get the profile of the current user or a specific user
@@ -73,4 +74,57 @@ export async function profileExists(userId: string): Promise<boolean> {
   }
 
   return (count ?? 0) > 0;
+}
+
+/**
+ * Update avatar
+ */
+export async function updateProfileAvatar(file: File): Promise<Profile | null> {
+  const supabase = createClient();
+
+  const {
+    data: {user}
+  } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  // Get current profile to delete old avatar
+  const currentProfile = await getProfile();
+  if (currentProfile?.avatar_url) {
+    try {
+      await deleteAvatar(currentProfile.avatar_url);
+    } catch (error) {
+      logger.warn('Failed to delete old avatar:', error);
+    }
+  }
+
+  // Upload new avatar
+  const avatarUrl = await uploadAvatar(file);
+
+  // Update profile with new avatar URL
+  return updateProfile({avatar_url: avatarUrl});
+}
+
+/**
+ * Remove avatar
+ */
+export async function removeProfileAvatar(): Promise<Profile | null> {
+  const supabase = createClient();
+
+  const {
+    data: {user}
+  } = await supabase.auth.getUser();
+  if (!user) throw new Error('Not authenticated');
+
+  // Get current profile to delete avatar
+  const currentProfile = await getProfile();
+  if (currentProfile?.avatar_url) {
+    try {
+      await deleteAvatar(currentProfile.avatar_url);
+    } catch (error) {
+      logger.warn('Failed to delete avatar:', error);
+    }
+  }
+
+  // Update profile to remove avatar URL
+  return updateProfile({avatar_url: null});
 }

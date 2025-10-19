@@ -1,9 +1,14 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import bundleAnalyzer from '@next/bundle-analyzer';
 
 const locales = ['fr', 'ar'];
 const defaultLocale = 'fr';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 const nextConfig = {
   reactStrictMode: true,
@@ -17,6 +22,46 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb'
     }
+  },
+
+  // Code splitting optimizations
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          // Fabric.js dans son propre chunk (éditeur de design)
+          fabric: {
+            test: /[\\/]node_modules[\\/]fabric/,
+            name: 'fabric',
+            priority: 10,
+            reuseExistingChunk: true,
+          },
+          // Radix UI components
+          radix: {
+            test: /[\\/]node_modules[\\/]@radix-ui/,
+            name: 'radix-ui',
+            priority: 9,
+            reuseExistingChunk: true,
+          },
+          // Supabase dans son propre chunk
+          supabase: {
+            test: /[\\/]node_modules[\\/]@supabase/,
+            name: 'supabase',
+            priority: 8,
+            reuseExistingChunk: true,
+          },
+          // Autres vendors
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            priority: 5,
+            reuseExistingChunk: true,
+          },
+        },
+      };
+    }
+    return config;
   },
 
   images: {
@@ -78,4 +123,4 @@ const nextConfig = {
   }
 };
 
-export default withNextIntl(nextConfig);
+export default withBundleAnalyzer(withNextIntl(nextConfig));

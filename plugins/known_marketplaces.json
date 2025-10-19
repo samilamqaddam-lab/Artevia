@@ -1,0 +1,10 @@
+{
+  "marketplaces": [
+    {
+      "name": "Claude Code Templates",
+      "url": "https://github.com/davila7/claude-code-templates",
+      "description": "Official Claude Code templates and plugins marketplace",
+      "enabled": true
+    }
+  ]
+}

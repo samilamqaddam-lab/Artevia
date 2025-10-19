@@ -4,9 +4,26 @@ import {useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {ChevronLeft, ChevronRight, ShoppingCart} from 'lucide-react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import {Button} from '@/components/ui/Button';
-import {CanvaEditor} from '@/components/editor/CanvaEditor';
 import {PersonalizationSelector, type PersonalizationMode} from './PersonalizationSelector';
+
+// Lazy load CanvaEditor pour réduire le bundle principal
+// Fabric.js est volumineux (~150KB) et seulement nécessaire en mode design
+const CanvaEditor = dynamic(
+  () => import('@/components/editor/CanvaEditor').then(mod => ({ default: mod.CanvaEditor })),
+  {
+    loading: () => (
+      <div className="flex h-[600px] items-center justify-center bg-slate-100 dark:bg-slate-900">
+        <div className="text-center">
+          <div className="mx-auto mb-4 h-8 w-8 animate-spin rounded-full border-4 border-slate-300 border-t-brand" />
+          <p className="text-sm text-slate-600 dark:text-slate-400">Chargement de l&apos;éditeur...</p>
+        </div>
+      </div>
+    ),
+    ssr: false, // Fabric.js nécessite window/document
+  }
+);
 import {DesignPreviewCard} from './DesignPreviewCard';
 import type {
   Product,

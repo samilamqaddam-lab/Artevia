@@ -63,10 +63,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 text-slate-900 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:border-white/10 dark:bg-[#171717]/95 dark:text-slate-100 dark:supports-[backdrop-filter]:bg-[#171717]/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link href={`/${locale}` as any} className="flex items-center gap-2 text-lg font-semibold" dir={dir}>
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand text-charcoal shadow-floating">
-            A
-          </span>
-          <span className="hidden sm:block text-slate-900 dark:text-white">{t('brand')}</span>
+          <span className="text-2xl font-bold text-brand">Arteva</span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex" aria-label="Main">
           {navItems.map((item) => (

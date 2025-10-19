@@ -42,8 +42,9 @@ export function RegisterView({locale}: RegisterViewProps) {
       return;
     }
 
-    const origin = typeof window !== 'undefined' ? window.location.origin : '';
-    const redirectTo = origin ? `${origin}/${locale}/auth/callback` : undefined;
+    // Use NEXT_PUBLIC_SITE_URL if available, otherwise fallback to current origin
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '');
+    const redirectTo = siteUrl ? `${siteUrl}/${locale}/auth/callback` : undefined;
 
     const {error: signUpError} = await supabase.auth.signUp({
       email: form.email.trim(),

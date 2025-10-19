@@ -1,6 +1,6 @@
-# Guide de Déploiement Vercel - Artevia
+# Guide de Déploiement Vercel - Arteva
 
-Ce guide détaille la procédure complète pour déployer l'application Artevia sur Vercel.
+Ce guide détaille la procédure complète pour déployer l'application Arteva sur Vercel.
 
 ## Table des Matières
 
@@ -107,7 +107,7 @@ Ces variables sont **automatiquement** fournies par Vercel :
 
 - `VERCEL` - Toujours `1` sur Vercel
 - `VERCEL_ENV` - Environnement : `production`, `preview`, `development`
-- `VERCEL_URL` - URL du déploiement (ex: `artevia-abc123.vercel.app`)
+- `VERCEL_URL` - URL du déploiement (ex: `arteva-abc123.vercel.app`)
 - `VERCEL_GIT_PROVIDER` - Provider Git (ex: `github`)
 - `VERCEL_GIT_COMMIT_REF` - Branche Git
 - `VERCEL_GIT_COMMIT_SHA` - SHA du commit
@@ -126,11 +126,11 @@ Ces variables sont **automatiquement** fournies par Vercel :
 
 2. **Importer le dépôt Git**
    - Sélectionnez votre provider (GitHub, GitLab, Bitbucket)
-   - Choisissez le dépôt `artevia`
+   - Choisissez le dépôt `arteva`
    - Cliquez sur "Import"
 
 3. **Configurer le Projet**
-   - **Project Name** : `artevia` (ou nom personnalisé)
+   - **Project Name** : `arteva` (ou nom personnalisé)
    - **Framework Preset** : Next.js (détecté automatiquement)
    - **Root Directory** : `./` (racine)
    - **Build Command** : `npm run build` (défaut)
@@ -497,7 +497,7 @@ export default function RootLayout({ children }) {
 1. **Dans Dashboard Vercel** :
    - Aller dans Settings → Domains
    - Cliquer "Add Domain"
-   - Entrer votre domaine : `artevia.ma`
+   - Entrer votre domaine : `arteva.ma`
 
 2. **Configurer DNS** :
    - Ajouter un enregistrement `A` :
@@ -595,6 +595,6 @@ Avant de considérer le déploiement comme complet :
 
 **✅ Déploiement Terminé !**
 
-Votre application Artevia est maintenant en ligne sur Vercel.
+Votre application Arteva est maintenant en ligne sur Vercel.
 
 Pour toute question, consultez la documentation dans `docs/` ou contactez l'équipe.

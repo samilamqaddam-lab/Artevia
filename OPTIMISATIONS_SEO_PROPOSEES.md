@@ -1,4 +1,4 @@
-# 📝 Optimisations SEO B2B Proposées - Artevia
+# 📝 Optimisations SEO B2B Proposées - Arteva
 
 **Date**: 13 Octobre 2025
 **Phase**: 1 - Optimisation Homepage & Metadata
@@ -12,12 +12,12 @@
 
 **❌ ACTUEL:**
 ```
-Artevia | Création Print-On-Demand Maroc
+Arteva | Création Print-On-Demand Maroc
 ```
 
 **✅ PROPOSÉ:**
 ```
-Artevia | Objets Publicitaires Personnalisés Entreprise Maroc
+Arteva | Objets Publicitaires Personnalisés Entreprise Maroc
 ```
 
 **📊 Raison:**
@@ -34,7 +34,7 @@ Artevia | Objets Publicitaires Personnalisés Entreprise Maroc
 
 **❌ ACTUEL:**
 ```
-Artevia permet de concevoir facilement des produits print-on-demand pour le marché marocain, avec un éditeur fluide et des exports prêts pour l'impression.
+Arteva permet de concevoir facilement des produits print-on-demand pour le marché marocain, avec un éditeur fluide et des exports prêts pour l'impression.
 ```
 
 **✅ PROPOSÉ:**
@@ -136,12 +136,12 @@ Personnalisez Vos Cadeaux d'Entreprise et Objets Publicitaires au Maroc
 
 **❌ ACTUEL:**
 ```
-Artevia accompagne les équipes marketing, RH et événementiel pour produire des goodies premium adaptés au marché marocain.
+Arteva accompagne les équipes marketing, RH et événementiel pour produire des goodies premium adaptés au marché marocain.
 ```
 
 **✅ PROPOSÉ:**
 ```
-Artevia accompagne les équipes marketing, RH et événementiel pour créer des objets publicitaires personnalisés et fournitures bureau premium adaptés au marché marocain. Designer en ligne, petites quantités acceptées.
+Arteva accompagne les équipes marketing, RH et événementiel pour créer des objets publicitaires personnalisés et fournitures bureau premium adaptés au marché marocain. Designer en ligne, petites quantités acceptées.
 ```
 
 **📊 Raison:**
@@ -272,7 +272,7 @@ Entreprises Marocaines, Startups et Institutions Nous Font Confiance
 
 **❌ ACTUEL:**
 ```
-Votre parcours Artevia
+Votre parcours Arteva
 ```
 
 **✅ PROPOSÉ:**

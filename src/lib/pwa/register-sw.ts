@@ -15,7 +15,7 @@ export function registerServiceWorker() {
           if (!newWorker) return;
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              document.dispatchEvent(new CustomEvent('artevia-sw-update'));
+              document.dispatchEvent(new CustomEvent('arteva-sw-update'));
             }
           });
         });

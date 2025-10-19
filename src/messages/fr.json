@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "Artevia",
+    "brand": "Arteva",
     "tagline": "Objets Publicitaires Personnalisés Entreprise | BAT 24h",
     "nav": {
       "home": "Accueil",
@@ -194,11 +194,11 @@
       ]
     },
     "testimonials": {
-      "title": "Ils parlent d’Artevia",
+      "title": "Ils parlent d’Arteva",
       "subtitle": "Des équipes marketing, RH et événementiel satisfaites.",
       "items": [
         {
-          "quote": "Artevia nous a livré 1 500 tote bags éco-conçus pour notre campagne Ramadan en un temps record.",
+          "quote": "Arteva nous a livré 1 500 tote bags éco-conçus pour notre campagne Ramadan en un temps record.",
           "author": "Salma B.",
           "role": "Responsable Communication",
           "company": "Inwi"
@@ -245,7 +245,7 @@
       "secondaryCta": "Appeler un conseiller",
       "contact": "Service client Casablanca",
       "phone": "+212 5 22 00 12 34",
-      "email": "bonjour@artevia.ma",
+      "email": "bonjour@arteva.ma",
       "note": "Réponse en moins de 2 heures ouvrées",
       "phoneLabel": "Téléphone",
       "emailLabel": "Email"
@@ -697,7 +697,7 @@
       }
     },
     "export": {
-      "title": "Devis Artevia",
+      "title": "Devis Arteva",
       "reference": "Référence : {ref}",
       "generated": "Émis le {date}",
       "customer": "Coordonnées client",
@@ -836,7 +836,7 @@
       }
     },
     "usps": {
-      "title": "Pourquoi Choisir Artevia pour Votre Entreprise",
+      "title": "Pourquoi Choisir Arteva pour Votre Entreprise",
       "items": [
         {
           "title": "Designer en Ligne Intuitif",
@@ -881,7 +881,7 @@
     },
     "trust": {
       "title": "Ils Nous Font Confiance",
-      "subtitle": "Startups, PME et grandes entreprises marocaines utilisent Artevia"
+      "subtitle": "Startups, PME et grandes entreprises marocaines utilisent Arteva"
     },
     "cta": {
       "title": "Prêt à Lancer Votre Projet?",
@@ -984,13 +984,13 @@
       "title": "Ce Que Disent Nos Clients RH",
       "items": [
         {
-          "quote": "Nos nouveaux employés adorent leur kit de bienvenue! Ça donne vraiment le ton sur notre culture d'entreprise dès le premier jour. Artevia a été très réactif sur nos délais serrés.",
+          "quote": "Nos nouveaux employés adorent leur kit de bienvenue! Ça donne vraiment le ton sur notre culture d'entreprise dès le premier jour. Arteva a été très réactif sur nos délais serrés.",
           "author": "Salma Bennani",
           "role": "DRH",
           "company": "TechCorp Maroc"
         },
         {
-          "quote": "En tant que startup, on cherchait des petites quantités avec une vraie qualité. Artevia nous a permis de créer des kits onboarding premium sans minimum de 500 unités. Parfait pour nous!",
+          "quote": "En tant que startup, on cherchait des petites quantités avec une vraie qualité. Arteva nous a permis de créer des kits onboarding premium sans minimum de 500 unités. Parfait pour nous!",
           "author": "Mehdi Alaoui",
           "role": "Co-fondateur",
           "company": "StartupLab Casablanca"

@@ -7,7 +7,7 @@
 
 ## 🎯 ANALYSE DE LA SITUATION ACTUELLE
 
-### Votre Business Model Réel (Artevia)
+### Votre Business Model Réel (Arteva)
 
 **Produits offerts:**
 - MOQ (Minimum Order Quantity): 10-100 unités selon produit
@@ -56,7 +56,7 @@ Homepage unique:
 - Site principal: B2B + B2C mélangés (TPE/PME)
 - Corporate: Uniquement grandes entreprises (20+ employés, gestion flottes, API)
 
-**Leçon pour Artevia:**
+**Leçon pour Arteva:**
 - Pas besoin de `/entreprises` si TOUT est déjà B2B
 - Si besoin différenciation: faire comme Vistaprint (subdomain pour enterprise UNIQUEMENT)
 
@@ -79,7 +79,7 @@ Homepage:
 
 **Insight:** Moo ne différencie PAS B2B vs B2C - ils positionnent TOUT le site comme premium/business
 
-**Leçon pour Artevia:**
+**Leçon pour Arteva:**
 - Si votre branding est "pro" dès le départ, pas besoin de section séparée
 - La qualité du design/copy suffit à attirer les bonnes cibles
 
@@ -96,13 +96,13 @@ Homepage:
 - Prix DIFFÉRENTS: Retail vs Wholesale
 - Features DIFFÉRENTES: API, white label pour B2B
 
-**Leçon pour Artevia:**
+**Leçon pour Arteva:**
 - Séparation B2B/B2C pertinente UNIQUEMENT si offres réellement différentes
 - Vous n'avez PAS 2 offres différentes → Pas de raison de séparer!
 
 ---
 
-## ❌ PROBLÈMES D'UNE SECTION /ENTREPRISES SÉPARÉE (Artevia)
+## ❌ PROBLÈMES D'UNE SECTION /ENTREPRISES SÉPARÉE (Arteva)
 
 ### 1. **Confusion Utilisateur**
 ```

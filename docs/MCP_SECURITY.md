@@ -1,20 +1,20 @@
-# 🔒 Sécurité MCP - Configuration Projet Artevia Uniquement
+# 🔒 Sécurité MCP - Configuration Projet Arteva Uniquement
 
 ## 🎯 Objectif
 
-Cette configuration MCP est **strictement limitée au projet Artevia** et n'affectera aucun autre projet Supabase que vous pourriez avoir.
+Cette configuration MCP est **strictement limitée au projet Arteva** et n'affectera aucun autre projet Supabase que vous pourriez avoir.
 
 ## 🛡️ Garanties de Sécurité
 
 ### 1. Isolation du Projet
 
-La configuration MCP est **verrouillée** sur le projet Artevia de plusieurs façons:
+La configuration MCP est **verrouillée** sur le projet Arteva de plusieurs façons:
 
 #### a) URL API Spécifique
 ```json
 "--apiUrl": "https://qygpijoytpbxgbkaylkz.supabase.co/rest/v1"
 ```
-☑️ Cette URL pointe **uniquement** vers le projet Artevia (ref: `qygpijoytpbxgbkaylkz`)
+☑️ Cette URL pointe **uniquement** vers le projet Arteva (ref: `qygpijoytpbxgbkaylkz`)
 
 #### b) Project Reference Explicite
 ```json
@@ -41,22 +41,22 @@ La configuration MCP est **verrouillée** sur le projet Artevia de plusieurs fa�
 
 ```json
 {
-  "artevia-database": { ... },
-  "artevia-management": { ... }
+  "arteva-database": { ... },
+  "arteva-management": { ... }
 }
 ```
-☑️ Les noms contiennent "artevia" pour identification claire
+☑️ Les noms contiennent "arteva" pour identification claire
 
 ## 🔍 Vérifications de Sécurité
 
-### Comment Vérifier que Seul Artevia est Accessible?
+### Comment Vérifier que Seul Arteva est Accessible?
 
 #### Test 1: Lister les Tables
 ```
 Liste toutes les tables de la base de données
 ```
 
-Vous devriez voir **uniquement** les tables du projet Artevia:
+Vous devriez voir **uniquement** les tables du projet Arteva:
 - orders
 - profiles
 - projects
@@ -77,7 +77,7 @@ Devrait afficher: `qygpijoytpbxgbkaylkz`
 Connecte-toi au projet [autre-project-ref]
 ```
 
-Devrait échouer ou ne rien faire (le MCP est verrouillé sur Artevia).
+Devrait échouer ou ne rien faire (le MCP est verrouillé sur Arteva).
 
 ## 🚨 Que Faire si Vous Avez d'Autres Projets Supabase?
 
@@ -86,7 +86,7 @@ Devrait échouer ou ne rien faire (le MCP est verrouillé sur Artevia).
 **Situation**: Vous avez plusieurs projets Supabase (ex: prod, staging, autres apps)
 
 **Protection**:
-- ✅ Les serveurs MCP configurés utilisent des clés **spécifiques au projet Artevia**
+- ✅ Les serveurs MCP configurés utilisent des clés **spécifiques au projet Arteva**
 - ✅ Les API keys et tokens sont **scopés** au projet qygpijoytpbxgbkaylkz
 - ✅ Impossible d'accéder à d'autres projets même s'ils sont sur le même compte
 
@@ -108,10 +108,10 @@ Devrait échouer ou ne rien faire (le MCP est verrouillé sur Artevia).
 - ✅ Même si le PAT a accès à plusieurs projets, le `--project-ref` force l'isolation
 
 **Recommandation**:
-Créez un PAT dédié **uniquement pour Artevia**:
+Créez un PAT dédié **uniquement pour Arteva**:
 1. Allez sur https://supabase.com/dashboard/account/tokens
 2. Créez un nouveau token
-3. Donnez-lui un nom: "Artevia MCP Token"
+3. Donnez-lui un nom: "Arteva MCP Token"
 4. Notez-le et mettez-le dans `.mcp-config.json`
 
 ### Scénario 3: Projets Locaux (Supabase CLI)
@@ -138,7 +138,7 @@ Affiche-moi le project_ref actuel et les tables disponibles
 Ne partagez **jamais** de tokens entre projets:
 
 ```
-Projet Artevia   → Token A (actuel)
+Projet Arteva   → Token A (actuel)
 Projet Blog      → Token B (différent)
 Projet E-commerce → Token C (différent)
 ```
@@ -148,7 +148,7 @@ Projet E-commerce → Token C (différent)
 Avant chaque opération destructive:
 
 ```
-Montre-moi sur quel projet je suis connecté et confirme que c'est bien Artevia
+Montre-moi sur quel projet je suis connecté et confirme que c'est bien Arteva
 ```
 
 ### 4. Logs et Audit
@@ -186,7 +186,7 @@ Même avec la configuration actuelle, le MCP **NE PEUT PAS**:
 - ❌ Lire les logs d'authentification (auth.users est protégé)
 - ❌ Accéder aux schémas système (`pg_*`, `auth`, `storage`)
 
-## ✅ Ce que le MCP PEUT Faire (Scopé à Artevia)
+## ✅ Ce que le MCP PEUT Faire (Scopé à Arteva)
 
 Le MCP **PEUT**:
 
@@ -198,7 +198,7 @@ Le MCP **PEUT**:
 - ✅ Déployer des Edge Functions (si configuré)
 - ✅ Lire les métriques du projet
 
-**Tout cela UNIQUEMENT sur le projet Artevia.**
+**Tout cela UNIQUEMENT sur le projet Arteva.**
 
 ## 📊 Monitoring
 
@@ -251,4 +251,4 @@ Vérifiez:
 
 ---
 
-**En résumé**: La configuration MCP est **strictement verrouillée** sur le projet Artevia (`qygpijoytpbxgbkaylkz`). Il est **impossible** d'accéder à d'autres projets Supabase avec cette configuration. Toutes les opérations sont isolées et tracées. 🔒✅
+**En résumé**: La configuration MCP est **strictement verrouillée** sur le projet Arteva (`qygpijoytpbxgbkaylkz`). Il est **impossible** d'accéder à d'autres projets Supabase avec cette configuration. Toutes les opérations sont isolées et tracées. 🔒✅

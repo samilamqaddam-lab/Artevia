@@ -24,12 +24,12 @@ C'est **la meilleure pratique** pour Next.js sur Vercel ! ✅
    - Autoriser Vercel à accéder à votre compte
 
 3. **Sélectionner Dépôt**
-   - Chercher `artevia` dans la liste
+   - Chercher `arteva` dans la liste
    - Cliquer "Import"
 
 4. **Configurer Projet**
    ```
-   Project Name: artevia
+   Project Name: arteva
    Framework Preset: Next.js (auto-détecté)
    Root Directory: ./
    Build Command: npm run build (auto)
@@ -82,7 +82,7 @@ git push origin feature/nouvelle-fonctionnalite
 1. GitHub reçoit le push
 2. Vercel détecte le nouveau commit
 3. Vercel build la branche dans un **Preview Environment**
-4. Vous recevez une URL preview : `artevia-git-feature-xyz.vercel.app`
+4. Vous recevez une URL preview : `arteva-git-feature-xyz.vercel.app`
 5. Vous testez sur cette URL
 
 ### Scénario 2 : Déploiement Production
@@ -106,7 +106,7 @@ git push origin main
 **Ce qui se passe automatiquement** :
 1. Vercel détecte push sur `main`
 2. Vercel build en mode **Production**
-3. Déploiement automatique vers `artevia.vercel.app`
+3. Déploiement automatique vers `arteva.vercel.app`
 4. Site en production mis à jour !
 
 ---
@@ -162,9 +162,9 @@ jobs:
 
 | Branche Git | Environnement Vercel | URL |
 |-------------|----------------------|-----|
-| `main` | Production | `artevia.vercel.app` |
-| `staging` | Preview (persistent) | `artevia-staging.vercel.app` |
-| `feature/*` | Preview (éphémère) | `artevia-git-feature-xyz.vercel.app` |
+| `main` | Production | `arteva.vercel.app` |
+| `staging` | Preview (persistent) | `arteva-staging.vercel.app` |
+| `feature/*` | Preview (éphémère) | `arteva-git-feature-xyz.vercel.app` |
 
 #### Setup Staging
 
@@ -260,7 +260,7 @@ Déjà actifs automatiquement :
 ```
 Pull Request #42
   ✅ Vercel — Deployment Preview Ready
-     Preview: artevia-git-feature-xyz.vercel.app
+     Preview: arteva-git-feature-xyz.vercel.app
      Inspect: vercel.com/xxx/deployments/abc
   ✅ Vercel — Build Successful
 ```
@@ -436,18 +436,18 @@ Vercel Pro → Settings
 
 ### 2. Preview URLs Persistantes
 
-Par défaut : `artevia-git-feature-abc123.vercel.app` (change à chaque commit)
+Par défaut : `arteva-git-feature-abc123.vercel.app` (change à chaque commit)
 
 Pour URL stable par branche :
 
 ```
 Vercel → Settings → Domains
 → Add Domain
-→ staging.artevia.vercel.app → Branch: staging
+→ staging.arteva.vercel.app → Branch: staging
 ```
 
 **Résultat** :
-- Branche `staging` toujours sur `staging.artevia.vercel.app`
+- Branche `staging` toujours sur `staging.arteva.vercel.app`
 - Parfait pour QA/tests
 
 ---
@@ -580,7 +580,7 @@ graph LR
 
 7. **Vérification Production**
    - Vérifier déploiement Vercel Dashboard
-   - Tester sur `artevia.vercel.app`
+   - Tester sur `arteva.vercel.app`
    - Surveiller logs pour erreurs
 
 ---

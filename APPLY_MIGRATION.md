@@ -6,7 +6,7 @@
 
 1. Allez sur [https://supabase.com/dashboard](https://supabase.com/dashboard)
 2. Connectez-vous si nécessaire
-3. Sélectionnez le projet **Artevia** (qygpijoytpbxgbkaylkz)
+3. Sélectionnez le projet **Arteva** (qygpijoytpbxgbkaylkz)
 
 ### Étape 2: Ouvrir SQL Editor
 
@@ -129,7 +129,7 @@ C'est normal si vous réexécutez la migration. Les `CREATE TABLE IF NOT EXISTS`
 
 ### "permission denied"
 
-Vérifiez que vous êtes bien sur le projet Artevia et que vous avez les droits admin.
+Vérifiez que vous êtes bien sur le projet Arteva et que vous avez les droits admin.
 
 ### Autres erreurs
 

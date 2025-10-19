@@ -4,7 +4,7 @@ Date : 2025-10-12
 
 ## 📋 Vue d'Ensemble
 
-Ce document résume tous les changements apportés au projet Artevia pour garantir un déploiement sans erreur sur Vercel.
+Ce document résume tous les changements apportés au projet Arteva pour garantir un déploiement sans erreur sur Vercel.
 
 ---
 
@@ -271,7 +271,7 @@ Avant de déployer sur Vercel, vérifiez :
 6. Tester
 
 ### Court Terme (Après Déploiement)
-1. Configurer domaine personnalisé (ex: `artevia.ma`)
+1. Configurer domaine personnalisé (ex: `arteva.ma`)
 2. Activer Vercel Analytics
 3. Configurer alertes monitoring
 4. Tester charge (Lighthouse, PageSpeed)
@@ -326,7 +326,7 @@ git push origin main
 
 ## ✅ Conclusion
 
-Le projet Artevia est maintenant **100% prêt** pour le déploiement sur Vercel.
+Le projet Arteva est maintenant **100% prêt** pour le déploiement sur Vercel.
 
 ### Garanties
 - ✅ Pas d'erreur build Husky

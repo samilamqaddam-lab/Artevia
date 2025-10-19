@@ -8,7 +8,7 @@
 ## 🎉 Ce qui a été accompli
 
 ### 1. Configuration MCP Sécurisée
-- ✅ MCP configuré pour le projet Artevia uniquement (qygpijoytpbxgbkaylkz)
+- ✅ MCP configuré pour le projet Arteva uniquement (qygpijoytpbxgbkaylkz)
 - ✅ Isolation complète des autres projets Supabase
 - ✅ Secrets protégés dans `.gitignore`
 - ✅ Documentation de sécurité (`docs/MCP_SECURITY.md`)
@@ -65,7 +65,7 @@
 ## 🔐 Sécurité Confirmée
 
 ### Isolation Projet
-- ✅ MCP ne peut accéder qu'au projet Artevia (qygpijoytpbxgbkaylkz)
+- ✅ MCP ne peut accéder qu'au projet Arteva (qygpijoytpbxgbkaylkz)
 - ✅ Impossible d'interagir avec d'autres projets Supabase
 
 ### Row Level Security (RLS)

@@ -1,4 +1,4 @@
-# 📝 Optimisations SEO Pages Produits - Artevia
+# 📝 Optimisations SEO Pages Produits - Arteva
 
 **Date**: 15 Octobre 2025
 **Phase**: 2 - Optimisation Pages Produits
@@ -94,17 +94,17 @@ function getProductSEOMeta(
 ): {title: string; description: string} {
   const seoMap: Record<string, {title: string; description: string}> = {
     'bloc-notes-personnalises': {
-      title: 'Bloc-notes Personnalisé Entreprise avec Logo Maroc | Artevia',
+      title: 'Bloc-notes Personnalisé Entreprise avec Logo Maroc | Arteva',
       description:
         'Bloc-notes personnalisés A4/A5 avec logo entreprise. Impression quadri, reliure spirale premium. Petites quantités dès 50 ex. Livraison 48h Maroc. Devis gratuit.'
     },
     'stylos-metal-s1': {
-      title: 'Stylos Personnalisés Entreprise Gravure Laser Maroc | Artevia',
+      title: 'Stylos Personnalisés Entreprise Gravure Laser Maroc | Arteva',
       description:
         'Stylos métal personnalisés avec gravure laser ou tampographie. Corps aluminium rechargeable. Petites quantités dès 30 ex. BAT 24h. Livraison express Maroc.'
     },
     'chemise-a-rabat-classique': {
-      title: 'Chemise à Rabat Personnalisée Entreprise Maroc | Artevia',
+      title: 'Chemise à Rabat Personnalisée Entreprise Maroc | Arteva',
       description:
         'Chemise rabat A4 personnalisée avec logo. Carton 350g, impression offset ou numérique. Petites séries dès 100 ex. Livraison rapide partout au Maroc. Devis gratuit.'
     }
@@ -112,7 +112,7 @@ function getProductSEOMeta(
 
   return (
     seoMap[slug] || {
-      title: `${name} Personnalisé | Artevia`,
+      title: `${name} Personnalisé | Arteva`,
       description: description
     }
   );
@@ -121,7 +121,7 @@ function getProductSEOMeta(
 
 **📊 Raison:**
 - Métadonnées SEO uniques pour chaque produit
-- Title tags contiennent: Produit + "Personnalisé Entreprise" + "Maroc" + "Artevia"
+- Title tags contiennent: Produit + "Personnalisé Entreprise" + "Maroc" + "Arteva"
 - Descriptions intègrent USP: petites quantités, livraison express, BAT 24h
 - Longueur optimale: Titles ~60 caractères, Descriptions ~155 caractères
 
@@ -279,7 +279,7 @@ const productSchema = {
   image: product.heroImage,
   brand: {
     '@type': 'Brand',
-    name: 'Artevia'
+    name: 'Arteva'
   },
   offers: {
     '@type': 'AggregateOffer',
@@ -288,7 +288,7 @@ const productSchema = {
     highPrice: product.priceTiers[0]?.price || 0,
     offerCount: product.priceTiers.length,
     availability: 'https://schema.org/InStock',
-    url: `https://artevia.ma/${params.locale}/product/${product.slug}`
+    url: `https://arteva.ma/${params.locale}/product/${product.slug}`
   },
   aggregateRating: {
     '@type': 'AggregateRating',

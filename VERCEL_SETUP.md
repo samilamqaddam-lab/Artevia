@@ -1,10 +1,10 @@
-# Configuration Vercel pour Artevia
+# Configuration Vercel pour Arteva
 
 ## 🚀 Variables d'Environnement à Configurer
 
 ### Accéder aux Variables d'Environnement
 
-1. Va sur https://vercel.com/samilamqaddam-lab/artevia (ou ton dashboard Vercel)
+1. Va sur https://vercel.com/samilamqaddam-lab/arteva (ou ton dashboard Vercel)
 2. Clique sur **Settings** → **Environment Variables**
 
 ---
@@ -43,7 +43,7 @@ SUPABASE_ACCESS_TOKEN=sbp_49d9952aa1d2d93123de8a0204365c2394228f4b
 ### 2. URL du Site (IMPORTANTE - Résout le problème localhost) 🔴
 
 ```
-NEXT_PUBLIC_SITE_URL=https://artevia.ma
+NEXT_PUBLIC_SITE_URL=https://arteva.ma
 ```
 **Environnement** : Production ✅
 **Note** : Cette variable contrôle l'URL de redirection dans les emails de confirmation
@@ -69,7 +69,7 @@ Voici comment ça devrait ressembler dans Vercel :
 │ NEXT_PUBLIC_SUPABASE_URL       │ https://qygpijoytpbx...        │ [Production] [Preview] [Development]
 │ NEXT_PUBLIC_SUPABASE_ANON_KEY  │ eyJhbGciOiJIUzI1NiI...        │ [Production] [Preview] [Development]
 │ SUPABASE_ACCESS_TOKEN          │ sbp_49d9952aa1d2d93...        │ [Production] [Preview] [Development]
-│ NEXT_PUBLIC_SITE_URL           │ https://artevia.ma             │ [Production]
+│ NEXT_PUBLIC_SITE_URL           │ https://arteva.ma             │ [Production]
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -101,11 +101,11 @@ git push origin main
 
 Après le redéploiement, teste :
 
-1. Va sur https://artevia.ma/fr/auth/register
+1. Va sur https://arteva.ma/fr/auth/register
 2. Crée un compte
 3. Vérifie l'email de confirmation
-4. Le lien devrait être : `https://artevia.ma/fr/auth/callback?code=...` ✅
-5. Clique dessus - tu seras redirigé vers `https://artevia.ma/fr`
+4. Le lien devrait être : `https://arteva.ma/fr/auth/callback?code=...` ✅
+5. Clique dessus - tu seras redirigé vers `https://arteva.ma/fr`
 
 ---
 
@@ -116,7 +116,7 @@ Après le redéploiement, teste :
 **Cause** : Variable `NEXT_PUBLIC_SITE_URL` non configurée ou déploiement pas fait après config
 
 **Solution** :
-1. Vérifie que `NEXT_PUBLIC_SITE_URL=https://artevia.ma` est bien dans les variables Vercel
+1. Vérifie que `NEXT_PUBLIC_SITE_URL=https://arteva.ma` est bien dans les variables Vercel
 2. Redéploie l'application (voir section ci-dessus)
 3. Vide le cache Supabase en attendant 5-10 minutes
 
@@ -148,12 +148,12 @@ Après le redéploiement, teste :
 - [x] Fichier `.env.example` créé
 
 ### ⚠️ Vercel (À faire maintenant)
-- [ ] Ajouter `NEXT_PUBLIC_SITE_URL=https://artevia.ma` en Production
+- [ ] Ajouter `NEXT_PUBLIC_SITE_URL=https://arteva.ma` en Production
 - [ ] Vérifier que toutes les autres variables Supabase sont là
 - [ ] Redéployer l'application
 
 ### ⚠️ Supabase Dashboard (À faire)
-- [ ] Configurer Site URL : `https://artevia.ma`
+- [ ] Configurer Site URL : `https://arteva.ma`
 - [ ] Ajouter Redirect URLs
 - [ ] Modifier les templates email
 

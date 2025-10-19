@@ -12,12 +12,12 @@ export async function generateMetadata({
 
   const metadata = {
     fr: {
-      title: 'Solutions Objets Publicitaires Entreprise - Onboarding, Événements, Cadeaux | Artevia',
+      title: 'Solutions Objets Publicitaires Entreprise - Onboarding, Événements, Cadeaux | Arteva',
       description:
         'Découvrez nos solutions clés en main : kit bienvenue employé, packs événements, cadeaux clients. Objets publicitaires personnalisés avec prix transparents et BAT 24h.'
     },
     ar: {
-      title: 'حلول منتجات ترويجية للشركات - استقبال، فعاليات، هدايا | Artevia',
+      title: 'حلول منتجات ترويجية للشركات - استقبال، فعاليات، هدايا | Arteva',
       description:
         'اكتشف حلولنا الجاهزة: طقم ترحيب موظفين، حزم فعاليات، هدايا عملاء. منتجات ترويجية مخصصة مع أسعار شفافة.'
     }

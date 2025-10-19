@@ -19,8 +19,8 @@ export function Footer() {
           <Link href={`/${locale}/designs`} className="transition-colors hover:text-brand">
             {t('nav.saved')}
           </Link>
-          <a href="mailto:hello@artevia.ma" className="transition-colors hover:text-brand">
-            hello@artevia.ma
+          <a href="mailto:hello@arteva.ma" className="transition-colors hover:text-brand">
+            hello@arteva.ma
           </a>
         </nav>
       </div>

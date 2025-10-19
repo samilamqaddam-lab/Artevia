@@ -1,4 +1,4 @@
-# 🎯 Analyse UX/SEO Expert - Artevia
+# 🎯 Analyse UX/SEO Expert - Arteva
 
 **Date**: 15 Octobre 2025
 **Expert SEO**: Analyse post-implémentation Phases 1-3
@@ -25,7 +25,7 @@ KitBienvenueView.tsx                     → Component UI pour /kit-bienvenue-em
 ```
 
 **Accessible via:**
-- URL directe: `https://artevia.ma/fr/entreprises`
+- URL directe: `https://arteva.ma/fr/entreprises`
 - Navigation: Peut être ajouté au menu (actuellement pas dans le nav)
 - SEO: Pages indexables par Google
 
@@ -70,7 +70,7 @@ Tagline: "Objets Publicitaires Personnalisés Entreprise | BAT 24h"
 Title:   "Cadeaux Entreprise et Goodies Personnalisés qui Marquent les Esprits"
          ^^^ 73 caractères - TROP LONG
 
-Description: "Artevia accompagne les équipes marketing, RH et événementiel
+Description: "Arteva accompagne les équipes marketing, RH et événementiel
               pour créer des objets publicitaires personnalisés et
               fournitures bureau premium adaptés au marché marocain.
               Designer en ligne, petites quantités acceptées."
@@ -105,7 +105,7 @@ Description: "Artevia accompagne les équipes marketing, RH et événementiel
 {
   "tagline": "Objets Publicitaires Personnalisés Entreprise | BAT 24h",
   "title": "Cadeaux Entreprise et Goodies Personnalisés qui Marquent les Esprits",
-  "description": "Artevia accompagne les équipes marketing, RH et événementiel pour créer des objets publicitaires personnalisés et fournitures bureau premium adaptés au marché marocain. Designer en ligne, petites quantités acceptées."
+  "description": "Arteva accompagne les équipes marketing, RH et événementiel pour créer des objets publicitaires personnalisés et fournitures bureau premium adaptés au marché marocain. Designer en ligne, petites quantités acceptées."
 }
 ```
 
@@ -181,7 +181,7 @@ Description: "Artevia accompagne les équipes marketing, RH et événementiel
 - Backlink Analysis API
 - Site Audit API
 
-**Use Case Artevia:**
+**Use Case Arteva:**
 ```javascript
 // Exemple: Track rankings Maroc
 GET https://api.semrush.com/?type=phrase_organic
@@ -204,7 +204,7 @@ GET https://api.semrush.com/?type=phrase_organic
 - Keyword Difficulty API
 - SERP Overview API
 
-**Use Case Artevia:**
+**Use Case Arteva:**
 ```javascript
 // Exemple: Analyze competitors
 GET https://apiv2.ahrefs.com
@@ -224,12 +224,12 @@ GET https://apiv2.ahrefs.com
 - Link Metrics API
 - Keyword Difficulty API (très faible coût!)
 
-**Use Case Artevia:**
+**Use Case Arteva:**
 ```javascript
 // Exemple: Check Domain Authority
 POST https://lsapi.seomoz.com/v2/url_metrics
 {
-  "targets": ["artevia.ma", "objetpublicitaire.ma"]
+  "targets": ["arteva.ma", "objetpublicitaire.ma"]
 }
 ```
 
@@ -247,10 +247,10 @@ POST https://lsapi.seomoz.com/v2/url_metrics
 - URL Inspection API
 - Index coverage
 
-**Use Case Artevia:**
+**Use Case Arteva:**
 ```javascript
 // Exemple: Get top queries
-POST https://www.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fartevia.ma/searchAnalytics/query
+POST https://www.googleapis.com/webmasters/v3/sites/https%3A%2F%2Farteva.ma/searchAnalytics/query
 {
   "startDate": "2025-10-01",
   "endDate": "2025-10-15",
@@ -270,7 +270,7 @@ POST https://www.googleapis.com/webmasters/v3/sites/https%3A%2F%2Fartevia.ma/sea
 - Position tracking
 - Related searches & PAA (People Also Ask)
 
-**Use Case Artevia:**
+**Use Case Arteva:**
 ```javascript
 // Exemple: Check SERP position
 GET https://serpapi.com/search

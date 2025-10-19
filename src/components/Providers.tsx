@@ -71,7 +71,7 @@ export function Providers({children, locale}: {children: React.ReactNode; locale
   useEffect(() => {
     const loadTheme = () => {
       if (typeof window === 'undefined') return;
-      const stored = window.localStorage.getItem('artevia-theme');
+      const stored = window.localStorage.getItem('arteva-theme');
       if (stored === 'light' || stored === 'dark') {
         setTheme(stored);
       } else {
@@ -86,7 +86,7 @@ export function Providers({children, locale}: {children: React.ReactNode; locale
     if (typeof document === 'undefined' || typeof window === 'undefined') return;
     document.documentElement.classList.toggle('dark', theme === 'dark');
     document.body.dataset.theme = theme;
-    window.localStorage.setItem('artevia-theme', theme);
+    window.localStorage.setItem('arteva-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
@@ -120,12 +120,12 @@ export function Providers({children, locale}: {children: React.ReactNode; locale
     window.addEventListener('online', handleOnline);
 
     const handleSwUpdate = () => setUpdateAvailable(true);
-    document.addEventListener('artevia-sw-update', handleSwUpdate as EventListener);
+    document.addEventListener('arteva-sw-update', handleSwUpdate as EventListener);
 
     return () => {
       window.removeEventListener('offline', handleOffline);
       window.removeEventListener('online', handleOnline);
-      document.removeEventListener('artevia-sw-update', handleSwUpdate as EventListener);
+      document.removeEventListener('arteva-sw-update', handleSwUpdate as EventListener);
     };
   }, []);
 

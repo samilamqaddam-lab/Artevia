@@ -1,8 +1,8 @@
 {
-  "name": "artevia",
+  "name": "arteva",
   "private": true,
   "version": "0.1.0",
-  "description": "Artevia Print-On-Demand creation experience for the Moroccan market.",
+  "description": "Arteva Print-On-Demand creation experience for the Moroccan market.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

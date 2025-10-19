@@ -17,17 +17,17 @@ function getProductSEOMeta(
 ): {title: string; description: string} {
   const seoMap: Record<string, {title: string; description: string}> = {
     'bloc-notes-personnalises': {
-      title: 'Bloc-notes Personnalisé Entreprise avec Logo Maroc | Artevia',
+      title: 'Bloc-notes Personnalisé Entreprise avec Logo Maroc | Arteva',
       description:
         'Bloc-notes personnalisés A4/A5 avec logo entreprise. Impression quadri, reliure spirale premium. Petites quantités dès 50 ex. Livraison 48h Maroc. Devis gratuit.'
     },
     'stylos-metal-s1': {
-      title: 'Stylos Personnalisés Entreprise Gravure Laser Maroc | Artevia',
+      title: 'Stylos Personnalisés Entreprise Gravure Laser Maroc | Arteva',
       description:
         'Stylos métal personnalisés avec gravure laser ou tampographie. Corps aluminium rechargeable. Petites quantités dès 30 ex. BAT 24h. Livraison express Maroc.'
     },
     'chemise-a-rabat-classique': {
-      title: 'Chemise à Rabat Personnalisée Entreprise Maroc | Artevia',
+      title: 'Chemise à Rabat Personnalisée Entreprise Maroc | Arteva',
       description:
         'Chemise rabat A4 personnalisée avec logo. Carton 350g, impression offset ou numérique. Petites séries dès 100 ex. Livraison rapide partout au Maroc. Devis gratuit.'
     }
@@ -35,7 +35,7 @@ function getProductSEOMeta(
 
   return (
     seoMap[slug] || {
-      title: `${name} Personnalisé | Artevia`,
+      title: `${name} Personnalisé | Arteva`,
       description: description
     }
   );
@@ -51,7 +51,7 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: 'Produit non trouvé | Artevia',
+      title: 'Produit non trouvé | Arteva',
       description: 'Ce produit n\'existe pas.'
     };
   }

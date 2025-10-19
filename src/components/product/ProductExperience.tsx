@@ -492,7 +492,7 @@ export function ProductExperience({
     image: product.heroImage,
     brand: {
       '@type': 'Brand',
-      name: 'Artevia'
+      name: 'Arteva'
     },
     offers: {
       '@type': 'AggregateOffer',
@@ -501,7 +501,7 @@ export function ProductExperience({
       highPrice: selectedMethod?.priceTiers[0]?.unitPrice || 0,
       offerCount: selectedMethod?.priceTiers.length || 0,
       availability: 'https://schema.org/InStock',
-      url: `https://artevia.ma/${locale}/product/${product.slug}`
+      url: `https://arteva.ma/${locale}/product/${product.slug}`
     },
     aggregateRating: {
       '@type': 'AggregateRating',

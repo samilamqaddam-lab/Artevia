@@ -1,4 +1,4 @@
-# Plan d'Action Sécurité - Artevia
+# Plan d'Action Sécurité - Arteva
 
 **Date de création:** 18 octobre 2025
 **Score actuel:** 7.5/10
@@ -279,7 +279,7 @@ export const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
   limiter: Ratelimit.slidingWindow(10, '60 s'),
   analytics: true,
-  prefix: 'artevia_ratelimit',
+  prefix: 'arteva_ratelimit',
 });
 
 export async function checkRateLimit(identifier: string) {

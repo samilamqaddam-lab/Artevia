@@ -1,8 +1,8 @@
-# Artevia - Documentation de Contexte du Projet
+# Arteva - Documentation de Contexte du Projet
 
 ## Résumé Exécutif
 
-**Artevia** est un prototype de boutique d'impression à la demande (POD) ciblant le marché marocain. Il fournit un tunnel de création complet ("Phase Création") permettant aux utilisateurs de personnaliser des produits promotionnels (mugs, blocs-notes, stylos, chemises, clés USB, tapis de souris, t-shirts, tote bags) avec un éditeur de design haute performance basé sur Fabric.js.
+**Arteva** est un prototype de boutique d'impression à la demande (POD) ciblant le marché marocain. Il fournit un tunnel de création complet ("Phase Création") permettant aux utilisateurs de personnaliser des produits promotionnels (mugs, blocs-notes, stylos, chemises, clés USB, tapis de souris, t-shirts, tote bags) avec un éditeur de design haute performance basé sur Fabric.js.
 
 **Marché Cible** : Entreprises et organisations marocaines nécessitant des articles personnalisés
 **Langues Principales** : Français (FR) et Arabe (AR) avec support RTL complet
@@ -12,7 +12,7 @@
 
 ## Métadonnées du Projet
 
-- **Nom du Projet** : Artevia
+- **Nom du Projet** : Arteva
 - **Version** : 0.1.0 (Prototype)
 - **Framework** : Next.js 14.2.32 (App Router)
 - **Version Node** : >= 18.18.0
@@ -85,7 +85,7 @@
 ## 2. Structure du Projet
 
 ```
-artevia/
+arteva/
 ├── app/                          # Next.js App Router (RSC + pages)
 │   ├── [locale]/                # Routage basé locale (fr, ar)
 │   │   ├── (store)/            # Groupe de routes boutique (layout partagé)
@@ -511,12 +511,12 @@ type QuoteState = {
 };
 ```
 
-**Persistance** : clé `localStorage` `artevia-rfq`
+**Persistance** : clé `localStorage` `arteva-rfq`
 **Hydratation** : Auto-rehydratation au montage client
 
 ### 5.3 Stockage Projet IndexedDB
 
-**Base de Données** : `artevia-projects`
+**Base de Données** : `arteva-projects`
 **Store** : `projects`
 **Version** : 1
 
@@ -812,8 +812,8 @@ ANALYZE=true npm run build
 **Manifeste Généré** (dynamique) :
 ```json
 {
-  "name": "Artevia",
-  "short_name": "Artevia",
+  "name": "Arteva",
+  "short_name": "Arteva",
   "description": "Expérience création print-on-demand",
   "start_url": "/",
   "display": "standalone",
@@ -971,7 +971,7 @@ const { data, error } = await supabase.auth.signIn(credentials);
 
 **Schéma Base de Données** :
 ```typescript
-const db = await openDB('artevia-projects', 1, {
+const db = await openDB('arteva-projects', 1, {
   upgrade(db) {
     const store = db.createObjectStore('projects', { keyPath: 'id' });
     store.createIndex('productId', 'productId');

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'artevia-cache-v1';
+const CACHE_NAME = 'arteva-cache-v1';
 const STATIC_ASSETS = [
   '/',
   '/fr',

@@ -270,7 +270,7 @@ export function HomeView({locale, content}: HomeViewProps) {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr]">
           <motion.div {...fadeUp()} className="space-y-6 text-slate-900 dark:text-slate-100">
             <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand">
-              Designer Artevia
+              Designer Arteva
             </span>
             <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">{designer.title}</h2>
             <p className="text-sm text-slate-600 dark:text-slate-300">{designer.description}</p>

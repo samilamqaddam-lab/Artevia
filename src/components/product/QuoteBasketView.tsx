@@ -476,7 +476,7 @@ export function QuoteBasketView({locale}: QuoteBasketViewProps) {
       const url = URL.createObjectURL(pdfBlob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `Devis-Artevia-${reference}.pdf`;
+      link.download = `Devis-Arteva-${reference}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

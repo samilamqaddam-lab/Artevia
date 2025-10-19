@@ -1,5 +1,5 @@
 /**
- * Logger intelligent pour Artevia
+ * Logger intelligent pour Arteva
  *
  * - Logs désactivés en production (sauf errors/warnings)
  * - Timestamps automatiques

@@ -12,12 +12,12 @@ export async function generateMetadata({
 
   const metadata = {
     fr: {
-      title: 'Kit Bienvenue Employé Personnalisé Maroc | Pack Onboarding Entreprise | Artevia',
+      title: 'Kit Bienvenue Employé Personnalisé Maroc | Pack Onboarding Entreprise | Arteva',
       description:
         'Kit bienvenue employé personnalisé pour onboarding entreprise. Bloc-notes, stylos, goodies avec logo. Petites quantités dès 10 kits. Livraison 48h Maroc. Devis gratuit.'
     },
     ar: {
-      title: 'طقم الترحيب بالموظفين الجدد المخصص المغرب | Artevia',
+      title: 'طقم الترحيب بالموظفين الجدد المخصص المغرب | Arteva',
       description:
         'طقم ترحيب مخصص للموظفين الجدد. دفاتر، أقلام، هدايا بشعار الشركة. كميات صغيرة من 10 أطقم. توصيل 48 ساعة.'
     }
@@ -201,14 +201,14 @@ export default async function KitBienvenuePage({
       'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80',
     author: {
       '@type': 'Organization',
-      name: 'Artevia'
+      name: 'Arteva'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Artevia',
+      name: 'Arteva',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://artevia.ma/logo.png'
+        url: 'https://arteva.ma/logo.png'
       }
     },
     datePublished: '2025-10-15',

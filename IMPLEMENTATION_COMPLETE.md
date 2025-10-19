@@ -3,7 +3,7 @@
 ## 🎉 Ce qui a été fait pour vous
 
 ### 1. 📊 Configuration MCP Sécurisée
-- ✅ Configuration verrouillée sur le projet Artevia uniquement
+- ✅ Configuration verrouillée sur le projet Arteva uniquement
 - ✅ Impossible d'accéder à d'autres projets Supabase
 - ✅ Documentation complète de sécurité
 

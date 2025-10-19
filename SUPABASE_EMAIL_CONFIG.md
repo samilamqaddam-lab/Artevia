@@ -1,11 +1,11 @@
 # Configuration Email et Authentification Supabase
 
-Ce guide explique comment configurer les emails d'authentification Supabase pour Artevia.
+Ce guide explique comment configurer les emails d'authentification Supabase pour Arteva.
 
 ## 🎯 Problèmes à Résoudre
 
 1. ✅ **Message de confirmation après inscription** - Résolu dans le code
-2. ⚠️ **Email personnalisé Artevia** - À configurer dans Supabase Dashboard
+2. ⚠️ **Email personnalisé Arteva** - À configurer dans Supabase Dashboard
 3. ⚠️ **Redirection vers le bon domaine** - À configurer dans Supabase Dashboard
 
 ---
@@ -23,11 +23,11 @@ Ce guide explique comment configurer les emails d'authentification Supabase pour
 Clique sur **Confirm signup** et remplace le contenu par :
 
 ```html
-<h2>Bienvenue sur Artevia !</h2>
+<h2>Bienvenue sur Arteva !</h2>
 
 <p>Bonjour,</p>
 
-<p>Merci de vous être inscrit sur <strong>Artevia</strong>, votre plateforme de création d'objets publicitaires personnalisés.</p>
+<p>Merci de vous être inscrit sur <strong>Arteva</strong>, votre plateforme de création d'objets publicitaires personnalisés.</p>
 
 <p>Pour activer votre compte, cliquez sur le bouton ci-dessous :</p>
 
@@ -42,13 +42,13 @@ Clique sur **Confirm signup** et remplace le contenu par :
 <p style="color: #6B7280; font-size: 12px; word-break: break-all;">{{ .ConfirmationURL }}</p>
 
 <p style="margin-top: 40px; color: #6B7280; font-size: 12px;">
-  Si vous n'avez pas créé de compte sur Artevia, ignorez cet email.
+  Si vous n'avez pas créé de compte sur Arteva, ignorez cet email.
 </p>
 
 <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 40px 0;">
 
 <p style="color: #9CA3AF; font-size: 11px; text-align: center;">
-  © 2025 Artevia - Objets Publicitaires Personnalisés<br>
+  © 2025 Arteva - Objets Publicitaires Personnalisés<br>
   Casablanca, Maroc
 </p>
 ```
@@ -56,11 +56,11 @@ Clique sur **Confirm signup** et remplace le contenu par :
 ### Template : Magic Link (Optionnel - si tu utilises magic links)
 
 ```html
-<h2>Connexion à Artevia</h2>
+<h2>Connexion à Arteva</h2>
 
 <p>Bonjour,</p>
 
-<p>Cliquez sur le lien ci-dessous pour vous connecter à votre compte Artevia :</p>
+<p>Cliquez sur le lien ci-dessous pour vous connecter à votre compte Arteva :</p>
 
 <p>
   <a href="{{ .ConfirmationURL }}"
@@ -79,7 +79,7 @@ Clique sur **Confirm signup** et remplace le contenu par :
 <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 40px 0;">
 
 <p style="color: #9CA3AF; font-size: 11px; text-align: center;">
-  © 2025 Artevia - Objets Publicitaires Personnalisés<br>
+  © 2025 Arteva - Objets Publicitaires Personnalisés<br>
   Casablanca, Maroc
 </p>
 ```
@@ -91,7 +91,7 @@ Clique sur **Confirm signup** et remplace le contenu par :
 
 <p>Bonjour,</p>
 
-<p>Vous avez demandé à réinitialiser votre mot de passe Artevia.</p>
+<p>Vous avez demandé à réinitialiser votre mot de passe Arteva.</p>
 
 <p>Cliquez sur le bouton ci-dessous pour définir un nouveau mot de passe :</p>
 
@@ -112,7 +112,7 @@ Clique sur **Confirm signup** et remplace le contenu par :
 <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 40px 0;">
 
 <p style="color: #9CA3AF; font-size: 11px; text-align: center;">
-  © 2025 Artevia - Objets Publicitaires Personnalisés<br>
+  © 2025 Arteva - Objets Publicitaires Personnalisés<br>
   Casablanca, Maroc
 </p>
 ```
@@ -129,17 +129,17 @@ Clique sur **Confirm signup** et remplace le contenu par :
 
 #### Pour Production :
 ```
-Site URL: https://artevia.ma
+Site URL: https://arteva.ma
 ```
 
 #### Redirect URLs (à ajouter une par une) :
 ```
-https://artevia.ma/**
-https://artevia.ma/fr/auth/callback
-https://artevia.ma/ar/auth/callback
-https://www.artevia.ma/**
-https://www.artevia.ma/fr/auth/callback
-https://www.artevia.ma/ar/auth/callback
+https://arteva.ma/**
+https://arteva.ma/fr/auth/callback
+https://arteva.ma/ar/auth/callback
+https://www.arteva.ma/**
+https://www.arteva.ma/fr/auth/callback
+https://www.arteva.ma/ar/auth/callback
 ```
 
 #### Pour Développement (Optionnel) :
@@ -156,17 +156,17 @@ Voici à quoi devrait ressembler ta configuration :
 ```
 ┌─────────────────────────────────────────────┐
 │ Site URL                                    │
-│ https://artevia.ma                          │
+│ https://arteva.ma                          │
 └─────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────┐
 │ Redirect URLs                               │
-│ https://artevia.ma/**                       │
-│ https://artevia.ma/fr/auth/callback         │
-│ https://artevia.ma/ar/auth/callback         │
-│ https://www.artevia.ma/**                   │
-│ https://www.artevia.ma/fr/auth/callback     │
-│ https://www.artevia.ma/ar/auth/callback     │
+│ https://arteva.ma/**                       │
+│ https://arteva.ma/fr/auth/callback         │
+│ https://arteva.ma/ar/auth/callback         │
+│ https://www.arteva.ma/**                   │
+│ https://www.arteva.ma/fr/auth/callback     │
+│ https://www.arteva.ma/ar/auth/callback     │
 │ http://localhost:3000/**                    │
 │ http://localhost:3000/fr/auth/callback      │
 │ http://localhost:3000/ar/auth/callback      │
@@ -191,18 +191,18 @@ Host: smtp.sendgrid.net
 Port: 587
 User: apikey
 Password: [Ton API Key SendGrid]
-Sender Email: noreply@artevia.ma
-Sender Name: Artevia
+Sender Email: noreply@arteva.ma
+Sender Name: Arteva
 ```
 
 #### Exemple avec Mailgun :
 ```
 Host: smtp.mailgun.org
 Port: 587
-User: postmaster@mg.artevia.ma
+User: postmaster@mg.arteva.ma
 Password: [Ton API Key Mailgun]
-Sender Email: noreply@artevia.ma
-Sender Name: Artevia
+Sender Email: noreply@arteva.ma
+Sender Name: Arteva
 ```
 
 #### Exemple avec Gmail (Dev uniquement) :
@@ -211,11 +211,11 @@ Host: smtp.gmail.com
 Port: 587
 User: votre-email@gmail.com
 Password: [App Password]
-Sender Email: noreply@artevia.ma
-Sender Name: Artevia
+Sender Email: noreply@arteva.ma
+Sender Name: Arteva
 ```
 
-⚠️ **Note** : Pour utiliser un email personnalisé (@artevia.ma), tu dois configurer les enregistrements DNS SPF et DKIM.
+⚠️ **Note** : Pour utiliser un email personnalisé (@arteva.ma), tu dois configurer les enregistrements DNS SPF et DKIM.
 
 ---
 
@@ -240,7 +240,7 @@ npm run dev
 ```
 
 5. Vérifie ton email - il devrait :
-   - Venir de "Artevia" (si SMTP configuré)
+   - Venir de "Arteva" (si SMTP configuré)
    - Avoir le nouveau design
    - Rediriger vers `http://localhost:3000/fr/auth/callback?code=...`
 
@@ -250,10 +250,10 @@ npm run dev
 
 Une fois déployé sur Vercel :
 
-1. Va sur https://artevia.ma/fr/auth/register
+1. Va sur https://arteva.ma/fr/auth/register
 2. Crée un compte
 3. Vérifie l'email
-4. Clique sur le lien - tu devrais être redirigé vers `https://artevia.ma/fr/auth/callback` puis `https://artevia.ma/fr`
+4. Clique sur le lien - tu devrais être redirigé vers `https://arteva.ma/fr/auth/callback` puis `https://arteva.ma/fr`
 
 ---
 
@@ -268,7 +268,7 @@ Une fois déployé sur Vercel :
 2. Vérifie que les **Redirect URLs** incluent bien ton domaine
 3. Si le problème persiste, vide le cache du navigateur
 
-### Problème : Email de Supabase au lieu d'Artevia
+### Problème : Email de Supabase au lieu d'Arteva
 
 **Symptôme** : L'email vient toujours de "Supabase Auth"
 
@@ -320,11 +320,11 @@ Une fois déployé sur Vercel :
 
 2. **Court terme** :
    - Configurer SMTP personnalisé (SendGrid/Mailgun)
-   - Configurer DNS (SPF, DKIM) pour @artevia.ma
+   - Configurer DNS (SPF, DKIM) pour @arteva.ma
 
 3. **Optionnel** :
    - Ajouter traductions AR pour les templates email
-   - Personnaliser le template avec le logo Artevia
+   - Personnaliser le template avec le logo Arteva
    - Ajouter un footer avec réseaux sociaux
 
 ---

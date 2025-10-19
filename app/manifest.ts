@@ -2,8 +2,8 @@ import type {MetadataRoute} from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Artevia - Print-On-Demand Maroc',
-    short_name: 'Artevia',
+    name: 'Arteva - Print-On-Demand Maroc',
+    short_name: 'Arteva',
     description:
       'Créez des designs print-on-demand bilingues pour le marché marocain avec exports prêts pour l’impression.',
     start_url: '/fr',

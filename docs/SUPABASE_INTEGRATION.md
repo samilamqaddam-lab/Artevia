@@ -1,6 +1,6 @@
 # 🚀 Intégration Supabase - Guide Complet
 
-Ce guide vous accompagne dans l'utilisation complète de Supabase avec le MCP pour gérer votre base de données Artevia.
+Ce guide vous accompagne dans l'utilisation complète de Supabase avec le MCP pour gérer votre base de données Arteva.
 
 ## 📋 Table des Matières
 

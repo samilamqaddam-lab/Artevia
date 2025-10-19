@@ -1,4 +1,4 @@
-# 🎯 Stratégie SEO B2B - Artevia
+# 🎯 Stratégie SEO B2B - Arteva
 
 **Date**: 13 Octobre 2025
 **Business**: Produits Promotionnels Personnalisés pour Entreprises
@@ -41,7 +41,7 @@
 
 ---
 
-## 🎯 Stratégie SEO Artevia - Plan d'Action
+## 🎯 Stratégie SEO Arteva - Plan d'Action
 
 ### Phase 1: Fondations (Mois 1-3)
 
@@ -61,7 +61,7 @@
 
 ```html
 <!-- Exemple: Page Bloc-Notes -->
-<title>Bloc-Notes Personnalisé Entreprise | Logo & Impression | Artevia</title>
+<title>Bloc-Notes Personnalisé Entreprise | Logo & Impression | Arteva</title>
 <meta name="description" content="Bloc-notes personnalisés avec votre logo. Impression haute qualité, petites quantités acceptées. Livraison rapide partout au Maroc. Devis gratuit.">
 
 <h1>Bloc-Notes Personnalisés pour Entreprises</h1>
@@ -72,7 +72,7 @@
   "@context": "https://schema.org/",
   "@type": "Product",
   "name": "Bloc-Notes Personnalisé Entreprise",
-  "brand": "Artevia",
+  "brand": "Arteva",
   "offers": {
     "@type": "AggregateOffer",
     "lowPrice": "50",
@@ -88,7 +88,7 @@
 **Pages à Créer (Priorité 1):**
 
 1. **`/entreprises`** - Landing page B2B
-   - Titre: "Objets Publicitaires et Goodies Entreprise | Artevia Maroc"
+   - Titre: "Objets Publicitaires et Goodies Entreprise | Arteva Maroc"
    - Contenu:
      - USP B2B (petites quantités, designer en ligne, paiement B2B)
      - Cas d'usage (cadeaux clients, événements, onboarding)
@@ -106,7 +106,7 @@
 
 4. **`/entreprises/onboarding-kit`**
    - Mot-clé: "kit bienvenue employé maroc"
-   - Innovation: Artevia pionnier sur ce segment au Maroc
+   - Innovation: Arteva pionnier sur ce segment au Maroc
    - Focus: RH, intégration nouveaux employés
 
 5. **`/entreprises/devis`**
@@ -155,7 +155,7 @@ Chaque page:
    - MarocPME.com
    - Entreprises-Ma.com
    - Kompass.ma
-   - Annonces gratuites avec lien vers Artevia
+   - Annonces gratuites avec lien vers Arteva
 
 2. **Partenariats Média**
    - LesEco.ma (actualité business)
@@ -177,9 +177,9 @@ Chaque page:
 
 **Communiqués de Presse:**
 
-1. "Artevia lance le premier configurateur en ligne de produits B2B au Maroc"
+1. "Arteva lance le premier configurateur en ligne de produits B2B au Maroc"
 2. "Kit Bienvenue Employé: La nouvelle tendance RH adoptée par les startups marocaines"
-3. "Artevia annonce la livraison express 48h sur tout le Maroc"
+3. "Arteva annonce la livraison express 48h sur tout le Maroc"
 
 Distribution: MAP (Agence presse), Médias business, LinkedIn
 
@@ -234,7 +234,7 @@ Confirmation + Relance 2h
 
 ---
 
-## 📈 Mots-Clés Stratégiques Artevia
+## 📈 Mots-Clés Stratégiques Arteva
 
 ### 🔴 Priorité 1: Quick Wins (Faible Concurrence, Fort Intent)
 
@@ -243,7 +243,7 @@ Confirmation + Relance 2h
 | "kit bienvenue employé maroc" | Faible | 🟢 Faible | 🔥 Innovation |
 | "bloc notes personnalisé logo maroc" | Moyen | 🟡 Moyenne | ✅ Produit phare |
 | "chemise rabat personnalisée maroc" | Faible | 🟢 Faible | ✅ Produit unique |
-| "stylos personnalisés petite quantité" | Moyen | 🟡 Moyenne | 🔥 USP Artevia |
+| "stylos personnalisés petite quantité" | Moyen | 🟡 Moyenne | 🔥 USP Arteva |
 | "goodies startup maroc" | Faible | 🟢 Faible | 🔥 Niche |
 
 ### 🟡 Priorité 2: Moyen Terme (Concurrence Moyenne)
@@ -284,7 +284,7 @@ Confirmation + Relance 2h
 
 **Problème Marché:**
 - Concurrents: MOQ 100-500 unités
-- Artevia: Dès 10 unités
+- Arteva: Dès 10 unités
 
 **Contenu:**
 - "Commander des objets publicitaires en petite quantité"
@@ -347,10 +347,10 @@ Implémenter sur toutes les pages:
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Artevia",
+  "name": "Arteva",
   "description": "Fournitures de bureau et objets publicitaires personnalisés pour entreprises au Maroc",
-  "url": "https://artevia.ma",
-  "logo": "https://artevia.ma/logo.png",
+  "url": "https://arteva.ma",
+  "logo": "https://arteva.ma/logo.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+212-XX-XX-XX-XX",
@@ -474,7 +474,7 @@ Homepage
 
 ## 🎓 Conclusion
 
-**Forces Artevia:**
+**Forces Arteva:**
 - ✅ Designer en ligne (unique Maroc)
 - ✅ Petites quantités (gap marché)
 - ✅ Site moderne, UX supérieure
@@ -497,5 +497,5 @@ Homepage
 
 ---
 
-📧 **Questions?** Contactez l'équipe SEO Artevia
+📧 **Questions?** Contactez l'équipe SEO Arteva
 🚀 **Ready to dominate Google!**

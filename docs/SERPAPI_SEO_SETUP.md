@@ -2,7 +2,7 @@
 
 ## 📊 À Propos
 
-Ce serveur MCP SERPAPI permet d'effectuer des recherches SEO et d'analyser la concurrence pour Artevia directement depuis Claude Code.
+Ce serveur MCP SERPAPI permet d'effectuer des recherches SEO et d'analyser la concurrence pour Arteva directement depuis Claude Code.
 
 ## 🔧 Installation
 
@@ -86,7 +86,7 @@ Analyse des tendances de recherche pour la recherche de mots-clés.
 Analyse les tendances Google pour "fournitures de bureau" au Maroc
 ```
 
-## 📈 Cas d'Usage SEO pour Artevia
+## 📈 Cas d'Usage SEO pour Arteva
 
 ### 1. Analyse de la Concurrence
 
@@ -126,7 +126,7 @@ Compare les résultats pour "impression en ligne" dans différentes villes:
 
 **Objectif:** Identifier les opportunités locales.
 
-## 🔍 Stratégie SEO Artevia
+## 🔍 Stratégie SEO Arteva
 
 ### Mots-Clés Principaux à Analyser
 
@@ -168,7 +168,7 @@ Utilisez SERPAPI pour monitorer:
 ### Audit de Visibilité
 
 ```
-Pour chaque produit Artevia, recherche:
+Pour chaque produit Arteva, recherche:
 - Le nom exact du produit
 - Les variations du nom
 - Les termes génériques
@@ -255,7 +255,7 @@ which python3
 
 2. **Tester avec une recherche simple**
    ```
-   Recherche Google pour "artevia maroc"
+   Recherche Google pour "arteva maroc"
    ```
 
 3. **Lancer une analyse complète des concurrents**
@@ -263,7 +263,7 @@ which python3
    Analyse les 3 premiers concurrents pour "impression en ligne maroc"
    ```
 
-4. **Créer un rapport SEO Artevia**
+4. **Créer un rapport SEO Arteva**
    ```
    Génère un rapport SEO complet avec:
    - Top 10 mots-clés pour chaque catégorie de produits

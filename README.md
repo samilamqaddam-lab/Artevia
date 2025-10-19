@@ -1,6 +1,6 @@
-# Artevia – Frontend Print-On-Demand Experience
+# Arteva – Frontend Print-On-Demand Experience
 
-Artevia is a Next.js 14 (App Router) storefront prototype focused on the Moroccan print-on-demand market. It ships the full creation funnel for Phase “Création”: public pages, bilingual FR/AR interface with RTL support, a high-performance Fabric.js based editor, local persistence (IndexedDB), offline-first PWA setup, and basic Jest/Playwright tests.
+Arteva is a Next.js 14 (App Router) storefront prototype focused on the Moroccan print-on-demand market. It ships the full creation funnel for Phase “Création”: public pages, bilingual FR/AR interface with RTL support, a high-performance Fabric.js based editor, local persistence (IndexedDB), offline-first PWA setup, and basic Jest/Playwright tests.
 
 ## Stack
 

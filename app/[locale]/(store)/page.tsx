@@ -49,7 +49,7 @@ const HERO_IMAGE = {
 
 const DESIGNER_IMAGE = {
   src: 'https://images.pexels.com/photos/29765802/pexels-photo-29765802.jpeg?cs=srgb&dl=pexels-jillyjillystudio-29765802.jpg&fm=jpg',
-  alt: 'Interface du designer Artevia'
+  alt: 'Interface du designer Arteva'
 };
 
 const SUSTAINABILITY_IMAGE = {

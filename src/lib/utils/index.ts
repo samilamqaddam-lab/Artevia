@@ -23,7 +23,7 @@ export function generateId() {
   if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
     return crypto.randomUUID();
   }
-  return `artevia-${Math.random().toString(36).slice(2, 10)}`;
+  return `arteva-${Math.random().toString(36).slice(2, 10)}`;
 }
 
 export function getUnitPrice(method: MarkingMethod, quantity: number) {

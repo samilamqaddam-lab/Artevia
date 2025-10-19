@@ -1,8 +1,8 @@
-# Artevia - Project Context Documentation
+# Arteva - Project Context Documentation
 
 ## Executive Summary
 
-**Artevia** is a print-on-demand (POD) storefront prototype focused on the Moroccan market. It provides a complete creation funnel ("Phase Création") allowing users to customize promotional products (mugs, notepads, pens, folders, USB drives, mousepads, t-shirts, tote bags) with a high-performance Fabric.js-based design editor.
+**Arteva** is a print-on-demand (POD) storefront prototype focused on the Moroccan market. It provides a complete creation funnel ("Phase Création") allowing users to customize promotional products (mugs, notepads, pens, folders, USB drives, mousepads, t-shirts, tote bags) with a high-performance Fabric.js-based design editor.
 
 **Target Market**: Moroccan businesses and organizations requiring custom-branded merchandise
 **Primary Languages**: French (FR) and Arabic (AR) with full RTL support
@@ -12,7 +12,7 @@
 
 ## Project Metadata
 
-- **Project Name**: Artevia
+- **Project Name**: Arteva
 - **Version**: 0.1.0 (Prototype)
 - **Framework**: Next.js 14.2.32 (App Router)
 - **Node Version**: >= 18.18.0
@@ -85,7 +85,7 @@
 ## 2. Project Structure
 
 ```
-artevia/
+arteva/
 ├── app/                          # Next.js App Router (RSC + pages)
 │   ├── [locale]/                # Locale-based routing (fr, ar)
 │   │   ├── (store)/            # Store route group (shared layout)
@@ -511,12 +511,12 @@ type QuoteState = {
 };
 ```
 
-**Persistence**: `localStorage` key `artevia-rfq`
+**Persistence**: `localStorage` key `arteva-rfq`
 **Hydration**: Auto-rehydrates on client mount
 
 ### 5.3 IndexedDB Project Storage
 
-**Database**: `artevia-projects`
+**Database**: `arteva-projects`
 **Store**: `projects`
 **Version**: 1
 
@@ -812,8 +812,8 @@ ANALYZE=true npm run build
 **Generated Manifest** (dynamic):
 ```json
 {
-  "name": "Artevia",
-  "short_name": "Artevia",
+  "name": "Arteva",
+  "short_name": "Arteva",
   "description": "Print-on-demand creation experience",
   "start_url": "/",
   "display": "standalone",
@@ -971,7 +971,7 @@ const { data, error } = await supabase.auth.signIn(credentials);
 
 **Database Schema**:
 ```typescript
-const db = await openDB('artevia-projects', 1, {
+const db = await openDB('arteva-projects', 1, {
   upgrade(db) {
     const store = db.createObjectStore('projects', { keyPath: 'id' });
     store.createIndex('productId', 'productId');

@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.modelcontextprotocol.io/config.json",
   "mcpServers": {
-    "artevia-database": {
+    "arteva-database": {
       "command": "npx",
       "args": [
         "-y",
@@ -16,7 +16,7 @@
       "disabled": false,
       "alwaysAllow": []
     },
-    "artevia-management": {
+    "arteva-management": {
       "command": "npx",
       "args": [
         "-y",

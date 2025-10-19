@@ -59,7 +59,7 @@ export const useQuoteStore = create<QuoteState>()(
       totalQuantity: () => get().items.reduce((sum, item) => sum + item.quantity, 0)
     }),
     {
-      name: 'artevia-rfq',
+      name: 'arteva-rfq',
       storage: createJSONStorage(() => (typeof window !== 'undefined' ? window.localStorage : createNoopStorage()))
     }
   )

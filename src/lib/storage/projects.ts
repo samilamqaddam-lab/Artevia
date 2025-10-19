@@ -9,13 +9,13 @@ type ProjectStore = {
   updatedAt: number;
 };
 
-type ArteviaDB = IDBPDatabase<{projects: ProjectStore}>;
+type ArtevaDB = IDBPDatabase<{projects: ProjectStore}>;
 
-const DB_NAME = 'artevia-projects';
+const DB_NAME = 'arteva-projects';
 const STORE_NAME = 'projects';
 const DB_VERSION = 1;
 
-async function getDb(): Promise<ArteviaDB> {
+async function getDb(): Promise<ArtevaDB> {
   return openDB(DB_NAME, DB_VERSION, {
     upgrade(db) {
       if (!db.objectStoreNames.contains(STORE_NAME)) {
@@ -24,7 +24,7 @@ async function getDb(): Promise<ArteviaDB> {
         store.createIndex('updatedAt', 'updatedAt', {unique: false});
       }
     }
-  }) as Promise<ArteviaDB>;
+  }) as Promise<ArtevaDB>;
 }
 
 export async function upsertProject(project: ProjectStore) {

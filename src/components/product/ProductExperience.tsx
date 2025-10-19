@@ -313,10 +313,7 @@ export function ProductExperience({
     ];
 
     if (!ALLOWED_TYPES.includes(file.type)) {
-      pushToast({
-        title: tProduct('upload.invalidType'),
-        description: tProduct('upload.allowedTypes')
-      });
+      logger.warn('File upload rejected: Invalid MIME type', file.type);
       return;
     }
 
@@ -325,29 +322,20 @@ export function ProductExperience({
     const fileExtension = file.name.toLowerCase().substring(file.name.lastIndexOf('.'));
 
     if (!ALLOWED_EXTENSIONS.includes(fileExtension)) {
-      pushToast({
-        title: tProduct('upload.invalidExtension'),
-        description: tProduct('upload.suspiciousFile')
-      });
+      logger.warn('File upload rejected: Invalid extension', fileExtension);
       return;
     }
 
     // Security: Validate file size (max 10MB)
     const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
     if (file.size > MAX_FILE_SIZE) {
-      pushToast({
-        title: tProduct('upload.fileTooLarge'),
-        description: tProduct('upload.maxSize', {size: '10MB'})
-      });
+      logger.warn('File upload rejected: File too large', file.size);
       return;
     }
 
     // Security: Validate filename length
     if (file.name.length > 255) {
-      pushToast({
-        title: tProduct('upload.filenameTooLong'),
-        description: tProduct('upload.maxFilenameLength')
-      });
+      logger.warn('File upload rejected: Filename too long', file.name.length);
       return;
     }
 

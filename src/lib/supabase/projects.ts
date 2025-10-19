@@ -2,9 +2,9 @@ import {createClient} from './client';
 import type {Database} from './types';
 import {logger} from '@/lib/logger';
 
-type Project = Database['public']['Tables']['projects']['Row'];
-type ProjectInsert = Database['public']['Tables']['projects']['Insert'];
-type ProjectUpdate = Database['public']['Tables']['projects']['Update'];
+export type Project = Database['public']['Tables']['projects']['Row'];
+export type ProjectInsert = Database['public']['Tables']['projects']['Insert'];
+export type ProjectUpdate = Database['public']['Tables']['projects']['Update'];
 
 /**
  * Get all projects for the current user

@@ -1,7 +1,6 @@
 'use client';
 
 import {useEffect} from 'react';
-import {useRouter} from 'next/navigation';
 import {Button} from '@/components/ui/Button';
 import {logger} from '@/lib/logger';
 
@@ -16,7 +15,6 @@ export default function ProductError({
   error: Error & {digest?: string};
   reset: () => void;
 }) {
-  const router = useRouter();
 
   useEffect(() => {
     // Log error for monitoring
@@ -31,7 +29,7 @@ export default function ProductError({
             Produit introuvable
           </h2>
           <p className="text-slate-600 dark:text-slate-400">
-            Impossible de charger les informations du produit. Le produit n'existe peut-être plus ou a été déplacé.
+            Impossible de charger les informations du produit. Le produit n&apos;existe peut-être plus ou a été déplacé.
           </p>
         </div>
 
@@ -48,11 +46,11 @@ export default function ProductError({
             Réessayer
           </Button>
           <Button
-            onClick={() => router.push('/')}
-            variant="outline"
+            onClick={() => window.location.href = '/'}
+            variant="secondary"
             className="w-full sm:w-auto"
           >
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Button>
         </div>
       </div>

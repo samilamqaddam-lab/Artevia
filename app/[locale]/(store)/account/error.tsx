@@ -1,7 +1,6 @@
 'use client';
 
 import {useEffect} from 'react';
-import {useRouter} from 'next/navigation';
 import {Button} from '@/components/ui/Button';
 import {logger} from '@/lib/logger';
 
@@ -16,7 +15,6 @@ export default function AccountError({
   error: Error & {digest?: string};
   reset: () => void;
 }) {
-  const router = useRouter();
 
   useEffect(() => {
     // Log error for monitoring
@@ -48,11 +46,11 @@ export default function AccountError({
             Réessayer
           </Button>
           <Button
-            onClick={() => router.push('/')}
-            variant="outline"
+            onClick={() => window.location.href = '/'}
+            variant="secondary"
             className="w-full sm:w-auto"
           >
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Button>
         </div>
       </div>

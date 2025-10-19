@@ -28,7 +28,7 @@ export default function Error({
       <div className="max-w-md space-y-6 text-center">
         <div className="space-y-2">
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-            Une erreur s'est produite
+            Une erreur s&apos;est produite
           </h1>
           <p className="text-slate-600 dark:text-slate-400">
             Nous nous excusons pour ce désagrément. Notre équipe a été notifiée et travaille à résoudre le problème.
@@ -54,10 +54,10 @@ export default function Error({
           </Button>
           <Button
             onClick={() => window.location.href = '/'}
-            variant="outline"
+            variant="secondary"
             className="w-full sm:w-auto"
           >
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Button>
         </div>
       </div>

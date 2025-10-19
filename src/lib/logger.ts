@@ -16,6 +16,7 @@ class Logger {
   /**
    * Méthode interne de logging avec formatage
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private log(level: LogLevel, ...args: any[]): void {
     // Ne pas logger pendant les tests
     if (isTest) return;
@@ -59,6 +60,7 @@ class Logger {
    * Logs de debug - uniquement en développement
    * Utilisé pour le debugging, informations de développement
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   debug(...args: any[]): void {
     this.log('debug', ...args);
   }
@@ -67,6 +69,7 @@ class Logger {
    * Logs d'information - uniquement en développement
    * Utilisé pour tracer le flow de l'application
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   info(...args: any[]): void {
     this.log('info', ...args);
   }
@@ -75,6 +78,7 @@ class Logger {
    * Warnings - toujours loggés
    * Utilisé pour des situations anormales mais non-bloquantes
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   warn(...args: any[]): void {
     this.log('warn', ...args);
   }
@@ -83,6 +87,7 @@ class Logger {
    * Erreurs - toujours loggées
    * Utilisé pour des erreurs qui nécessitent attention
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error(...args: any[]): void {
     this.log('error', ...args);
   }
@@ -90,6 +95,7 @@ class Logger {
   /**
    * Log conditionnel - utile pour debugging spécifique
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   debugIf(condition: boolean, ...args: any[]): void {
     if (condition) {
       this.debug(...args);

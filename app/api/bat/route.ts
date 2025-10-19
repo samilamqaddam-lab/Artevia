@@ -24,11 +24,11 @@ export async function POST(request: Request) {
   } catch (error) {
     // Handle validation errors
     if (error instanceof z.ZodError) {
-      logger.warn('Invalid BAT request data:', error.errors);
+      logger.warn('Invalid BAT request data:', error.issues);
       return NextResponse.json(
         {
           message: 'Données invalides',
-          errors: error.errors.map(err => ({
+          errors: error.issues.map(err => ({
             path: err.path.join('.'),
             message: err.message
           }))

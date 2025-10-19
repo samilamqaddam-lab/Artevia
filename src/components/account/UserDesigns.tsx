@@ -163,9 +163,9 @@ export function UserDesigns({
                 </h2>
                 <p>{project.product_name}</p>
                 <p className="text-xs text-slate-400 dark:text-slate-400">
-                  {new Date(project.updated_at).toLocaleString(
+                  {project.updated_at ? new Date(project.updated_at).toLocaleString(
                     locale === 'ar' ? 'ar-MA' : 'fr-MA'
-                  )}
+                  ) : '-'}
                 </p>
                 <div className="mt-auto flex gap-2">
                   <Button

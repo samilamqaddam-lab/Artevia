@@ -56,7 +56,8 @@ export default function AccountLayout({
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                href={item.href as any}
                 className={`border-b-2 px-4 pb-3 text-sm font-medium transition-colors ${
                   isActive
                     ? 'border-brand text-brand'

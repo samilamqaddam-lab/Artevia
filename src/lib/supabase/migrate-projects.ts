@@ -8,6 +8,7 @@
 import {listProjects, deleteProject as deleteLocalProject} from '../storage/projects';
 import {createProject, getProjects} from './projects';
 import {createClient} from './client';
+import {logger} from '@/lib/logger';
 
 export interface MigrationResult {
   success: boolean;
@@ -61,14 +62,14 @@ export async function migrateProjectsToSupabase(
       return result;
     }
 
-    console.log(`Found ${localProjects.length} local projects to migrate`);
+    logger.info(`Found ${localProjects.length} local projects to migrate`);
 
     // Migrate each project
     for (const localProject of localProjects) {
       try {
         // Skip if already exists in Supabase
         if (existingProjectIds.has(localProject.id)) {
-          console.log(`Skipping ${localProject.name} (already exists in Supabase)`);
+          logger.debug(`Skipping ${localProject.name} (already exists in Supabase)`);
           result.skipped++;
           result.details.push({
             projectName: localProject.name,
@@ -89,7 +90,7 @@ export async function migrateProjectsToSupabase(
           tags: []
         });
 
-        console.log(`✓ Migrated: ${localProject.name}`);
+        logger.info(`✓ Migrated: ${localProject.name}`);
         result.migrated++;
         result.details.push({
           projectName: localProject.name,
@@ -99,10 +100,10 @@ export async function migrateProjectsToSupabase(
         // Delete local copy if requested
         if (deleteAfterMigration) {
           await deleteLocalProject(localProject.id);
-          console.log(`  Deleted local copy of: ${localProject.name}`);
+          logger.debug(`  Deleted local copy of: ${localProject.name}`);
         }
       } catch (error) {
-        console.error(`✗ Error migrating ${localProject.name}:`, error);
+        logger.error(`✗ Error migrating ${localProject.name}:`, error);
         result.errors++;
         result.details.push({
           projectName: localProject.name,
@@ -114,15 +115,15 @@ export async function migrateProjectsToSupabase(
 
     result.success = result.errors === 0;
 
-    console.log('\n=== Migration Summary ===');
-    console.log(`✓ Migrated: ${result.migrated}`);
-    console.log(`⊘ Skipped: ${result.skipped}`);
-    console.log(`✗ Errors: ${result.errors}`);
-    console.log('=======================\n');
+    logger.info('\n=== Migration Summary ===');
+    logger.info(`✓ Migrated: ${result.migrated}`);
+    logger.info(`⊘ Skipped: ${result.skipped}`);
+    logger.info(`✗ Errors: ${result.errors}`);
+    logger.info('=======================\n');
 
     return result;
   } catch (error) {
-    console.error('Migration failed:', error);
+    logger.error('Migration failed:', error);
     result.success = false;
     throw error;
   }
@@ -148,7 +149,7 @@ export async function hasLocalProjectsToMigrate(): Promise<boolean> {
 
     return false;
   } catch (error) {
-    console.error('Error checking for local projects:', error);
+    logger.error('Error checking for local projects:', error);
     return false;
   }
 }
@@ -165,7 +166,7 @@ export async function getPendingMigrationCount(): Promise<number> {
 
     return localProjects.filter((p) => !supabaseProjectIds.has(p.id)).length;
   } catch (error) {
-    console.error('Error getting pending migration count:', error);
+    logger.error('Error getting pending migration count:', error);
     return 0;
   }
 }

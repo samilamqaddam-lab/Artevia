@@ -17,6 +17,7 @@ import {
 } from '@/lib/supabase/migrate-projects';
 import {products} from '@/lib/products';
 import type {Locale} from '@/i18n/settings';
+import {logger} from '@/lib/logger';
 
 interface UserDesignsProps {
   locale: Locale;
@@ -67,7 +68,7 @@ export function UserDesigns({
 
       setProjects(enriched);
     } catch (error) {
-      console.error('Error loading projects:', error);
+      logger.error('Error loading projects:', error);
     } finally {
       setLoading(false);
     }
@@ -85,7 +86,7 @@ export function UserDesigns({
       await loadProjects();
       setShowMigrationPrompt(false);
     } catch (error) {
-      console.error('Migration error:', error);
+      logger.error('Migration error:', error);
     } finally {
       setIsMigrating(false);
     }
@@ -102,7 +103,7 @@ export function UserDesigns({
       await deleteProject(id);
       await loadProjects();
     } catch (error) {
-      console.error('Error deleting project:', error);
+      logger.error('Error deleting project:', error);
     }
   };
 

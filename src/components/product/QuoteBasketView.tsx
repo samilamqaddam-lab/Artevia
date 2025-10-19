@@ -14,6 +14,7 @@ import type {Locale} from '@/i18n/settings';
 import {generateBatPdf} from '@/lib/pdf/bat';
 import {generateQuotePdf} from '@/lib/pdf/quote';
 import {getPackById, packs as packDefinitions} from '@/lib/packs';
+import {logger} from '@/lib/logger';
 
 interface QuoteBasketViewProps {
   locale: Locale;
@@ -60,7 +61,7 @@ export function QuoteBasketView({locale}: QuoteBasketViewProps) {
       try {
         return tHome(labelKey);
       } catch (error) {
-        console.warn('Missing translation for pack label', labelKey, error);
+        logger.warn('Missing translation for pack label', labelKey, error);
         return packId;
       }
     },
@@ -394,7 +395,7 @@ export function QuoteBasketView({locale}: QuoteBasketViewProps) {
       setShowCheckoutForm(false);
       setConfirmation(snapshot);
     } catch (error) {
-      console.error(error);
+      logger.error(error);
       pushToast({title: tQuotes('toast.error')});
     } finally {
       setSubmitting(false);

@@ -7,6 +7,7 @@ import {useTranslations} from 'next-intl';
 import {Button} from '@/components/ui/Button';
 import {useToast, useSupabase} from '@/components/Providers';
 import type {Locale} from '@/i18n/settings';
+import {logger} from '@/lib/logger';
 
 interface LoginViewProps {
   locale: Locale;
@@ -40,7 +41,7 @@ export function LoginView({locale}: LoginViewProps) {
     if (signInError) {
       const isEmailNotConfirmed = signInError.message?.toLowerCase().includes('email not confirmed');
       const message = isEmailNotConfirmed ? t('emailNotConfirmed') : signInError.message || t('error');
-      console.error('Supabase sign-in error', signInError);
+      logger.error('Supabase sign-in error', signInError);
       setError(message);
       pushToast({title: t('error'), description: message});
       setLoading(false);

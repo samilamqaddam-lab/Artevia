@@ -7,6 +7,7 @@ import {useTranslations} from 'next-intl';
 import {Button} from '@/components/ui/Button';
 import {useToast, useSupabase} from '@/components/Providers';
 import type {Locale} from '@/i18n/settings';
+import {logger} from '@/lib/logger';
 
 interface RegisterViewProps {
   locale: Locale;
@@ -53,7 +54,7 @@ export function RegisterView({locale}: RegisterViewProps) {
 
     if (signUpError) {
       const message = signUpError.message || t('error');
-      console.error('Supabase sign-up error', signUpError);
+      logger.error('Supabase sign-up error', signUpError);
       setError(message);
       pushToast({title: t('error'), description: message});
       setLoading(false);

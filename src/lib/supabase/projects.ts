@@ -1,5 +1,6 @@
 import {createClient} from './client';
 import type {Database} from './types';
+import {logger} from '@/lib/logger';
 
 type Project = Database['public']['Tables']['projects']['Row'];
 type ProjectInsert = Database['public']['Tables']['projects']['Insert'];
@@ -17,7 +18,7 @@ export async function getProjects(): Promise<Project[]> {
     .order('updated_at', {ascending: false});
 
   if (error) {
-    console.error('Error fetching projects:', error);
+    logger.error('Error fetching projects:', error);
     throw error;
   }
 
@@ -33,7 +34,7 @@ export async function getProject(id: string): Promise<Project | null> {
   const {data, error} = await supabase.from('projects').select('*').eq('id', id).single();
 
   if (error) {
-    console.error('Error fetching project:', error);
+    logger.error('Error fetching project:', error);
     return null;
   }
 
@@ -63,7 +64,7 @@ export async function createProject(
     .single();
 
   if (error) {
-    console.error('Error creating project:', error);
+    logger.error('Error creating project:', error);
     throw error;
   }
 
@@ -84,7 +85,7 @@ export async function updateProject(id: string, updates: ProjectUpdate): Promise
     .single();
 
   if (error) {
-    console.error('Error updating project:', error);
+    logger.error('Error updating project:', error);
     throw error;
   }
 
@@ -100,7 +101,7 @@ export async function deleteProject(id: string): Promise<void> {
   const {error} = await supabase.from('projects').delete().eq('id', id);
 
   if (error) {
-    console.error('Error deleting project:', error);
+    logger.error('Error deleting project:', error);
     throw error;
   }
 }
@@ -118,7 +119,7 @@ export async function getProjectsByProduct(productId: string): Promise<Project[]
     .order('updated_at', {ascending: false});
 
   if (error) {
-    console.error('Error fetching projects by product:', error);
+    logger.error('Error fetching projects by product:', error);
     throw error;
   }
 
@@ -139,7 +140,7 @@ export async function getPublicProjects(limit = 50): Promise<Project[]> {
     .limit(limit);
 
   if (error) {
-    console.error('Error fetching public projects:', error);
+    logger.error('Error fetching public projects:', error);
     throw error;
   }
 

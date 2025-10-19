@@ -1,5 +1,6 @@
 import {createClient} from './client';
 import type {Database} from './types';
+import {logger} from '@/lib/logger';
 
 type Profile = Database['public']['Tables']['profiles']['Row'];
 type ProfileUpdate = Database['public']['Tables']['profiles']['Update'];
@@ -22,7 +23,7 @@ export async function getProfile(userId?: string): Promise<Profile | null> {
   const {data, error} = await supabase.from('profiles').select('*').eq('id', userId).single();
 
   if (error) {
-    console.error('Error fetching profile:', error);
+    logger.error('Error fetching profile:', error);
     return null;
   }
 
@@ -48,7 +49,7 @@ export async function updateProfile(updates: ProfileUpdate): Promise<Profile | n
     .single();
 
   if (error) {
-    console.error('Error updating profile:', error);
+    logger.error('Error updating profile:', error);
     throw error;
   }
 
@@ -67,7 +68,7 @@ export async function profileExists(userId: string): Promise<boolean> {
     .eq('id', userId);
 
   if (error) {
-    console.error('Error checking profile existence:', error);
+    logger.error('Error checking profile existence:', error);
     return false;
   }
 

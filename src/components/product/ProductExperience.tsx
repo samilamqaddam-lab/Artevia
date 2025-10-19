@@ -20,6 +20,7 @@ import {useQuoteStore} from '@/stores/quote-store';
 import type {Locale} from '@/i18n/settings';
 import type {QuoteMode} from '@/types/quote';
 import {generateBatPdf} from '@/lib/pdf/bat';
+import {logger} from '@/lib/logger';
 
 interface LocalizedMethod extends MarkingMethod {
   label: string;
@@ -175,6 +176,15 @@ export function ProductExperience({
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [uploadedFileUrl, setUploadedFileUrl] = useState<string | null>(null);
 
+  // Cleanup: Revoke object URL on unmount to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      if (uploadedFileUrl) {
+        URL.revokeObjectURL(uploadedFileUrl);
+      }
+    };
+  }, [uploadedFileUrl]);
+
   const selectedMethod = useMemo(
     () => methods.find((method) => method.id === selectedMethodId) ?? methods[0],
     [methods, selectedMethodId]
@@ -282,13 +292,67 @@ export function ProductExperience({
   };
 
   const handleFileUpload = (file: File | null) => {
+    // Cleanup previous file URL to prevent memory leaks
+    if (uploadedFileUrl) {
+      URL.revokeObjectURL(uploadedFileUrl);
+    }
+
     if (!file) {
       setUploadedFile(null);
       setUploadedFileUrl(null);
       return;
     }
+
+    // Security: Validate file type
+    const ALLOWED_TYPES = [
+      'image/png',
+      'image/jpeg',
+      'image/jpg',
+      'image/svg+xml',
+      'application/pdf'
+    ];
+
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      pushToast({
+        title: tProduct('upload.invalidType'),
+        description: tProduct('upload.allowedTypes')
+      });
+      return;
+    }
+
+    // Security: Validate file extension (additional check)
+    const ALLOWED_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.svg', '.pdf'];
+    const fileExtension = file.name.toLowerCase().substring(file.name.lastIndexOf('.'));
+
+    if (!ALLOWED_EXTENSIONS.includes(fileExtension)) {
+      pushToast({
+        title: tProduct('upload.invalidExtension'),
+        description: tProduct('upload.suspiciousFile')
+      });
+      return;
+    }
+
+    // Security: Validate file size (max 10MB)
+    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+    if (file.size > MAX_FILE_SIZE) {
+      pushToast({
+        title: tProduct('upload.fileTooLarge'),
+        description: tProduct('upload.maxSize', {size: '10MB'})
+      });
+      return;
+    }
+
+    // Security: Validate filename length
+    if (file.name.length > 255) {
+      pushToast({
+        title: tProduct('upload.filenameTooLong'),
+        description: tProduct('upload.maxFilenameLength')
+      });
+      return;
+    }
+
+    // All validations passed
     setUploadedFile(file);
-    // Create object URL for preview
     const url = URL.createObjectURL(file);
     setUploadedFileUrl(url);
   };
@@ -366,7 +430,7 @@ export function ProductExperience({
         })
       });
     } catch (error) {
-      console.warn('BAT mock API error', error);
+      logger.warn('BAT mock API error', error);
     }
 
     const url = URL.createObjectURL(pdfBlob);

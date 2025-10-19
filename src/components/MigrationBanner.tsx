@@ -9,6 +9,7 @@ import {
   getPendingMigrationCount,
   type MigrationResult
 } from '@/lib/supabase/migrate-projects';
+import {logger} from '@/lib/logger';
 
 export function MigrationBanner() {
   const [show, setShow] = useState(false);
@@ -28,7 +29,7 @@ export function MigrationBanner() {
       setShow(hasProjects);
       setPendingCount(count);
     } catch (error) {
-      console.error('Error checking migration status:', error);
+      logger.error('Error checking migration status:', error);
     }
   }
 
@@ -43,7 +44,7 @@ export function MigrationBanner() {
         setTimeout(() => setShow(false), 5000);
       }
     } catch (error) {
-      console.error('Migration error:', error);
+      logger.error('Migration error:', error);
     } finally {
       setMigrating(false);
     }

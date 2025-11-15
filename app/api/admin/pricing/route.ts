@@ -3,7 +3,7 @@ import {getSupabaseClient, getSupabaseServiceClient} from '@/lib/supabase/server
 import {requireAdmin} from '@/lib/auth/roles';
 import {logger} from '@/lib/logger';
 import {products} from '@/lib/products';
-import type {PriceOverrideInput} from '@/types/price-overrides';
+import type {PriceOverrideInput, PriceTier} from '@/types/price-overrides';
 
 /**
  * GET /api/admin/pricing
@@ -55,22 +55,17 @@ export async function GET() {
         );
 
         // Get either override or default pricing
-        const tiers = override
-          ? [
-              {
-                minQuantity: override.tier_1_quantity,
-                unitPrice: Number(override.tier_1_price)
-              },
-              {
-                minQuantity: override.tier_2_quantity,
-                unitPrice: Number(override.tier_2_price)
-              },
-              {
-                minQuantity: override.tier_3_quantity,
-                unitPrice: Number(override.tier_3_price)
-              }
-            ]
-          : method.priceTiers.slice(0, 3); // Only show first 3 tiers
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const overrideData = override as any;
+        const tiers = overrideData?.price_tiers?.tiers
+          ? overrideData.price_tiers.tiers.map((tier: PriceTier) => ({
+              minQuantity: tier.quantity,
+              unitPrice: tier.price
+            }))
+          : method.priceTiers.map((tier) => ({
+              minQuantity: tier.minQuantity,
+              unitPrice: tier.unitPrice
+            }));
 
         return {
           product_id: product.id,
@@ -122,35 +117,53 @@ export async function PUT(request: Request) {
     const body: PriceOverrideInput = await request.json();
 
     // Validate input
-    if (
-      !body.product_id ||
-      !body.method_id ||
-      !body.tier_1_quantity ||
-      !body.tier_1_price ||
-      !body.tier_2_quantity ||
-      !body.tier_2_price ||
-      !body.tier_3_quantity ||
-      !body.tier_3_price
-    ) {
+    if (!body.product_id || !body.method_id || !body.price_tiers) {
       return NextResponse.json(
-        {error: 'Données manquantes ou invalides'},
+        {error: 'Données manquantes (product_id, method_id, price_tiers requis)'},
         {status: 400}
       );
     }
 
-    // Validate tier logic
-    if (
-      body.tier_1_quantity >= body.tier_2_quantity ||
-      body.tier_2_quantity >= body.tier_3_quantity
-    ) {
+    if (!body.price_tiers.tiers || !Array.isArray(body.price_tiers.tiers)) {
       return NextResponse.json(
-        {error: 'Les quantités doivent être croissantes (palier 1 < palier 2 < palier 3)'},
+        {error: 'price_tiers.tiers doit être un tableau'},
         {status: 400}
       );
     }
 
-    // Note: We don't enforce descending prices because volume discounts aren't always linear
-    // The business might want to increase prices at higher volumes in some cases
+    if (body.price_tiers.tiers.length < 1) {
+      return NextResponse.json(
+        {error: 'Au moins un palier de prix est requis'},
+        {status: 400}
+      );
+    }
+
+    // Validate each tier
+    for (const tier of body.price_tiers.tiers) {
+      if (!tier.quantity || !tier.price) {
+        return NextResponse.json(
+          {error: 'Chaque palier doit avoir quantity et price'},
+          {status: 400}
+        );
+      }
+      if (tier.quantity <= 0 || tier.price <= 0) {
+        return NextResponse.json(
+          {error: 'Les quantités et prix doivent être positifs'},
+          {status: 400}
+        );
+      }
+    }
+
+    // Validate tier quantities are in ascending order
+    const quantities = body.price_tiers.tiers.map((t) => t.quantity);
+    for (let i = 1; i < quantities.length; i++) {
+      if (quantities[i] <= quantities[i - 1]) {
+        return NextResponse.json(
+          {error: 'Les quantités doivent être en ordre croissant'},
+          {status: 400}
+        );
+      }
+    }
 
     // Use service client for DB operations
     const serviceClient = getSupabaseServiceClient();
@@ -159,22 +172,19 @@ export async function PUT(request: Request) {
     const upsertData = {
       product_id: body.product_id,
       method_id: body.method_id,
-      tier_1_quantity: body.tier_1_quantity,
-      tier_1_price: body.tier_1_price,
-      tier_2_quantity: body.tier_2_quantity,
-      tier_2_price: body.tier_2_price,
-      tier_3_quantity: body.tier_3_quantity,
-      tier_3_price: body.tier_3_price,
+      price_tiers: body.price_tiers,
       updated_by: user.id
     };
 
-    const {data, error: upsertError} = await serviceClient
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const {data, error: upsertError} = await (serviceClient
       .from('price_overrides')
-      .upsert(upsertData, {
+      .upsert(upsertData as any, {
         onConflict: 'product_id,method_id'
       })
       .select()
-      .single();
+      .single() as any);
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 
     if (upsertError) {
       logger.error('Error upserting price override:', upsertError);

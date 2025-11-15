@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import {useTranslations} from 'next-intl';
 import {Button} from '@/components/ui/Button';
 import {useToast} from '@/components/Providers';
-import {Edit2, RotateCcw, Check, X, Search} from 'lucide-react';
+import {Edit2, RotateCcw, Check, X, Search, Plus, Trash2} from 'lucide-react';
 import {formatPrice} from '@/lib/utils';
 import type {Locale} from '@/i18n/settings';
 
@@ -26,15 +26,15 @@ type PricingItem = {
   updated_by: string | null;
 };
 
+type EditTier = {
+  quantity: number;
+  price: number;
+};
+
 type EditingData = {
   product_id: string;
   method_id: string;
-  tier_1_quantity: number;
-  tier_1_price: number;
-  tier_2_quantity: number;
-  tier_2_price: number;
-  tier_3_quantity: number;
-  tier_3_price: number;
+  tiers: EditTier[];
 };
 
 export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
@@ -95,26 +95,64 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
     setEditData({
       product_id: item.product_id,
       method_id: item.method_id,
-      tier_1_quantity: item.tiers[0]?.minQuantity || 50,
-      tier_1_price: item.tiers[0]?.unitPrice || 0,
-      tier_2_quantity: item.tiers[1]?.minQuantity || 100,
-      tier_2_price: item.tiers[1]?.unitPrice || 0,
-      tier_3_quantity: item.tiers[2]?.minQuantity || 300,
-      tier_3_price: item.tiers[2]?.unitPrice || 0
+      tiers: item.tiers.map((tier) => ({
+        quantity: tier.minQuantity,
+        price: tier.unitPrice
+      }))
     });
+  };
+
+  // Add a new tier
+  const handleAddTier = () => {
+    if (!editData) return;
+    const lastTier = editData.tiers[editData.tiers.length - 1];
+    setEditData({
+      ...editData,
+      tiers: [
+        ...editData.tiers,
+        {
+          quantity: lastTier ? lastTier.quantity + 100 : 50,
+          price: lastTier ? lastTier.price * 0.9 : 10
+        }
+      ]
+    });
+  };
+
+  // Remove a tier
+  const handleRemoveTier = (index: number) => {
+    if (!editData || editData.tiers.length <= 1) return;
+    setEditData({
+      ...editData,
+      tiers: editData.tiers.filter((_, i) => i !== index)
+    });
+  };
+
+  // Update tier value
+  const handleUpdateTier = (index: number, field: 'quantity' | 'price', value: number) => {
+    if (!editData) return;
+    const newTiers = [...editData.tiers];
+    newTiers[index] = {...newTiers[index], [field]: value};
+    setEditData({...editData, tiers: newTiers});
   };
 
   // Save price override
   const handleSave = async () => {
     if (!editData) return;
 
-    // Validate
-    if (
-      editData.tier_1_quantity >= editData.tier_2_quantity ||
-      editData.tier_2_quantity >= editData.tier_3_quantity
-    ) {
-      pushToast({title: t('messages.invalidQuantities')});
-      return;
+    // Validate quantities are in ascending order
+    for (let i = 1; i < editData.tiers.length; i++) {
+      if (editData.tiers[i].quantity <= editData.tiers[i - 1].quantity) {
+        pushToast({title: 'Les quantités doivent être en ordre croissant'});
+        return;
+      }
+    }
+
+    // Validate all values are positive
+    for (const tier of editData.tiers) {
+      if (tier.quantity <= 0 || tier.price <= 0) {
+        pushToast({title: 'Les quantités et prix doivent être positifs'});
+        return;
+      }
     }
 
     try {
@@ -122,7 +160,13 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
       const response = await fetch('/api/admin/pricing', {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(editData)
+        body: JSON.stringify({
+          product_id: editData.product_id,
+          method_id: editData.method_id,
+          price_tiers: {
+            tiers: editData.tiers
+          }
+        })
       });
 
       if (!response.ok) throw new Error('Failed to save');
@@ -157,40 +201,6 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
       console.error('Error resetting pricing:', error);
       pushToast({title: t('messages.resetError')});
     }
-  };
-
-  // Calculate interpolated preview prices
-  const getPreviewPrices = () => {
-    if (!editData) return [];
-
-    const samples = [75, 150, 200, 400];
-    return samples.map((qty) => {
-      let price = 0;
-
-      if (qty <= editData.tier_1_quantity) {
-        price = editData.tier_1_price;
-      } else if (qty <= editData.tier_2_quantity) {
-        // Interpolate between tier 1 and tier 2
-        const ratio =
-          (qty - editData.tier_1_quantity) /
-          (editData.tier_2_quantity - editData.tier_1_quantity);
-        price =
-          editData.tier_1_price +
-          (editData.tier_2_price - editData.tier_1_price) * ratio;
-      } else if (qty <= editData.tier_3_quantity) {
-        // Interpolate between tier 2 and tier 3
-        const ratio =
-          (qty - editData.tier_2_quantity) /
-          (editData.tier_3_quantity - editData.tier_2_quantity);
-        price =
-          editData.tier_2_price +
-          (editData.tier_3_price - editData.tier_2_price) * ratio;
-      } else {
-        price = editData.tier_3_price;
-      }
-
-      return {quantity: qty, price: price.toFixed(2)};
-    });
   };
 
   if (loading) {
@@ -246,194 +256,170 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  {item.has_override ? (
-                    <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-400">
-                      {t('table.modified')}
-                    </span>
-                  ) : (
-                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-400">
-                      {t('table.default')}
+                  {item.has_override && (
+                    <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-medium text-brand">
+                      {t('status.customized')}
                     </span>
                   )}
-                </div>
-              </div>
-
-              {/* Price Tiers */}
-              <div className="mb-4 grid gap-3 sm:grid-cols-3">
-                {item.tiers.slice(0, 3).map((tier, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-lg bg-slate-50 p-4 dark:bg-[#0a0a0a]"
-                  >
-                    <p className="mb-1 text-xs font-medium text-slate-500 dark:text-slate-400">
-                      {t('table.tier', {number: idx + 1})}
-                    </p>
-                    <p className="text-sm text-slate-700 dark:text-slate-300">
-                      {tier.minQuantity} {t('table.quantity')}
-                    </p>
-                    <p className="mt-1 text-lg font-bold text-brand">
-                      {formatPrice(tier.unitPrice, locale)}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Actions */}
-              <div className="flex items-center justify-between border-t border-slate-200 pt-4 dark:border-slate-700">
-                <div className="text-xs text-slate-500 dark:text-slate-400">
-                  {item.updated_at && (
-                    <>
-                      {t('table.lastUpdated')}{' '}
-                      {new Date(item.updated_at).toLocaleDateString('fr-FR')}
-                    </>
-                  )}
-                </div>
-                <div className="flex gap-2">
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    onClick={() => handleEdit(item)}
-                  >
+                  <Button variant="secondary" size="sm" onClick={() => handleEdit(item)}>
                     <Edit2 size={16} className="mr-1" />
-                    Modifier
+                    {t('actions.edit')}
                   </Button>
                   {item.has_override && (
                     <Button
+                      variant="ghost"
                       size="sm"
-                      variant="secondary"
                       onClick={() => handleReset(item)}
                     >
                       <RotateCcw size={16} className="mr-1" />
-                      {t('edit.reset')}
+                      {t('actions.reset')}
                     </Button>
                   )}
                 </div>
+              </div>
+
+              {/* Price Tiers Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-slate-200 dark:border-slate-700">
+                      <th className="px-4 py-2 text-left text-sm font-medium text-slate-600 dark:text-slate-400">
+                        {t('table.quantity')}
+                      </th>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-slate-600 dark:text-slate-400">
+                        {t('table.unitPrice')}
+                      </th>
+                      <th className="px-4 py-2 text-left text-sm font-medium text-slate-600 dark:text-slate-400">
+                        {t('table.totalPrice')}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {item.tiers.map((tier, idx) => (
+                      <tr
+                        key={idx}
+                        className="border-b border-slate-100 dark:border-slate-800"
+                      >
+                        <td className="px-4 py-3 text-sm text-slate-900 dark:text-white">
+                          {tier.minQuantity}+
+                        </td>
+                        <td className="px-4 py-3 text-sm font-medium text-slate-900 dark:text-white">
+                          {formatPrice(tier.unitPrice, locale)}
+                        </td>
+                        <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-400">
+                          {formatPrice(tier.unitPrice * tier.minQuantity, locale)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Empty State */}
-        {filteredPricing.length === 0 && (
-          <div className="py-12 text-center">
-            <p className="text-slate-600 dark:text-slate-400">
-              Aucun produit trouvé
-            </p>
+        {/* Edit Modal */}
+        {editingItem && editData && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+            <div className="max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white p-6 shadow-xl dark:bg-[#171717]">
+              <div className="mb-6 flex items-start justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+                    {t('edit.title')}
+                  </h2>
+                  <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                    {tProducts(editingItem.product_name.split('.').slice(1).join('.'))} -{' '}
+                    {tProducts(editingItem.method_name.split('.').slice(1).join('.'))}
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    setEditingItem(null);
+                    setEditData(null);
+                  }}
+                  className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              {/* Tier Inputs */}
+              <div className="mb-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                    Paliers de prix
+                  </h3>
+                  <Button variant="secondary" size="sm" onClick={handleAddTier}>
+                    <Plus size={16} className="mr-1" />
+                    Ajouter un palier
+                  </Button>
+                </div>
+
+                {editData.tiers.map((tier, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 rounded-lg border border-slate-200 p-4 dark:border-slate-700"
+                  >
+                    <div className="flex-1">
+                      <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                        Quantité min.
+                      </label>
+                      <input
+                        type="number"
+                        value={tier.quantity}
+                        onChange={(e) =>
+                          handleUpdateTier(index, 'quantity', Number(e.target.value))
+                        }
+                        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 dark:border-slate-600 dark:bg-[#0a0a0a] dark:text-white"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                        Prix unitaire (MAD)
+                      </label>
+                      <input
+                        type="number"
+                        step="0.01"
+                        value={tier.price}
+                        onChange={(e) =>
+                          handleUpdateTier(index, 'price', Number(e.target.value))
+                        }
+                        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 dark:border-slate-600 dark:bg-[#0a0a0a] dark:text-white"
+                      />
+                    </div>
+                    {editData.tiers.length > 1 && (
+                      <button
+                        onClick={() => handleRemoveTier(index)}
+                        className="mt-6 text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
+                      >
+                        <Trash2 size={20} />
+                      </button>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Actions */}
+              <div className="flex justify-end gap-3">
+                <Button
+                  variant="ghost"
+                  onClick={() => {
+                    setEditingItem(null);
+                    setEditData(null);
+                  }}
+                >
+                  <X size={16} className="mr-1" />
+                  {t('actions.cancel')}
+                </Button>
+                <Button onClick={handleSave} disabled={saving}>
+                  <Check size={16} className="mr-1" />
+                  {saving ? t('actions.saving') : t('actions.save')}
+                </Button>
+              </div>
+            </div>
           </div>
         )}
       </div>
-
-      {/* Edit Modal */}
-      {editingItem && editData && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-2xl rounded-lg bg-white p-6 dark:bg-[#171717]">
-            {/* Modal Header */}
-            <div className="mb-6">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-                {t('edit.title')}
-              </h2>
-              <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
-                {tProducts(editingItem.product_name.split('.').slice(1).join('.'))} -{' '}
-                {tProducts(editingItem.method_name.split('.').slice(1).join('.'))}
-              </p>
-            </div>
-
-            {/* Tier Inputs */}
-            <div className="mb-6 space-y-4">
-              {[1, 2, 3].map((tierNum) => (
-                <div
-                  key={tierNum}
-                  className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"
-                >
-                  <h3 className="mb-3 font-semibold text-slate-900 dark:text-white">
-                    {t('edit.subtitle', {number: tierNum})}
-                  </h3>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        {t('edit.quantityLabel')}
-                      </label>
-                      <input
-                        type="number"
-                        min="1"
-                        value={editData[`tier_${tierNum}_quantity` as keyof EditingData]}
-                        onChange={(e) =>
-                          setEditData({
-                            ...editData,
-                            [`tier_${tierNum}_quantity`]: parseInt(e.target.value) || 0
-                          })
-                        }
-                        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 dark:border-slate-600 dark:bg-[#0a0a0a] dark:text-white"
-                      />
-                    </div>
-                    <div>
-                      <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                        {t('edit.priceLabel')}
-                      </label>
-                      <input
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        value={editData[`tier_${tierNum}_price` as keyof EditingData]}
-                        onChange={(e) =>
-                          setEditData({
-                            ...editData,
-                            [`tier_${tierNum}_price`]: parseFloat(e.target.value) || 0
-                          })
-                        }
-                        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 dark:border-slate-600 dark:bg-[#0a0a0a] dark:text-white"
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Preview */}
-            <div className="mb-6 rounded-lg bg-slate-50 p-4 dark:bg-[#0a0a0a]">
-              <h3 className="mb-3 text-sm font-semibold text-slate-700 dark:text-slate-300">
-                {t('edit.preview')}
-              </h3>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {getPreviewPrices().map((sample) => (
-                  <p
-                    key={sample.quantity}
-                    className="text-sm text-slate-600 dark:text-slate-400"
-                  >
-                    {t('edit.previewItem', {
-                      quantity: sample.quantity,
-                      price: sample.price
-                    })}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            {/* Modal Actions */}
-            <div className="flex justify-end gap-3">
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  setEditingItem(null);
-                  setEditData(null);
-                }}
-                disabled={saving}
-              >
-                <X size={16} className="mr-1" />
-                {t('edit.cancel')}
-              </Button>
-              <Button
-                variant="primary"
-                onClick={handleSave}
-                disabled={saving}
-              >
-                <Check size={16} className="mr-1" />
-                {saving ? 'Sauvegarde...' : t('edit.save')}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

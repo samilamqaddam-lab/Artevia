@@ -2,22 +2,25 @@
  * Price Override Types
  *
  * Allows admins to override default product pricing stored in code.
- * The system stores 3 reference price points; interpolation for
- * intermediate quantities happens in the existing pricing logic.
+ * The system now supports flexible pricing with any number of tiers per product.
  */
+
+export type PriceTier = {
+  quantity: number;
+  price: number;
+};
+
+export type PriceTiersStructure = {
+  tiers: PriceTier[];
+};
 
 export type PriceOverride = {
   id: string;
   product_id: string;
   method_id: string;
 
-  // Three reference price tiers
-  tier_1_quantity: number;
-  tier_1_price: number;
-  tier_2_quantity: number;
-  tier_2_price: number;
-  tier_3_quantity: number;
-  tier_3_price: number;
+  // Flexible price tiers (supports any number of tiers)
+  price_tiers: PriceTiersStructure;
 
   // Audit fields
   updated_by: string | null;
@@ -28,12 +31,7 @@ export type PriceOverride = {
 export type PriceOverrideInput = {
   product_id: string;
   method_id: string;
-  tier_1_quantity: number;
-  tier_1_price: number;
-  tier_2_quantity: number;
-  tier_2_price: number;
-  tier_3_quantity: number;
-  tier_3_price: number;
+  price_tiers: PriceTiersStructure;
 };
 
 export type PriceOverrideWithDetails = PriceOverride & {

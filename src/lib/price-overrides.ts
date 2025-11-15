@@ -46,27 +46,17 @@ export function applyPriceOverrides(
     const key = `${product.id}:${method.id}`;
     const override = overridesMap.get(key);
 
-    if (!override) {
+    if (!override || !override.price_tiers?.tiers) {
       return method; // No override, return original
     }
 
-    // Replace priceTiers with override values
+    // Replace priceTiers with override values from flexible JSONB structure
     const updatedMethod: MarkingMethod = {
       ...method,
-      priceTiers: [
-        {
-          minQuantity: override.tier_1_quantity,
-          unitPrice: Number(override.tier_1_price)
-        },
-        {
-          minQuantity: override.tier_2_quantity,
-          unitPrice: Number(override.tier_2_price)
-        },
-        {
-          minQuantity: override.tier_3_quantity,
-          unitPrice: Number(override.tier_3_price)
-        }
-      ]
+      priceTiers: override.price_tiers.tiers.map((tier) => ({
+        minQuantity: tier.quantity,
+        unitPrice: tier.price
+      }))
     };
 
     return updatedMethod;

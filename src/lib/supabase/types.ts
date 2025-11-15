@@ -116,6 +116,51 @@ export type Database = {
         }
         Relationships: []
       }
+      price_overrides: {
+        Row: {
+          created_at: string | null
+          id: string
+          method_id: string
+          product_id: string
+          tier_1_price: number
+          tier_1_quantity: number
+          tier_2_price: number
+          tier_2_quantity: number
+          tier_3_price: number
+          tier_3_quantity: number
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          method_id: string
+          product_id: string
+          tier_1_price: number
+          tier_1_quantity: number
+          tier_2_price: number
+          tier_2_quantity: number
+          tier_3_price: number
+          tier_3_quantity: number
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          method_id?: string
+          product_id?: string
+          tier_1_price?: number
+          tier_1_quantity?: number
+          tier_2_price?: number
+          tier_2_quantity?: number
+          tier_3_price?: number
+          tier_3_quantity?: number
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -236,82 +281,29 @@ export type Database = {
           },
         ]
       }
-      price_overrides: {
-        Row: {
-          created_at: string
-          id: string
-          method_id: string
-          product_id: string
-          tier_1_price: number
-          tier_1_quantity: number
-          tier_2_price: number
-          tier_2_quantity: number
-          tier_3_price: number
-          tier_3_quantity: number
-          updated_at: string
-          updated_by: string | null
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          method_id: string
-          product_id: string
-          tier_1_price: number
-          tier_1_quantity: number
-          tier_2_price: number
-          tier_2_quantity: number
-          tier_3_price: number
-          tier_3_quantity: number
-          updated_at?: string
-          updated_by?: string | null
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          method_id?: string
-          product_id?: string
-          tier_1_price?: number
-          tier_1_quantity?: number
-          tier_2_price?: number
-          tier_2_quantity?: number
-          tier_3_price?: number
-          tier_3_quantity?: number
-          updated_at?: string
-          updated_by?: string | null
-        }
-        Relationships: []
-      }
       user_roles: {
         Row: {
-          created_at: string
+          created_at: string | null
           id: string
-          role: 'super_admin' | 'admin' | 'user'
-          updated_at: string
+          role: string
+          updated_at: string | null
           user_id: string
         }
         Insert: {
-          created_at?: string
+          created_at?: string | null
           id?: string
-          role: 'super_admin' | 'admin' | 'user'
-          updated_at?: string
+          role: string
+          updated_at?: string | null
           user_id: string
         }
         Update: {
-          created_at?: string
+          created_at?: string | null
           id?: string
-          role?: 'super_admin' | 'admin' | 'user'
-          updated_at?: string
+          role?: string
+          updated_at?: string | null
           user_id?: string
         }
-        Relationships: [
-          {
-            foreignKeyName: "user_roles_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedSchema: "auth"
-          }
-        ]
+        Relationships: []
       }
     }
     Views: {
@@ -330,7 +322,16 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      get_user_role_debug: {
+        Args: { user_id_param: string }
+        Returns: {
+          created_at: string
+          role: string
+          updated_at: string
+        }[]
+      }
+      has_role: { Args: { required_role: string }; Returns: boolean }
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never

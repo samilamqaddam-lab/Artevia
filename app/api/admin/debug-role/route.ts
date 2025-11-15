@@ -55,12 +55,10 @@ export async function GET() {
     }
 
     // Step 3: Try to fetch role using raw SQL (bypasses RLS for diagnosis)
-    /* eslint-disable @typescript-eslint/no-explicit-any */
     const {data: rawRoleData, error: rawRoleError} = await supabase.rpc(
-      'get_user_role_debug' as any,
-      {user_id_param: user.id} as any
+      'get_user_role_debug',
+      {user_id_param: user.id}
     );
-    /* eslint-enable @typescript-eslint/no-explicit-any */
 
     return NextResponse.json({
       step: 'complete',

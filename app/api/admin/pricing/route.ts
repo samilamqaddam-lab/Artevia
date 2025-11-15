@@ -31,10 +31,12 @@ export async function GET() {
     }
 
     // Fetch all price overrides
-    const {data: overrides, error: fetchError} = await supabase
-      .from('price_overrides')
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const {data: overrides, error: fetchError} = await (supabase
+      .from('price_overrides') as any)
       .select('*')
       .order('product_id', {ascending: true});
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 
     if (fetchError) {
       logger.error('Error fetching price overrides:', fetchError);
@@ -150,8 +152,9 @@ export async function PUT(request: Request) {
     // The business might want to increase prices at higher volumes in some cases
 
     // Upsert price override
-    const {data, error: upsertError} = await supabase
-      .from('price_overrides')
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const {data, error: upsertError} = await (supabase
+      .from('price_overrides') as any)
       .upsert(
         {
           product_id: body.product_id,
@@ -170,6 +173,7 @@ export async function PUT(request: Request) {
       )
       .select()
       .single();
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 
     if (upsertError) {
       logger.error('Error upserting price override:', upsertError);
@@ -218,10 +222,12 @@ export async function DELETE(request: Request) {
       return NextResponse.json({error: 'ID manquant'}, {status: 400});
     }
 
-    const {error: deleteError} = await supabase
-      .from('price_overrides')
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const {error: deleteError} = await (supabase
+      .from('price_overrides') as any)
       .delete()
       .eq('id', overrideId);
+    /* eslint-enable @typescript-eslint/no-explicit-any */
 
     if (deleteError) {
       logger.error('Error deleting price override:', deleteError);

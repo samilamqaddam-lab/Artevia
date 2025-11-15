@@ -244,7 +244,25 @@ export function QuoteBasketView({locale}: QuoteBasketViewProps) {
         const satisfied = pack.items.every((line) => {
           const candidate = matchingItems.find((item) => item.raw.productId === line.productId);
           if (!candidate) return false;
-          return candidate.raw.quantity >= line.quantity;
+
+          // Quantity must be at least the pack minimum
+          if (candidate.raw.quantity < line.quantity) return false;
+
+          // Print method must match exactly (affects pricing)
+          if (line.methodId && candidate.raw.methodId !== line.methodId) return false;
+
+          // Print zone must match exactly (affects pricing)
+          if (line.zoneId && candidate.raw.zoneId !== line.zoneId) return false;
+
+          // Lead time must match exactly (affects pricing)
+          if (line.leadTimeId && candidate.raw.leadTimeId !== line.leadTimeId) return false;
+
+          // Color count must match exactly (affects pricing)
+          if (line.colorCount !== undefined && candidate.raw.colorCount !== line.colorCount) return false;
+
+          // Note: colorwayId (color choice) is NOT validated - customers can change colors
+
+          return true;
         });
         if (!satisfied) {
           return acc;

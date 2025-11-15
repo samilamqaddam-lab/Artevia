@@ -18,6 +18,24 @@ export type PackDiscount = {
   description: string;
 };
 
+/**
+ * Pack Discount Validation Rules
+ *
+ * A pack discount is only applied when ALL of the following conditions are met:
+ *
+ * 1. All products from the pack are in the cart
+ * 2. Each product quantity >= pack minimum quantity
+ * 3. Print method matches exactly (methodId) - affects pricing
+ * 4. Print zone matches exactly (zoneId) - affects pricing
+ * 5. Lead time matches exactly (leadTimeId) - affects pricing
+ * 6. Color count matches exactly (colorCount) - affects pricing
+ *
+ * FLEXIBLE:
+ * - Color choice (colorwayId) can be changed without losing the discount
+ *
+ * If any configuration aspect (method, zone, lead time, color count) is changed,
+ * the items revert to normal prices from the price list.
+ */
 export type PackDefinition = {
   id: string;
   labelKey: string;
@@ -67,7 +85,7 @@ export const packs: PackDefinition[] = [
         methodId: 'laser-s1',
         zoneId: 'barrel',
         leadTimeId: 'standard',
-        colorwayId: 'graphite',
+        colorwayId: 'black',
         colorCount: 1,
         mode: 'logo'
       }
@@ -75,7 +93,7 @@ export const packs: PackDefinition[] = [
     notes:
       "Pack d'accueil clés en main : totebag, bloc-notes, mug et stylo assortis prêts à personnaliser.",
     discount: {
-      code: 'ARTEVIA-STARTUP',
+      code: 'ARTEVA-STARTUP',
       percent: 7,
       description: 'Remise de 7% appliquée automatiquement sur le pack Onboarding Startup.'
     }
@@ -100,7 +118,7 @@ export const packs: PackDefinition[] = [
         methodId: 'uv-usb',
         zoneId: 'recto',
         leadTimeId: 'standard',
-        colorwayId: 'bamboo',
+        colorwayId: 'white',
         colorCount: 4,
         mode: 'logo'
       },
@@ -118,7 +136,7 @@ export const packs: PackDefinition[] = [
     notes:
       "Dotation salon : bloc-notes, clés USB et t-shirts staff pour un stand homogène.",
     discount: {
-      code: 'ARTEVIA-SALON',
+      code: 'ARTEVA-SALON',
       percent: 6,
       description: 'Remise de 6% sur la dotation Salon & Événement lorsque le pack est complet.'
     }
@@ -133,14 +151,14 @@ export const packs: PackDefinition[] = [
         methodId: 'laser-s1',
         zoneId: 'barrel',
         leadTimeId: 'standard',
-        colorwayId: 'royal',
+        colorwayId: 'blue',
         colorCount: 1,
         mode: 'logo'
       },
       {
         productId: 'notepad-spiral',
         quantity: 40,
-        methodId: 'premium-a5-150',
+        methodId: 'digital-a5-100',
         zoneId: 'cover',
         leadTimeId: 'standard',
         colorwayId: 'midnight',
@@ -161,7 +179,7 @@ export const packs: PackDefinition[] = [
     notes:
       "Coffret premium incluant stylo gravé, carnet relié et mug noir gravé pour vos VIP.",
     discount: {
-      code: 'ARTEVIA-PREMIUM',
+      code: 'ARTEVA-PREMIUM',
       percent: 8,
       description: 'Remise de 8% sur le pack Premium Direction tant que les quantités sont respectées.'
     }

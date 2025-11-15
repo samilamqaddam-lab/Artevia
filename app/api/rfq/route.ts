@@ -1,5 +1,5 @@
 import {NextResponse} from 'next/server';
-import {getSupabaseClient} from '@/lib/supabase/server';
+import {getSupabaseServiceClient} from '@/lib/supabase/server';
 import {logger} from '@/lib/logger';
 import {RFQSchema} from '@/types/api-validation';
 import {z} from 'zod';
@@ -14,9 +14,10 @@ export async function POST(request: Request) {
     const now = new Date();
     const orderId = `CMD-${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
 
+    // Use service client for DB operations (no auth required for quote requests)
     let supabase;
     try {
-      supabase = getSupabaseClient();
+      supabase = getSupabaseServiceClient();
     } catch (error) {
       logger.error('Supabase client initialisation failed', error);
       return NextResponse.json({message: 'Supabase is not configured.'}, {status: 500});

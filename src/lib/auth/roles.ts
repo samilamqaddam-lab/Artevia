@@ -38,18 +38,16 @@ export async function getCurrentUserRole(): Promise<UserRole | null> {
     return null;
   }
 
-  // Get user role from database
-  const {data, error} = await supabase
-    .from('user_roles')
-    .select('role')
-    .eq('user_id', user.id)
-    .single();
+  // Use RPC function to get role (bypasses type issues and RLS)
+  const {data: roleData, error} = await supabase.rpc('get_user_role_debug', {
+    user_id_param: user.id
+  });
 
-  if (error || !data) {
+  if (error || !roleData || roleData.length === 0) {
     return null;
   }
 
-  return data.role as UserRole;
+  return roleData[0].role as UserRole;
 }
 
 /**

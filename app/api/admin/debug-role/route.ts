@@ -33,29 +33,8 @@ export async function GET() {
       });
     }
 
-    // Step 2: Try to fetch role from database
-    const {data: roleData, error: roleError} = await supabase
-      .from('user_roles')
-      .select('*')
-      .eq('user_id', user.id)
-      .single();
-
-    if (roleError) {
-      return NextResponse.json({
-        step: 'role_fetch',
-        success: false,
-        user: {
-          id: user.id,
-          email: user.email
-        },
-        error: roleError.message,
-        details: roleError,
-        hint: 'RLS policy might be blocking access'
-      });
-    }
-
-    // Step 3: Try to fetch role using raw SQL (bypasses RLS for diagnosis)
-    const {data: rawRoleData, error: rawRoleError} = await supabase.rpc(
+    // Step 2: Fetch role using RPC function (bypasses type issues)
+    const {data: roleData, error: roleError} = await supabase.rpc(
       'get_user_role_debug',
       {user_id_param: user.id}
     );
@@ -68,9 +47,8 @@ export async function GET() {
         email: user.email,
         created_at: user.created_at
       },
-      role_via_rls: roleData,
-      role_via_rpc: rawRoleData,
-      rpc_error: rawRoleError?.message || null
+      role: roleData,
+      role_error: roleError?.message || null
     });
   } catch (error) {
     return NextResponse.json(

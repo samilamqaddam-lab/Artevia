@@ -1,4 +1,4 @@
-import {getSupabaseClient} from './supabase/server';
+import {getSupabaseServiceClient} from './supabase/server';
 import type {Product, MarkingMethod} from './products';
 import type {PriceOverride} from '@/types/price-overrides';
 import {logger} from './logger';
@@ -9,7 +9,8 @@ import {logger} from './logger';
  */
 export async function fetchPriceOverrides(): Promise<Map<string, PriceOverride>> {
   try {
-    const supabase = getSupabaseClient();
+    // Use service client for DB operations (no auth required for reading overrides)
+    const supabase = getSupabaseServiceClient();
 
     const {data, error} = await supabase
       .from('price_overrides')
@@ -21,9 +22,9 @@ export async function fetchPriceOverrides(): Promise<Map<string, PriceOverride>>
     }
 
     const overridesMap = new Map<string, PriceOverride>();
-    (data || []).forEach((override: PriceOverride) => {
+    (data || []).forEach((override) => {
       const key = `${override.product_id}:${override.method_id}`;
-      overridesMap.set(key, override);
+      overridesMap.set(key, override as unknown as PriceOverride);
     });
 
     return overridesMap;

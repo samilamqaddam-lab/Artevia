@@ -34,6 +34,7 @@ export function Header() {
   const {pushToast} = useToast();
   const [mounted, setMounted] = useState(false);
   const [session, setSession] = useState<any>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -52,6 +53,20 @@ export function Header() {
 
     return () => subscription.unsubscribe();
   }, [supabase]);
+
+  // Check if user is admin
+  useEffect(() => {
+    if (session?.user) {
+      fetch('/api/auth/role')
+        .then((res) => res.json())
+        .then((data) => {
+          setIsAdmin(data.isAdmin || false);
+        })
+        .catch(() => setIsAdmin(false));
+    } else {
+      setIsAdmin(false);
+    }
+  }, [session]);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -95,6 +110,14 @@ export function Header() {
           {mounted ? (
             session ? (
               <div className="hidden items-center gap-2 md:flex">
+                {isAdmin && (
+                  <Link
+                    href={`/${locale}/admin/pricing` as any}
+                    className="rounded-md bg-brand px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-brand/90"
+                  >
+                    Admin
+                  </Link>
+                )}
                 <Link
                   href={`/${locale}/account/designs` as any}
                   className="text-sm font-semibold text-slate-700 transition-colors hover:text-brand dark:text-slate-200"
@@ -142,6 +165,7 @@ function MobileNav({navItems, locale}: {navItems: NavItem[]; locale: string}) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [session, setSession] = useState<any>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -160,6 +184,20 @@ function MobileNav({navItems, locale}: {navItems: NavItem[]; locale: string}) {
 
     return () => subscription.unsubscribe();
   }, [supabase]);
+
+  // Check if user is admin
+  useEffect(() => {
+    if (session?.user) {
+      fetch('/api/auth/role')
+        .then((res) => res.json())
+        .then((data) => {
+          setIsAdmin(data.isAdmin || false);
+        })
+        .catch(() => setIsAdmin(false));
+    } else {
+      setIsAdmin(false);
+    }
+  }, [session]);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -203,6 +241,14 @@ function MobileNav({navItems, locale}: {navItems: NavItem[]; locale: string}) {
           {mounted ? (
             session ? (
               <div className="mt-6 flex flex-col gap-3">
+                {isAdmin && (
+                  <Link
+                    href={`/${locale}/admin/pricing` as any}
+                    className="rounded-md bg-brand px-4 py-2 text-center text-sm font-semibold text-white"
+                  >
+                    Admin
+                  </Link>
+                )}
                 <Link
                   href={`/${locale}/account/designs` as any}
                   className="text-sm font-semibold text-slate-700 dark:text-slate-200"

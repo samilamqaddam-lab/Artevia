@@ -49,7 +49,7 @@ export async function GET() {
       product.methods.map((method) => {
         const override = (overrides || []).find(
           (o: PriceOverride) => o.product_id === product.id && o.method_id === method.id
-        );
+        ) as PriceOverride | undefined;
 
         // Get either override or default pricing
         const tiers = override

@@ -19,7 +19,7 @@ const TEXT_PRESETS = [
   {id: 'body', label: 'Corps', fontSize: 50, text: 'Texte de corps', fontWeight: 'normal'}
 ];
 
-export function TextTab({locale, onAddText}: TextTabProps) {
+export function TextTab({locale: _locale, onAddText}: TextTabProps) {
   return (
     <div className="space-y-4">
       <header className="flex items-center gap-2">

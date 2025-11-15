@@ -31,7 +31,7 @@ const SHAPES = [
   }
 ];
 
-export function ShapesTab({locale, onAddShape}: ShapesTabProps) {
+export function ShapesTab({locale: _locale, onAddShape}: ShapesTabProps) {
   return (
     <div className="space-y-4">
       <header className="flex items-center gap-2">

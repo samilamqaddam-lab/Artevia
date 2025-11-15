@@ -32,7 +32,7 @@ interface UserDesignsProps {
 
 export function UserDesigns({
   locale,
-  title,
+  title: _title,
   emptyState,
   loadLabel,
   deleteLabel,
@@ -45,11 +45,12 @@ export function UserDesigns({
   const [isMigrating, setIsMigrating] = useState(false);
   const router = useRouter();
   const tProducts = useTranslations('products');
-  const supabase = useSupabase();
+  const _supabase = useSupabase();
 
   useEffect(() => {
     loadProjects();
     checkForLocalProjects();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadProjects = async () => {

@@ -69,7 +69,7 @@ export async function migrateProjectsToSupabase(
       try {
         // Skip if already exists in Supabase
         if (existingProjectIds.has(localProject.id)) {
-          logger.debug(`Skipping ${localProject.name} (already exists in Supabase)`);
+          logger.info(`Skipping ${localProject.name} (already exists in Supabase)`);
           result.skipped++;
           result.details.push({
             projectName: localProject.name,
@@ -100,7 +100,7 @@ export async function migrateProjectsToSupabase(
         // Delete local copy if requested
         if (deleteAfterMigration) {
           await deleteLocalProject(localProject.id);
-          logger.debug(`  Deleted local copy of: ${localProject.name}`);
+          logger.info(`  Deleted local copy of: ${localProject.name}`);
         }
       } catch (error) {
         logger.error(`✗ Error migrating ${localProject.name}:`, error);

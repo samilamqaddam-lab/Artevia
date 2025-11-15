@@ -16,7 +16,7 @@ interface RegisterViewProps {
 export function RegisterView({locale}: RegisterViewProps) {
   const t = useTranslations('auth.register');
   const supabase = useSupabase();
-  const router = useRouter();
+  const _router = useRouter();
   const {pushToast} = useToast();
 
   const [form, setForm] = useState({email: '', password: '', confirm: ''});

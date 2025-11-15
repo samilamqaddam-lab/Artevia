@@ -8,7 +8,7 @@ import {Button} from '@/components/ui/Button';
 import type {Product} from '@/lib/products';
 import type {Locale} from '@/i18n/settings';
 import {listProjects, deleteProject, type ProjectStore} from '@/lib/storage/projects';
-import {cn} from '@/lib/utils';
+import {cn as _cn} from '@/lib/utils';
 
 interface ProjectsTabProps {
   product: Product;
@@ -22,6 +22,7 @@ export function ProjectsTab({product, locale, onLoadProject}: ProjectsTabProps) 
 
   useEffect(() => {
     loadProjectsList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadProjectsList = async () => {

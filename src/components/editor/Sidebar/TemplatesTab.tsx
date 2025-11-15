@@ -14,7 +14,7 @@ interface TemplatesTabProps {
   onLoadTemplate: (templateCanvas: Record<string, unknown>) => void;
 }
 
-export function TemplatesTab({product, locale, onLoadTemplate}: TemplatesTabProps) {
+export function TemplatesTab({product, locale: _locale, onLoadTemplate}: TemplatesTabProps) {
   const templates = getTemplatesForProduct(product.id);
 
   return (

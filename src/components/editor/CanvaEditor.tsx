@@ -16,7 +16,7 @@ import {useEditorStore} from '@/stores/editor-store';
 import type {Locale} from '@/i18n/settings';
 import {useTranslations} from 'next-intl';
 import type {ProjectStore} from '@/lib/storage/projects';
-import {deleteProject, listProjects, upsertProject} from '@/lib/storage/projects';
+import {deleteProject as _deleteProject, listProjects, upsertProject} from '@/lib/storage/projects';
 import type {QuoteMode} from '@/types/quote';
 
 fabric.Object.prototype.set({transparentCorners: false, cornerColor: '#1f6f8b', borderColor: '#1f6f8b'});

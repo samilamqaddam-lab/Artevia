@@ -1,7 +1,7 @@
 'use client';
 
 import {motion} from 'framer-motion';
-import {ArrowLeft, Undo, Redo, Download, Save, Eye, Grid3x3} from 'lucide-react';
+import {ArrowLeft, Undo as _Undo, Redo as _Redo, Download, Save, Eye, Grid3x3} from 'lucide-react';
 import {Button} from '@/components/ui/Button';
 import {cn} from '@/lib/utils';
 

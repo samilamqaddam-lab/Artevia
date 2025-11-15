@@ -236,6 +236,51 @@ export type Database = {
           },
         ]
       }
+      price_overrides: {
+        Row: {
+          created_at: string
+          id: string
+          method_id: string
+          product_id: string
+          tier_1_price: number
+          tier_1_quantity: number
+          tier_2_price: number
+          tier_2_quantity: number
+          tier_3_price: number
+          tier_3_quantity: number
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          method_id: string
+          product_id: string
+          tier_1_price: number
+          tier_1_quantity: number
+          tier_2_price: number
+          tier_2_quantity: number
+          tier_3_price: number
+          tier_3_quantity: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          method_id?: string
+          product_id?: string
+          tier_1_price?: number
+          tier_1_quantity?: number
+          tier_2_price?: number
+          tier_2_quantity?: number
+          tier_3_price?: number
+          tier_3_quantity?: number
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       recent_projects: {

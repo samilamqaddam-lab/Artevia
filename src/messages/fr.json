@@ -1002,5 +1002,59 @@
       "description": "Demandez un devis personnalisé pour votre kit bienvenue employé. Réponse sous 2h.",
       "button": "Obtenir mon devis gratuit"
     }
+  },
+  "admin": {
+    "pricing": {
+      "title": "Gestion des Prix",
+      "subtitle": "Modifiez les prix de référence pour chaque produit et méthode d'impression",
+      "filter": {
+        "all": "Tous les produits",
+        "search": "Rechercher un produit..."
+      },
+      "table": {
+        "product": "Produit",
+        "method": "Méthode",
+        "tier": "Palier {number}",
+        "quantity": "Quantité",
+        "pricePerUnit": "Prix/unité",
+        "status": "Statut",
+        "actions": "Actions",
+        "modified": "Personnalisé",
+        "default": "Par défaut",
+        "lastUpdated": "Dernière modification",
+        "by": "par"
+      },
+      "edit": {
+        "title": "Modifier les prix",
+        "subtitle": "Palier {number}",
+        "quantityLabel": "Quantité minimum",
+        "priceLabel": "Prix unitaire (MAD)",
+        "preview": "Aperçu des prix interpolés",
+        "previewItem": "{quantity} unités → ~{price} MAD/u",
+        "cancel": "Annuler",
+        "save": "Enregistrer les modifications",
+        "reset": "Réinitialiser aux valeurs par défaut"
+      },
+      "messages": {
+        "saveSuccess": "Prix mis à jour avec succès",
+        "saveError": "Erreur lors de la sauvegarde des prix",
+        "resetSuccess": "Prix réinitialisés aux valeurs par défaut",
+        "resetError": "Erreur lors de la réinitialisation",
+        "loadError": "Erreur lors du chargement des prix",
+        "invalidQuantities": "Les quantités doivent être croissantes (palier 1 < palier 2 < palier 3)",
+        "confirmReset": "Êtes-vous sûr de vouloir réinitialiser ces prix aux valeurs par défaut ?"
+      },
+      "empty": {
+        "title": "Aucun prix personnalisé",
+        "description": "Cliquez sur 'Modifier' pour personnaliser les prix d'un produit"
+      }
+    },
+    "navigation": {
+      "dashboard": "Tableau de bord",
+      "pricing": "Gestion des prix",
+      "products": "Produits",
+      "orders": "Commandes",
+      "settings": "Paramètres"
+    }
   }
 }

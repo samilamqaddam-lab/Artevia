@@ -1,5 +1,6 @@
 import {NextResponse} from 'next/server';
 import {getSupabaseClient} from '@/lib/supabase/server';
+import {requireAdmin} from '@/lib/auth/roles';
 import {logger} from '@/lib/logger';
 import {products} from '@/lib/products';
 import type {PriceOverride, PriceOverrideInput} from '@/types/price-overrides';
@@ -20,6 +21,13 @@ export async function GET() {
 
     if (authError || !user) {
       return NextResponse.json({error: 'Non autorisé'}, {status: 401});
+    }
+
+    // Check admin role
+    try {
+      await requireAdmin();
+    } catch (error) {
+      return NextResponse.json({error: 'Accès refusé - Rôle administrateur requis'}, {status: 403});
     }
 
     // Fetch all price overrides
@@ -99,6 +107,13 @@ export async function PUT(request: Request) {
 
     if (authError || !user) {
       return NextResponse.json({error: 'Non autorisé'}, {status: 401});
+    }
+
+    // Check admin role
+    try {
+      await requireAdmin();
+    } catch (error) {
+      return NextResponse.json({error: 'Accès refusé - Rôle administrateur requis'}, {status: 403});
     }
 
     const body: PriceOverrideInput = await request.json();
@@ -187,6 +202,13 @@ export async function DELETE(request: Request) {
 
     if (authError || !user) {
       return NextResponse.json({error: 'Non autorisé'}, {status: 401});
+    }
+
+    // Check admin role
+    try {
+      await requireAdmin();
+    } catch (error) {
+      return NextResponse.json({error: 'Accès refusé - Rôle administrateur requis'}, {status: 403});
     }
 
     const {searchParams} = new URL(request.url);

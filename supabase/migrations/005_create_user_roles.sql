@@ -118,6 +118,14 @@ BEGIN
     VALUES (v_user_id, 'super_admin')
     ON CONFLICT (user_id) DO UPDATE SET role = 'super_admin', updated_at = NOW();
   END IF;
+
+  -- Assign super_admin to ahmed.agh21@gmail.com
+  SELECT id INTO v_user_id FROM auth.users WHERE email = 'ahmed.agh21@gmail.com';
+  IF v_user_id IS NOT NULL THEN
+    INSERT INTO public.user_roles (user_id, role)
+    VALUES (v_user_id, 'super_admin')
+    ON CONFLICT (user_id) DO UPDATE SET role = 'super_admin', updated_at = NOW();
+  END IF;
 END $$;
 
 -- 9. Create trigger to auto-update updated_at

@@ -26,6 +26,7 @@ Protéger l'accès à l'interface administratrice (gestion des prix, contenu, et
 - **Assigné à:**
   - `sami.lamqaddam@gmail.com`
   - `sami.artipel@gmail.com`
+  - `ahmed.agh21@gmail.com`
 
 ### **2. Admin** (`admin`)
 - ✅ Gestion des prix et du contenu
@@ -364,8 +365,9 @@ R: Vous pouvez le restaurer directement via l'interface SQL de Supabase en tant 
 
 - ✅ `sami.lamqaddam@gmail.com` (super_admin)
 - ✅ `sami.artipel@gmail.com` (super_admin)
+- ✅ `ahmed.agh21@gmail.com` (super_admin)
 
-**Tous les autres utilisateurs** (incluant `ahmed.agh21@gmail.com` et `sami.lamqaddam.sl@gmail.com`) n'auront **AUCUN** accès administratif tant qu'un rôle ne leur est pas assigné manuellement.
+**Tous les autres utilisateurs** (incluant `sami.lamqaddam.sl@gmail.com`) n'auront **AUCUN** accès administratif tant qu'un rôle ne leur est pas assigné manuellement.
 
 ---
 

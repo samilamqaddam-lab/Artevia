@@ -70,6 +70,7 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
 
   useEffect(() => {
     loadPricing();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Filter pricing based on search

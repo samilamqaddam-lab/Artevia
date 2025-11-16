@@ -1017,12 +1017,25 @@
         "tier": "Palier {number}",
         "quantity": "Quantité",
         "pricePerUnit": "Prix/unité",
+        "unitPrice": "Prix unitaire",
+        "totalPrice": "Prix total",
         "status": "Statut",
         "actions": "Actions",
         "modified": "Personnalisé",
         "default": "Par défaut",
         "lastUpdated": "Dernière modification",
         "by": "par"
+      },
+      "status": {
+        "customized": "Personnalisé",
+        "default": "Par défaut"
+      },
+      "actions": {
+        "edit": "Modifier",
+        "reset": "Réinitialiser",
+        "cancel": "Annuler",
+        "save": "Enregistrer",
+        "saving": "Enregistrement..."
       },
       "edit": {
         "title": "Modifier les prix",

@@ -1030,12 +1030,25 @@
         "tier": "المستوى {number}",
         "quantity": "الكمية",
         "pricePerUnit": "السعر/الوحدة",
+        "unitPrice": "السعر للوحدة",
+        "totalPrice": "السعر الإجمالي",
         "status": "الحالة",
         "actions": "الإجراءات",
         "modified": "مخصص",
         "default": "افتراضي",
         "lastUpdated": "آخر تعديل",
         "by": "بواسطة"
+      },
+      "status": {
+        "customized": "مخصص",
+        "default": "افتراضي"
+      },
+      "actions": {
+        "edit": "تعديل",
+        "reset": "إعادة تعيين",
+        "cancel": "إلغاء",
+        "save": "حفظ",
+        "saving": "جاري الحفظ..."
       },
       "edit": {
         "title": "تعديل الأسعار",

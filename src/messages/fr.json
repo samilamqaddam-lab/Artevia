@@ -510,8 +510,33 @@
       "success": "Connexion réussie.",
       "error": "Impossible de se connecter.",
       "emailNotConfirmed": "Votre email n'est pas encore confirmé. Vérifiez vos e-mails pour l'activer.",
+      "forgotPassword": "Mot de passe oublié ?",
       "switch": "Pas encore de compte ?",
       "switchCta": "Créer un compte"
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié",
+      "subtitle": "Entrez votre email et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+      "email": "Email professionnel",
+      "cta": "Envoyer le lien de réinitialisation",
+      "success": "Email envoyé avec succès",
+      "error": "Erreur lors de l'envoi de l'email",
+      "emailSentTitle": "Email envoyé !",
+      "emailSentMessage": "Nous avons envoyé un lien de réinitialisation à :",
+      "emailSentHint": "Cliquez sur le lien dans l'email pour réinitialiser votre mot de passe. Si vous ne voyez pas l'email, vérifiez vos spams.",
+      "rememberPassword": "Vous vous souvenez de votre mot de passe ?",
+      "backToLogin": "Retour à la connexion"
+    },
+    "resetPassword": {
+      "title": "Réinitialiser le mot de passe",
+      "subtitle": "Entrez votre nouveau mot de passe.",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "cta": "Réinitialiser le mot de passe",
+      "success": "Mot de passe réinitialisé avec succès",
+      "error": "Erreur lors de la réinitialisation",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères"
     },
     "register": {
       "title": "Créer un compte",

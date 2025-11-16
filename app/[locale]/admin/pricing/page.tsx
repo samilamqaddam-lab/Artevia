@@ -2,6 +2,7 @@
 
 import {useEffect, useState} from 'react';
 import {useTranslations} from 'next-intl';
+import {useRouter} from 'next/navigation';
 import {Button} from '@/components/ui/Button';
 import {useToast} from '@/components/Providers';
 import {Edit2, RotateCcw, Check, X, Search, Plus, Trash2} from 'lucide-react';
@@ -39,6 +40,7 @@ type EditingData = {
 
 export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
   const {locale} = params;
+  const router = useRouter();
   const t = useTranslations('admin.pricing');
   const tProducts = useTranslations('products');
   const {pushToast} = useToast();
@@ -50,13 +52,38 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
   const [editingItem, setEditingItem] = useState<PricingItem | null>(null);
   const [editData, setEditData] = useState<EditingData | null>(null);
   const [saving, setSaving] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Check authentication and admin role
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch('/api/admin/pricing');
+        if (response.status === 401 || response.status === 403) {
+          router.push(`/${locale}/auth/login`);
+          return;
+        }
+        setIsAuthenticated(true);
+      } catch (error) {
+        router.push(`/${locale}/auth/login`);
+      }
+    };
+    checkAuth();
+  }, [locale, router]);
 
   // Load pricing data
   const loadPricing = async () => {
+    if (!isAuthenticated) return;
     try {
       setLoading(true);
       const response = await fetch('/api/admin/pricing');
-      if (!response.ok) throw new Error('Failed to fetch');
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          router.push(`/${locale}/auth/login`);
+          return;
+        }
+        throw new Error('Failed to fetch');
+      }
       const data = await response.json();
       setPricing(data.pricing || []);
       setFilteredPricing(data.pricing || []);
@@ -69,9 +96,11 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
   };
 
   useEffect(() => {
-    loadPricing();
+    if (isAuthenticated) {
+      loadPricing();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isAuthenticated]);
 
   // Filter pricing based on search
   useEffect(() => {
@@ -219,7 +248,7 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
     }
   };
 
-  if (loading) {
+  if (!isAuthenticated || loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <p className="text-slate-600 dark:text-slate-400">Chargement...</p>

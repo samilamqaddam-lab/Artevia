@@ -3,6 +3,7 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {ProductExperience} from '@/components/product/ProductExperience';
 import {locales, type Locale} from '@/i18n/settings';
 import {getProductBySlug, products} from '@/lib/products';
+import {getProductWithPricing} from '@/lib/price-overrides';
 import type {Metadata} from 'next';
 
 export function generateStaticParams() {
@@ -85,10 +86,13 @@ export default async function ProductPage({
   const locale = params.locale as Locale;
   setRequestLocale(locale);
 
-  const product = getProductBySlug(params.slug);
-  if (!product) {
+  const baseProduct = getProductBySlug(params.slug);
+  if (!baseProduct) {
     notFound();
   }
+
+  // Apply price overrides from database
+  const product = await getProductWithPricing(baseProduct.id, products) || baseProduct;
 
   const tProducts = await getTranslations({locale, namespace: 'products'});
   const tProduct = await getTranslations({locale, namespace: 'product'});

@@ -1,6 +1,7 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {locales, type Locale} from '@/i18n/settings';
 import {products} from '@/lib/products';
+import {getAllProductsWithPricing} from '@/lib/price-overrides';
 import {CatalogView} from '@/components/product/CatalogView';
 
 export function generateStaticParams() {
@@ -14,7 +15,10 @@ export default async function CatalogPage({params}: {params: {locale: string}}) 
   const tLeadTimes = await getTranslations({locale, namespace: 'leadTimes'});
   const tProducts = await getTranslations({locale, namespace: 'products'});
 
-  const catalogProducts = products.map((product) => ({
+  // Apply price overrides from database
+  const productsWithPricing = await getAllProductsWithPricing(products);
+
+  const catalogProducts = productsWithPricing.map((product) => ({
     ...product,
     name: tProducts(product.nameKey.split('.').slice(1).join('.')),
     description: tProducts(product.descriptionKey.split('.').slice(1).join('.')),

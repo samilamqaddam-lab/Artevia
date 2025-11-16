@@ -27,8 +27,8 @@ type PricingItem = {
 };
 
 type EditTier = {
-  quantity: number;
-  price: number;
+  quantity: string;
+  price: string;
 };
 
 type EditingData = {
@@ -96,8 +96,8 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
       product_id: item.product_id,
       method_id: item.method_id,
       tiers: item.tiers.map((tier) => ({
-        quantity: tier.minQuantity,
-        price: tier.unitPrice
+        quantity: tier.minQuantity.toString(),
+        price: tier.unitPrice.toString()
       }))
     });
   };
@@ -106,13 +106,15 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
   const handleAddTier = () => {
     if (!editData) return;
     const lastTier = editData.tiers[editData.tiers.length - 1];
+    const lastQuantity = lastTier ? parseFloat(lastTier.quantity) || 0 : 0;
+    const lastPrice = lastTier ? parseFloat(lastTier.price) || 0 : 0;
     setEditData({
       ...editData,
       tiers: [
         ...editData.tiers,
         {
-          quantity: lastTier ? lastTier.quantity + 100 : 50,
-          price: lastTier ? lastTier.price * 0.9 : 10
+          quantity: (lastQuantity + 100).toString(),
+          price: (lastPrice * 0.9).toFixed(2)
         }
       ]
     });
@@ -128,7 +130,7 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
   };
 
   // Update tier value
-  const handleUpdateTier = (index: number, field: 'quantity' | 'price', value: number) => {
+  const handleUpdateTier = (index: number, field: 'quantity' | 'price', value: string) => {
     if (!editData) return;
     const newTiers = [...editData.tiers];
     newTiers[index] = {...newTiers[index], [field]: value};
@@ -139,18 +141,32 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
   const handleSave = async () => {
     if (!editData) return;
 
-    // Validate quantities are in ascending order
-    for (let i = 1; i < editData.tiers.length; i++) {
-      if (editData.tiers[i].quantity <= editData.tiers[i - 1].quantity) {
-        pushToast({title: 'Les quantités doivent être en ordre croissant'});
+    // Convert strings to numbers
+    const tiersAsNumbers = editData.tiers.map((tier) => ({
+      quantity: parseFloat(tier.quantity),
+      price: parseFloat(tier.price)
+    }));
+
+    // Validate all values are valid numbers
+    for (let i = 0; i < tiersAsNumbers.length; i++) {
+      if (isNaN(tiersAsNumbers[i].quantity) || isNaN(tiersAsNumbers[i].price)) {
+        pushToast({title: t('messages.invalidFields')});
         return;
       }
     }
 
     // Validate all values are positive
-    for (const tier of editData.tiers) {
+    for (const tier of tiersAsNumbers) {
       if (tier.quantity <= 0 || tier.price <= 0) {
-        pushToast({title: 'Les quantités et prix doivent être positifs'});
+        pushToast({title: t('messages.invalidValues')});
+        return;
+      }
+    }
+
+    // Validate quantities are in ascending order
+    for (let i = 1; i < tiersAsNumbers.length; i++) {
+      if (tiersAsNumbers[i].quantity <= tiersAsNumbers[i - 1].quantity) {
+        pushToast({title: t('messages.invalidQuantities')});
         return;
       }
     }
@@ -164,7 +180,7 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
           product_id: editData.product_id,
           method_id: editData.method_id,
           price_tiers: {
-            tiers: editData.tiers
+            tiers: tiersAsNumbers
           }
         })
       });
@@ -368,7 +384,7 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
                         type="number"
                         value={tier.quantity}
                         onChange={(e) =>
-                          handleUpdateTier(index, 'quantity', Number(e.target.value))
+                          handleUpdateTier(index, 'quantity', e.target.value)
                         }
                         className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 dark:border-slate-600 dark:bg-[#0a0a0a] dark:text-white"
                       />
@@ -382,7 +398,7 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
                         step="0.01"
                         value={tier.price}
                         onChange={(e) =>
-                          handleUpdateTier(index, 'price', Number(e.target.value))
+                          handleUpdateTier(index, 'price', e.target.value)
                         }
                         className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-slate-900 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 dark:border-slate-600 dark:bg-[#0a0a0a] dark:text-white"
                       />

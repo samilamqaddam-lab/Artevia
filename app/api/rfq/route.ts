@@ -3,6 +3,11 @@ import {getSupabaseServiceClient} from '@/lib/supabase/server';
 import {logger} from '@/lib/logger';
 import {RFQSchema} from '@/types/api-validation';
 import {z} from 'zod';
+import {
+  sendCustomerOrderConfirmation,
+  sendAdminOrderNotification,
+  getProductDisplayName
+} from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
@@ -53,6 +58,55 @@ export async function POST(request: Request) {
     logger.error('Supabase insert failed', insertError);
     return NextResponse.json({message: 'Erreur lors de la création de la commande.'}, {status: 500});
   }
+
+    // Send confirmation emails (non-blocking)
+    if (payload.checkout?.email) {
+      try {
+        // Prepare email data
+        const emailItems = payload.items.map((item) => {
+          return {
+            productName: getProductDisplayName(item.productId),
+            quantity: item.quantity,
+            price: item.price
+          };
+        });
+
+        const emailData = {
+          orderId,
+          customerName: payload.checkout.contact || payload.checkout.name,
+          customerEmail: payload.checkout.email,
+          customerPhone: payload.checkout.phone,
+          company: payload.checkout.company,
+          items: emailItems,
+          totalAmount: payload.totals?.total ?? 0,
+          discountAmount: payload.totals?.discount ?? 0,
+          quantity: payload.totals?.quantity ?? 0,
+          notes: payload.notes || undefined,
+          locale: (payload.locale || 'fr') as 'fr' | 'ar',
+          receivedAt: now.toISOString(),
+          reviewEta: new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString()
+        };
+
+        // Send customer confirmation email
+        const customerEmailResult = await sendCustomerOrderConfirmation(emailData);
+        if (!customerEmailResult.success) {
+          logger.error('Failed to send customer confirmation email', customerEmailResult.error);
+        } else {
+          logger.info(`Customer confirmation email sent for order ${orderId}`);
+        }
+
+        // Send admin notification email
+        const adminEmailResult = await sendAdminOrderNotification(emailData);
+        if (!adminEmailResult.success) {
+          logger.error('Failed to send admin notification email', adminEmailResult.error);
+        } else {
+          logger.info(`Admin notification email sent for order ${orderId}`);
+        }
+      } catch (emailError) {
+        // Log email errors but don't fail the order creation
+        logger.error('Error sending order emails', emailError);
+      }
+    }
 
     return NextResponse.json({
       orderId,

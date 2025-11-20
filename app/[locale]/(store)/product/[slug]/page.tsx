@@ -6,6 +6,10 @@ import {getProductBySlug, products} from '@/lib/products';
 import {getProductWithPricing} from '@/lib/price-overrides';
 import type {Metadata} from 'next';
 
+// Revalidate every 60 seconds - ensures price changes appear within 1 minute
+// Combined with revalidatePath() in admin API for immediate updates
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return locales.flatMap((locale) => products.map((product) => ({locale, slug: product.slug})));
 }

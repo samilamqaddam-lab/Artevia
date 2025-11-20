@@ -4,6 +4,10 @@ import {products} from '@/lib/products';
 import {getAllProductsWithPricing} from '@/lib/price-overrides';
 import {CatalogView} from '@/components/product/CatalogView';
 
+// Revalidate every 60 seconds - ensures price changes appear within 1 minute
+// Combined with revalidatePath() in admin API for immediate updates
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return locales.map((locale) => ({locale}));
 }

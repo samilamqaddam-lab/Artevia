@@ -1,3 +1,4 @@
+import {unstable_noStore as noStore} from 'next/cache';
 import {getSupabaseServiceClient} from './supabase/server';
 import type {Product, MarkingMethod} from './products';
 import type {PriceOverride} from '@/types/price-overrides';
@@ -6,8 +7,14 @@ import {logger} from './logger';
 /**
  * Fetch all price overrides from database
  * Returns a map for quick lookups: {product_id}:{method_id} => PriceOverride
+ *
+ * IMPORTANT: This function uses noStore() to opt out of caching
+ * This ensures we always fetch fresh data from Supabase
  */
 export async function fetchPriceOverrides(): Promise<Map<string, PriceOverride>> {
+  // Opt out of caching - always fetch fresh data
+  noStore();
+
   try {
     // Use service client for DB operations (no auth required for reading overrides)
     const supabase = getSupabaseServiceClient();
@@ -27,6 +34,7 @@ export async function fetchPriceOverrides(): Promise<Map<string, PriceOverride>>
       overridesMap.set(key, override as unknown as PriceOverride);
     });
 
+    logger.info(`Fetched ${overridesMap.size} price overrides from database`);
     return overridesMap;
   } catch (error) {
     logger.error('fetchPriceOverrides error:', error);

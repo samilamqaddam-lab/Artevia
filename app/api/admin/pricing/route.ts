@@ -1,4 +1,5 @@
 import {NextResponse} from 'next/server';
+import {revalidatePath} from 'next/cache';
 import {getSupabaseClient, getSupabaseServiceClient} from '@/lib/supabase/server';
 import {requireAdmin} from '@/lib/auth/roles';
 import {logger} from '@/lib/logger';
@@ -194,6 +195,30 @@ export async function PUT(request: Request) {
       );
     }
 
+    // Invalidate Next.js cache for affected pages
+    try {
+      // Find the product to get its slug
+      const product = products.find((p) => p.id === body.product_id);
+      if (product) {
+        // Revalidate product pages for both locales
+        revalidatePath(`/fr/product/${product.slug}`, 'page');
+        revalidatePath(`/ar/product/${product.slug}`, 'page');
+        logger.info(`Revalidated product pages for ${product.slug}`);
+      }
+
+      // Revalidate catalog pages for both locales
+      revalidatePath('/fr/catalog', 'page');
+      revalidatePath('/ar/catalog', 'page');
+      logger.info('Revalidated catalog pages');
+
+      // Revalidate admin pricing page
+      revalidatePath('/fr/admin/pricing', 'page');
+      revalidatePath('/ar/admin/pricing', 'page');
+    } catch (revalidateError) {
+      // Log but don't fail the request if revalidation fails
+      logger.error('Error revalidating paths:', revalidateError);
+    }
+
     return NextResponse.json({success: true, override: data});
   } catch (error) {
     logger.error('PUT /api/admin/pricing error:', error);
@@ -236,6 +261,13 @@ export async function DELETE(request: Request) {
     // Use service client for DB operations
     const serviceClient = getSupabaseServiceClient();
 
+    // Fetch the override first to get product info for revalidation
+    const {data: override} = await serviceClient
+      .from('price_overrides')
+      .select('product_id')
+      .eq('id', overrideId)
+      .single();
+
     const {error: deleteError} = await serviceClient
       .from('price_overrides')
       .delete()
@@ -247,6 +279,32 @@ export async function DELETE(request: Request) {
         {error: 'Erreur lors de la suppression'},
         {status: 500}
       );
+    }
+
+    // Invalidate Next.js cache for affected pages
+    if (override?.product_id) {
+      try {
+        // Find the product to get its slug
+        const product = products.find((p) => p.id === override.product_id);
+        if (product) {
+          // Revalidate product pages for both locales
+          revalidatePath(`/fr/product/${product.slug}`, 'page');
+          revalidatePath(`/ar/product/${product.slug}`, 'page');
+          logger.info(`Revalidated product pages for ${product.slug} after reset`);
+        }
+
+        // Revalidate catalog pages for both locales
+        revalidatePath('/fr/catalog', 'page');
+        revalidatePath('/ar/catalog', 'page');
+        logger.info('Revalidated catalog pages after reset');
+
+        // Revalidate admin pricing page
+        revalidatePath('/fr/admin/pricing', 'page');
+        revalidatePath('/ar/admin/pricing', 'page');
+      } catch (revalidateError) {
+        // Log but don't fail the request if revalidation fails
+        logger.error('Error revalidating paths after reset:', revalidateError);
+      }
     }
 
     return NextResponse.json({success: true});

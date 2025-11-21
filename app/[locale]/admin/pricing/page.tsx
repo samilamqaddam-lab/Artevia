@@ -76,7 +76,15 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
     if (!isAuthenticated) return;
     try {
       setLoading(true);
-      const response = await fetch('/api/admin/pricing');
+      // Add cache: 'no-store' to prevent browser caching
+      // Add timestamp to force fresh data
+      const response = await fetch(`/api/admin/pricing?t=${Date.now()}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache'
+        }
+      });
       if (!response.ok) {
         if (response.status === 401 || response.status === 403) {
           router.push(`/${locale}/auth/login`);

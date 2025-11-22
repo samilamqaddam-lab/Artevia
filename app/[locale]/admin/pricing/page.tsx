@@ -5,7 +5,8 @@ import {useTranslations} from 'next-intl';
 import {useRouter} from 'next/navigation';
 import {Button} from '@/components/ui/Button';
 import {useToast} from '@/components/Providers';
-import {Edit2, RotateCcw, Check, X, Search, Plus, Trash2} from 'lucide-react';
+import {Edit2, RotateCcw, Check, X, Search, Plus, Trash2, Package} from 'lucide-react';
+import Link from 'next/link';
 import {formatPrice} from '@/lib/utils';
 import type {Locale} from '@/i18n/settings';
 
@@ -269,8 +270,19 @@ export default function AdminPricingPage({params}: {params: {locale: Locale}}) {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{t('title')}</h1>
-          <p className="mt-2 text-slate-600 dark:text-slate-400">{t('subtitle')}</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{t('title')}</h1>
+              <p className="mt-2 text-slate-600 dark:text-slate-400">{t('subtitle')}</p>
+            </div>
+            <Link
+              href={`/${locale}/admin/products`}
+              className="flex items-center gap-2 rounded-lg bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+            >
+              <Package size={16} />
+              <span>Gérer les Photos</span>
+            </Link>
+          </div>
         </div>
 
         {/* Search */}

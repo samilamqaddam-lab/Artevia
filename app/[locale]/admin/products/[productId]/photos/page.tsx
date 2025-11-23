@@ -9,7 +9,6 @@ import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import {
   Upload,
-  X,
   Star,
   Trash2,
   Edit3,
@@ -17,11 +16,7 @@ import {
   Save,
   ArrowLeft,
   Loader2,
-  Plus,
-  Check,
-  AlertCircle,
   GripVertical,
-  Download,
   ExternalLink
 } from 'lucide-react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';

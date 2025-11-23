@@ -121,13 +121,8 @@ export type Database = {
           created_at: string | null
           id: string
           method_id: string
+          price_tiers: Json
           product_id: string
-          tier_1_price: number
-          tier_1_quantity: number
-          tier_2_price: number
-          tier_2_quantity: number
-          tier_3_price: number
-          tier_3_quantity: number
           updated_at: string | null
           updated_by: string | null
         }
@@ -135,13 +130,8 @@ export type Database = {
           created_at?: string | null
           id?: string
           method_id: string
+          price_tiers: Json
           product_id: string
-          tier_1_price: number
-          tier_1_quantity: number
-          tier_2_price: number
-          tier_2_quantity: number
-          tier_3_price: number
-          tier_3_quantity: number
           updated_at?: string | null
           updated_by?: string | null
         }
@@ -149,15 +139,58 @@ export type Database = {
           created_at?: string | null
           id?: string
           method_id?: string
+          price_tiers?: Json
           product_id?: string
-          tier_1_price?: number
-          tier_1_quantity?: number
-          tier_2_price?: number
-          tier_2_quantity?: number
-          tier_3_price?: number
-          tier_3_quantity?: number
           updated_at?: string | null
           updated_by?: string | null
+        }
+        Relationships: []
+      }
+      product_images: {
+        Row: {
+          alt_text: string | null
+          attribution: Json | null
+          created_at: string | null
+          created_by: string | null
+          display_order: number
+          id: string
+          image_type: string
+          image_url: string
+          is_hero: boolean | null
+          metadata: Json | null
+          product_id: string
+          storage_path: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          alt_text?: string | null
+          attribution?: Json | null
+          created_at?: string | null
+          created_by?: string | null
+          display_order?: number
+          id?: string
+          image_type?: string
+          image_url: string
+          is_hero?: boolean | null
+          metadata?: Json | null
+          product_id: string
+          storage_path?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          alt_text?: string | null
+          attribution?: Json | null
+          created_at?: string | null
+          created_by?: string | null
+          display_order?: number
+          id?: string
+          image_type?: string
+          image_url?: string
+          is_hero?: boolean | null
+          metadata?: Json | null
+          product_id?: string
+          storage_path?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -322,6 +355,20 @@ export type Database = {
       }
     }
     Functions: {
+      get_product_images: {
+        Args: { p_product_id: string }
+        Returns: {
+          alt_text: string
+          attribution: Json
+          display_order: number
+          id: string
+          image_type: string
+          image_url: string
+          is_hero: boolean
+          metadata: Json
+          storage_path: string
+        }[]
+      }
       get_user_role_debug: {
         Args: { user_id_param: string }
         Returns: {
@@ -332,6 +379,15 @@ export type Database = {
       }
       has_role: { Args: { required_role: string }; Returns: boolean }
       is_admin: { Args: never; Returns: boolean }
+      migrate_existing_product_images: { Args: never; Returns: number }
+      reorder_product_images: {
+        Args: { p_image_ids: string[]; p_product_id: string }
+        Returns: boolean
+      }
+      set_hero_image: {
+        Args: { p_image_id: string; p_product_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never

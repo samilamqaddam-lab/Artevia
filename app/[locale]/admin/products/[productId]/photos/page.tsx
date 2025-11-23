@@ -122,7 +122,10 @@ const DraggableImage = ({ image, index, moveImage, onSetHero, onDelete, onEdit }
         <div className="flex gap-1">
           {!image.is_hero && (
             <button
-              onClick={onSetHero}
+              onClick={(e) => {
+                e.stopPropagation();
+                onSetHero();
+              }}
               className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               title="Définir comme photo principale"
             >
@@ -130,7 +133,10 @@ const DraggableImage = ({ image, index, moveImage, onSetHero, onDelete, onEdit }
             </button>
           )}
           <button
-            onClick={onEdit}
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit();
+            }}
             className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
             title="Modifier"
           >
@@ -138,7 +144,10 @@ const DraggableImage = ({ image, index, moveImage, onSetHero, onDelete, onEdit }
           </button>
         </div>
         <button
-          onClick={onDelete}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete();
+          }}
           className="p-1.5 rounded hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
           title="Supprimer"
         >
@@ -277,7 +286,10 @@ export default function ProductPhotosPage() {
       if (response.ok) {
         toast.success('Ordre des images sauvegardé');
         setHasChanges(false);
+        await loadData(); // Reload to confirm save worked
       } else {
+        const errorData = await response.json();
+        console.error('Reorder error:', errorData);
         toast.error('Erreur lors de la sauvegarde');
       }
     } catch (error) {

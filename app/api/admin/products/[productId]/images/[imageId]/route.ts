@@ -14,8 +14,16 @@ async function isAdmin(supabase: any): Promise<boolean> {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return false;
 
-  const adminEmails = ['admin@arteva.ma', 'sami@arteva.ma', 'samilamqaddam@gmail.com'];
-  return adminEmails.includes(user.email || '');
+  // Check user_roles table instead of hardcoded emails
+  const { data: userRole, error } = await supabase
+    .from('user_roles')
+    .select('role')
+    .eq('user_id', user.id)
+    .single();
+
+  if (error || !userRole) return false;
+
+  return userRole.role === 'admin' || userRole.role === 'super_admin';
 }
 
 /**

@@ -14,8 +14,19 @@ import {
  * Check if user is admin
  */
 async function isAdmin(supabase: any): Promise<boolean> {
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return false;
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+  if (authError) {
+    console.error('[isAdmin] Auth error:', authError);
+    return false;
+  }
+
+  if (!user) {
+    console.error('[isAdmin] No user found');
+    return false;
+  }
+
+  console.log('[isAdmin] Checking role for user:', user.id, user.email);
 
   // Check user_roles table instead of hardcoded emails
   const { data: userRole, error } = await supabase
@@ -24,8 +35,17 @@ async function isAdmin(supabase: any): Promise<boolean> {
     .eq('user_id', user.id)
     .single();
 
-  if (error || !userRole) return false;
+  if (error) {
+    console.error('[isAdmin] Error fetching role:', error);
+    return false;
+  }
 
+  if (!userRole) {
+    console.error('[isAdmin] No role found for user');
+    return false;
+  }
+
+  console.log('[isAdmin] User role:', userRole.role);
   return userRole.role === 'admin' || userRole.role === 'super_admin';
 }
 

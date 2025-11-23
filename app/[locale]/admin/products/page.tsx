@@ -17,7 +17,7 @@ import {
   Search,
   Loader2
 } from 'lucide-react';
-import { products } from '@/lib/products';
+import { products as allProducts } from '@/lib/products';
 
 export default function AdminProductsPage() {
   const router = useRouter();
@@ -59,8 +59,8 @@ export default function AdminProductsPage() {
   const loadProducts = async () => {
     try {
       setLoading(true);
-      setProducts(products);
-      setFilteredProducts(products);
+      setProducts(allProducts);
+      setFilteredProducts(allProducts);
     } catch (error) {
       console.error('Error loading products:', error);
     } finally {

@@ -11,19 +11,26 @@ import { createClient } from '@supabase/supabase-js';
 import * as dotenv from 'dotenv';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import { products } from '../src/lib/products';
+import { products } from '../src/lib/products.js';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });
 
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
   console.error('❌ Missing Supabase environment variables');
+  console.error('   Required: NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY');
   process.exit(1);
 }
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+  {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  }
 );
 
 // Load image overrides
@@ -38,7 +45,8 @@ async function migrateProductImages() {
   let totalErrors = 0;
 
   for (const product of products) {
-    console.log(`\n📦 Processing: ${product.name} (${product.id})`);
+    const productName = typeof product.name === 'string' ? product.name : (product.name?.fr || product.name?.ar || product.id);
+    console.log(`\n📦 Processing: ${productName} (${product.id})`);
 
     // Check if product has custom image overrides
     const override = imageOverrides[product.id];
@@ -83,10 +91,11 @@ async function migrateProductImages() {
       try {
         // Determine image type
         let imageType = 'external';
+        const imageUrl = image.url;
+
         if (image.url.startsWith('/images/')) {
           imageType = 'local';
-          // Convert local path to full URL
-          image.url = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://arteva.ma'}${image.url}`;
+          // Keep as relative path - Next.js Image component handles it
         }
 
         // Find attribution for this image

@@ -23,6 +23,7 @@ export default function AdminProductsPage() {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('admin.products');
+  const tProducts = useTranslations('products');
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [products, setProducts] = useState<any[]>([]);
@@ -76,7 +77,8 @@ export default function AdminProductsPage() {
 
     const query = searchQuery.toLowerCase();
     const filtered = products.filter((product) => {
-      return product.name.toLowerCase().includes(query) ||
+      const productName = tProducts(`${product.nameKey}.name`).toLowerCase();
+      return productName.includes(query) ||
              product.category.toLowerCase().includes(query);
     });
     setFilteredProducts(filtered);
@@ -141,7 +143,7 @@ export default function AdminProductsPage() {
               <div className="aspect-square relative overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <Image
                   src={product.heroImage}
-                  alt={product.name}
+                  alt={tProducts(`${product.nameKey}.name`)}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 300px"
@@ -151,7 +153,7 @@ export default function AdminProductsPage() {
               {/* Product Info */}
               <div className="p-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">
-                  {product.name}
+                  {tProducts(`${product.nameKey}.name`)}
                 </h3>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
                   {product.category}

@@ -77,7 +77,7 @@ export default function AdminProductsPage() {
 
     const query = searchQuery.toLowerCase();
     const filtered = products.filter((product) => {
-      const productName = tProducts(product.nameKey).toLowerCase();
+      const productName = tProducts(product.nameKey.replace('products.', '')).toLowerCase();
       return productName.includes(query) ||
              product.category.toLowerCase().includes(query);
     });
@@ -153,7 +153,7 @@ export default function AdminProductsPage() {
               {/* Product Info */}
               <div className="p-4">
                 <h3 className="font-semibold text-slate-900 dark:text-white">
-                  {tProducts(product.nameKey)}
+                  {tProducts(product.nameKey.replace('products.', ''))}
                 </h3>
                 <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
                   {product.category}

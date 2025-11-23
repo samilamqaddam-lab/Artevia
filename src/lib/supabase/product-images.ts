@@ -7,32 +7,9 @@
 
 import { createServerSupabaseClient } from '@/lib/supabase/server';
 import { v4 as uuidv4 } from 'uuid';
+import { Database } from '@/lib/supabase/types';
 
-export interface ProductImage {
-  id: string;
-  product_id: string;
-  image_url: string;
-  image_type: 'local' | 'external' | 'uploaded';
-  storage_path?: string;
-  is_hero: boolean;
-  display_order: number;
-  alt_text?: string;
-  attribution?: {
-    title?: string;
-    source?: string;
-    link?: string;
-  };
-  metadata?: {
-    width?: number;
-    height?: number;
-    size?: number;
-    format?: string;
-    thumbnails?: Record<string, string>;
-  };
-  created_at: string;
-  updated_at: string;
-  created_by?: string;
-}
+export type ProductImage = Database['public']['Tables']['product_images']['Row'];
 
 /**
  * Upload an image file to Supabase Storage

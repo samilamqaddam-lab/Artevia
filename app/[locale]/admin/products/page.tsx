@@ -30,10 +30,34 @@ export default function AdminProductsPage() {
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [heroImages, setHeroImages] = useState<Record<string, string>>({});
 
   useEffect(() => {
     checkAuth();
   }, []);
+
+  // Reload hero images when returning to the page
+  useEffect(() => {
+    const handleFocus = () => {
+      if (isAuthenticated) {
+        loadHeroImages();
+      }
+    };
+
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
+  }, [isAuthenticated]);
+
+  // Auto-refresh hero images every 30 seconds
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const interval = setInterval(() => {
+      loadHeroImages();
+    }, 30000); // 30 seconds
+
+    return () => clearInterval(interval);
+  }, [isAuthenticated]);
 
   const checkAuth = async () => {
     try {
@@ -62,10 +86,24 @@ export default function AdminProductsPage() {
       setLoading(true);
       setProducts(allProducts);
       setFilteredProducts(allProducts);
+      // Load hero images from database
+      await loadHeroImages();
     } catch (error) {
       console.error('Error loading products:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadHeroImages = async () => {
+    try {
+      const response = await fetch('/api/admin/products/hero-images');
+      if (response.ok) {
+        const data = await response.json();
+        setHeroImages(data.heroImages || {});
+      }
+    } catch (error) {
+      console.error('Error loading hero images:', error);
     }
   };
 
@@ -142,7 +180,7 @@ export default function AdminProductsPage() {
               {/* Product Image */}
               <div className="aspect-square relative overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <Image
-                  src={product.heroImage}
+                  src={heroImages[product.id] || product.heroImage}
                   alt={tProducts(product.nameKey)}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"

@@ -4,6 +4,7 @@ import {ProductExperience} from '@/components/product/ProductExperience';
 import {locales, type Locale} from '@/i18n/settings';
 import {getProductBySlug, products} from '@/lib/products';
 import {getProductWithPricing} from '@/lib/price-overrides';
+import {getProductHeroImage, getProductGallery} from '@/lib/supabase/product-images';
 import type {Metadata} from 'next';
 
 // Revalidate every 60 seconds - ensures price changes appear within 1 minute
@@ -67,13 +68,16 @@ export async function generateMetadata({
 
   const seoMeta = getProductSEOMeta(slug, productName, productDescription);
 
+  // Get hero image from database
+  const heroImage = await getProductHeroImage(product.id);
+
   return {
     title: seoMeta.title,
     description: seoMeta.description,
     openGraph: {
       title: seoMeta.title,
       description: seoMeta.description,
-      images: [product.heroImage]
+      images: [heroImage || product.heroImage]
     }
   };
 }
@@ -96,7 +100,18 @@ export default async function ProductPage({
   }
 
   // Apply price overrides from database
-  const product = await getProductWithPricing(baseProduct.id, products) || baseProduct;
+  const productWithPricing = await getProductWithPricing(baseProduct.id, products) || baseProduct;
+
+  // Get hero image and gallery from database
+  const heroImage = await getProductHeroImage(baseProduct.id);
+  const gallery = await getProductGallery(baseProduct.id);
+
+  // Apply dynamic images from database
+  const product = {
+    ...productWithPricing,
+    heroImage: heroImage || productWithPricing.heroImage,
+    gallery: gallery.length > 0 ? gallery : productWithPricing.gallery
+  };
 
   const tProducts = await getTranslations({locale, namespace: 'products'});
   const tProduct = await getTranslations({locale, namespace: 'product'});

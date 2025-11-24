@@ -100,6 +100,55 @@ export async function getProductImages(productId: string): Promise<ProductImage[
 }
 
 /**
+ * Get the hero image for a product (PUBLIC - no auth required)
+ */
+export async function getProductHeroImage(productId: string): Promise<string | undefined> {
+  const supabase = createServerSupabaseClient();
+
+  const { data, error } = await supabase
+    .from('product_images')
+    .select('image_url')
+    .eq('product_id', productId)
+    .eq('is_hero', true)
+    .single();
+
+  if (error || !data) {
+    // If no hero image found, try to get the first image
+    const { data: firstImage } = await supabase
+      .from('product_images')
+      .select('image_url')
+      .eq('product_id', productId)
+      .order('display_order', { ascending: true })
+      .limit(1)
+      .single();
+
+    return firstImage?.image_url;
+  }
+
+  return data.image_url;
+}
+
+/**
+ * Get all product images for gallery (PUBLIC - no auth required)
+ */
+export async function getProductGallery(productId: string): Promise<string[]> {
+  const supabase = createServerSupabaseClient();
+
+  const { data, error } = await supabase
+    .from('product_images')
+    .select('image_url')
+    .eq('product_id', productId)
+    .order('is_hero', { ascending: false })
+    .order('display_order', { ascending: true });
+
+  if (error || !data) {
+    return [];
+  }
+
+  return data.map(img => img.image_url);
+}
+
+/**
  * Add image record to database
  */
 export async function addProductImageRecord(

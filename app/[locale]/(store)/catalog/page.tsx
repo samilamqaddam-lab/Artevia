@@ -2,6 +2,7 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {locales, type Locale} from '@/i18n/settings';
 import {products} from '@/lib/products';
 import {getAllProductsWithPricing} from '@/lib/price-overrides';
+import {getAllProductHeroImages} from '@/lib/supabase/product-images';
 import {CatalogView} from '@/components/product/CatalogView';
 
 // Revalidate every 60 seconds - ensures price changes appear within 1 minute
@@ -22,8 +23,13 @@ export default async function CatalogPage({params}: {params: {locale: string}}) 
   // Apply price overrides from database
   const productsWithPricing = await getAllProductsWithPricing(products);
 
+  // Get all hero images from database
+  const heroImagesMap = await getAllProductHeroImages();
+
   const catalogProducts = productsWithPricing.map((product) => ({
     ...product,
+    // Use dynamic hero image from database if available, otherwise fallback to static
+    heroImage: heroImagesMap.get(product.id) || product.heroImage,
     name: tProducts(product.nameKey.split('.').slice(1).join('.')),
     description: tProducts(product.descriptionKey.split('.').slice(1).join('.')),
     methodLabels: product.methods.map((method) =>

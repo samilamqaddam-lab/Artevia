@@ -149,6 +149,32 @@ export async function getProductGallery(productId: string): Promise<string[]> {
 }
 
 /**
+ * Get all hero images for multiple products at once (PUBLIC - no auth required)
+ * Returns a map of productId -> heroImageUrl
+ */
+export async function getAllProductHeroImages(): Promise<Map<string, string>> {
+  const supabase = createServerSupabaseClient();
+
+  const { data, error } = await supabase
+    .from('product_images')
+    .select('product_id, image_url')
+    .eq('is_hero', true);
+
+  const imageMap = new Map<string, string>();
+
+  if (error || !data) {
+    return imageMap;
+  }
+
+  // Create map of product_id to hero image URL
+  data.forEach(item => {
+    imageMap.set(item.product_id, item.image_url);
+  });
+
+  return imageMap;
+}
+
+/**
  * Add image record to database
  */
 export async function addProductImageRecord(

@@ -6,8 +6,7 @@ import {
   getProductImages,
   uploadProductImage,
   addProductImageRecord,
-  importImageFromUrl,
-  processImage
+  importImageFromUrl
 } from '@/lib/supabase/product-images';
 
 /**
@@ -110,17 +109,19 @@ export async function POST(
         const altText = altTexts[i] || '';
 
         try {
-          // Process and optimize image
-          const optimizedBlob = await processImage(file);
-          const optimizedFile = new File([optimizedBlob], file.name, { type: file.type });
+          console.log(`Processing file ${i + 1}/${files.length}:`, file.name, file.type, file.size);
 
-          // Upload to storage
-          const uploadResult = await uploadProductImage(optimizedFile, productId);
+          // Upload to storage directly (no server-side processing)
+          // Image optimization should be done client-side before upload if needed
+          const uploadResult = await uploadProductImage(file, productId);
 
           if ('error' in uploadResult) {
+            console.error('Upload error for', file.name, ':', uploadResult.error);
             errors.push({ file: file.name, error: uploadResult.error });
             continue;
           }
+
+          console.log('Upload successful for', file.name, '- URL:', uploadResult.url);
 
           // Add to database
           const dbResult = await addProductImageRecord(
@@ -132,6 +133,7 @@ export async function POST(
           );
 
           if (dbResult.error) {
+            console.error('DB insert error for', file.name, ':', dbResult.error);
             errors.push({ file: file.name, error: dbResult.error });
             // Try to delete uploaded file
             if (uploadResult.path) {
@@ -141,10 +143,11 @@ export async function POST(
             continue;
           }
 
+          console.log('Successfully added image to database:', dbResult.data?.id);
           results.push(dbResult.data);
         } catch (error) {
-          console.error('Error processing file:', error);
-          errors.push({ file: file.name, error: 'Processing failed' });
+          console.error('Error processing file:', file.name, error);
+          errors.push({ file: file.name, error: error instanceof Error ? error.message : 'Processing failed' });
         }
       }
 

@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
@@ -53,12 +53,9 @@ interface DraggableImageProps {
 }
 
 const DraggableImage = ({ image, index, moveImage, onSetHero, onDelete, onEdit }: DraggableImageProps) => {
-  const ref = useCallback((node: HTMLDivElement | null) => {
-    if (node) {
-      drag(drop(node));
-    }
-  }, []);
+  const [isReady, setIsReady] = React.useState(false);
 
+  // Define drag and drop hooks FIRST
   const [{ isDragging }, drag] = useDrag({
     type: 'image',
     item: { index },
@@ -79,6 +76,23 @@ const DraggableImage = ({ image, index, moveImage, onSetHero, onDelete, onEdit }
       isOver: monitor.isOver(),
     }),
   });
+
+  // Now define ref callback using the drag and drop hooks
+  const ref = useCallback((node: HTMLDivElement | null) => {
+    if (node) {
+      drag(drop(node));
+    }
+  }, [drag, drop]);
+
+  // Delay enabling interactions to ensure everything is initialized
+  useEffect(() => {
+    // Increased delay to ensure proper initialization
+    const timer = setTimeout(() => {
+      setIsReady(true);
+      console.log('DraggableImage ready for:', image.id);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [image.id]);
 
   return (
     <div
@@ -124,10 +138,21 @@ const DraggableImage = ({ image, index, moveImage, onSetHero, onDelete, onEdit }
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                onSetHero();
+                e.preventDefault();
+                console.log('Star button clicked', { isReady, imageId: image.id });
+                if (isReady) {
+                  onSetHero();
+                } else {
+                  console.warn('Button not ready yet');
+                }
               }}
-              className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              title="Définir comme photo principale"
+              disabled={!isReady}
+              className={`p-1.5 rounded transition-colors ${
+                isReady
+                  ? 'hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer'
+                  : 'opacity-50 cursor-not-allowed'
+              }`}
+              title={isReady ? "Définir comme photo principale" : "Chargement..."}
             >
               <Star size={16} className="text-slate-600 dark:text-slate-400" />
             </button>
@@ -176,6 +201,7 @@ export default function ProductPhotosPage() {
   const [product, setProduct] = useState<any>(null);
   const [images, setImages] = useState<ProductImage[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isInitialized, setIsInitialized] = useState(false);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [editingImage, setEditingImage] = useState<ProductImage | null>(null);
@@ -203,6 +229,10 @@ export default function ProductPhotosPage() {
       if (response.ok) {
         const data = await response.json();
         setImages(data.images || []);
+        // Mark as initialized after first successful load
+        if (!isInitialized) {
+          setIsInitialized(true);
+        }
       }
     } catch (error) {
       console.error('Error loading data:', error);
@@ -302,7 +332,21 @@ export default function ProductPhotosPage() {
 
   // Set hero image
   const setHeroImage = async (imageId: string) => {
+    console.log('setHeroImage called', { imageId, productId, isInitialized });
+
+    // Guard against uninitialized state
+    if (!isInitialized || !productId) {
+      console.warn('Component not fully initialized', { isInitialized, productId });
+      // Wait a bit and retry once
+      await new Promise(resolve => setTimeout(resolve, 500));
+      if (!productId) {
+        toast.error('Produit non trouvé');
+        return;
+      }
+    }
+
     try {
+      console.log('Sending request to set hero image', { productId, imageId });
       const response = await fetch(`/api/admin/products/${productId}/images/${imageId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -310,9 +354,12 @@ export default function ProductPhotosPage() {
       });
 
       if (response.ok) {
+        console.log('Hero image set successfully');
         toast.success('Photo principale définie');
         await loadData();
       } else {
+        const errorData = await response.json();
+        console.error('Set hero error response:', errorData);
         toast.error('Erreur lors de la mise à jour');
       }
     } catch (error) {

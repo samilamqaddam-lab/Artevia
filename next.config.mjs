@@ -66,11 +66,16 @@ const nextConfig = {
 
   images: {
     remotePatterns: [
+      // Supabase Storage - for uploaded product images
+      {protocol: 'https', hostname: 'qygpijoytpbxgbkaylkz.supabase.co'},
+      // External stock image sources
       {protocol: 'https', hostname: 'images.unsplash.com'},
       {protocol: 'https', hostname: 'plus.unsplash.com'},
       {protocol: 'https', hostname: 'source.unsplash.com'},
       {protocol: 'https', hostname: 'upload.wikimedia.org'},
-      {protocol: 'https', hostname: 'images.pexels.com'}
+      {protocol: 'https', hostname: 'images.pexels.com'},
+      // Allow any HTTPS domain for imported URLs (be careful with this in production)
+      {protocol: 'https', hostname: '**'}
     ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

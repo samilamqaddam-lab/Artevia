@@ -12,6 +12,7 @@ import {
 
 /**
  * Check if user is admin
+ * TEMPORARY: Using email list until RLS policy is fixed
  */
 async function isAdmin(supabase: any): Promise<boolean> {
   const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -26,27 +27,22 @@ async function isAdmin(supabase: any): Promise<boolean> {
     return false;
   }
 
-  console.log('[isAdmin] Checking role for user:', user.id, user.email);
+  console.log('[isAdmin] Checking user:', user.id, user.email);
 
-  // Check user_roles table instead of hardcoded emails
-  const { data: userRole, error } = await supabase
-    .from('user_roles')
-    .select('role')
-    .eq('user_id', user.id)
-    .single();
+  // TEMPORARY FIX: Use email list to bypass RLS recursion issue
+  // TODO: Remove this after fixing the RLS policy with:
+  // DROP POLICY IF EXISTS "Super admins can manage all roles" ON user_roles;
+  const adminEmails = [
+    'sami.lamqaddam@gmail.com',
+    'sami.lamqaddam.sl@gmail.com',
+    'sami.artipel@gmail.com',
+    'ahmed.agh21@gmail.com'
+  ];
 
-  if (error) {
-    console.error('[isAdmin] Error fetching role:', error);
-    return false;
-  }
+  const isAdmin = adminEmails.includes(user.email || '');
+  console.log('[isAdmin] Is admin:', isAdmin);
 
-  if (!userRole) {
-    console.error('[isAdmin] No role found for user');
-    return false;
-  }
-
-  console.log('[isAdmin] User role:', userRole.role);
-  return userRole.role === 'admin' || userRole.role === 'super_admin';
+  return isAdmin;
 }
 
 /**

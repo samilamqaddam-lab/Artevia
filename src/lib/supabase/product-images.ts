@@ -5,7 +5,7 @@
  * Handles all operations related to product images in Supabase
  */
 
-import { createServerSupabaseClient } from '@/lib/supabase/server';
+import { createServerSupabaseClient, getSupabaseServiceClient } from '@/lib/supabase/server';
 import { v4 as uuidv4 } from 'uuid';
 import { Database } from '@/lib/supabase/types';
 
@@ -110,7 +110,15 @@ export async function addProductImageRecord(
   altText?: string,
   attribution?: any
 ): Promise<{ data?: ProductImage; error?: string }> {
-  const supabase = createServerSupabaseClient();
+  // Use service client to bypass RLS
+  let supabase;
+  try {
+    supabase = getSupabaseServiceClient();
+  } catch (error) {
+    // Fallback to regular client if service client not available
+    console.log('Service client not available, using regular client');
+    supabase = createServerSupabaseClient();
+  }
 
   // Get current max display order
   const { data: existingImages } = await supabase
@@ -163,7 +171,15 @@ export async function updateProductImage(
   imageId: string,
   updates: Partial<ProductImage>
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = createServerSupabaseClient();
+  // Use service client to bypass RLS
+  let supabase;
+  try {
+    supabase = getSupabaseServiceClient();
+  } catch (error) {
+    // Fallback to regular client if service client not available
+    console.log('Service client not available, using regular client');
+    supabase = createServerSupabaseClient();
+  }
 
   const { error } = await supabase
     .from('product_images')
@@ -182,7 +198,15 @@ export async function updateProductImage(
  * Delete image record and file
  */
 export async function deleteProductImageComplete(imageId: string): Promise<{ success: boolean; error?: string }> {
-  const supabase = createServerSupabaseClient();
+  // Use service client to bypass RLS
+  let supabase;
+  try {
+    supabase = getSupabaseServiceClient();
+  } catch (error) {
+    // Fallback to regular client if service client not available
+    console.log('Service client not available, using regular client');
+    supabase = createServerSupabaseClient();
+  }
 
   // First get the image to get storage path
   const { data: image } = await supabase
@@ -221,20 +245,45 @@ export async function deleteProductImageComplete(imageId: string): Promise<{ suc
  * Set an image as hero
  */
 export async function setHeroImage(productId: string, imageId: string): Promise<{ success: boolean; error?: string }> {
-  const supabase = createServerSupabaseClient();
-
-  // Use the SQL function we created
-  const { error } = await supabase.rpc('set_hero_image', {
-    p_product_id: productId,
-    p_image_id: imageId
-  });
-
-  if (error) {
-    console.error('Error setting hero image:', error);
-    return { success: false, error: error.message };
+  // Use service client to bypass RLS
+  let supabase;
+  try {
+    supabase = getSupabaseServiceClient();
+  } catch (error) {
+    // Fallback to regular client if service client not available
+    console.log('Service client not available, using regular client');
+    supabase = createServerSupabaseClient();
   }
 
-  return { success: true };
+  try {
+    // First, set all images to non-hero
+    const { error: resetError } = await supabase
+      .from('product_images')
+      .update({ is_hero: false })
+      .eq('product_id', productId);
+
+    if (resetError) {
+      console.error('Error resetting hero status:', resetError);
+      return { success: false, error: resetError.message };
+    }
+
+    // Then set the selected image as hero
+    const { error: updateError } = await supabase
+      .from('product_images')
+      .update({ is_hero: true })
+      .eq('id', imageId)
+      .eq('product_id', productId);
+
+    if (updateError) {
+      console.error('Error setting hero image:', updateError);
+      return { success: false, error: updateError.message };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error setting hero image:', error);
+    return { success: false, error: 'Failed to set hero image' };
+  }
 }
 
 /**
@@ -244,20 +293,40 @@ export async function reorderProductImages(
   productId: string,
   imageIds: string[]
 ): Promise<{ success: boolean; error?: string }> {
-  const supabase = createServerSupabaseClient();
-
-  // Use the SQL function we created
-  const { error } = await supabase.rpc('reorder_product_images', {
-    p_product_id: productId,
-    p_image_ids: imageIds
-  });
-
-  if (error) {
-    console.error('Error reordering images:', error);
-    return { success: false, error: error.message };
+  // Use service client to bypass RLS
+  let supabase;
+  try {
+    supabase = getSupabaseServiceClient();
+  } catch (error) {
+    // Fallback to regular client if service client not available
+    console.log('Service client not available, using regular client');
+    supabase = createServerSupabaseClient();
   }
 
-  return { success: true };
+  try {
+    // Update display_order for each image
+    const updatePromises = imageIds.map((imageId, index) =>
+      supabase
+        .from('product_images')
+        .update({ display_order: index })
+        .eq('id', imageId)
+        .eq('product_id', productId)
+    );
+
+    const results = await Promise.all(updatePromises);
+
+    // Check if any updates failed
+    const failedUpdate = results.find(result => result.error);
+    if (failedUpdate?.error) {
+      console.error('Error reordering images:', failedUpdate.error);
+      return { success: false, error: failedUpdate.error.message };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error reordering images:', error);
+    return { success: false, error: 'Failed to reorder images' };
+  }
 }
 
 /**

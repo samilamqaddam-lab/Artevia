@@ -18,7 +18,14 @@ export async function uploadProductImage(
   file: File,
   productId: string
 ): Promise<{ url: string; path: string } | { error: string }> {
-  const supabase = createServerSupabaseClient();
+  // Use service client to bypass RLS for storage operations
+  let supabase;
+  try {
+    supabase = getSupabaseServiceClient();
+  } catch (error) {
+    console.log('Service client not available, using regular client');
+    supabase = createServerSupabaseClient();
+  }
 
   // Validate file
   const maxSize = 10 * 1024 * 1024; // 10MB
@@ -36,6 +43,8 @@ export async function uploadProductImage(
   const fileName = `${productId}/${uuidv4()}.${fileExt}`;
   const filePath = `products/${fileName}`;
 
+  console.log('Uploading to storage:', { filePath, fileType: file.type, fileSize: file.size });
+
   // Upload to Storage
   const { data, error } = await supabase.storage
     .from('product-images')
@@ -49,10 +58,14 @@ export async function uploadProductImage(
     return { error: error.message };
   }
 
+  console.log('Upload successful:', { path: data.path });
+
   // Get public URL
   const { data: { publicUrl } } = supabase.storage
     .from('product-images')
     .getPublicUrl(filePath);
+
+  console.log('Public URL generated:', publicUrl);
 
   return {
     url: publicUrl,
@@ -64,7 +77,16 @@ export async function uploadProductImage(
  * Delete an image from Supabase Storage
  */
 export async function deleteProductImage(storagePath: string): Promise<{ success: boolean; error?: string }> {
-  const supabase = createServerSupabaseClient();
+  // Use service client to bypass RLS for storage operations
+  let supabase;
+  try {
+    supabase = getSupabaseServiceClient();
+  } catch (error) {
+    console.log('Service client not available, using regular client');
+    supabase = createServerSupabaseClient();
+  }
+
+  console.log('Deleting from storage:', storagePath);
 
   const { error } = await supabase.storage
     .from('product-images')
@@ -75,6 +97,7 @@ export async function deleteProductImage(storagePath: string): Promise<{ success
     return { success: false, error: error.message };
   }
 
+  console.log('Delete successful:', storagePath);
   return { success: true };
 }
 

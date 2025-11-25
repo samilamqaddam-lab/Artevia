@@ -83,7 +83,18 @@ const nextConfig = {
     minimumCacheTTL: 60
   },
 
-  // Headers de sécurité
+  // Redirections SEO
+  async redirects() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/icons/icon.svg',
+        permanent: true
+      }
+    ];
+  },
+
+  // Headers de sécurité et preconnect
   async headers() {
     return [
       {
@@ -108,6 +119,10 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'
+          },
+          {
+            key: 'Link',
+            value: '<https://images.pexels.com>; rel=preconnect, <https://qygpijoytpbxgbkaylkz.supabase.co>; rel=preconnect'
           }
         ]
       },

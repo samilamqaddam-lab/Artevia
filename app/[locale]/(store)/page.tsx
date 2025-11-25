@@ -4,6 +4,7 @@ import {locales, type Locale} from '@/i18n/settings';
 import {products} from '@/lib/products';
 import {getPackById} from '@/lib/packs';
 import {HomeView, type HomeContent} from '@/components/home/HomeView';
+import {LocalBusinessSchema} from '@/components/seo';
 
 export const metadata: Metadata = {
   alternates: {
@@ -86,7 +87,7 @@ export default async function HomePage({params}: {params: {locale: string}}) {
     image: HERO_IMAGE
   };
 
-  const trust = tHome.raw('trust') as {title: string; subtitle: string; logos: string[]};
+  const trust = tHome.raw('trust') as {title: string; subtitle: string; values: string[]};
 
   const categoriesTranslation = tHome.raw('categories') as Array<{
     title: string;
@@ -175,12 +176,6 @@ export default async function HomePage({params}: {params: {locale: string}}) {
     badges: string[];
   };
 
-  const testimonials = tHome.raw('testimonials') as {
-    title: string;
-    subtitle: string;
-    items: {quote: string; author: string; role: string; company: string}[];
-  };
-
   const resourcesTranslation = tHome.raw('resources') as {
     title: string;
     subtitle: string;
@@ -223,7 +218,6 @@ export default async function HomePage({params}: {params: {locale: string}}) {
       ...sustainabilityTranslation,
       image: SUSTAINABILITY_IMAGE
     },
-    testimonials,
     resources,
     finalCta: {
       ...finalCtaTranslation,
@@ -238,5 +232,10 @@ export default async function HomePage({params}: {params: {locale: string}}) {
     }
   };
 
-  return <HomeView locale={locale} content={content} />;
+  return (
+    <>
+      <LocalBusinessSchema locale={locale} />
+      <HomeView locale={locale} content={content} />
+    </>
+  );
 }

@@ -1,7 +1,7 @@
 {
   "common": {
     "brand": "Arteva",
-    "tagline": "Objets Publicitaires Personnalisés Entreprise | BAT 24h",
+    "tagline": "Objets Publicitaires Personnalisés Entreprise | Qualité & Accompagnement",
     "nav": {
       "home": "Accueil",
       "catalog": "Catalogue",
@@ -44,27 +44,27 @@
   "home": {
     "hero": {
       "tagline": "Made in Morocco & Europe",
-      "highlight": "Prix Transparents & BAT sous 24h",
+      "highlight": "Prix Transparents & Accompagnement Personnalisé",
       "title": "Objets Publicitaires Personnalisés pour Entreprises au Maroc",
       "description": "Devis instantané en ligne, upload de votre logo, chef de projet dédié pour chaque commande. Accompagnement des équipes marketing, RH et événementiel.",
       "ctaPrimary": "Lancer le designer",
       "ctaSecondary": "Demander un devis",
       "badges": [
         "Chef de projet dédié",
-        "BAT PDF sous 24h",
+        "Qualité premium garantie",
         "Production locale & Europe"
       ]
     },
     "trust": {
-      "title": "Ils nous font confiance",
-      "subtitle": "Entreprises Marocaines, Startups et Institutions Nous Font Confiance",
-      "logos": [
-        "OCP",
-        "Maroc Telecom",
-        "Inwi",
-        "Attijariwafa bank",
-        "Careem",
-        "UM6P"
+      "title": "Pourquoi nous choisir",
+      "subtitle": "Un accompagnement sur-mesure pour vos projets de personnalisation",
+      "values": [
+        "Qualité premium",
+        "Support réactif",
+        "Flexibilité",
+        "Transparence",
+        "Expertise locale",
+        "Éco-responsabilité"
       ]
     },
     "categories": [
@@ -81,7 +81,7 @@
       {
         "title": "Tech & USB",
         "description": "Powerbanks, clés USB bambou et accessoires high-tech livrés en coffret.",
-        "tag": "Prêts en 7 jours"
+        "tag": "High-tech"
       },
       {
         "title": "Fournitures Bureau Personnalisées",
@@ -101,12 +101,12 @@
       "ctaSecondary": "Consulter un exemple de BAT",
       "stats": [
         {
-          "value": "24h",
-          "label": "Délai moyen de BAT validé"
+          "value": "100%",
+          "label": "Personnalisation sur-mesure"
         },
         {
-          "value": "98%",
-          "label": "Clients satisfaits"
+          "value": "A-Z",
+          "label": "Accompagnement complet"
         }
       ]
     },
@@ -123,7 +123,7 @@
         },
         {
           "title": "3. Validation BAT & devis",
-          "description": "Recevez le BAT PDF + devis détaillé sous 24h pour confirmation."
+          "description": "Recevez le BAT PDF + devis détaillé pour validation avant production."
         },
         {
           "title": "4. Production & livraison",
@@ -141,7 +141,7 @@
           "discount": "-7% inclus",
           "description": "Tote GOTS + carnet A5 + mug double paroi + welcome card.",
           "price": "À partir de 399 MAD / pack",
-          "leadTime": "Disponible en 10 jours",
+          "leadTime": "Délai selon quantité",
           "features": [
             "Personnalisation quadri incluse",
             "Livraison groupée sur site",
@@ -154,7 +154,7 @@
           "discount": "-6% inclus",
           "description": "Badge nominatif, lanyard sublimé, carnet spirale, mini powerbank.",
           "price": "À partir de 289 MAD / set",
-          "leadTime": "Prêt pour vos salons en 7 jours",
+          "leadTime": "Idéal pour vos événements",
           "features": [
             "Fichiers variables (nom/prénom)",
             "Impression quadri recto verso",
@@ -167,7 +167,7 @@
           "discount": "-8% inclus",
           "description": "Coffret bois, stylo métal gravé, carnet relié, thermos isotherme 500 ml.",
           "price": "À partir de 649 MAD / coffret",
-          "leadTime": "Livraison en 7-14 jours",
+          "leadTime": "Coffret haut de gamme",
           "features": [
             "Gravure laser sur métal",
             "Carte personnalisée signée",
@@ -193,27 +193,21 @@
         "Transport neutre en carbone"
       ]
     },
-    "testimonials": {
-      "title": "Ils parlent d’Arteva",
-      "subtitle": "Des équipes marketing, RH et événementiel satisfaites.",
+    "whyUs": {
+      "title": "Notre engagement qualité",
+      "subtitle": "Ce qui fait la différence Artevia",
       "items": [
         {
-          "quote": "Arteva nous a livré 1 500 tote bags éco-conçus pour notre campagne Ramadan en un temps record.",
-          "author": "Salma B.",
-          "role": "Responsable Communication",
-          "company": "Inwi"
+          "title": "Accompagnement personnalisé",
+          "description": "Un chef de projet dédié vous guide à chaque étape, de la conception à la livraison."
         },
         {
-          "quote": "Le BAT bilingue a simplifié la validation interne, et la qualité de broderie est irréprochable.",
-          "author": "Youssef M.",
-          "role": "HR Business Partner",
-          "company": "OCP"
+          "title": "Qualité premium",
+          "description": "Des matériaux soigneusement sélectionnés et des finitions impeccables pour valoriser votre image."
         },
         {
-          "quote": "Pour nos roadshows, les powerbanks personnalisés ont été un vrai différenciateur auprès de nos prospects.",
-          "author": "Nadia A.",
-          "role": "Head of Marketing",
-          "company": "Fintech scale-up"
+          "title": "Flexibilité totale",
+          "description": "Nous nous adaptons à vos besoins spécifiques, quantités et contraintes de budget."
         }
       ]
     },

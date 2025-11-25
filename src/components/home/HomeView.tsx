@@ -28,7 +28,7 @@ type HeroContent = {
 type TrustContent = {
   title: string;
   subtitle: string;
-  logos: string[];
+  values: string[];
 };
 
 type CategoryContent = {
@@ -116,7 +116,7 @@ export type HomeContent = {
   processDescription: string;
   packs: PacksContent;
   sustainability: SustainabilityContent;
-  testimonials: TestimonialContent;
+  testimonials?: TestimonialContent;
   resources: ResourcesContent;
   finalCta: FinalCtaContent;
 };
@@ -211,12 +211,12 @@ export function HomeView({locale, content}: HomeViewProps) {
           </p>
           <h2 className="mt-2 text-center text-xl font-semibold text-slate-900 dark:text-white">{trust.title}</h2>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold uppercase text-slate-500 dark:text-slate-400">
-            {trust.logos.map((logo) => (
+            {trust.values.map((value) => (
               <span
-                key={logo}
+                key={value}
                 className="rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm dark:border-white/10 dark:bg-[#0f0f0f]"
               >
-                {logo}
+                {value}
               </span>
             ))}
           </div>
@@ -439,34 +439,36 @@ export function HomeView({locale, content}: HomeViewProps) {
         </motion.div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-slate-100 py-16 dark:bg-[#111111]">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 space-y-10">
-          <div className="text-center text-slate-900 dark:text-slate-100">
-            <h2 className="text-2xl font-semibold">{testimonials.title}</h2>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{testimonials.subtitle}</p>
+      {/* Testimonials - Only render if available */}
+      {testimonials && testimonials.items && testimonials.items.length > 0 && (
+        <section className="bg-slate-100 py-16 dark:bg-[#111111]">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 space-y-10">
+            <div className="text-center text-slate-900 dark:text-slate-100">
+              <h2 className="text-2xl font-semibold">{testimonials.title}</h2>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{testimonials.subtitle}</p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {testimonials.items.map((item, index) => (
+                <motion.article
+                  key={item.quote}
+                  initial={{opacity: 0, y: 18}}
+                  whileInView={{opacity: 1, y: 0}}
+                  viewport={{once: true, amount: 0.3}}
+                  transition={{duration: 0.4, delay: index * 0.08}}
+                  className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm dark:border-white/10 dark:bg-[#161616]"
+                >
+                  <p className="flex-1 text-sm italic text-slate-700 dark:text-slate-200">&ldquo;{item.quote}&rdquo;</p>
+                  <div className="mt-4 text-sm text-slate-600 dark:text-slate-300">
+                    <div className="font-semibold text-slate-900 dark:text-white">{item.author}</div>
+                    <div>{item.role}</div>
+                    <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">{item.company}</div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
           </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {testimonials.items.map((item, index) => (
-              <motion.article
-                key={item.quote}
-                initial={{opacity: 0, y: 18}}
-                whileInView={{opacity: 1, y: 0}}
-                viewport={{once: true, amount: 0.3}}
-                transition={{duration: 0.4, delay: index * 0.08}}
-                className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm dark:border-white/10 dark:bg-[#161616]"
-              >
-                <p className="flex-1 text-sm italic text-slate-700 dark:text-slate-200">“{item.quote}”</p>
-                <div className="mt-4 text-sm text-slate-600 dark:text-slate-300">
-                  <div className="font-semibold text-slate-900 dark:text-white">{item.author}</div>
-                  <div>{item.role}</div>
-                  <div className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">{item.company}</div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Resources */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6">

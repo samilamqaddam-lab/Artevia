@@ -5,6 +5,7 @@ import {locales, type Locale} from '@/i18n/settings';
 import {getProductBySlug, products} from '@/lib/products';
 import {getProductWithPricing} from '@/lib/price-overrides';
 import {getProductHeroImage, getProductGallery} from '@/lib/supabase/product-images';
+import {ProductSchema, BreadcrumbSchema} from '@/components/seo';
 import type {Metadata} from 'next';
 
 // Revalidate every 60 seconds - ensures price changes appear within 1 minute
@@ -217,17 +218,35 @@ export default async function ProductPage({
     }
   };
 
+  const breadcrumbItems = [
+    {name: 'Accueil', url: `https://arteva.ma/${locale}`},
+    {name: 'Catalogue', url: `https://arteva.ma/${locale}/catalog`},
+    {name: name, url: `https://arteva.ma/${locale}/product/${product.slug}`}
+  ];
+
   return (
-    <ProductExperience
-      locale={locale}
-      product={product}
-      name={name}
-      description={description}
-      methods={methods}
-      zones={zones}
-      colors={colors}
-      leadTimes={leadTimes}
-      copy={copy}
-    />
+    <>
+      <ProductSchema
+        name={name}
+        description={description}
+        slug={product.slug}
+        image={product.heroImage}
+        sku={product.id}
+        category={product.category}
+        minQuantity={product.moq}
+      />
+      <BreadcrumbSchema items={breadcrumbItems} />
+      <ProductExperience
+        locale={locale}
+        product={product}
+        name={name}
+        description={description}
+        methods={methods}
+        zones={zones}
+        colors={colors}
+        leadTimes={leadTimes}
+        copy={copy}
+      />
+    </>
   );
 }

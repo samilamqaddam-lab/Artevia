@@ -32,3 +32,6 @@ mcp-config.json
 .idea
 .vscode/
 .vercel
+
+# SEO monitoring results (keep latest only)
+scripts/seo/results/report-*.json

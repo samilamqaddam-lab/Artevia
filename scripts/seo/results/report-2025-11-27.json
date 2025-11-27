@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-27T20:40:14.863Z",
+  "timestamp": "2025-11-27T22:43:29.855Z",
   "domain": "arteva.ma",
   "keywords": [],
   "lighthouse": [
@@ -9,25 +9,25 @@
       "seo": 100,
       "accessibility": 100,
       "bestPractices": 100,
-      "lcp": 3385.9731,
+      "lcp": 3370.5306,
       "cls": 0
     },
     {
       "url": "/fr",
-      "performance": 89,
+      "performance": 93,
       "seo": 100,
       "accessibility": 100,
       "bestPractices": 100,
-      "lcp": 3740.257599999999,
+      "lcp": 3135.6055000000006,
       "cls": 0
     },
     {
       "url": "/fr/catalog",
-      "performance": 92,
+      "performance": 94,
       "seo": 92,
       "accessibility": 100,
       "bestPractices": 100,
-      "lcp": 3368.5970000000007,
+      "lcp": 3060.1120000000005,
       "cls": 0
     }
   ],
@@ -35,7 +35,7 @@
     "keywordsTracked": 0,
     "keywordsRanking": 0,
     "avgPosition": null,
-    "lighthouseAvgPerf": 91,
+    "lighthouseAvgPerf": 93,
     "lighthouseAvgSeo": 97
   }
 }

@@ -16,45 +16,43 @@ export function generateStaticParams() {
   return locales.map((locale) => ({locale}));
 }
 
+// Optimized Pexels images with compression and proper sizing for LCP
 const CATEGORY_ASSETS = [
   {
     key: 'drinkware',
-    image:
-      'https://images.pexels.com/photos/4065895/pexels-photo-4065895.jpeg?cs=srgb&dl=pexels-cottonbro-4065895.jpg&fm=jpg',
+    image: 'https://images.pexels.com/photos/4065895/pexels-photo-4065895.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop',
     getHref: (locale: Locale) => `/${locale}/product/mug-personnalisable-ceramique`
   },
   {
     key: 'textile',
-    image:
-      'https://images.pexels.com/photos/8411586/pexels-photo-8411586.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=800',
+    image: 'https://images.pexels.com/photos/8411586/pexels-photo-8411586.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop',
     getHref: (locale: Locale) => `/${locale}/product/tshirt-essential-coton`
   },
   {
     key: 'tech',
-    image:
-      'https://images.pexels.com/photos/6200/wood-pen-usb-vintage.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    image: 'https://images.pexels.com/photos/6200/wood-pen-usb-vintage.jpg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop',
     getHref: (locale: Locale) => `/${locale}/product/cle-usb-16go-bamboo`
   },
   {
     key: 'stationery',
-    image:
-      'https://images.pexels.com/photos/12039670/pexels-photo-12039670.jpeg?cs=srgb&dl=pexels-mockupbee-221716013-12039670.jpg&fm=jpg',
+    image: 'https://images.pexels.com/photos/12039670/pexels-photo-12039670.jpeg?auto=compress&cs=tinysrgb&w=600&h=450&fit=crop',
     getHref: (locale: Locale) => `/${locale}/product/bloc-notes-personnalises`
   }
 ];
 
+// Hero image optimized: reduced to 1200px width for faster LCP
 const HERO_IMAGE = {
-  src: 'https://images.pexels.com/photos/7710157/pexels-photo-7710157.jpeg?cs=srgb&dl=pexels-a-darmel-7710157.jpg&fm=jpg',
+  src: 'https://images.pexels.com/photos/7710157/pexels-photo-7710157.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop',
   alt: 'Équipe marketing réunie autour de goodies personnalisés'
 };
 
 const DESIGNER_IMAGE = {
-  src: 'https://images.pexels.com/photos/29765802/pexels-photo-29765802.jpeg?cs=srgb&dl=pexels-jillyjillystudio-29765802.jpg&fm=jpg',
+  src: 'https://images.pexels.com/photos/29765802/pexels-photo-29765802.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
   alt: 'Interface du designer Arteva'
 };
 
 const SUSTAINABILITY_IMAGE = {
-  src: 'https://images.pexels.com/photos/7309472/pexels-photo-7309472.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1200',
+  src: 'https://images.pexels.com/photos/7309472/pexels-photo-7309472.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
   alt: 'Matières naturelles et packaging recyclé'
 };
 

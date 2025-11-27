@@ -1,5 +1,6 @@
 import {MetadataRoute} from 'next';
 import {products} from '@/lib/products';
+import {blogPosts} from '@/lib/blog';
 import {locales} from '@/i18n/settings';
 
 const BASE_URL = 'https://arteva.ma';
@@ -35,6 +36,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: now,
         changeFrequency: 'weekly',
         priority: 0.8
+      });
+    }
+
+    // Blog listing page
+    entries.push({
+      url: `${BASE_URL}/${locale}/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8
+    });
+
+    // Blog posts
+    for (const post of blogPosts) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/blog/${post.slug}`,
+        lastModified: new Date(post.updatedAt),
+        changeFrequency: 'monthly',
+        priority: 0.7
       });
     }
   }

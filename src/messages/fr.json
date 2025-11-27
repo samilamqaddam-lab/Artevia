@@ -1090,5 +1090,38 @@
       "orders": "Commandes",
       "settings": "Paramètres"
     }
+  },
+  "blog": {
+    "title": "Blog Arteva",
+    "description": "Conseils, tendances et guides sur les objets publicitaires au Maroc",
+    "meta": {
+      "title": "Blog | Objets Publicitaires Maroc | Arteva",
+      "description": "Découvrez nos articles sur les objets publicitaires, goodies entreprise et tendances marketing au Maroc. Conseils pour vos campagnes promotionnelles."
+    },
+    "categories": {
+      "guide": "Guide",
+      "tendances": "Tendances",
+      "conseils": "Conseils",
+      "cas-client": "Cas client"
+    },
+    "readingTime": "min de lecture",
+    "backToList": "Retour au blog",
+    "posts": {
+      "objets-publicitaires-maroc-guide-complet": {
+        "title": "Guide Complet : Objets Publicitaires au Maroc en 2024",
+        "excerpt": "Découvrez comment choisir les meilleurs objets publicitaires pour votre entreprise au Maroc. Critères de sélection, tendances et conseils pratiques.",
+        "content": "<h2>Pourquoi investir dans les objets publicitaires au Maroc ?</h2><p>Les objets publicitaires restent l'un des moyens les plus efficaces pour renforcer la visibilité de votre marque au Maroc. Avec un coût par impression parmi les plus bas du marketing, ils offrent un excellent retour sur investissement.</p><h2>Les critères de sélection essentiels</h2><p>Pour choisir vos objets publicitaires, considérez : l'utilité quotidienne du produit, la qualité de personnalisation, la durabilité, et l'alignement avec votre image de marque.</p><h3>1. Utilité quotidienne</h3><p>Un objet utilisé régulièrement génère plus d'impressions. Les stylos, bloc-notes et mugs restent des valeurs sûres car ils sont utilisés au quotidien au bureau.</p><h3>2. Qualité de personnalisation</h3><p>La qualité d'impression de votre logo est cruciale. Chez Arteva, nous proposons plusieurs techniques : sérigraphie, gravure laser, impression numérique HD.</p><h2>Budget et quantités</h2><p>Au Maroc, les prix varient selon les quantités. Nous offrons des tarifs dégressifs à partir de 25 pièces, avec livraison dans tout le Royaume.</p>"
+      },
+      "goodies-entreprise-casablanca-tendances": {
+        "title": "Tendances Goodies Entreprise 2024 à Casablanca",
+        "excerpt": "Les dernières tendances en matière de goodies et cadeaux d'entreprise à Casablanca. Éco-responsabilité, tech et personnalisation avancée.",
+        "content": "<h2>L'essor des goodies éco-responsables</h2><p>En 2024, les entreprises casablancaises privilégient les objets publicitaires durables et éco-responsables. Bambou, coton bio, plastique recyclé : les matériaux verts sont de plus en plus demandés.</p><h2>La tech au service de la communication</h2><p>Chargeurs sans fil, batteries externes, accessoires connectés : les goodies tech continuent leur progression. Ils véhiculent une image moderne et innovante de votre entreprise.</p><h2>Personnalisation avancée</h2><p>Au-delà du simple logo, les entreprises optent pour des designs complets, des messages personnalisés et des packagings soignés qui créent une vraie expérience de marque.</p>"
+      },
+      "kit-bienvenue-employe-comment-creer": {
+        "title": "Comment Créer un Kit de Bienvenue Employé Impactant",
+        "excerpt": "Guide pratique pour créer un welcome pack mémorable pour vos nouveaux collaborateurs. Contenu, budget et bonnes pratiques RH.",
+        "content": "<h2>L'importance du kit de bienvenue</h2><p>Le kit de bienvenue, ou welcome pack, est devenu un élément clé de l'intégration des nouveaux employés. Il renforce le sentiment d'appartenance dès le premier jour.</p><h2>Que mettre dans un welcome pack ?</h2><p>Les essentiels : carnet et stylo aux couleurs de l'entreprise, mug personnalisé, t-shirt ou polo corporate. Les bonus : gourde réutilisable, chargeur nomade, sac en toile.</p><h3>Budget recommandé</h3><p>Pour un kit de qualité au Maroc, comptez entre 200 et 500 MAD par employé selon le niveau de personnalisation et les articles choisis.</p><h2>Conseils de présentation</h2><p>Soignez l'emballage ! Une boîte personnalisée avec le nom du nouvel employé crée un effet wow dès l'ouverture. Ajoutez une carte de bienvenue signée par l'équipe.</p>"
+      }
+    }
   }
 }

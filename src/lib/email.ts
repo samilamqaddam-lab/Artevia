@@ -1,10 +1,17 @@
-import {Resend} from 'resend';
+import nodemailer from 'nodemailer';
 
-// Initialize Resend client
-// You need to set RESEND_API_KEY in your environment variables
-// Get your API key from https://resend.com/api-keys
-// Use a placeholder during build if not available
-const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_for_build');
+// Initialize Brevo SMTP transporter
+// You need to set BREVO_SMTP_KEY in your environment variables
+// Get your SMTP key from https://app.brevo.com/settings/keys/smtp
+const transporter = nodemailer.createTransport({
+  host: 'smtp-relay.brevo.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.BREVO_SMTP_USER || 'placeholder@arteva.ma',
+    pass: process.env.BREVO_SMTP_KEY || 'placeholder_key'
+  }
+});
 
 // Product name mapping for emails
 // Maps product IDs to display names
@@ -49,13 +56,25 @@ export interface OrderEmailData {
 }
 
 /**
+ * Check if email is properly configured
+ */
+function isEmailConfigured(): boolean {
+  return !!(
+    process.env.BREVO_SMTP_KEY &&
+    process.env.BREVO_SMTP_KEY !== 'placeholder_key' &&
+    process.env.BREVO_SMTP_USER &&
+    process.env.BREVO_SMTP_USER !== 'placeholder@arteva.ma'
+  );
+}
+
+/**
  * Send order confirmation email to customer
  */
 export async function sendCustomerOrderConfirmation(data: OrderEmailData) {
-  // Check if API key is configured
-  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_placeholder_for_build') {
-    console.warn('RESEND_API_KEY not configured, skipping customer confirmation email');
-    return {success: false, error: new Error('RESEND_API_KEY not configured')};
+  // Check if SMTP is configured
+  if (!isEmailConfigured()) {
+    console.warn('Brevo SMTP not configured, skipping customer confirmation email');
+    return {success: false, error: new Error('Brevo SMTP not configured')};
   }
 
   const subject =
@@ -66,14 +85,14 @@ export async function sendCustomerOrderConfirmation(data: OrderEmailData) {
   const html = generateCustomerEmailHTML(data);
 
   try {
-    const result = await resend.emails.send({
-      from: 'Arteva <commandes@arteva.ma>',
+    const result = await transporter.sendMail({
+      from: '"Arteva" <commandes@arteva.ma>',
       to: data.customerEmail,
       subject,
       html
     });
 
-    return {success: true, data: result};
+    return {success: true, data: {id: result.messageId}};
   } catch (error) {
     console.error('Failed to send customer confirmation email:', error);
     return {success: false, error};
@@ -84,10 +103,10 @@ export async function sendCustomerOrderConfirmation(data: OrderEmailData) {
  * Send order notification email to admin
  */
 export async function sendAdminOrderNotification(data: OrderEmailData) {
-  // Check if API key is configured
-  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === 're_placeholder_for_build') {
-    console.warn('RESEND_API_KEY not configured, skipping admin notification email');
-    return {success: false, error: new Error('RESEND_API_KEY not configured')};
+  // Check if SMTP is configured
+  if (!isEmailConfigured()) {
+    console.warn('Brevo SMTP not configured, skipping admin notification email');
+    return {success: false, error: new Error('Brevo SMTP not configured')};
   }
 
   const subject = `Nouvelle commande ${data.orderId} - ${data.company || data.customerName}`;
@@ -95,14 +114,14 @@ export async function sendAdminOrderNotification(data: OrderEmailData) {
   const html = generateAdminEmailHTML(data);
 
   try {
-    const result = await resend.emails.send({
-      from: 'Arteva <notifications@arteva.ma>',
+    const result = await transporter.sendMail({
+      from: '"Arteva Notifications" <notifications@arteva.ma>',
       to: process.env.ADMIN_EMAIL || 'admin@arteva.ma',
       subject,
       html
     });
 
-    return {success: true, data: result};
+    return {success: true, data: {id: result.messageId}};
   } catch (error) {
     console.error('Failed to send admin notification email:', error);
     return {success: false, error};
@@ -364,7 +383,7 @@ function generateAdminEmailHTML(data: OrderEmailData): string {
       <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); padding: 32px; text-align: center;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700;">🔔 Nouvelle Commande</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700;">Nouvelle Commande</h1>
         </div>
 
         <!-- Content -->

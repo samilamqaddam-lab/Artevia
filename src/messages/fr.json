@@ -1,7 +1,7 @@
 {
   "common": {
     "brand": "Arteva",
-    "tagline": "Objets Publicitaires Personnalisés Entreprise | Qualité & Accompagnement",
+    "tagline": "Objets Publicitaires Entreprise au Maroc | Qualité & Accompagnement",
     "nav": {
       "home": "Accueil",
       "catalog": "Catalogue",
@@ -27,14 +27,14 @@
       "delete": "Supprimer",
       "back": "Retour",
       "preview": "Prévisualiser",
-      "downloadBat": "Télécharger le BAT",
-      "generateBat": "Générer le BAT"
+      "downloadBat": "Télécharger la maquette",
+      "generateBat": "Générer la maquette"
     },
     "status": {
       "saved": "Projet enregistré",
       "exported": "Export prêt",
       "addedToQuote": "Ajouté au panier devis",
-      "batReady": "BAT généré",
+      "batReady": "Maquette générée",
       "quoteSent": "Demande envoyée",
       "signedOut": "Déconnexion effectuée."
     },
@@ -43,21 +43,21 @@
   },
   "home": {
     "hero": {
-      "tagline": "Made in Morocco & Europe",
-      "highlight": "Prix Transparents & Accompagnement Personnalisé",
-      "title": "Objets Publicitaires Personnalisés pour Entreprises au Maroc",
-      "description": "Devis instantané en ligne, upload de votre logo, chef de projet dédié pour chaque commande. Accompagnement des équipes marketing, RH et événementiel.",
-      "ctaPrimary": "Lancer le designer",
+      "tagline": "Fabriqué au Maroc & en Europe",
+      "highlight": "Prix Transparents",
+      "title": "Goodies & Objets Publicitaires pour Entreprises",
+      "description": "Devis instantané, votre logo sur nos produits en 48h.",
+      "ctaPrimary": "Voir le catalogue",
       "ctaSecondary": "Demander un devis",
       "badges": [
         "Chef de projet dédié",
-        "Qualité premium garantie",
-        "Production locale & Europe"
+        "Livraison express 7j",
+        "Paiement flexible"
       ]
     },
     "trust": {
       "title": "Pourquoi nous choisir",
-      "subtitle": "Un accompagnement sur-mesure pour vos projets de personnalisation",
+      "subtitle": "Un accompagnement sur-mesure pour chaque projet",
       "values": [
         "Qualité premium",
         "Support réactif",
@@ -69,40 +69,40 @@
     },
     "categories": [
       {
-        "title": "Mugs & Drinkware",
-        "description": "Tasses céramique, gobelets thermos et bouteilles isothermes prêts à personnaliser.",
+        "title": "Mugs & Bouteilles",
+        "description": "Tasses céramique, gobelets thermos et bouteilles isothermes avec votre logo.",
         "tag": "Best-seller"
       },
       {
-        "title": "Textiles corporate",
+        "title": "Textiles d'entreprise",
         "description": "T-shirts, polos et sweats brodés aux couleurs de votre équipe.",
         "tag": "Ateliers Casablanca"
       },
       {
-        "title": "Tech & USB",
-        "description": "Powerbanks, clés USB bambou et accessoires high-tech livrés en coffret.",
+        "title": "Tech & Accessoires",
+        "description": "Powerbanks, clés USB bambou et accessoires high-tech en coffret.",
         "tag": "High-tech"
       },
       {
-        "title": "Fournitures Bureau Personnalisées",
-        "description": "Bloc-notes, carnets, stylos et coffrets bureau personnalisés avec logo. Parfait pour onboarding kits entreprise.",
-        "tag": "Eco-friendly"
+        "title": "Fournitures Bureau",
+        "description": "Bloc-notes, carnets, stylos et coffrets avec votre logo. Idéal pour kits d'accueil.",
+        "tag": "Éco-responsable"
       }
     ],
     "designer": {
-      "title": "Un designer pensé pour les équipes marketing",
-      "description": "Visualisez le rendu, ajustez les zones d’impression et partagez un BAT bilingue sans quitter la page.",
+      "title": "Un éditeur pensé pour les équipes marketing",
+      "description": "Visualisez le rendu, ajustez les zones d'impression et partagez un aperçu bilingue sans quitter la page.",
       "bullets": [
-        "Gestion des déclinaisons FR/AR",
-        "Grilles tarifaires et MOQ intégrés",
-        "Historique de configurations exportable"
+        "Visuels FR/AR en un clic",
+        "Tarifs dégressifs affichés en temps réel",
+        "Export PDF professionnel"
       ],
-      "ctaPrimary": "Lancer le designer",
-      "ctaSecondary": "Consulter un exemple de BAT",
+      "ctaPrimary": "Créer mon design",
+      "ctaSecondary": "Voir un exemple",
       "stats": [
         {
-          "value": "100%",
-          "label": "Personnalisation sur-mesure"
+          "value": "48h",
+          "label": "Délai pour votre maquette"
         },
         {
           "value": "A-Z",
@@ -111,53 +111,53 @@
       ]
     },
     "process": {
-      "title": "Comment Commander Vos Objets Publicitaires Personnalisés",
+      "title": "Comment Commander en 4 Étapes",
       "steps": [
         {
           "title": "1. Brief express",
-          "description": "Parlez-nous du contexte, de la cible et du budget directement en ligne."
+          "description": "Parlez-nous du contexte, de la cible et du budget en ligne."
         },
         {
-          "title": "2. Sélection & personnalisation",
-          "description": "Choisissez la technique de marquage, les coloris et les quantités par tranche."
+          "title": "2. Choix & design",
+          "description": "Sélectionnez les produits, coloris et quantités. Ajoutez votre logo."
         },
         {
-          "title": "3. Validation BAT & devis",
-          "description": "Recevez le BAT PDF + devis détaillé pour validation avant production."
+          "title": "3. Validation maquette",
+          "description": "Recevez la maquette PDF + devis pour validation avant production."
         },
         {
           "title": "4. Production & livraison",
-          "description": "Fabrication locale ou Europe, livraison assurée partout au Maroc."
+          "description": "Fabrication locale ou Europe, livraison partout au Maroc."
         }
       ]
     },
     "packs": {
-      "title": "Kits Entreprise Prêts à Personnaliser",
-      "subtitle": "Des idées clés en main pour vos onboarding, salons et cadeaux clients.",
+      "title": "Kits Entreprise Clés en Main",
+      "subtitle": "Des packs prêts à l'emploi pour vos onboarding, salons et cadeaux clients.",
       "items": [
         {
           "title": "Kit Bienvenue Employé",
           "badge": "Onboarding RH",
           "discount": "-7% inclus",
-          "description": "Tote GOTS + carnet A5 + mug double paroi + welcome card.",
+          "description": "Tote bag coton bio + carnet A5 + mug double paroi + carte d'accueil.",
           "price": "À partir de 399 MAD / pack",
           "leadTime": "Délai selon quantité",
           "features": [
-            "Personnalisation quadri incluse",
+            "Impression couleur incluse",
             "Livraison groupée sur site",
-            "Option note de bienvenue manuscrite"
+            "Option carte manuscrite"
           ],
           "id": "pack-onboarding-startup"
         },
         {
           "title": "Pack Salon & Événement",
           "discount": "-6% inclus",
-          "description": "Badge nominatif, lanyard sublimé, carnet spirale, mini powerbank.",
+          "description": "Badge nominatif, lanyard imprimé, carnet spirale, mini powerbank.",
           "price": "À partir de 289 MAD / set",
           "leadTime": "Idéal pour vos événements",
           "features": [
-            "Fichiers variables (nom/prénom)",
-            "Impression quadri recto verso",
+            "Noms variables (nom/prénom)",
+            "Impression recto verso couleur",
             "Conditionnement par lot"
           ],
           "id": "pack-salon-event"
@@ -165,13 +165,13 @@
         {
           "title": "Pack Premium Direction",
           "discount": "-8% inclus",
-          "description": "Coffret bois, stylo métal gravé, carnet relié, thermos isotherme 500 ml.",
+          "description": "Coffret bois, stylo métal gravé, carnet relié, thermos 500 ml.",
           "price": "À partir de 649 MAD / coffret",
           "leadTime": "Coffret haut de gamme",
           "features": [
             "Gravure laser sur métal",
-            "Carte personnalisée signée",
-            "Option mise sous ruban"
+            "Carte signée incluse",
+            "Emballage cadeau premium"
           ],
           "id": "pack-premium-direction"
         }
@@ -195,19 +195,19 @@
     },
     "whyUs": {
       "title": "Notre engagement qualité",
-      "subtitle": "Ce qui fait la différence Artevia",
+      "subtitle": "Ce qui fait la différence Arteva",
       "items": [
         {
-          "title": "Accompagnement personnalisé",
-          "description": "Un chef de projet dédié vous guide à chaque étape, de la conception à la livraison."
+          "title": "Chef de projet dédié",
+          "description": "Un interlocuteur unique vous guide à chaque étape, de la conception à la livraison."
         },
         {
           "title": "Qualité premium",
-          "description": "Des matériaux soigneusement sélectionnés et des finitions impeccables pour valoriser votre image."
+          "description": "Des matériaux sélectionnés et des finitions impeccables pour valoriser votre image."
         },
         {
           "title": "Flexibilité totale",
-          "description": "Nous nous adaptons à vos besoins spécifiques, quantités et contraintes de budget."
+          "description": "Nous nous adaptons à vos besoins, quantités et contraintes de budget."
         }
       ]
     },
@@ -233,8 +233,8 @@
       ]
     },
     "finalCta": {
-      "title": "Demandez Votre Devis Objets Publicitaires Gratuit",
-      "description": "Contactez notre équipe pour une proposition personnalisée et un BAT gratuit.",
+      "title": "Demandez Votre Devis Gratuit",
+      "description": "Contactez notre équipe pour une proposition sur-mesure et une maquette offerte.",
       "primaryCta": "Demander un devis",
       "secondaryCta": "Appeler un conseiller",
       "contact": "Service client Casablanca",
@@ -244,9 +244,9 @@
       "phoneLabel": "Téléphone",
       "emailLabel": "Email"
     },
-    "categoriesTitle": "Nos Catégories de Produits Promotionnels",
-    "categoriesSubtitle": "Sélectionnez une catégorie et commencez votre personnalisation.",
-    "processDescription": "Chaque étape est accompagnée par un chef de projet dédié.",
+    "categoriesTitle": "Nos Catégories de Produits",
+    "categoriesSubtitle": "Sélectionnez une catégorie pour commencer.",
+    "processDescription": "Un chef de projet dédié vous accompagne à chaque étape.",
     "categoryCta": "Découvrir"
   },
   "catalog": {
@@ -602,7 +602,7 @@
     },
     "editor": {
       "title": "Designer produit",
-      "description": "Positionnez votre logo, ajustez les zones d'impression et exportez un BAT PDF en un clic.",
+      "description": "Positionnez votre logo, ajustez les zones d'impression et exportez une maquette PDF en un clic.",
       "mode": {
         "logo": "Mode logo",
         "creative": "Mode création simple"
@@ -611,13 +611,13 @@
       "colorLimit": "Certaines méthodes limitent le nombre de couleurs Pantone",
       "actions": {
         "addToQuote": "Ajouter au devis",
-        "generateBat": "Générer le BAT PDF",
+        "generateBat": "Générer la maquette PDF",
         "fullscreen": "Plein écran",
         "close": "Revenir à la page"
       },
       "captures": {
         "success": "Aperçu à jour",
-        "error": "Impossible de capturer le BAT"
+        "error": "Impossible de capturer la maquette"
       }
     },
     "rfq": {
@@ -694,7 +694,7 @@
     "title": "Panier devis",
     "empty": "Aucune configuration enregistrée pour le moment.",
     "notes": "Notes complémentaires (optionnel)",
-    "download": "Télécharger le BAT",
+    "download": "Télécharger la maquette",
     "exportQuote": "Exporter le devis en PDF",
     "checkout": {
       "title": "Finaliser la commande",
@@ -848,30 +848,30 @@
     "hero": {
       "highlight": "Solutions Clés en Main",
       "title": "Solutions Objets Publicitaires pour Entreprises",
-      "description": "Découvrez nos packs prêts à l'emploi pour chaque occasion: onboarding, événements, cadeaux clients. Prix transparents, BAT sous 24h, livraison partout au Maroc.",
+      "description": "Packs prêts à l'emploi pour chaque occasion : onboarding, événements, cadeaux clients. Prix transparents, maquette sous 24h, livraison partout au Maroc.",
       "cta": {
         "primary": "Demander un devis gratuit",
         "secondary": "Découvrir nos produits"
       }
     },
     "usps": {
-      "title": "Pourquoi Choisir Arteva pour Votre Entreprise",
+      "title": "Pourquoi Choisir Arteva",
       "items": [
         {
-          "title": "Designer en Ligne Intuitif",
-          "description": "Créez vos visuels directement en ligne avec notre éditeur professionnel. Ajoutez votre logo en quelques clics."
+          "title": "Éditeur en Ligne Intuitif",
+          "description": "Créez vos visuels directement en ligne avec notre éditeur. Ajoutez votre logo en quelques clics."
         },
         {
           "title": "Petites Quantités Acceptées",
-          "description": "Dès 10 unités pour certains produits. Parfait pour startups et PME qui veulent tester sans gros volumes."
+          "description": "Dès 10 unités pour certains produits. Idéal pour startups et PME qui veulent tester."
         },
         {
-          "title": "Livraison Rapide 7 Jours",
-          "description": "Option express disponible. Livraison rapide partout au Maroc en 7 jours pour vos événements et lancements."
+          "title": "Livraison Express 7 Jours",
+          "description": "Option express disponible. Livraison partout au Maroc pour vos événements et lancements."
         },
         {
           "title": "Service Client Dédié B2B",
-          "description": "Conseiller dédié, devis personnalisés, BAT sous 24h, factures entreprise et paiement à terme."
+          "description": "Conseiller dédié, devis sur-mesure, maquette sous 24h, factures entreprise."
         }
       ]
     },
@@ -894,7 +894,7 @@
         },
         {
           "title": "Cadeaux Fin d'Année",
-          "description": "Coffrets cadeaux personnalisés pour vos partenaires et collaborateurs."
+          "description": "Coffrets cadeaux pour vos partenaires et collaborateurs."
         }
       ]
     },
@@ -903,16 +903,16 @@
       "subtitle": "Startups, PME et grandes entreprises marocaines utilisent Arteva"
     },
     "cta": {
-      "title": "Prêt à Lancer Votre Projet?",
-      "description": "Obtenez un devis personnalisé sous 2h. Conseiller B2B disponible pour vous accompagner.",
+      "title": "Prêt à Lancer Votre Projet ?",
+      "description": "Obtenez un devis sur-mesure sous 2h. Conseiller B2B disponible pour vous accompagner.",
       "button": "Demander mon devis gratuit"
     }
   },
   "kitBienvenue": {
     "hero": {
       "badge": "Innovation RH",
-      "title": "Kit Bienvenue Employé Personnalisé - Onboarding Premium",
-      "description": "Marquez les premiers jours de vos nouveaux collaborateurs avec un kit onboarding personnalisé. Bloc-notes, stylos, goodies avec votre logo pour une intégration réussie.",
+      "title": "Kit Bienvenue Employé - Onboarding Premium",
+      "description": "Marquez les premiers jours de vos nouveaux collaborateurs avec un kit d'accueil. Bloc-notes, stylos, goodies avec votre logo.",
       "cta": {
         "primary": "Demander un devis kit",
         "secondary": "Voir nos produits"
@@ -941,7 +941,7 @@
     },
     "included": {
       "title": "Nos Packs Kit Bienvenue",
-      "subtitle": "Choisissez le pack adapté à votre budget et culture d'entreprise. Tous personnalisables avec votre logo.",
+      "subtitle": "Choisissez le pack adapté à votre budget et culture d'entreprise. Tous avec votre logo.",
       "packs": [
         {
           "name": "Pack Starter",
@@ -979,19 +979,19 @@
       ]
     },
     "process": {
-      "title": "Comment Ça Marche?",
+      "title": "Comment Ça Marche ?",
       "steps": [
         {
           "title": "Choisissez Votre Pack",
-          "description": "Sélectionnez le pack qui correspond à votre budget et votre culture. Vous pouvez aussi créer un pack sur-mesure."
+          "description": "Sélectionnez le pack qui correspond à votre budget. Vous pouvez aussi créer un pack sur-mesure."
         },
         {
-          "title": "Personnalisez en Ligne",
-          "description": "Uploadez votre logo, choisissez les couleurs, ajoutez du texte. Notre designer en ligne vous guide étape par étape."
+          "title": "Ajoutez Votre Logo",
+          "description": "Uploadez votre logo, choisissez les couleurs, ajoutez du texte. Notre éditeur vous guide étape par étape."
         },
         {
-          "title": "Validez le BAT",
-          "description": "Nous vous envoyons un Bon à Tirer (BAT) sous 24h pour validation avant impression. Vous contrôlez tout."
+          "title": "Validez la Maquette",
+          "description": "Nous vous envoyons une maquette PDF sous 24h pour validation avant impression."
         },
         {
           "title": "Recevez Vos Kits",
@@ -1017,8 +1017,8 @@
       ]
     },
     "cta": {
-      "title": "Prêt à Accueillir Vos Talents avec Style?",
-      "description": "Demandez un devis personnalisé pour votre kit bienvenue employé. Réponse sous 2h.",
+      "title": "Prêt à Accueillir Vos Talents avec Style ?",
+      "description": "Demandez un devis pour votre kit bienvenue employé. Réponse sous 2h.",
       "button": "Obtenir mon devis gratuit"
     }
   },

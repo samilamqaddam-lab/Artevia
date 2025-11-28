@@ -6,7 +6,7 @@ import {WhatsAppButton} from '@/components/ui/WhatsAppButton';
 import {locales, type Locale} from '@/i18n/settings';
 
 // WhatsApp business number for Arteva (Morocco format without +)
-const WHATSAPP_NUMBER = '212600000000'; // TODO: Replace with actual number
+const WHATSAPP_NUMBER = '212652790322';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({locale}));

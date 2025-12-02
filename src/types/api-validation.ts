@@ -36,11 +36,10 @@ export const RFQItemSchema = z.object({
  * Validates customer contact information
  */
 export const CheckoutSchema = z.object({
-  name: z.string().min(1, 'Le nom est requis').max(100),
+  contact: z.string().min(1, 'Le nom est requis').max(100),
   email: z.string().email('Email invalide').max(200),
   phone: z.string().min(1, 'Le téléphone est requis').max(20),
-  company: z.string().max(200).optional(),
-  contact: z.string().max(100).optional()
+  company: z.string().max(200).optional()
 });
 
 /**

@@ -1,17 +1,10 @@
-import nodemailer from 'nodemailer';
+import * as brevo from '@getbrevo/brevo';
 
-// Initialize Brevo SMTP transporter
-// You need to set BREVO_SMTP_KEY in your environment variables
-// Get your SMTP key from https://app.brevo.com/settings/keys/smtp
-const transporter = nodemailer.createTransport({
-  host: 'smtp-relay.brevo.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.BREVO_SMTP_USER || 'placeholder@arteva.ma',
-    pass: process.env.BREVO_SMTP_KEY || 'placeholder_key'
-  }
-});
+// Initialize Brevo (ex-Sendinblue) client
+// You need to set BREVO_API_KEY in your environment variables
+// Get your API key from https://app.brevo.com/settings/keys/api
+const apiInstance = new brevo.TransactionalEmailsApi();
+apiInstance.setApiKey(brevo.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY || '');
 
 // Product name mapping for emails
 // Maps product IDs to display names
@@ -56,25 +49,13 @@ export interface OrderEmailData {
 }
 
 /**
- * Check if email is properly configured
- */
-function isEmailConfigured(): boolean {
-  return !!(
-    process.env.BREVO_SMTP_KEY &&
-    process.env.BREVO_SMTP_KEY !== 'placeholder_key' &&
-    process.env.BREVO_SMTP_USER &&
-    process.env.BREVO_SMTP_USER !== 'placeholder@arteva.ma'
-  );
-}
-
-/**
- * Send order confirmation email to customer
+ * Send order confirmation email to customer via Brevo
  */
 export async function sendCustomerOrderConfirmation(data: OrderEmailData) {
-  // Check if SMTP is configured
-  if (!isEmailConfigured()) {
-    console.warn('Brevo SMTP not configured, skipping customer confirmation email');
-    return {success: false, error: new Error('Brevo SMTP not configured')};
+  // Check if API key is configured
+  if (!process.env.BREVO_API_KEY) {
+    console.warn('BREVO_API_KEY not configured, skipping customer confirmation email');
+    return {success: false, error: new Error('BREVO_API_KEY not configured')};
   }
 
   const subject =
@@ -85,14 +66,16 @@ export async function sendCustomerOrderConfirmation(data: OrderEmailData) {
   const html = generateCustomerEmailHTML(data);
 
   try {
-    const result = await transporter.sendMail({
-      from: '"Arteva" <commandes@arteva.ma>',
-      to: data.customerEmail,
-      subject,
-      html
-    });
+    const sendSmtpEmail = new brevo.SendSmtpEmail();
+    sendSmtpEmail.subject = subject;
+    sendSmtpEmail.htmlContent = html;
+    sendSmtpEmail.sender = {name: 'Arteva', email: process.env.BREVO_SENDER_EMAIL || 'contact@arteva.ma'};
+    sendSmtpEmail.to = [{email: data.customerEmail, name: data.customerName}];
+    sendSmtpEmail.replyTo = {email: 'contact@arteva.ma', name: 'Arteva'};
 
-    return {success: true, data: {id: result.messageId}};
+    const result = await apiInstance.sendTransacEmail(sendSmtpEmail);
+    console.log(`✓ Customer confirmation email sent for order ${data.orderId}`);
+    return {success: true, data: result};
   } catch (error) {
     console.error('Failed to send customer confirmation email:', error);
     return {success: false, error};
@@ -100,28 +83,29 @@ export async function sendCustomerOrderConfirmation(data: OrderEmailData) {
 }
 
 /**
- * Send order notification email to admin
+ * Send order notification email to admin via Brevo
  */
 export async function sendAdminOrderNotification(data: OrderEmailData) {
-  // Check if SMTP is configured
-  if (!isEmailConfigured()) {
-    console.warn('Brevo SMTP not configured, skipping admin notification email');
-    return {success: false, error: new Error('Brevo SMTP not configured')};
+  // Check if API key is configured
+  if (!process.env.BREVO_API_KEY) {
+    console.warn('BREVO_API_KEY not configured, skipping admin notification email');
+    return {success: false, error: new Error('BREVO_API_KEY not configured')};
   }
 
   const subject = `Nouvelle commande ${data.orderId} - ${data.company || data.customerName}`;
-
   const html = generateAdminEmailHTML(data);
+  const adminEmail = process.env.ADMIN_EMAIL || 'admin@arteva.ma';
 
   try {
-    const result = await transporter.sendMail({
-      from: '"Arteva Notifications" <notifications@arteva.ma>',
-      to: process.env.ADMIN_EMAIL || 'admin@arteva.ma',
-      subject,
-      html
-    });
+    const sendSmtpEmail = new brevo.SendSmtpEmail();
+    sendSmtpEmail.subject = subject;
+    sendSmtpEmail.htmlContent = html;
+    sendSmtpEmail.sender = {name: 'Arteva Notifications', email: process.env.BREVO_SENDER_EMAIL || 'contact@arteva.ma'};
+    sendSmtpEmail.to = [{email: adminEmail}];
 
-    return {success: true, data: {id: result.messageId}};
+    const result = await apiInstance.sendTransacEmail(sendSmtpEmail);
+    console.log(`✓ Admin notification email sent for order ${data.orderId}`);
+    return {success: true, data: result};
   } catch (error) {
     console.error('Failed to send admin notification email:', error);
     return {success: false, error};
@@ -383,7 +367,7 @@ function generateAdminEmailHTML(data: OrderEmailData): string {
       <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff;">
         <!-- Header -->
         <div style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); padding: 32px; text-align: center;">
-          <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700;">Nouvelle Commande</h1>
+          <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700;">🔔 Nouvelle Commande</h1>
         </div>
 
         <!-- Content -->

@@ -120,7 +120,7 @@ export async function POST(request: Request) {
 
         const emailData = {
           orderId,
-          customerName: payload.checkout.contact || payload.checkout.name,
+          customerName: payload.checkout.contact,
           customerEmail: payload.checkout.email,
           customerPhone: payload.checkout.phone,
           company: payload.checkout.company,

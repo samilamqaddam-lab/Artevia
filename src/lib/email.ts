@@ -1,10 +1,20 @@
 import * as brevo from '@getbrevo/brevo';
 
-// Initialize Brevo (ex-Sendinblue) client
-// You need to set BREVO_API_KEY in your environment variables
-// Get your API key from https://app.brevo.com/settings/keys/api
-const apiInstance = new brevo.TransactionalEmailsApi();
-apiInstance.setApiKey(brevo.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY || '');
+// Lazy initialization for Brevo API client
+// This ensures the API key is read at runtime, not at module load time
+// which is important for serverless environments like Vercel
+let apiInstance: brevo.TransactionalEmailsApi | null = null;
+
+function getBrevoClient(): brevo.TransactionalEmailsApi {
+  if (!apiInstance) {
+    apiInstance = new brevo.TransactionalEmailsApi();
+    apiInstance.setApiKey(
+      brevo.TransactionalEmailsApiApiKeys.apiKey,
+      process.env.BREVO_API_KEY || ''
+    );
+  }
+  return apiInstance;
+}
 
 // Product name mapping for emails
 // Maps product IDs to display names
@@ -73,11 +83,17 @@ export async function sendCustomerOrderConfirmation(data: OrderEmailData) {
     sendSmtpEmail.to = [{email: data.customerEmail, name: data.customerName}];
     sendSmtpEmail.replyTo = {email: 'contact@arteva.ma', name: 'Arteva'};
 
-    const result = await apiInstance.sendTransacEmail(sendSmtpEmail);
+    const client = getBrevoClient();
+    const result = await client.sendTransacEmail(sendSmtpEmail);
     console.log(`✓ Customer confirmation email sent for order ${data.orderId}`);
     return {success: true, data: result};
   } catch (error) {
     console.error('Failed to send customer confirmation email:', error);
+    // Log more details about the error
+    if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
     return {success: false, error};
   }
 }
@@ -103,11 +119,17 @@ export async function sendAdminOrderNotification(data: OrderEmailData) {
     sendSmtpEmail.sender = {name: 'Arteva Notifications', email: process.env.BREVO_SENDER_EMAIL || 'contact@arteva.ma'};
     sendSmtpEmail.to = [{email: adminEmail}];
 
-    const result = await apiInstance.sendTransacEmail(sendSmtpEmail);
+    const client = getBrevoClient();
+    const result = await client.sendTransacEmail(sendSmtpEmail);
     console.log(`✓ Admin notification email sent for order ${data.orderId}`);
     return {success: true, data: result};
   } catch (error) {
     console.error('Failed to send admin notification email:', error);
+    // Log more details about the error
+    if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
     return {success: false, error};
   }
 }

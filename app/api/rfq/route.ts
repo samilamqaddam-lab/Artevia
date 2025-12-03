@@ -59,53 +59,51 @@ export async function POST(request: Request) {
     return NextResponse.json({message: 'Erreur lors de la création de la commande.'}, {status: 500});
   }
 
-    // Send confirmation emails (non-blocking)
+    // Send confirmation emails (truly non-blocking - fire and forget)
     if (payload.checkout?.email) {
-      try {
-        // Prepare email data
-        const emailItems = payload.items.map((item) => {
-          return {
-            productName: getProductDisplayName(item.productId),
-            quantity: item.quantity,
-            price: item.price
-          };
-        });
+      // Prepare email data
+      const emailItems = payload.items.map((item) => ({
+        productName: getProductDisplayName(item.productId),
+        quantity: item.quantity,
+        price: item.price
+      }));
 
-        const emailData = {
-          orderId,
-          customerName: payload.checkout.contact,
-          customerEmail: payload.checkout.email,
-          customerPhone: payload.checkout.phone,
-          company: payload.checkout.company,
-          items: emailItems,
-          totalAmount: payload.totals?.total ?? 0,
-          discountAmount: payload.totals?.discount ?? 0,
-          quantity: payload.totals?.quantity ?? 0,
-          notes: payload.notes || undefined,
-          locale: (payload.locale || 'fr') as 'fr' | 'ar',
-          receivedAt: now.toISOString(),
-          reviewEta: new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString()
-        };
+      const emailData = {
+        orderId,
+        customerName: payload.checkout.contact,
+        customerEmail: payload.checkout.email,
+        customerPhone: payload.checkout.phone,
+        company: payload.checkout.company,
+        items: emailItems,
+        totalAmount: payload.totals?.total ?? 0,
+        discountAmount: payload.totals?.discount ?? 0,
+        quantity: payload.totals?.quantity ?? 0,
+        notes: payload.notes || undefined,
+        locale: (payload.locale || 'fr') as 'fr' | 'ar',
+        receivedAt: now.toISOString(),
+        reviewEta: new Date(now.getTime() + 24 * 60 * 60 * 1000).toISOString()
+      };
 
-        // Send customer confirmation email
-        const customerEmailResult = await sendCustomerOrderConfirmation(emailData);
-        if (!customerEmailResult.success) {
-          logger.error('Failed to send customer confirmation email', customerEmailResult.error);
-        } else {
-          logger.info(`Customer confirmation email sent for order ${orderId}`);
-        }
+      // Fire and forget - don't await, just log results
+      sendCustomerOrderConfirmation(emailData)
+        .then((result) => {
+          if (result.success) {
+            logger.info(`Customer confirmation email sent for order ${orderId}`);
+          } else {
+            logger.error('Failed to send customer confirmation email', result.error);
+          }
+        })
+        .catch((err) => logger.error('Error sending customer email', err));
 
-        // Send admin notification email
-        const adminEmailResult = await sendAdminOrderNotification(emailData);
-        if (!adminEmailResult.success) {
-          logger.error('Failed to send admin notification email', adminEmailResult.error);
-        } else {
-          logger.info(`Admin notification email sent for order ${orderId}`);
-        }
-      } catch (emailError) {
-        // Log email errors but don't fail the order creation
-        logger.error('Error sending order emails', emailError);
-      }
+      sendAdminOrderNotification(emailData)
+        .then((result) => {
+          if (result.success) {
+            logger.info(`Admin notification email sent for order ${orderId}`);
+          } else {
+            logger.error('Failed to send admin notification email', result.error);
+          }
+        })
+        .catch((err) => logger.error('Error sending admin email', err));
     }
 
     return NextResponse.json({

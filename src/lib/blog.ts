@@ -53,6 +53,42 @@ export const blogPosts: BlogPost[] = [
     titleKey: 'blog.posts.kit-bienvenue-employe-comment-creer.title',
     excerptKey: 'blog.posts.kit-bienvenue-employe-comment-creer.excerpt',
     contentKey: 'blog.posts.kit-bienvenue-employe-comment-creer.content'
+  },
+  {
+    id: 'stylos-publicitaires-maroc-guide-achat',
+    slug: 'stylos-publicitaires-maroc-guide-achat',
+    publishedAt: '2024-12-05',
+    updatedAt: '2024-12-07',
+    image: '/images/blog/stylos-publicitaires.jpg',
+    category: 'guide',
+    readingTime: 7,
+    titleKey: 'blog.posts.stylos-publicitaires-maroc-guide-achat.title',
+    excerptKey: 'blog.posts.stylos-publicitaires-maroc-guide-achat.excerpt',
+    contentKey: 'blog.posts.stylos-publicitaires-maroc-guide-achat.content'
+  },
+  {
+    id: 'cadeaux-entreprise-fin-annee-maroc',
+    slug: 'cadeaux-entreprise-fin-annee-maroc',
+    publishedAt: '2024-12-06',
+    updatedAt: '2024-12-07',
+    image: '/images/blog/cadeaux-fin-annee.jpg',
+    category: 'tendances',
+    readingTime: 6,
+    titleKey: 'blog.posts.cadeaux-entreprise-fin-annee-maroc.title',
+    excerptKey: 'blog.posts.cadeaux-entreprise-fin-annee-maroc.excerpt',
+    contentKey: 'blog.posts.cadeaux-entreprise-fin-annee-maroc.content'
+  },
+  {
+    id: 'personnalisation-logo-entreprise-techniques',
+    slug: 'personnalisation-logo-entreprise-techniques',
+    publishedAt: '2024-12-07',
+    updatedAt: '2024-12-07',
+    image: '/images/blog/personnalisation-logo.jpg',
+    category: 'conseils',
+    readingTime: 8,
+    titleKey: 'blog.posts.personnalisation-logo-entreprise-techniques.title',
+    excerptKey: 'blog.posts.personnalisation-logo-entreprise-techniques.excerpt',
+    contentKey: 'blog.posts.personnalisation-logo-entreprise-techniques.content'
   }
 ];
 

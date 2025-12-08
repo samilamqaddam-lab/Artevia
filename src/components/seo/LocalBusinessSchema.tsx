@@ -77,46 +77,26 @@ export function LocalBusinessSchema({locale = 'fr'}: LocalBusinessSchemaProps) {
         {
           '@type': 'OfferCatalog',
           name: 'Mugs & Drinkware',
-          itemListElement: [{
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Product',
-              name: 'Mug céramique personnalisable'
-            }
-          }]
+          description: 'Mugs céramique et bouteilles isothermes personnalisables avec logo',
+          url: 'https://arteva.ma/fr/product/mug-personnalisable-ceramique'
         },
         {
           '@type': 'OfferCatalog',
           name: 'Textiles corporate',
-          itemListElement: [{
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Product',
-              name: 'T-shirt personnalisé'
-            }
-          }]
+          description: 'T-shirts, polos et sweats personnalisés pour entreprises',
+          url: 'https://arteva.ma/fr/product/tshirt-essential-coton'
         },
         {
           '@type': 'OfferCatalog',
           name: 'Tech & USB',
-          itemListElement: [{
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Product',
-              name: 'Clé USB personnalisable'
-            }
-          }]
+          description: 'Clés USB, powerbanks et accessoires tech avec gravure logo',
+          url: 'https://arteva.ma/fr/product/cle-usb-16go-bamboo'
         },
         {
           '@type': 'OfferCatalog',
           name: 'Fournitures Bureau',
-          itemListElement: [{
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'Product',
-              name: 'Bloc-notes personnalisé'
-            }
-          }]
+          description: 'Bloc-notes, carnets et stylos personnalisés pour entreprises',
+          url: 'https://arteva.ma/fr/product/bloc-notes-personnalises'
         }
       ]
     }

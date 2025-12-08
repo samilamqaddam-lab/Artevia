@@ -83,7 +83,8 @@ export default async function BlogPostPage({params}: {params: {locale: string; s
 
   const title = t(post.titleKey.replace('blog.', ''));
   const excerpt = t(post.excerptKey.replace('blog.', ''));
-  const content = t(post.contentKey.replace('blog.', ''));
+  // Use t.raw() for HTML content to prevent escaping
+  const content = t.raw(post.contentKey.replace('blog.', ''));
 
   const breadcrumbItems = [
     {name: 'Accueil', url: `https://arteva.ma/${locale}`},

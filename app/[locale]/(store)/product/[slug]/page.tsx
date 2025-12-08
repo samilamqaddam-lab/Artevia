@@ -224,6 +224,10 @@ export default async function ProductPage({
     {name: name, url: `https://arteva.ma/${locale}/product/${product.slug}`}
   ];
 
+  // Get starting price from default method's first price tier for Google Schema
+  const defaultMethod = product.methods.find(m => m.id === product.defaultMethodId) || product.methods[0];
+  const startingPrice = defaultMethod?.priceTiers[0]?.unitPrice;
+
   return (
     <>
       <ProductSchema
@@ -231,6 +235,7 @@ export default async function ProductPage({
         description={description}
         slug={product.slug}
         image={product.heroImage}
+        price={startingPrice}
         sku={product.id}
         category={product.category}
         minQuantity={product.moq}

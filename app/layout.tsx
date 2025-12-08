@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_MA',
-    url: 'https://arteva.ma',
+    url: 'https://arteva.ma/fr',
     siteName: 'Arteva',
     title: 'Arteva | Objets Publicitaires Personnalisés Maroc',
     description:
@@ -42,7 +42,11 @@ export const metadata: Metadata = {
     }
   },
   alternates: {
-    canonical: 'https://arteva.ma'
+    canonical: 'https://arteva.ma/fr',
+    languages: {
+      'fr-MA': 'https://arteva.ma/fr',
+      'ar-MA': 'https://arteva.ma/ar'
+    }
   }
 };
 

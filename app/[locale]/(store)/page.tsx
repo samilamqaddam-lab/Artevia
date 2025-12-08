@@ -6,11 +6,18 @@ import {getPackById} from '@/lib/packs';
 import {HomeView, type HomeContent} from '@/components/home/HomeView';
 import {LocalBusinessSchema} from '@/components/seo';
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: '/fr'
-  }
-};
+export async function generateMetadata({params}: {params: {locale: string}}): Promise<Metadata> {
+  const locale = params.locale;
+  return {
+    alternates: {
+      canonical: `https://arteva.ma/${locale}`,
+      languages: {
+        'fr-MA': 'https://arteva.ma/fr',
+        'ar-MA': 'https://arteva.ma/ar'
+      }
+    }
+  };
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({locale}));

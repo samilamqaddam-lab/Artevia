@@ -13,7 +13,8 @@
       "login": "تسجيل الدخول",
       "register": "إنشاء حساب",
       "account": "حسابي",
-      "logout": "تسجيل الخروج"
+      "logout": "تسجيل الخروج",
+      "blog": "المدونة"
     },
     "actions": {
       "startConfigurator": "تكوين",

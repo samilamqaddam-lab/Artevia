@@ -34,7 +34,7 @@
     "framer-motion": "^11.18.2",
     "idb": "^7.1.1",
     "lucide-react": "^0.378.0",
-    "next": "^14.2.32",
+    "next": "14.2.35",
     "next-intl": "^3.11.0",
     "nodemailer": "^7.0.11",
     "react": "18.3.1",

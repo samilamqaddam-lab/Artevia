@@ -16,36 +16,66 @@ export function generateStaticParams() {
   return locales.flatMap((locale) => products.map((product) => ({locale, slug: product.slug})));
 }
 
-// Helper function pour métadonnées SEO par produit
+// Helper function pour métadonnées SEO par produit (locale-aware)
 function getProductSEOMeta(
   slug: string,
   name: string,
-  description: string
+  description: string,
+  locale: string = 'fr'
 ): {title: string; description: string} {
-  const seoMap: Record<string, {title: string; description: string}> = {
+  const seoMap: Record<string, Record<string, {title: string; description: string}>> = {
     'bloc-notes-personnalises': {
-      title: 'Bloc-notes Personnalisé Entreprise avec Logo Maroc | Arteva',
-      description:
-        'Bloc-notes personnalisés A4/A5 avec logo entreprise. Impression quadri, reliure spirale premium. Petites quantités dès 50 ex. Livraison 48h Maroc. Devis gratuit.'
+      fr: {
+        title: 'Bloc-notes Personnalisé Entreprise avec Logo Maroc | Arteva',
+        description:
+          'Bloc-notes personnalisés A4/A5 avec logo entreprise. Impression quadri, reliure spirale premium. Petites quantités dès 50 ex. Livraison 48h Maroc. Devis gratuit.'
+      },
+      ar: {
+        title: 'دفتر ملاحظات مخصص للشركات بالشعار المغرب | أرتيفا',
+        description:
+          'دفاتر ملاحظات مخصصة A4/A5 بشعار الشركة. طباعة رباعية الألوان، تجليد حلزوني ممتاز. كميات صغيرة من 50 نسخة. توصيل 48 ساعة المغرب.'
+      }
     },
     'stylos-metal-s1': {
-      title: 'Stylos Personnalisés Entreprise Gravure Laser Maroc | Arteva',
-      description:
-        'Stylos métal personnalisés avec gravure laser ou tampographie. Corps aluminium rechargeable. Petites quantités dès 30 ex. BAT 24h. Livraison express Maroc.'
+      fr: {
+        title: 'Stylos Personnalisés Entreprise Gravure Laser Maroc | Arteva',
+        description:
+          'Stylos métal personnalisés avec gravure laser ou tampographie. Corps aluminium rechargeable. Petites quantités dès 30 ex. BAT 24h. Livraison express Maroc.'
+      },
+      ar: {
+        title: 'أقلام معدنية مخصصة بالنقش بالليزر المغرب | أرتيفا',
+        description:
+          'أقلام معدنية مخصصة بالنقش بالليزر أو الطباعة. هيكل ألمنيوم قابل لإعادة التعبئة. كميات صغيرة من 30 قطعة. توصيل سريع المغرب.'
+      }
     },
     'chemise-a-rabat-classique': {
-      title: 'Chemise à Rabat Personnalisée Entreprise Maroc | Arteva',
-      description:
-        'Chemise rabat A4 personnalisée avec logo. Carton 350g, impression offset ou numérique. Petites séries dès 100 ex. Livraison rapide partout au Maroc. Devis gratuit.'
+      fr: {
+        title: 'Chemise à Rabat Personnalisée Entreprise Maroc | Arteva',
+        description:
+          'Chemise rabat A4 personnalisée avec logo. Carton 350g, impression offset ou numérique. Petites séries dès 100 ex. Livraison rapide partout au Maroc. Devis gratuit.'
+      },
+      ar: {
+        title: 'ملف بغلاف مخصص للشركات المغرب | أرتيفا',
+        description:
+          'ملف A4 مخصص بشعار الشركة. كرتون 350 غرام، طباعة أوفست أو رقمية. سلسلات صغيرة من 100 نسخة. توصيل سريع في جميع أنحاء المغرب.'
+      }
     }
   };
 
-  return (
-    seoMap[slug] || {
-      title: `${name} Personnalisé | Arteva`,
+  const localeMap = seoMap[slug]?.[locale];
+  if (localeMap) return localeMap;
+
+  // Fallback: use translated product name
+  if (locale === 'ar') {
+    return {
+      title: `${name} مخصص | أرتيفا`,
       description: description
-    }
-  );
+    };
+  }
+  return {
+    title: `${name} Personnalisé | Arteva`,
+    description: description
+  };
 }
 
 export async function generateMetadata({
@@ -67,7 +97,7 @@ export async function generateMetadata({
   const productName = t(product.nameKey.split('.').slice(1).join('.'));
   const productDescription = t(product.descriptionKey.split('.').slice(1).join('.'));
 
-  const seoMeta = getProductSEOMeta(slug, productName, productDescription);
+  const seoMeta = getProductSEOMeta(slug, productName, productDescription, locale);
 
   // Get hero image from database
   const heroImage = await getProductHeroImage(product.id);
@@ -78,7 +108,15 @@ export async function generateMetadata({
     openGraph: {
       title: seoMeta.title,
       description: seoMeta.description,
+      locale: locale === 'ar' ? 'ar_MA' : 'fr_MA',
       images: [heroImage || product.heroImage]
+    },
+    alternates: {
+      canonical: `https://arteva.ma/${locale}/product/${slug}`,
+      languages: {
+        'fr-MA': `https://arteva.ma/fr/product/${slug}`,
+        'ar-MA': `https://arteva.ma/ar/product/${slug}`,
+      }
     }
   };
 }

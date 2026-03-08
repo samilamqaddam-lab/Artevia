@@ -9,6 +9,9 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/auth/', '/_next/']
       }
     ],
-    sitemap: 'https://arteva.ma/sitemap.xml'
+    sitemap: 'https://arteva.ma/sitemap.xml',
+    host: 'https://arteva.ma',
   };
 }
+
+// Note: llms.txt served at /llms.txt via API route

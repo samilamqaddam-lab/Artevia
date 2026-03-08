@@ -83,6 +83,18 @@ const nextConfig = {
     minimumCacheTTL: 60
   },
 
+  // Rewrites — serve static files that conflict with app router
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/llms.txt',
+          destination: '/api/llms-txt',
+        },
+      ],
+    };
+  },
+
   // Redirections SEO
   async redirects() {
     return [

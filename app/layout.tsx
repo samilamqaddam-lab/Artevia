@@ -22,13 +22,22 @@ export const metadata: Metadata = {
     siteName: 'Arteva',
     title: 'Arteva | Objets Publicitaires Personnalisés Maroc',
     description:
-      'Objets publicitaires personnalisés pour entreprises au Maroc. Designer en ligne, accompagnement personnalisé, qualité premium.'
+      'Objets publicitaires personnalisés pour entreprises au Maroc. Designer en ligne, accompagnement personnalisé, qualité premium.',
+    images: [
+      {
+        url: '/images/blog/objets-publicitaires-guide.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Arteva — Objets publicitaires personnalisés au Maroc',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Arteva | Objets Publicitaires Personnalisés Maroc',
     description:
-      'Objets publicitaires personnalisés pour entreprises au Maroc. Designer en ligne, accompagnement personnalisé, qualité premium.'
+      'Objets publicitaires personnalisés pour entreprises au Maroc. Designer en ligne, accompagnement personnalisé, qualité premium.',
+    images: ['/images/blog/objets-publicitaires-guide.jpg'],
   },
   robots: {
     index: true,

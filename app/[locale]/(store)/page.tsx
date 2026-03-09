@@ -8,14 +8,31 @@ import {LocalBusinessSchema} from '@/components/seo';
 
 export async function generateMetadata({params}: {params: {locale: string}}): Promise<Metadata> {
   const locale = params.locale;
+  const isAr = locale === 'ar';
   return {
+    title: isAr
+      ? 'أرتيفا | منتجات دعائية مخصصة للشركات في المغرب'
+      : 'Arteva | Objets Publicitaires Personnalisés Entreprise Maroc',
+    description: isAr
+      ? 'منتجات دعائية مخصصة للشركات في المغرب. مصمم عبر الإنترنت، مرافقة شخصية، جودة ممتازة. عرض أسعار مجاني.'
+      : 'Objets publicitaires personnalisés pour entreprises au Maroc. Designer en ligne, accompagnement personnalisé, qualité premium. Devis gratuit.',
+    openGraph: {
+      images: [
+        {
+          url: '/images/blog/objets-publicitaires-guide.jpg',
+          width: 1200,
+          height: 630,
+          alt: isAr ? 'أرتيفا — منتجات دعائية مخصصة' : 'Arteva — Objets publicitaires personnalisés',
+        },
+      ],
+    },
     alternates: {
       canonical: `https://arteva.ma/${locale}`,
       languages: {
         'fr-MA': 'https://arteva.ma/fr',
-        'ar-MA': 'https://arteva.ma/ar'
-      }
-    }
+        'ar-MA': 'https://arteva.ma/ar',
+      },
+    },
   };
 }
 

@@ -12,12 +12,12 @@ export async function generateMetadata({
 
   const metadata = {
     fr: {
-      title: 'Kit Bienvenue Employé Personnalisé Maroc | Pack Onboarding Entreprise | Arteva',
+      title: 'Kit Bienvenue Employé Personnalisé | Arteva',
       description:
-        'Kit bienvenue employé personnalisé pour onboarding entreprise. Bloc-notes, stylos, goodies avec logo. Petites quantités dès 10 kits. Livraison 48h Maroc. Devis gratuit.'
+        'Kit bienvenue employé personnalisé pour onboarding entreprise. Bloc-notes, stylos, goodies avec logo. Dès 10 kits, livraison 48h Maroc. Devis gratuit.'
     },
     ar: {
-      title: 'طقم الترحيب بالموظفين الجدد المخصص المغرب | Arteva',
+      title: 'طقم ترحيب الموظفين المخصص | أرتيفا',
       description:
         'طقم ترحيب مخصص للموظفين الجدد. دفاتر، أقلام، هدايا بشعار الشركة. كميات صغيرة من 10 أطقم. توصيل 48 ساعة.'
     }

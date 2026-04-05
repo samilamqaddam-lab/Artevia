@@ -64,9 +64,9 @@ const CATEGORY_ASSETS = [
   }
 ];
 
-// Hero image optimized: reduced to 1200px width for faster LCP
+// Hero image self-hosted for fastest LCP (no external DNS lookup)
 const HERO_IMAGE = {
-  src: 'https://images.pexels.com/photos/7710157/pexels-photo-7710157.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop',
+  src: '/images/hero/hero-main.jpg',
   alt: 'Équipe marketing réunie autour de goodies personnalisés'
 };
 

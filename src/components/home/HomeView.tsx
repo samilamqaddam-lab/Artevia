@@ -198,6 +198,7 @@ export function HomeView({locale, content}: HomeViewProps) {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 45vw"
               priority
+              fetchPriority="high"
             />
           </motion.div>
         </div>

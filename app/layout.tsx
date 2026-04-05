@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import {headers} from 'next/headers';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -59,13 +60,23 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
+  // Detect locale from URL path for proper lang/dir attributes
+  const headersList = await headers();
+  const pathname = headersList.get('x-next-intl-locale') || headersList.get('x-invoke-path') || '';
+  const isArabic = pathname === 'ar' || pathname.startsWith('/ar');
+  const lang = isArabic ? 'ar' : 'fr';
+
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang={lang} dir={isArabic ? 'rtl' : 'ltr'} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://images.pexels.com" />
+        <link rel="dns-prefetch" href="https://images.pexels.com" />
+      </head>
       <body>{children}</body>
     </html>
   );
